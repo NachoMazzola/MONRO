@@ -10,8 +10,9 @@ public class InteractiveObjectInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.Mouse0)) {
-			Debug.Log("CACA");
+		if (Input.GetMouseButtonDown(0)) {
+			InteractiveMenu intMenuComp = this.GetComponent<InteractiveMenu>();
+			intMenuComp.ToggleMenu();
 		}
 
 	}
