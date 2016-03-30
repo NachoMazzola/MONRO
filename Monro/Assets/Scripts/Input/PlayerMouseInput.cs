@@ -23,7 +23,7 @@ public class PlayerMouseInput : MonoBehaviour {
 
 			Collider2D hitCollider = Physics2D.OverlapPoint(targetPosition);
 			if (hitCollider != null) {
-				canMove = hitCollider.gameObject.tag != "InteractiveObject";
+				canMove = hitCollider.gameObject.tag != "InteractiveObject" && hitCollider.gameObject.tag != "IMButton";
 			}
 			else {
 				canMove = true;

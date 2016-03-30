@@ -16,13 +16,26 @@ public class InteractiveMenu : MonoBehaviour {
 		menu.SetParent(this.transform);
 
 
-		IIMButtonInterface[] buttons = GetComponents<IIMButtonInterface>();
+		IMActionButton[] buttons = GetComponents<IMActionButton>();
+		if (buttons == null || buttons.Length == 0) {
+			Debug.Log("WARNING: MENU DOES NOT HAVE ANY BUTTON ACTIONS!");
+			return;
+		}
+			
 		instantiatedButtons = new RectTransform[buttons.Length];
 
 		int iter = 0;
-		foreach (IIMButtonInterface comp in buttons) {
-			RectTransform theButton = Instantiate(comp.getPrefab(), this.transform.position, Quaternion.identity) as RectTransform;
+		foreach (IMActionButton comp in buttons) {
+			if (comp.enabled == false) {
+				continue;
+			}
+
+			RectTransform theButton = Instantiate(comp.ButtonPrefab, this.transform.position, Quaternion.identity) as RectTransform;
 			theButton.SetParent(menu);
+
+			Button buttonComp = theButton.GetComponent<Button>();
+			buttonComp.onClick.RemoveAllListeners();
+			buttonComp.onClick.AddListener(comp.ExecuteAction);
 
 			instantiatedButtons[iter] =  theButton;
 
@@ -68,5 +81,9 @@ public class InteractiveMenu : MonoBehaviour {
 	public void ToggleMenu() {
 		menuOn = !menuOn;
 		menu.gameObject.SetActive(menuOn);
+	}
+
+	public void caca() {
+		Debug.Log("CONCHIPAPI");
 	}
 }

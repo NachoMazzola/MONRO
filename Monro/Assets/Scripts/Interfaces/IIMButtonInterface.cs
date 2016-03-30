@@ -4,5 +4,8 @@ using System.Collections;
 public interface IIMButtonInterface {
 
 	void ExecuteAction();
-	Transform getPrefab();
+	Transform GetPrefab();
+	void EnableComponent(bool enable);
+	bool IsEnabled();
+
 }

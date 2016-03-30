@@ -1,27 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class IMBLookAtAction : MonoBehaviour, IIMButtonInterface {
+public class IMBLookAtAction : IMActionButton {
 
-	public Transform ButtonPrefab;
+	public string caption;
+
 
 	// Use this for initialization
 	void Start () {
-	
+		OnStart();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		OnUpdate();
+	}
+
+	public override void OnStart() {
+		base.OnStart ();
+
+	}
+
+	public override void OnUpdate() {
+		base.OnUpdate();
 	}
 
 	//interface methods
 
-	public void ExecuteAction() {
-
-	}
-
-	public Transform getPrefab() {
-		return ButtonPrefab;
+	override public void ExecuteAction() {
+		PlayerCaption thePlayerCap = player.GetComponent<PlayerCaption>();
+		thePlayerCap.ShowCaption(caption);
 	}
 }

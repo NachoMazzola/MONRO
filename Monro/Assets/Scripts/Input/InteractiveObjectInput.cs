@@ -11,8 +11,12 @@ public class InteractiveObjectInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown(0)) {
-			InteractiveMenu intMenuComp = this.GetComponent<InteractiveMenu>();
-			intMenuComp.ToggleMenu();
+			Vector2 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			Collider2D hitCollider = Physics2D.OverlapPoint(targetPosition);
+			if (hitCollider != null) {
+				InteractiveMenu intMenuComp = this.GetComponent<InteractiveMenu>();
+				intMenuComp.ToggleMenu();	
+			}
 		}
 
 	}

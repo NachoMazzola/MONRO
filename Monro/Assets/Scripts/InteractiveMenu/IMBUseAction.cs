@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class IMBUseAction : MonoBehaviour, IIMButtonInterface {
 
-	public Transform ButtonPrefab;
+public class IMBUseAction : IMActionButton {
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
@@ -15,13 +14,9 @@ public class IMBUseAction : MonoBehaviour, IIMButtonInterface {
 	
 	}
 
-	//interface methods
-
-	public void ExecuteAction() {
-		
+	override public void ExecuteAction() {
+		Debug.Log("USE BUTTON");
 	}
 
-	public Transform getPrefab() {
-		return ButtonPrefab;
-	}
+
 }
