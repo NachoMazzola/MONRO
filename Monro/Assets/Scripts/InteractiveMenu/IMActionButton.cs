@@ -8,6 +8,7 @@ public class IMActionButton : MonoBehaviour {
 	public Transform ButtonPrefab;
 
 	protected GameObject player;
+	protected GameObject interactiveObject;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +22,7 @@ public class IMActionButton : MonoBehaviour {
 
 	public virtual void OnStart() {
 		player = GameObject.Find("Player");
+		interactiveObject = this.transform.gameObject;
 	}
 
 	public virtual void OnUpdate() {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InteractiveObjectInput : MonoBehaviour {
+public class InteractiveObject : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

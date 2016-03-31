@@ -9,9 +9,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 426906}
   - 212: {fileID: 21266796}
-  - 114: {fileID: 11443220}
   - 61: {fileID: 6115384}
   - 114: {fileID: 11453368}
+  - 95: {fileID: 9508114}
+  - 114: {fileID: 11443042}
   m_Layer: 0
   m_Name: PlayerViking
   m_TagString: Player
@@ -45,7 +46,24 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.59, y: 0.66}
---- !u!114 &11443220
+--- !u!95 &9508114
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128036}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 27309be7ea5ad4a0587772ee5fcb9947, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11443042
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -70,6 +88,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerCaptionPrefab: {fileID: 22412386, guid: 7d404d0aaedea4e428bda8d1d4bc7887,
     type: 2}
+  CaptionDurationUntilFade: 3
+  CaptionFadeDuration: 1.5
 --- !u!212 &21266796
 SpriteRenderer:
   m_ObjectHideFlags: 1
