@@ -3,8 +3,6 @@ using System.Collections;
 
 public class IMBLookAtAction : IMActionButton {
 
-	public string caption;
-
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +27,7 @@ public class IMBLookAtAction : IMActionButton {
 
 	override public void ExecuteAction() {
 		PlayerCaption thePlayerCap = player.GetComponent<PlayerCaption>();
-		thePlayerCap.ShowCaption(caption);
+		InteractiveObject theObj = interactiveObject.GetComponent<InteractiveObject>();
+		thePlayerCap.ShowCaption(theObj.Caption);
 	}
 }

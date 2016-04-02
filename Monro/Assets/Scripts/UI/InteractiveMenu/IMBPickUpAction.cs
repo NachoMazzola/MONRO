@@ -25,7 +25,9 @@ public class IMBPickUpAction : IMActionButton {
 
 	override public void ExecuteAction() {
 		Player playerComp = player.GetComponent<Player>();
-		playerComp.MoveToAndPickUp(this.transform.position, this.transform.gameObject);
+		playerComp.MoveToAndPickUp(this.transform.position, interactiveObject.transform);
+
+
 	}
 
 

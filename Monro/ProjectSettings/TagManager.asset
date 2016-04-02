@@ -6,7 +6,7 @@ TagManager:
   tags:
   - InteractiveObject
   - Player
-  - IMButton
+  - UIElement
   layers:
   - Default
   - TransparentFX
