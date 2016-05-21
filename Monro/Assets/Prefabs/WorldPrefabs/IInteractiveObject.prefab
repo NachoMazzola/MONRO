@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 490570}
   - 212: {fileID: 21247684}
   - 61: {fileID: 6109448}
+  - 58: {fileID: 5838754}
   - 114: {fileID: 11450766}
   - 114: {fileID: 11408652}
   - 114: {fileID: 11477250}
@@ -28,11 +29,25 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.8665442, y: -1.04, z: 0}
+  m_LocalPosition: {x: -5, y: -1.04, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!58 &5838754
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148942}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3.1709998
 --- !u!61 &6109448
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -83,8 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48645b822cbfe44dbafdc4cc1e8026c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  Caption: That is a shitty box!
+  Item: {fileID: 22428016, guid: a3f71fb0993ce409e962648f92ac88f4, type: 2}
+  Caption: PUTO!
+  HighlightedSprite: {fileID: 21300000, guid: df2656c344ddc4b83b8dc26f11462223, type: 3}
 --- !u!114 &11477250
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -78,9 +78,15 @@ public class InteractiveMenu : MonoBehaviour {
 	
 	}
 
-	public void ToggleMenu() {
+	public bool ToggleMenu() {
 		menuOn = !menuOn;
 		menu.gameObject.SetActive(menuOn);
+
+		return menuOn;
+	}
+
+	public bool menuIsOn() {
+		return menuOn;
 	}
 
 	public void caca() {

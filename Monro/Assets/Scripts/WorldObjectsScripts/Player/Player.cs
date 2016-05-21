@@ -30,12 +30,11 @@ public class Player : MonoBehaviour
 	private PlayerInventory inventory;
 
 
-
 	void Awake ()
 	{
 		animStateMachine = GetComponent<PlayerStateMachine> ();
 		inventory = GetComponent<PlayerInventory> ();
-		playerCaption = GetComponent<PlayerCaption>();
+		playerCaption = GetComponent<PlayerCaption> ();
 
 		currentFacingDirection = StartFacingRight ? MovingDirection.MovingRight : MovingDirection.MovingLeft;
 		lastFacingDirection = currentFacingDirection;
@@ -58,19 +57,22 @@ public class Player : MonoBehaviour
 			if (currentFacingDirection != lastFacingDirection) {
 
 				Vector2 theScale = this.transform.localScale;
-				theScale.x = this.transform.localScale.x*-1;
+				theScale.x = this.transform.localScale.x * -1;
 				this.transform.localScale = theScale;
 
 				lastFacingDirection = currentFacingDirection;
 
 			}
 
-			playerCaption.PreserveOriginalScale(this.transform.localScale.x);
+			playerCaption.PreserveOriginalScale (this.transform.localScale.x);
 
 			Collider2D hitCollider = Physics2D.OverlapPoint (targetPosition);
-			if (hitCollider != null && hitCollider != this.GetComponent<BoxCollider2D>()) {
+
+			//avoid moving the player if tapped in a HotSpot or a button in the HotSpot menu
+			if (hitCollider != null && (hitCollider is BoxCollider2D && hitCollider != this.GetComponent<BoxCollider2D> ())) {
 				canMove = hitCollider.gameObject.tag != "InteractiveObject" && EventSystem.current.currentSelectedGameObject.tag != "IMButton";
 			} else {
+				//avoid moving the player if tapped in any UI (like Inventory)
 				if (EventSystem.current.currentSelectedGameObject != null) {
 					canMove = EventSystem.current.currentSelectedGameObject.tag != "UIElement";	
 				} else {
@@ -78,6 +80,10 @@ public class Player : MonoBehaviour
 				}
 
 			}
+
+
+
+
 
 		}
 
@@ -134,4 +140,5 @@ public class Player : MonoBehaviour
 
 		itemToPickUp = null;
 	}
+		
 }
