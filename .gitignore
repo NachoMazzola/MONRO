@@ -28,3 +28,6 @@ Monro/Temp
 Monro/Library
 *.meta
 Monro/obj
+NewMonro/Monro/Library
+NewMonro/Monro/Temp
+NewMonro/Monro/obj
