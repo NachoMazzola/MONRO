@@ -35,10 +35,20 @@ public class InteractiveObject : MonoBehaviour {
 	void Update () {
 		if (Input.GetMouseButtonDown(0)) {
 			Vector2 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			Collider2D hitCollider = Physics2D.OverlapPoint(targetPosition);
-			if (hitCollider != null && hitCollider == tappableCollider) {
-				InteractiveMenu intMenuComp = this.GetComponent<InteractiveMenu>();
-				isShowingMenu = intMenuComp.ToggleMenu();
+			Collider2D[] hitColliders = Physics2D.OverlapPointAll(targetPosition); 
+			Collider2D hitCollider = null;
+			if (hitColliders != null && hitColliders.Length > 0) {
+				if (hitColliders.Length == 1) {
+					hitCollider = hitColliders[0]; //GET THE CIRCLE COLLIDER
+				}
+				else {
+					hitCollider = hitColliders[1]; //GET THE BOX COLLIDER
+				}
+
+				if (hitCollider == tappableCollider) {
+					InteractiveMenu intMenuComp = this.GetComponent<InteractiveMenu>();
+					isShowingMenu = intMenuComp.ToggleMenu();
+				}	
 			}
 		}
 

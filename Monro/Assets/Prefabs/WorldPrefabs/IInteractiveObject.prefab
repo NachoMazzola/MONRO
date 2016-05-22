@@ -43,7 +43,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Item: {fileID: 22428016, guid: a3f71fb0993ce409e962648f92ac88f4, type: 2}
-  Caption: PUTO!
-  HighlightedSprite: {fileID: 21300000, guid: df2656c344ddc4b83b8dc26f11462223, type: 3}
+  Caption: RRRRRE PUTO!
+  HighlightedSprite: {fileID: 21300000, guid: aed992893c4b94d83828d0030663330e, type: 3}
 --- !u!114 &11477250
 MonoBehaviour:
   m_ObjectHideFlags: 1

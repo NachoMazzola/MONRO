@@ -66,25 +66,30 @@ public class Player : MonoBehaviour
 
 			playerCaption.PreserveOriginalScale (this.transform.localScale.x);
 
-			Collider2D hitCollider = Physics2D.OverlapPoint (targetPosition);
+			Collider2D[] hitColliders = Physics2D.OverlapPointAll(targetPosition); 
+			Collider2D hitCollider = null;
+			if (hitColliders != null && hitColliders.Length > 0) {
+				if (hitColliders.Length == 1) {
+					hitCollider = hitColliders[0]; //GET THE CIRCLE COLLIDER
+				}
+				else {
+					hitCollider = hitColliders[1]; //GET THE BOX COLLIDER
+				}
 
-			//avoid moving the player if tapped in a HotSpot or a button in the HotSpot menu
-			if (hitCollider != null && (hitCollider is BoxCollider2D && hitCollider != this.GetComponent<BoxCollider2D> ())) {
-				canMove = hitCollider.gameObject.tag != "InteractiveObject" && EventSystem.current.currentSelectedGameObject.tag != "IMButton";
-			} else {
+				//avoid moving the player if tapped in a HotSpot or a button in the HotSpot menu
+				if (hitCollider != null && hitCollider != this.GetComponent<BoxCollider2D> ()) {
+					canMove = hitCollider.gameObject.tag != "InteractiveObject" && EventSystem.current.currentSelectedGameObject.tag != "IMButton";
+					canMove = hitCollider.isTrigger; //we re check here because we may have clicked in the circle collider of a HotSpot.. in this case, we must move the player there
+				}
+			}
+			else {
 				//avoid moving the player if tapped in any UI (like Inventory)
 				if (EventSystem.current.currentSelectedGameObject != null) {
 					canMove = EventSystem.current.currentSelectedGameObject.tag != "UIElement";	
 				} else {
 					canMove = true;
 				}
-
 			}
-
-
-
-
-
 		}
 
 
