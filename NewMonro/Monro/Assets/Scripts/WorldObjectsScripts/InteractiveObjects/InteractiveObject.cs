@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public class InteractiveObject : MonoBehaviour {
 
@@ -11,18 +12,13 @@ public class InteractiveObject : MonoBehaviour {
 	private SpriteRenderer theSpriteRenderer;
 	private Sprite originalSprite;
 
-	private CircleCollider2D highlightRangeCollider;
-	private BoxCollider2D tappableCollider;
 
 	private bool isShowingMenu;
 
 	void Awake() {
 		theSpriteRenderer = GetComponent<SpriteRenderer>();	
 		originalSprite = theSpriteRenderer.sprite;
-
-		highlightRangeCollider = GetComponent<CircleCollider2D>();
-		tappableCollider = GetComponent<BoxCollider2D>();
-
+	
 		isShowingMenu = false;
 	}
 
@@ -36,19 +32,12 @@ public class InteractiveObject : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0)) {
 			Vector2 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Collider2D[] hitColliders = Physics2D.OverlapPointAll(targetPosition); 
-			Collider2D hitCollider = null;
-			if (hitColliders != null && hitColliders.Length > 0) {
-				if (hitColliders.Length == 1) {
-					hitCollider = hitColliders[0]; //GET THE CIRCLE COLLIDER
-				}
-				else {
-					hitCollider = hitColliders[1]; //GET THE BOX COLLIDER
-				}
 
-				if (hitCollider == tappableCollider) {
-					InteractiveMenu intMenuComp = this.GetComponent<InteractiveMenu>();
-					isShowingMenu = intMenuComp.ToggleMenu();
-				}	
+			//2 colliders means that the "tappable" collider has been tapped.. we ignore
+			//if the circle collider has been tapped or not. We only care if the "tappable" was tapped
+			if (hitColliders != null && hitColliders.Length == 2) {
+				InteractiveMenu intMenuComp = this.GetComponent<InteractiveMenu>();
+				isShowingMenu = intMenuComp.ToggleMenu();
 			}
 		}
 
@@ -73,5 +62,9 @@ public class InteractiveObject : MonoBehaviour {
 
 	public void RemoveHighlight() {
 		theSpriteRenderer.sprite = originalSprite;
+	}
+		
+	public BoxCollider2D GetTappbleCollider() {
+		return GetComponent<BoxCollider2D>();
 	}
 }

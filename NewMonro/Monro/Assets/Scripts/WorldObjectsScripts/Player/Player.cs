@@ -68,13 +68,9 @@ public class Player : MonoBehaviour
 
 			Collider2D[] hitColliders = Physics2D.OverlapPointAll(targetPosition); 
 			Collider2D hitCollider = null;
-			if (hitColliders != null && hitColliders.Length > 0) {
-				if (hitColliders.Length == 1) {
-					hitCollider = hitColliders[0]; //GET THE CIRCLE COLLIDER
-				}
-				else {
-					hitCollider = hitColliders[1]; //GET THE BOX COLLIDER
-				}
+			if (hitColliders != null && hitColliders.Length == 2) {
+				hitCollider = hitColliders[0].gameObject.GetComponent<InteractiveObject>().GetTappbleCollider();
+
 
 				//avoid moving the player if tapped in a HotSpot or a button in the HotSpot menu
 				if (hitCollider != null && hitCollider != this.GetComponent<BoxCollider2D> ()) {
@@ -84,6 +80,8 @@ public class Player : MonoBehaviour
 			}
 			else {
 				//avoid moving the player if tapped in any UI (like Inventory)
+				EventSystem c = EventSystem.current;
+				GameObject f = c.gameObject;
 				if (EventSystem.current.currentSelectedGameObject != null) {
 					canMove = EventSystem.current.currentSelectedGameObject.tag != "UIElement";	
 				} else {

@@ -42,12 +42,13 @@ public class InteractiveMenu : MonoBehaviour {
 			instantiatedButtons[iter] =  theButton;
 
 
-			float offset = 45.0f;
-			if (iter == 3) {
-				offset = 45.0f * 2;
-			}
-
-			float ang = ((iter * 180.0f) / buttons.Length) - 45.0f + (45.0f*iter);
+//			float offset = 45.0f;
+//			if (iter == 3) {
+//				offset = 45.0f * 2;
+//			}
+//
+			//float ang = ((iter * 180.0f) / buttons.Length) - 45.0f;
+			float ang = ((iter * 360.0f) / buttons.Length);
 			Vector2 pos = new Vector2();
 			pos.x = transform.position.x + ButtonDistance * Mathf.Sin(ang * Mathf.Deg2Rad);
 			pos.y = transform.position.y + ButtonDistance * Mathf.Cos(ang * Mathf.Deg2Rad);
