@@ -120,6 +120,23 @@ public class Player : MonoBehaviour
 		canMove = true;
 	}
 
+	public void MoveToKeepDistance(Transform moveToObj) {
+
+		CircleCollider2D theCollider = moveToObj.GetComponent<CircleCollider2D>();
+		int dirChange = 1; 
+		if (currentFacingDirection == MovingDirection.MovingRight) {
+			dirChange = -1;
+		}
+	
+		float newX = moveToObj.position.x + (theCollider.radius+0.5f)*dirChange; 
+
+		Vector2 newPos = new Vector2(newX, moveToObj.position.y);
+
+
+		targetPosition = newPos;
+		canMove = true;
+	}
+
 	public void MoveToAndPickUp (Vector2 newPosition, Transform itemToPickUp)
 	{
 		this.shouldPickUpItem = true;

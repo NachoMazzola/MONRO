@@ -1,0 +1,52 @@
+[
+	{
+		"title": "Intro",
+		"tags": "",
+		"body": "Valkyria: Hello, Monrjiall. I'm a Valkyria.\nMonrjiall: Hi... What is a \"Valkyria\"?\nValkyria: I'm supposed to take you to Valhalla as you are dead. But I'm afraid I can't do that.\n\n[[What do you mean \"you can't\"?|Valkyria 1]]\n[[I didn't want to go to Valhalla anyway.|Valkyria 2]]\n[[You wretched witch! I will kill you!|Valkyria 3]]\n",
+		"position": {
+			"x": 9,
+			"y": 64
+		},
+		"colorID": 3
+	},
+	{
+		"title": "Valkyria 1",
+		"tags": "Valkyria",
+		"body": "Valkyria: Unfortunately, no order has been given to take you to Valhalla and I suspect I know why...\n\n[[Outro]]",
+		"position": {
+			"x": 554,
+			"y": 79
+		},
+		"colorID": 3
+	},
+	{
+		"title": "Valkyria 2",
+		"tags": "Valkyria",
+		"body": "Valkyria: But you must! It is your destiny to reach the afterworld after dying in battle!\n\n[[Outro]]",
+		"position": {
+			"x": 551,
+			"y": 372
+		},
+		"colorID": 3
+	},
+	{
+		"title": "Valkyria 3",
+		"tags": "Valkyria",
+		"body": "Valkyria: Well, this is going nowhere, fast...\n\n[[Outro]]",
+		"position": {
+			"x": 532,
+			"y": -242
+		},
+		"colorID": 3
+	},
+	{
+		"title": "outro",
+		"tags": "Valkyria",
+		"body": "Valkyria: I can help you reach Valhalla, but it will not be easy to accomplish.",
+		"position": {
+			"x": 963,
+			"y": 72
+		},
+		"colorID": 3
+	}
+]
