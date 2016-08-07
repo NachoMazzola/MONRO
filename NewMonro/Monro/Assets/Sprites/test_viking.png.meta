@@ -1,0 +1,2485 @@
+fileFormatVersion: 2
+guid: 277aed091388640e1a73e1f7f09441ab
+timeCreated: 1459178536
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: test_viking_0
+    21300002: test_viking_1
+    21300004: test_viking_2
+    21300006: test_viking_3
+    21300008: test_viking_4
+    21300010: test_viking_5
+    21300012: test_viking_6
+    21300014: test_viking_7
+    21300016: test_viking_8
+    21300018: test_viking_9
+    21300020: test_viking_10
+    21300022: test_viking_11
+    21300024: test_viking_12
+    21300026: test_viking_13
+    21300028: test_viking_14
+    21300030: test_viking_15
+    21300032: test_viking_16
+    21300034: test_viking_17
+    21300036: test_viking_18
+    21300038: test_viking_19
+    21300040: test_viking_20
+    21300042: test_viking_21
+    21300044: test_viking_22
+    21300046: test_viking_23
+    21300048: test_viking_24
+    21300050: test_viking_25
+    21300052: test_viking_26
+    21300054: test_viking_27
+    21300056: test_viking_28
+    21300058: test_viking_29
+    21300060: test_viking_30
+    21300062: test_viking_31
+    21300064: test_viking_32
+    21300066: test_viking_33
+    21300068: test_viking_34
+    21300070: test_viking_35
+    21300072: test_viking_36
+    21300074: test_viking_37
+    21300076: test_viking_38
+    21300078: test_viking_39
+    21300080: test_viking_40
+    21300082: test_viking_41
+    21300084: test_viking_42
+    21300086: test_viking_43
+    21300088: test_viking_44
+    21300090: test_viking_45
+    21300092: test_viking_46
+    21300094: test_viking_47
+    21300096: test_viking_48
+    21300098: test_viking_49
+    21300100: test_viking_50
+    21300102: test_viking_51
+    21300104: test_viking_52
+    21300106: test_viking_53
+    21300108: test_viking_54
+    21300110: test_viking_55
+    21300112: test_viking_56
+    21300114: test_viking_57
+    21300116: test_viking_58
+    21300118: test_viking_59
+    21300120: test_viking_60
+    21300122: test_viking_61
+    21300124: test_viking_62
+    21300126: test_viking_63
+    21300128: test_viking_64
+    21300130: test_viking_65
+    21300132: test_viking_66
+    21300134: test_viking_67
+    21300136: test_viking_68
+    21300138: test_viking_69
+    21300140: test_viking_70
+    21300142: test_viking_71
+    21300144: test_viking_72
+    21300146: test_viking_73
+    21300148: test_viking_74
+    21300150: test_viking_75
+    21300152: test_viking_76
+    21300154: test_viking_77
+    21300156: test_viking_78
+    21300158: test_viking_79
+    21300160: test_viking_80
+    21300162: test_viking_81
+    21300164: test_viking_82
+    21300166: test_viking_83
+    21300168: test_viking_84
+    21300170: test_viking_85
+    21300172: test_viking_86
+    21300174: test_viking_87
+    21300176: test_viking_88
+    21300178: test_viking_89
+    21300180: test_viking_90
+    21300182: test_viking_91
+    21300184: test_viking_92
+    21300186: test_viking_93
+    21300188: test_viking_94
+    21300190: test_viking_95
+    21300192: test_viking_96
+    21300194: test_viking_97
+    21300196: test_viking_98
+    21300198: test_viking_99
+    21300200: test_viking_100
+    21300202: test_viking_101
+    21300204: test_viking_102
+    21300206: test_viking_103
+    21300208: test_viking_104
+    21300210: test_viking_105
+    21300212: test_viking_106
+    21300214: test_viking_107
+    21300216: test_viking_108
+    21300218: test_viking_109
+    21300220: test_viking_110
+    21300222: test_viking_111
+    21300224: test_viking_112
+    21300226: test_viking_113
+    21300228: test_viking_114
+    21300230: test_viking_115
+    21300232: test_viking_116
+    21300234: test_viking_117
+    21300236: test_viking_118
+    21300238: test_viking_119
+    21300240: test_viking_120
+    21300242: test_viking_121
+    21300244: test_viking_122
+    21300246: test_viking_123
+    21300248: test_viking_124
+    21300250: test_viking_125
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: test_viking_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 950
+        width: 59
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26.5, y: 33}
+        - {x: -29.5, y: 30}
+        - {x: -29.5, y: -16}
+        - {x: -11.5, y: -33}
+        - {x: 14.5, y: -33}
+        - {x: 29.5, y: -10}
+        - {x: 29.5, y: 27}
+        - {x: 25.5, y: 33}
+    - name: test_viking_1
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 949
+        width: 61
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25.5, y: 35}
+        - {x: -30.5, y: 32}
+        - {x: -30.5, y: -1}
+        - {x: -28.5, y: -14}
+        - {x: -12.5, y: -35}
+        - {x: 20.5, y: -35}
+        - {x: 30.5, y: -19}
+        - {x: 30.5, y: 31}
+        - {x: 24.5, y: 35}
+    - name: test_viking_2
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 948
+        width: 61
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 35}
+        - {x: -30.5, y: -27}
+        - {x: -15.5, y: -35}
+        - {x: 30.5, y: -35}
+        - {x: 30.5, y: 35}
+    - name: test_viking_3
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 949
+        width: 61
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 35}
+        - {x: -30.5, y: -10}
+        - {x: -25.5, y: -35}
+        - {x: 27.5, y: -35}
+        - {x: 30.5, y: -26}
+        - {x: 30.5, y: 35}
+    - name: test_viking_4
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 949
+        width: 61
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.5, y: 34}
+        - {x: -30.5, y: 32}
+        - {x: -30.5, y: -29}
+        - {x: -15.5, y: -34}
+        - {x: 19.5, y: -34}
+        - {x: 30.5, y: -13}
+        - {x: 30.5, y: 31}
+        - {x: 24.5, y: 34}
+    - name: test_viking_5
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 949
+        width: 61
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29.5, y: 35.5}
+        - {x: -30.5, y: 33.5}
+        - {x: -30.5, y: -14.5}
+        - {x: -20.5, y: -35.5}
+        - {x: 18.5, y: -35.5}
+        - {x: 25.5, y: -33.5}
+        - {x: 30.5, y: -17.5}
+        - {x: 30.5, y: 35.5}
+    - name: test_viking_6
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 949
+        width: 61
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 35}
+        - {x: -30.5, y: -26}
+        - {x: -12.5, y: -35}
+        - {x: 23.5, y: -35}
+        - {x: 30.5, y: -15}
+        - {x: 30.5, y: 35}
+    - name: test_viking_7
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 949
+        width: 61
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 35}
+        - {x: -30.5, y: -32}
+        - {x: -14.5, y: -35}
+        - {x: 20.5, y: -35}
+        - {x: 30.5, y: -18}
+        - {x: 30.5, y: 34}
+        - {x: 28.5, y: 35}
+    - name: test_viking_8
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 948
+        width: 61
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 35}
+        - {x: -30.5, y: -13}
+        - {x: -13.5, y: -35}
+        - {x: 16.5, y: -35}
+        - {x: 30.5, y: -17}
+        - {x: 30.5, y: 33}
+        - {x: 29.5, y: 35}
+    - name: test_viking_9
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 948
+        width: 66
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: 23.5}
+        - {x: -33, y: 14.5}
+        - {x: -33, y: -23.5}
+        - {x: 32, y: -23.5}
+        - {x: 33, y: -22.5}
+        - {x: 33, y: 23.5}
+    - name: test_viking_10
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 868
+        width: 64
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11, y: 34}
+        - {x: -27, y: 34}
+        - {x: -32, y: 30}
+        - {x: -32, y: -29}
+        - {x: -28, y: -31}
+        - {x: -21, y: -34}
+        - {x: 10, y: -34}
+        - {x: 32, y: -18}
+        - {x: 32, y: 23}
+        - {x: 26, y: 32}
+    - name: test_viking_11
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 868
+        width: 67
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23.5, y: 24.5}
+        - {x: -32.5, y: 15.5}
+        - {x: -33.5, y: 10.5}
+        - {x: -33.5, y: -24.5}
+        - {x: 26.5, y: -24.5}
+        - {x: 33.5, y: -18.5}
+        - {x: 33.5, y: 21.5}
+        - {x: 32.5, y: 24.5}
+    - name: test_viking_12
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 868
+        width: 66
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: 23.5}
+        - {x: -33, y: 14.5}
+        - {x: -33, y: -23.5}
+        - {x: 32, y: -23.5}
+        - {x: 33, y: -22.5}
+        - {x: 33, y: 23.5}
+    - name: test_viking_13
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 869
+        width: 67
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.5, y: 24}
+        - {x: -33.5, y: 18}
+        - {x: -33.5, y: -24}
+        - {x: 33.5, y: -24}
+        - {x: 33.5, y: 22}
+        - {x: 31.5, y: 24}
+    - name: test_viking_14
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 868
+        width: 64
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18, y: 34}
+        - {x: -30, y: 34}
+        - {x: -32, y: 33}
+        - {x: -32, y: -34}
+        - {x: 17, y: -34}
+        - {x: 32, y: -17}
+        - {x: 32, y: 26}
+    - name: test_viking_15
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 868
+        width: 66
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23, y: 23.5}
+        - {x: -33, y: 15.5}
+        - {x: -33, y: -22.5}
+        - {x: -31, y: -23.5}
+        - {x: 33, y: -23.5}
+        - {x: 33, y: 21.5}
+        - {x: 32, y: 23.5}
+    - name: test_viking_16
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 868
+        width: 64
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: 23.5}
+        - {x: -32, y: -23.5}
+        - {x: 32, y: -23.5}
+        - {x: 32, y: 23.5}
+    - name: test_viking_17
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 868
+        width: 65
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23.5, y: 23.5}
+        - {x: -32.5, y: 16.5}
+        - {x: -32.5, y: -23.5}
+        - {x: 32.5, y: -23.5}
+        - {x: 32.5, y: 21.5}
+        - {x: 31.5, y: 23.5}
+    - name: test_viking_18
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 868
+        width: 65
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25.5, y: 23.5}
+        - {x: -32.5, y: 18.5}
+        - {x: -32.5, y: -23.5}
+        - {x: 30.5, y: -23.5}
+        - {x: 32.5, y: -20.5}
+        - {x: 32.5, y: 20.5}
+        - {x: 31.5, y: 23.5}
+    - name: test_viking_19
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 868
+        width: 67
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25.5, y: 23.5}
+        - {x: -33.5, y: 19.5}
+        - {x: -33.5, y: -23.5}
+        - {x: 33.5, y: -23.5}
+        - {x: 33.5, y: 14.5}
+        - {x: 32.5, y: 16.5}
+        - {x: 22.5, y: 23.5}
+    - name: test_viking_20
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 868
+        width: 69
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34.5, y: 23.5}
+        - {x: -34.5, y: -23.5}
+        - {x: 34.5, y: -23.5}
+        - {x: 34.5, y: 17.5}
+        - {x: 24.5, y: 23.5}
+    - name: test_viking_21
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 868
+        width: 71
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31.5, y: 23.5}
+        - {x: -35.5, y: 16.5}
+        - {x: -35.5, y: -23.5}
+        - {x: 35.5, y: -23.5}
+        - {x: 35.5, y: 23.5}
+    - name: test_viking_22
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 788
+        width: 64
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30, y: 34.5}
+        - {x: -32, y: 31.5}
+        - {x: -32, y: -19.5}
+        - {x: -30, y: -30.5}
+        - {x: -23, y: -34.5}
+        - {x: 26, y: -34.5}
+        - {x: 32, y: -18.5}
+        - {x: 32, y: 34.5}
+    - name: test_viking_23
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 788
+        width: 62
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30, y: 35.5}
+        - {x: -31, y: 33.5}
+        - {x: -31, y: -8.5}
+        - {x: -18, y: -25.5}
+        - {x: -8, y: -33.5}
+        - {x: -5, y: -35.5}
+        - {x: 22, y: -35.5}
+        - {x: 31, y: -13.5}
+        - {x: 31, y: 32.5}
+        - {x: 23, y: 35.5}
+    - name: test_viking_24
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 796
+        width: 72
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: 31.5}
+        - {x: -29, y: 28.5}
+        - {x: -36, y: 4.5}
+        - {x: -36, y: -29.5}
+        - {x: -32, y: -31.5}
+        - {x: 25, y: -31.5}
+        - {x: 36, y: -24.5}
+        - {x: 36, y: 12.5}
+        - {x: 25, y: 31.5}
+    - name: test_viking_25
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 791
+        width: 76
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 33.5}
+        - {x: -38, y: 8.5}
+        - {x: -38, y: -30.5}
+        - {x: -25, y: -33.5}
+        - {x: 29, y: -33.5}
+        - {x: 38, y: -26.5}
+        - {x: 38, y: 2.5}
+        - {x: 25, y: 33.5}
+    - name: test_viking_26
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 787
+        width: 71
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.5, y: 35.5}
+        - {x: -35.5, y: 8.5}
+        - {x: -35.5, y: -27.5}
+        - {x: -30.5, y: -35.5}
+        - {x: 2.5, y: -35.5}
+        - {x: 16.5, y: -33.5}
+        - {x: 35.5, y: -10.5}
+        - {x: 35.5, y: 12.5}
+        - {x: 9.5, y: 35.5}
+    - name: test_viking_27
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 788
+        width: 70
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: 34}
+        - {x: -32, y: 29}
+        - {x: -35, y: 11}
+        - {x: -35, y: -18}
+        - {x: -15, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -11}
+        - {x: 35, y: 28}
+        - {x: 26, y: 34}
+    - name: test_viking_28
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 790
+        width: 63
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31.5, y: 30.5}
+        - {x: -31.5, y: -30.5}
+        - {x: 19.5, y: -30.5}
+        - {x: 31.5, y: -26.5}
+        - {x: 31.5, y: 30.5}
+    - name: test_viking_29
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 788
+        width: 65
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 32.5}
+        - {x: -32.5, y: 27.5}
+        - {x: -32.5, y: -26.5}
+        - {x: -24.5, y: -32.5}
+        - {x: 30.5, y: -32.5}
+        - {x: 32.5, y: -24.5}
+        - {x: 32.5, y: 29.5}
+        - {x: 28.5, y: 32.5}
+    - name: test_viking_30
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 788
+        width: 61
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.5, y: 32}
+        - {x: -30.5, y: 31}
+        - {x: -30.5, y: -29}
+        - {x: -20.5, y: -32}
+        - {x: 27.5, y: -32}
+        - {x: 30.5, y: -26}
+        - {x: 30.5, y: 31}
+        - {x: 29.5, y: 32}
+    - name: test_viking_31
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 786
+        width: 63
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26.5, y: 35}
+        - {x: -31.5, y: 30}
+        - {x: -31.5, y: -20}
+        - {x: -21.5, y: -35}
+        - {x: 20.5, y: -35}
+        - {x: 30.5, y: -31}
+        - {x: 31.5, y: -20}
+        - {x: 31.5, y: 26}
+        - {x: 21.5, y: 35}
+    - name: test_viking_32
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 789
+        width: 65
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32.5, y: 36.5}
+        - {x: -32.5, y: -32.5}
+        - {x: -21.5, y: -36.5}
+        - {x: 12.5, y: -36.5}
+        - {x: 32.5, y: -9.5}
+        - {x: 32.5, y: 33.5}
+        - {x: 31.5, y: 36.5}
+    - name: test_viking_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 707
+        width: 61
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 35.5}
+        - {x: -30.5, y: -34.5}
+        - {x: -23.5, y: -35.5}
+        - {x: 30.5, y: -35.5}
+        - {x: 30.5, y: 35.5}
+    - name: test_viking_34
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 707
+        width: 66
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28, y: 33}
+        - {x: 24, y: 37}
+        - {x: -17, y: 37}
+        - {x: -30, y: 36}
+        - {x: -33, y: 25}
+        - {x: -33, y: -9}
+        - {x: -26, y: -24}
+        - {x: -8, y: -37}
+        - {x: 31, y: -37}
+        - {x: 33, y: -29}
+        - {x: 33, y: 13}
+        - {x: 30, y: 28}
+    - name: test_viking_35
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 707
+        width: 64
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 36}
+        - {x: -32, y: 35}
+        - {x: -32, y: -7}
+        - {x: -21, y: -36}
+        - {x: 25, y: -36}
+        - {x: 32, y: -21}
+        - {x: 32, y: 36}
+    - name: test_viking_36
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 708
+        width: 64
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26, y: 35}
+        - {x: -32, y: 29}
+        - {x: -32, y: -10}
+        - {x: -15, y: -35}
+        - {x: 15, y: -35}
+        - {x: 32, y: -17}
+        - {x: 32, y: 30}
+        - {x: 26, y: 35}
+    - name: test_viking_37
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 708
+        width: 65
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32.5, y: 36.5}
+        - {x: -32.5, y: -25.5}
+        - {x: -29.5, y: -36.5}
+        - {x: 19.5, y: -36.5}
+        - {x: 32.5, y: -5.5}
+        - {x: 32.5, y: 29.5}
+        - {x: 25.5, y: 36.5}
+    - name: test_viking_38
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 708
+        width: 65
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16.5, y: 36}
+        - {x: -17.5, y: 36}
+        - {x: -31.5, y: 23}
+        - {x: -32.5, y: 14}
+        - {x: -32.5, y: -32}
+        - {x: -31.5, y: -36}
+        - {x: 12.5, y: -36}
+        - {x: 18.5, y: -35}
+        - {x: 32.5, y: -7}
+        - {x: 32.5, y: 19}
+    - name: test_viking_39
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 708
+        width: 65
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28.5, y: 37}
+        - {x: -32.5, y: 33}
+        - {x: -32.5, y: -37}
+        - {x: 17.5, y: -37}
+        - {x: 24.5, y: -34}
+        - {x: 32.5, y: -10}
+        - {x: 32.5, y: 19}
+        - {x: 2.5, y: 37}
+    - name: test_viking_40
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 708
+        width: 62
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 35}
+        - {x: -31, y: -35}
+        - {x: 25, y: -35}
+        - {x: 31, y: -13}
+        - {x: 31, y: 34}
+        - {x: 30, y: 35}
+    - name: test_viking_41
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 700
+        width: 67
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 39}
+        - {x: -33.5, y: 28}
+        - {x: -33.5, y: -31}
+        - {x: -10.5, y: -39}
+        - {x: 29.5, y: -39}
+        - {x: 33.5, y: -19}
+        - {x: 33.5, y: 39}
+    - name: test_viking_42
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 703
+        width: 69
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19.5, y: 37.5}
+        - {x: -34.5, y: 24.5}
+        - {x: -34.5, y: 4.5}
+        - {x: -23.5, y: -23.5}
+        - {x: -4.5, y: -37.5}
+        - {x: 26.5, y: -37.5}
+        - {x: 34.5, y: -31.5}
+        - {x: 34.5, y: 33.5}
+        - {x: 33.5, y: 37.5}
+    - name: test_viking_43
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 704
+        width: 68
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 38}
+        - {x: -34, y: 31}
+        - {x: -34, y: 6}
+        - {x: -22, y: -26}
+        - {x: -8, y: -38}
+        - {x: 34, y: -38}
+        - {x: 34, y: 38}
+    - name: test_viking_44
+      rect:
+        serializedVersion: 2
+        x: 884
+        y: 710
+        width: 68
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 35}
+        - {x: -34, y: 28}
+        - {x: -34, y: -18}
+        - {x: -20, y: -35}
+        - {x: 34, y: -35}
+        - {x: 34, y: 30}
+        - {x: 26, y: 35}
+    - name: test_viking_45
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 628
+        width: 64
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 35}
+        - {x: -32, y: 29}
+        - {x: -32, y: -29}
+        - {x: -14, y: -35}
+        - {x: 32, y: -35}
+        - {x: 32, y: 35}
+    - name: test_viking_46
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 628
+        width: 68
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: -15.5}
+        - {x: -7, y: -36.5}
+        - {x: 29, y: -36.5}
+        - {x: 34, y: -35.5}
+        - {x: 34, y: 28.5}
+        - {x: 32, y: 36.5}
+        - {x: -6, y: 36.5}
+        - {x: -34, y: 23.5}
+        - {x: -34, y: -1.5}
+    - name: test_viking_47
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 628
+        width: 68
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 35.5}
+        - {x: -34, y: 22.5}
+        - {x: -34, y: -5.5}
+        - {x: -29, y: -23.5}
+        - {x: -3, y: -35.5}
+        - {x: 27, y: -35.5}
+        - {x: 34, y: -27.5}
+        - {x: 34, y: 15.5}
+        - {x: 25, y: 35.5}
+    - name: test_viking_48
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 628
+        width: 61
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.5, y: 33.5}
+        - {x: -30.5, y: 32.5}
+        - {x: -30.5, y: -16.5}
+        - {x: -26.5, y: -31.5}
+        - {x: -17.5, y: -33.5}
+        - {x: 20.5, y: -33.5}
+        - {x: 30.5, y: -14.5}
+        - {x: 30.5, y: 33.5}
+    - name: test_viking_49
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 628
+        width: 62
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 34}
+        - {x: -31, y: -23}
+        - {x: -29, y: -34}
+        - {x: 31, y: -34}
+        - {x: 31, y: 34}
+    - name: test_viking_50
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 628
+        width: 62
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 34}
+        - {x: -31, y: -16}
+        - {x: -25, y: -34}
+        - {x: 31, y: -34}
+        - {x: 31, y: 34}
+    - name: test_viking_51
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 628
+        width: 63
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31.5, y: 35}
+        - {x: -31.5, y: -5}
+        - {x: -17.5, y: -35}
+        - {x: 18.5, y: -35}
+        - {x: 31.5, y: -14}
+        - {x: 31.5, y: 31}
+        - {x: 28.5, y: 35}
+    - name: test_viking_52
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 628
+        width: 64
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25, y: 35.5}
+        - {x: -32, y: 31.5}
+        - {x: -32, y: -24.5}
+        - {x: -17, y: -35.5}
+        - {x: 30, y: -35.5}
+        - {x: 32, y: -27.5}
+        - {x: 32, y: 35.5}
+    - name: test_viking_53
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 629
+        width: 63
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 31.5, y: 31.5}
+        - {x: 28.5, y: 35.5}
+        - {x: -31.5, y: 35.5}
+        - {x: -31.5, y: -31.5}
+        - {x: -27.5, y: -35.5}
+        - {x: 5.5, y: -35.5}
+        - {x: 7.5, y: -34.5}
+        - {x: 28.5, y: -21.5}
+        - {x: 31.5, y: -18.5}
+    - name: test_viking_54
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 628
+        width: 130
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -57, y: 36}
+        - {x: -65, y: 8}
+        - {x: -65, y: -32}
+        - {x: -60, y: -36}
+        - {x: 61, y: -36}
+        - {x: 65, y: -24}
+        - {x: 65, y: 36}
+    - name: test_viking_55
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 548
+        width: 61
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 34}
+        - {x: -30.5, y: -28}
+        - {x: -15.5, y: -34}
+        - {x: 22.5, y: -34}
+        - {x: 30.5, y: -17}
+        - {x: 30.5, y: 34}
+    - name: test_viking_56
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 548
+        width: 61
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 33.5}
+        - {x: -30.5, y: -29.5}
+        - {x: -16.5, y: -33.5}
+        - {x: 23.5, y: -33.5}
+        - {x: 30.5, y: -18.5}
+        - {x: 30.5, y: 33.5}
+    - name: test_viking_57
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 548
+        width: 62
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 34.5}
+        - {x: -31, y: -15.5}
+        - {x: -17, y: -34.5}
+        - {x: 17, y: -34.5}
+        - {x: 31, y: -17.5}
+        - {x: 31, y: 34.5}
+    - name: test_viking_58
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 548
+        width: 62
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 34}
+        - {x: -31, y: -20}
+        - {x: -19, y: -34}
+        - {x: 19, y: -34}
+        - {x: 31, y: -23}
+        - {x: 31, y: 34}
+    - name: test_viking_59
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 548
+        width: 62
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25, y: 34}
+        - {x: -31, y: 29}
+        - {x: -31, y: -12}
+        - {x: -18, y: -34}
+        - {x: 26, y: -34}
+        - {x: 31, y: -24}
+        - {x: 31, y: 28}
+        - {x: 25, y: 34}
+    - name: test_viking_60
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 548
+        width: 61
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 34}
+        - {x: -30.5, y: -18}
+        - {x: -16.5, y: -34}
+        - {x: 20.5, y: -34}
+        - {x: 30.5, y: -23}
+        - {x: 30.5, y: 34}
+    - name: test_viking_61
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 548
+        width: 61
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 34.5}
+        - {x: -30.5, y: -15.5}
+        - {x: -29.5, y: -26.5}
+        - {x: -17.5, y: -34.5}
+        - {x: 18.5, y: -34.5}
+        - {x: 30.5, y: -17.5}
+        - {x: 30.5, y: 34.5}
+    - name: test_viking_62
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 548
+        width: 61
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 34}
+        - {x: -30.5, y: -21}
+        - {x: -26.5, y: -34}
+        - {x: 28.5, y: -34}
+        - {x: 30.5, y: -32}
+        - {x: 30.5, y: 34}
+    - name: test_viking_63
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 549
+        width: 61
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25.5, y: 34}
+        - {x: -30.5, y: 30}
+        - {x: -30.5, y: 0}
+        - {x: -29.5, y: -8}
+        - {x: -25.5, y: -27}
+        - {x: -19.5, y: -34}
+        - {x: 25.5, y: -34}
+        - {x: 30.5, y: -26}
+        - {x: 30.5, y: 34}
+    - name: test_viking_64
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 548
+        width: 61
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 34.5}
+        - {x: -30.5, y: -27.5}
+        - {x: -23.5, y: -34.5}
+        - {x: 24.5, y: -34.5}
+        - {x: 30.5, y: -33.5}
+        - {x: 30.5, y: 34.5}
+    - name: test_viking_65
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 548
+        width: 61
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 34}
+        - {x: -30.5, y: -24}
+        - {x: -21.5, y: -34}
+        - {x: 17.5, y: -34}
+        - {x: 30.5, y: -23}
+        - {x: 30.5, y: 34}
+    - name: test_viking_66
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 548
+        width: 61
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 34.5}
+        - {x: -30.5, y: -25.5}
+        - {x: -25.5, y: -34.5}
+        - {x: 21.5, y: -34.5}
+        - {x: 30.5, y: -31.5}
+        - {x: 30.5, y: 34.5}
+    - name: test_viking_67
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 469
+        width: 62
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: 32}
+        - {x: -31, y: 29}
+        - {x: -31, y: -12}
+        - {x: -16, y: -32}
+        - {x: 18, y: -32}
+        - {x: 31, y: -21}
+        - {x: 31, y: 32}
+    - name: test_viking_68
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 468
+        width: 61
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: 32.5}
+        - {x: -30.5, y: -13.5}
+        - {x: -21.5, y: -32.5}
+        - {x: 16.5, y: -32.5}
+        - {x: 30.5, y: -28.5}
+        - {x: 30.5, y: 32.5}
+    - name: test_viking_69
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 468
+        width: 62
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30, y: 33}
+        - {x: -31, y: 30}
+        - {x: -31, y: -28}
+        - {x: -21, y: -33}
+        - {x: 24, y: -33}
+        - {x: 31, y: -28}
+        - {x: 31, y: 33}
+    - name: test_viking_70
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 470
+        width: 62
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 31.5}
+        - {x: -31, y: -20.5}
+        - {x: -27, y: -31.5}
+        - {x: 26, y: -31.5}
+        - {x: 31, y: -13.5}
+        - {x: 31, y: 31.5}
+    - name: test_viking_71
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 468
+        width: 62
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25, y: 32.5}
+        - {x: -31, y: 25.5}
+        - {x: -31, y: -15.5}
+        - {x: -28, y: -25.5}
+        - {x: -5, y: -32.5}
+        - {x: 16, y: -32.5}
+        - {x: 31, y: -11.5}
+        - {x: 31, y: 27.5}
+        - {x: 25, y: 32.5}
+    - name: test_viking_72
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 468
+        width: 62
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 32.5}
+        - {x: -31, y: -19.5}
+        - {x: -15, y: -32.5}
+        - {x: 25, y: -32.5}
+        - {x: 31, y: -13.5}
+        - {x: 31, y: 32.5}
+    - name: test_viking_73
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 466
+        width: 67
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18.5, y: 36.5}
+        - {x: -33.5, y: 36.5}
+        - {x: -33.5, y: -36.5}
+        - {x: 22.5, y: -36.5}
+        - {x: 33.5, y: -5.5}
+        - {x: 33.5, y: 30.5}
+        - {x: 27.5, y: 34.5}
+    - name: test_viking_74
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 467
+        width: 67
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33.5, y: 37}
+        - {x: -33.5, y: -37}
+        - {x: 22.5, y: -37}
+        - {x: 33.5, y: -8}
+        - {x: 33.5, y: 37}
+    - name: test_viking_75
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 467
+        width: 68
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 37.5}
+        - {x: -32, y: 28.5}
+        - {x: -34, y: 22.5}
+        - {x: -34, y: -21.5}
+        - {x: -25, y: -37.5}
+        - {x: 10, y: -37.5}
+        - {x: 34, y: -27.5}
+        - {x: 34, y: 37.5}
+    - name: test_viking_76
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 467
+        width: 68
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 37}
+        - {x: -29, y: 37}
+        - {x: -34, y: 35}
+        - {x: -34, y: -26}
+        - {x: -28, y: -37}
+        - {x: 12, y: -37}
+        - {x: 33, y: -14}
+        - {x: 34, y: -9}
+        - {x: 34, y: 26}
+    - name: test_viking_77
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 467
+        width: 67
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 26.5, y: 37}
+        - {x: -33.5, y: 37}
+        - {x: -33.5, y: -27}
+        - {x: -30.5, y: -37}
+        - {x: 12.5, y: -37}
+        - {x: 33.5, y: -8}
+        - {x: 33.5, y: 27}
+        - {x: 31.5, y: 30}
+    - name: test_viking_78
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 467
+        width: 68
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 19, y: 37.5}
+        - {x: -27, y: 37.5}
+        - {x: -32, y: 28.5}
+        - {x: -34, y: 12.5}
+        - {x: -34, y: -22.5}
+        - {x: -21, y: -37.5}
+        - {x: 20, y: -37.5}
+        - {x: 34, y: -11.5}
+        - {x: 34, y: 33.5}
+        - {x: 28, y: 36.5}
+    - name: test_viking_79
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 394
+        width: 62
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23, y: 31.5}
+        - {x: -28, y: 28.5}
+        - {x: -31, y: 27.5}
+        - {x: -31, y: -22.5}
+        - {x: -30, y: -28.5}
+        - {x: -24, y: -31.5}
+        - {x: 23, y: -31.5}
+        - {x: 31, y: -14.5}
+        - {x: 31, y: 28.5}
+        - {x: 30, y: 31.5}
+    - name: test_viking_80
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 393
+        width: 64
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: 31.5}
+        - {x: -32, y: -13.5}
+        - {x: -27, y: -27.5}
+        - {x: -25, y: -31.5}
+        - {x: 32, y: -31.5}
+        - {x: 32, y: 30.5}
+        - {x: 31, y: 31.5}
+    - name: test_viking_81
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 388
+        width: 66
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 35}
+        - {x: -33, y: -18}
+        - {x: -30, y: -35}
+        - {x: 24, y: -35}
+        - {x: 33, y: -22}
+        - {x: 33, y: 35}
+    - name: test_viking_82
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 386
+        width: 62
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: 36}
+        - {x: -31, y: 33}
+        - {x: -31, y: -12}
+        - {x: -11, y: -36}
+        - {x: 18, y: -36}
+        - {x: 31, y: -21}
+        - {x: 31, y: 36}
+    - name: test_viking_83
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 393
+        width: 62
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 32}
+        - {x: -31, y: -22}
+        - {x: -25, y: -32}
+        - {x: 27, y: -32}
+        - {x: 31, y: -31}
+        - {x: 31, y: 32}
+    - name: test_viking_84
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 394
+        width: 62
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 31.5}
+        - {x: -31, y: -19.5}
+        - {x: -30, y: -23.5}
+        - {x: -26, y: -31.5}
+        - {x: 27, y: -31.5}
+        - {x: 31, y: -21.5}
+        - {x: 31, y: 31.5}
+    - name: test_viking_85
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 393
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28.5, y: 31.5}
+        - {x: -31.5, y: 27.5}
+        - {x: -31.5, y: -24.5}
+        - {x: -26.5, y: -31.5}
+        - {x: 26.5, y: -31.5}
+        - {x: 31.5, y: -30.5}
+        - {x: 31.5, y: 31.5}
+    - name: test_viking_86
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 387
+        width: 66
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 35.5}
+        - {x: -33, y: 34.5}
+        - {x: -33, y: -20.5}
+        - {x: -29, y: -35.5}
+        - {x: 32, y: -35.5}
+        - {x: 33, y: -29.5}
+        - {x: 33, y: 35.5}
+    - name: test_viking_87
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 387
+        width: 63
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31.5, y: 35.5}
+        - {x: -31.5, y: -26.5}
+        - {x: -18.5, y: -35.5}
+        - {x: 22.5, y: -35.5}
+        - {x: 31.5, y: -22.5}
+        - {x: 31.5, y: 35.5}
+    - name: test_viking_88
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 392
+        width: 62
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 26, y: 32.5}
+        - {x: -25, y: 32.5}
+        - {x: -31, y: 26.5}
+        - {x: -31, y: -15.5}
+        - {x: -24, y: -32.5}
+        - {x: 22, y: -32.5}
+        - {x: 27, y: -27.5}
+        - {x: 31, y: -18.5}
+        - {x: 31, y: 28.5}
+    - name: test_viking_89
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 308
+        width: 63
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31.5, y: 34.5}
+        - {x: -31.5, y: -8.5}
+        - {x: -13.5, y: -34.5}
+        - {x: 26.5, y: -34.5}
+        - {x: 31.5, y: -27.5}
+        - {x: 31.5, y: 34.5}
+    - name: test_viking_90
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 308
+        width: 66
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 36.5}
+        - {x: -24, y: 29.5}
+        - {x: -33, y: 21.5}
+        - {x: -33, y: -4.5}
+        - {x: -11, y: -36.5}
+        - {x: 19, y: -36.5}
+        - {x: 33, y: -17.5}
+        - {x: 33, y: 36.5}
+    - name: test_viking_91
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 308
+        width: 64
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 35}
+        - {x: -32, y: 30}
+        - {x: -32, y: -12}
+        - {x: -21, y: -33}
+        - {x: -13, y: -35}
+        - {x: 29, y: -35}
+        - {x: 32, y: -18}
+        - {x: 32, y: 30}
+        - {x: 30, y: 35}
+    - name: test_viking_92
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 308
+        width: 62
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 35}
+        - {x: -31, y: -4}
+        - {x: -12, y: -26}
+        - {x: -2, y: -35}
+        - {x: 28, y: -35}
+        - {x: 31, y: -32}
+        - {x: 31, y: 35}
+    - name: test_viking_93
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 308
+        width: 64
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 35}
+        - {x: -32, y: 30}
+        - {x: -32, y: -12}
+        - {x: -21, y: -33}
+        - {x: -13, y: -35}
+        - {x: 29, y: -35}
+        - {x: 32, y: -18}
+        - {x: 32, y: 30}
+        - {x: 30, y: 35}
+    - name: test_viking_94
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 308
+        width: 66
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 24, y: 36.5}
+        - {x: -15, y: 36.5}
+        - {x: -33, y: 26.5}
+        - {x: -33, y: -1.5}
+        - {x: -18, y: -28.5}
+        - {x: -9, y: -36.5}
+        - {x: 25, y: -36.5}
+        - {x: 33, y: -20.5}
+        - {x: 33, y: 23.5}
+        - {x: 29, y: 33.5}
+    - name: test_viking_95
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 308
+        width: 63
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31.5, y: 34.5}
+        - {x: -31.5, y: -8.5}
+        - {x: -13.5, y: -34.5}
+        - {x: 25.5, y: -34.5}
+        - {x: 31.5, y: -20.5}
+        - {x: 31.5, y: 30.5}
+        - {x: 28.5, y: 34.5}
+    - name: test_viking_96
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 223
+        width: 69
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28.5, y: 70.5}
+        - {x: -34.5, y: 63.5}
+        - {x: -34.5, y: -44.5}
+        - {x: -8.5, y: -70.5}
+        - {x: 19.5, y: -70.5}
+        - {x: 29.5, y: -65.5}
+        - {x: 34.5, y: -60.5}
+        - {x: 34.5, y: 70.5}
+    - name: test_viking_97
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 227
+        width: 62
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 34.5}
+        - {x: -31, y: -25.5}
+        - {x: -14, y: -34.5}
+        - {x: 22, y: -34.5}
+        - {x: 31, y: -16.5}
+        - {x: 31, y: 31.5}
+        - {x: 30, y: 34.5}
+    - name: test_viking_98
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 225
+        width: 62
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30, y: 36}
+        - {x: -31, y: 35}
+        - {x: -31, y: -17}
+        - {x: -21, y: -36}
+        - {x: 19, y: -36}
+        - {x: 31, y: -32}
+        - {x: 31, y: 35}
+        - {x: 28, y: 36}
+    - name: test_viking_99
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 225
+        width: 62
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 35.5}
+        - {x: -31, y: -17.5}
+        - {x: -30, y: -24.5}
+        - {x: -14, y: -35.5}
+        - {x: 29, y: -35.5}
+        - {x: 31, y: -25.5}
+        - {x: 31, y: 35.5}
+    - name: test_viking_100
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 225
+        width: 62
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 31, y: 34.5}
+        - {x: 27, y: 35.5}
+        - {x: -30, y: 35.5}
+        - {x: -31, y: 34.5}
+        - {x: -31, y: -2.5}
+        - {x: -28, y: -21.5}
+        - {x: -16, y: -35.5}
+        - {x: 7, y: -35.5}
+        - {x: 18, y: -32.5}
+        - {x: 24, y: -26.5}
+        - {x: 31, y: -7.5}
+    - name: test_viking_101
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 225
+        width: 65
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.5, y: 38}
+        - {x: -32.5, y: 29}
+        - {x: -32.5, y: -22}
+        - {x: -31.5, y: -28}
+        - {x: -11.5, y: -38}
+        - {x: 20.5, y: -38}
+        - {x: 32.5, y: -30}
+        - {x: 32.5, y: 38}
+    - name: test_viking_102
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 226
+        width: 64
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: 38}
+        - {x: -32, y: -33}
+        - {x: -22, y: -38}
+        - {x: 32, y: -38}
+        - {x: 32, y: 35}
+        - {x: 28, y: 38}
+    - name: test_viking_103
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 223
+        width: 65
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23.5, y: 39.5}
+        - {x: -32.5, y: 35.5}
+        - {x: -32.5, y: -2.5}
+        - {x: -13.5, y: -39.5}
+        - {x: 28.5, y: -39.5}
+        - {x: 32.5, y: -32.5}
+        - {x: 32.5, y: 32.5}
+        - {x: 29.5, y: 39.5}
+    - name: test_viking_104
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 225
+        width: 64
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 38.5}
+        - {x: -32, y: 31.5}
+        - {x: -32, y: -0.5}
+        - {x: -24, y: -24.5}
+        - {x: -14, y: -38.5}
+        - {x: 27, y: -38.5}
+        - {x: 32, y: -37.5}
+        - {x: 32, y: 38.5}
+    - name: test_viking_105
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 226
+        width: 64
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 38}
+        - {x: -32, y: 34}
+        - {x: -32, y: -4}
+        - {x: -11, y: -38}
+        - {x: 30, y: -38}
+        - {x: 32, y: -37}
+        - {x: 32, y: 35}
+        - {x: 28, y: 38}
+    - name: test_viking_106
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 223
+        width: 65
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 26.5, y: 39.5}
+        - {x: -23.5, y: 39.5}
+        - {x: -32.5, y: 35.5}
+        - {x: -32.5, y: -1.5}
+        - {x: -12.5, y: -39.5}
+        - {x: 26.5, y: -39.5}
+        - {x: 32.5, y: -26.5}
+        - {x: 32.5, y: 31.5}
+        - {x: 31.5, y: 33.5}
+    - name: test_viking_107
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 223
+        width: 64
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: -3.5}
+        - {x: -7, y: -39.5}
+        - {x: 32, y: -39.5}
+        - {x: 32, y: 39.5}
+        - {x: -21, y: 39.5}
+        - {x: -32, y: 33.5}
+    - name: test_viking_108
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 147
+        width: 62
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: 34.5}
+        - {x: -31, y: 31.5}
+        - {x: -31, y: -33.5}
+        - {x: -28, y: -34.5}
+        - {x: 25, y: -34.5}
+        - {x: 31, y: -17.5}
+        - {x: 31, y: 34.5}
+    - name: test_viking_109
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 145
+        width: 62
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 36}
+        - {x: -31, y: -32}
+        - {x: -15, y: -36}
+        - {x: 25, y: -36}
+        - {x: 31, y: -21}
+        - {x: 31, y: 36}
+    - name: test_viking_110
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 144
+        width: 63
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28.5, y: 38}
+        - {x: -25.5, y: 38}
+        - {x: -31.5, y: 37}
+        - {x: -31.5, y: -27}
+        - {x: -28.5, y: -38}
+        - {x: 30.5, y: -38}
+        - {x: 31.5, y: -33}
+        - {x: 31.5, y: 37}
+    - name: test_viking_111
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 146
+        width: 62
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 35.5}
+        - {x: -31, y: -19.5}
+        - {x: -21, y: -35.5}
+        - {x: 31, y: -35.5}
+        - {x: 31, y: 35.5}
+    - name: test_viking_112
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 145
+        width: 61
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29.5, y: 33}
+        - {x: -30.5, y: 31}
+        - {x: -30.5, y: -25}
+        - {x: -15.5, y: -33}
+        - {x: 16.5, y: -33}
+        - {x: 30.5, y: -12}
+        - {x: 30.5, y: 33}
+    - name: test_viking_113
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 145
+        width: 62
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 34.5}
+        - {x: -31, y: -31.5}
+        - {x: -23, y: -34.5}
+        - {x: 31, y: -34.5}
+        - {x: 31, y: 34.5}
+    - name: test_viking_114
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 144
+        width: 61
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.5, y: 34.5}
+        - {x: -30.5, y: 29.5}
+        - {x: -30.5, y: -34.5}
+        - {x: 27.5, y: -34.5}
+        - {x: 30.5, y: -21.5}
+        - {x: 30.5, y: 34.5}
+    - name: test_viking_115
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 142
+        width: 71
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26.5, y: 34}
+        - {x: -30.5, y: 27}
+        - {x: -35.5, y: 10}
+        - {x: -35.5, y: -23}
+        - {x: -34.5, y: -27}
+        - {x: -27.5, y: -34}
+        - {x: 14.5, y: -34}
+        - {x: 35.5, y: -25}
+        - {x: 35.5, y: 34}
+    - name: test_viking_116
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 144
+        width: 74
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 33.5}
+        - {x: -34, y: 31.5}
+        - {x: -37, y: 19.5}
+        - {x: -37, y: -23.5}
+        - {x: -21, y: -33.5}
+        - {x: 15, y: -33.5}
+        - {x: 31, y: -20.5}
+        - {x: 37, y: -15.5}
+        - {x: 37, y: 33.5}
+    - name: test_viking_117
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 144
+        width: 61
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.5, y: 34.5}
+        - {x: -30.5, y: 29.5}
+        - {x: -30.5, y: -34.5}
+        - {x: 27.5, y: -34.5}
+        - {x: 30.5, y: -21.5}
+        - {x: 30.5, y: 34.5}
+    - name: test_viking_118
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 86
+        width: 125
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -43.5, y: 59}
+        - {x: -53.5, y: 57}
+        - {x: -62.5, y: 53}
+        - {x: -62.5, y: -1}
+        - {x: -26.5, y: -59}
+        - {x: 8.5, y: -59}
+        - {x: 62.5, y: 3}
+        - {x: 62.5, y: 47}
+        - {x: 44.5, y: 59}
+    - name: test_viking_119
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 75
+        width: 74
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -37, y: 29}
+        - {x: -37, y: -29}
+        - {x: 37, y: -29}
+        - {x: 37, y: 26}
+        - {x: 35, y: 29}
+    - name: test_viking_120
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 78
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 26}
+        - {x: -26, y: 20}
+        - {x: -26, y: -20}
+        - {x: -20, y: -26}
+        - {x: 16, y: -26}
+        - {x: 26, y: -23}
+        - {x: 26, y: 17}
+        - {x: 19, y: 26}
+    - name: test_viking_121
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 71
+        width: 47
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23.5, y: 33}
+        - {x: -23.5, y: -21}
+        - {x: -9.5, y: -33}
+        - {x: 10.5, y: -33}
+        - {x: 23.5, y: -19}
+        - {x: 23.5, y: 27}
+        - {x: 20.5, y: 33}
+    - name: test_viking_122
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 70
+        width: 55
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 23.5, y: 30.5}
+        - {x: -24.5, y: 30.5}
+        - {x: -27.5, y: 27.5}
+        - {x: -27.5, y: -23.5}
+        - {x: -22.5, y: -30.5}
+        - {x: 22.5, y: -30.5}
+        - {x: 27.5, y: -23.5}
+        - {x: 27.5, y: 15.5}
+        - {x: 25.5, y: 27.5}
+    - name: test_viking_123
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 69
+        width: 55
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.5, y: 32.5}
+        - {x: -27.5, y: -32.5}
+        - {x: 27.5, y: -32.5}
+        - {x: 27.5, y: 14.5}
+        - {x: 17.5, y: 32.5}
+    - name: test_viking_124
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 78
+        width: 61
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.5, y: 26}
+        - {x: -30.5, y: 25}
+        - {x: -30.5, y: -26}
+        - {x: 29.5, y: -26}
+        - {x: 30.5, y: -23}
+        - {x: 30.5, y: 25}
+        - {x: 29.5, y: 26}
+    - name: test_viking_125
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 62
+        width: 80
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40, y: 37.5}
+        - {x: -40, y: 11.5}
+        - {x: -27, y: -34.5}
+        - {x: -18, y: -37.5}
+        - {x: 39, y: -37.5}
+        - {x: 40, y: -35.5}
+        - {x: 40, y: 37.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

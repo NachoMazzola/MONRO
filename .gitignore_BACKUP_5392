@@ -24,11 +24,13 @@ ExportedObj/
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
-
+<<<<<<< HEAD
 Monro/Temp
 Monro/Library
+*.meta
 Monro/obj
 NewMonro/Monro/Library
 NewMonro/Monro/Temp
 NewMonro/Monro/obj
-
+=======
+>>>>>>> parent of 4c0ef27... Updated gitIgnore file

@@ -24,11 +24,6 @@ ExportedObj/
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
-
 Monro/Temp
 Monro/Library
-Monro/obj
-NewMonro/Monro/Library
-NewMonro/Monro/Temp
-NewMonro/Monro/obj
-
+*.meta
