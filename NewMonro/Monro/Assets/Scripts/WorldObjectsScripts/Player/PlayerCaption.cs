@@ -19,13 +19,12 @@ public class PlayerCaption : MonoBehaviour {
 
 	void Awake() {
 		playerSprite = GetComponent<SpriteRenderer>();
-
 		originalScale = new Vector2(0.02f, 0.01f);
 	}
 
 	// Use this for initialization
 	void Start () {
-		
+			
 
 	}
 	

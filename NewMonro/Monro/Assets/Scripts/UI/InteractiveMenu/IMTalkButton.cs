@@ -33,6 +33,6 @@ public class IMTalkButton : IMActionButton {
 		playerComp.MoveToKeepDistance(theObj.transform);
 
 
-		//FindObjectOfType<DialogueRunner> ().StartDialogue ("Intro");
+		FindObjectOfType<DialogueRunner> ().StartDialogue ("Sally");
 	}
 }

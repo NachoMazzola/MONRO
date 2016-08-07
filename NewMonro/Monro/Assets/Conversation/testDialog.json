@@ -1,7 +1,7 @@
 [
 	{
 		"title": "Valkyria intro",
-		"tags": "",
+		"tags": "Valkyria",
 		"body": "Hello, Monrjiall. I'm a Valkyria\n\n[[Monrjiall 1]]",
 		"position": {
 			"x": 9,
@@ -11,7 +11,7 @@
 	},
 	{
 		"title": "Monrjiall 1",
-		"tags": "",
+		"tags": "Morjiall",
 		"body": "What is a \"Valkyria\"?\n\n[[Valkyria explains]]",
 		"position": {
 			"x": 311,
