@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.EventSystems;
 
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
 	public enum MovingDirection
 	{
@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
 	public float PlayerMovementSpeed = 4.0f;
 	public bool StartFacingRight = true;
 
+	[HideInInspector]
+	public PlayerStateMachine animStateMachine;
+
 	private MovingDirection currentFacingDirection;
 	private MovingDirection lastFacingDirection;
 
@@ -21,11 +24,13 @@ public class Player : MonoBehaviour
 	private Vector2 xAxisOnlyPosition;
 	private bool canMove = false;
 	private float yOriginalPos;
-	private PlayerStateMachine animStateMachine;
+
+
 	private bool shouldPickUpItem;
 	private Transform itemToPickUp;
 	private PlayerCaption playerCaption;
 
+	private bool willTalkToNPC;
 
 	private PlayerInventory inventory;
 
@@ -34,7 +39,7 @@ public class Player : MonoBehaviour
 	{
 		animStateMachine = GetComponent<PlayerStateMachine> ();
 		inventory = GetComponent<PlayerInventory> ();
-		playerCaption = GetComponent<PlayerCaption> ();
+		//playerCaption = GetComponent<PlayerCaption> ();
 
 		currentFacingDirection = StartFacingRight ? MovingDirection.MovingRight : MovingDirection.MovingLeft;
 		lastFacingDirection = currentFacingDirection;
@@ -64,7 +69,7 @@ public class Player : MonoBehaviour
 
 			}
 
-			playerCaption.PreserveOriginalScale (this.transform.localScale.x);
+			//playerCaption.PreserveOriginalScale (this.transform.localScale.x);
 
 			Collider2D[] hitColliders = Physics2D.OverlapPointAll(targetPosition); 
 			Collider2D hitCollider = null;
@@ -107,7 +112,12 @@ public class Player : MonoBehaviour
 				animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayePickUp);
 
 				shouldPickUpItem = false;
-			} else {
+			}
+			else if (willTalkToNPC) {
+				animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayerTalk);
+				willTalkToNPC = false;
+
+			}else {
 				animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayerIdle);
 			}
 
@@ -132,10 +142,15 @@ public class Player : MonoBehaviour
 
 		Vector2 newPos = new Vector2(newX, moveToObj.position.y);
 
-
 		targetPosition = newPos;
 		canMove = true;
 	}
+
+	public void GoTalkToNPC(Transform NPC) {
+		MoveToKeepDistance(NPC);
+		willTalkToNPC = true;
+	}
+
 
 	public void MoveToAndPickUp (Vector2 newPosition, Transform itemToPickUp)
 	{
@@ -144,6 +159,15 @@ public class Player : MonoBehaviour
 
 		MoveTo (newPosition);
 	}
+
+	public void ShowCaption(string caption) {
+		Transform theCaption = GetConversationCaptionCanvas();
+		theCaption.gameObject.SetActive(true);
+
+		PlayerCaption pCaption = theCaption.GetComponent<PlayerCaption>();
+		pCaption.ShowCaption(caption);
+	}
+
 
 	/*
 	 * This method is called when the PickUp animaiton ends. It is wired up from the Animaiton Panel in Inspector, hence the name AnimEndEvent 
@@ -161,4 +185,7 @@ public class Player : MonoBehaviour
 		itemToPickUp = null;
 	}
 		
+	override  public void ResetState() {
+		animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayerIdle);
+	}
 }

@@ -7,7 +7,8 @@ public class PlayerStateMachine : MonoBehaviour {
 	public enum PlayerStates {
 		PlayerIdle,
 		PlayerWalk,
-		PlayePickUp
+		PlayePickUp,
+		PlayerTalk
 	}
 
 	private PlayerStates currentState;

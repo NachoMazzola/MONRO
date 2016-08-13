@@ -26,8 +26,8 @@ public class IMBLookAtAction : IMActionButton {
 	//interface methods
 
 	override public void ExecuteAction() {
-		PlayerCaption thePlayerCap = player.GetComponent<PlayerCaption>();
+		Player thePlayer = player.GetComponent<Player>();
 		InteractiveObject theObj = interactiveObject.GetComponent<InteractiveObject>();
-		thePlayerCap.ShowCaption(theObj.Caption);
+		thePlayer.ShowCaption(theObj.Caption);
 	}
 }

@@ -9,7 +9,6 @@ public class PlayerCaption : MonoBehaviour {
 	public float CaptionFadeDuration = 1.5f;
 
 
-	private SpriteRenderer playerSprite;
 	private Transform instantiatedCaption;
 	private bool showingCaption;
 	private Vector2 originalScale;
@@ -17,8 +16,9 @@ public class PlayerCaption : MonoBehaviour {
 	private IEnumerator hideUICoroutine;
 	private IEnumerator removeCaptionCoroutine;
 
+
+
 	void Awake() {
-		playerSprite = GetComponent<SpriteRenderer>();
 		originalScale = new Vector2(0.02f, 0.01f);
 	}
 
@@ -52,26 +52,13 @@ public class PlayerCaption : MonoBehaviour {
 
 		showingCaption = true;
 
-		InstantiateCaption();
+		//InstantiateCaption();
+		instantiatedCaption = this.gameObject.transform;
 
 		Text theText = SetCaptionText(caption);
 
 		hideUICoroutine = HideTalkUI(instantiatedCaption.gameObject, CaptionDurationUntilFade, theText);
 		StartCoroutine(hideUICoroutine);
-	}
-
-	Vector2 GetCaptionPosition() {
-		Vector2 sprite_size = playerSprite.sprite.rect.size;
-		Vector2 local_sprite_size = sprite_size / GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
-
-		return new Vector2(this.transform.position.x, this.transform.position.y + local_sprite_size.y/2);
-	}
-
-	void InstantiateCaption() {
-		instantiatedCaption = Instantiate(PlayerCaptionPrefab, GetCaptionPosition(), Quaternion.identity) as Transform;
-		instantiatedCaption.SetParent(this.transform);
-
-		PreserveOriginalScale(this.transform.localScale.x);
 	}
 
 	Text SetCaptionText(string caption) {

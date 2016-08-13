@@ -140,9 +140,9 @@ namespace Yarn.Unity
 			// Get lines, options and commands from the Dialogue object,
 			// one at a time.
 			foreach (Yarn.Dialogue.RunnerResult step in dialogue.Run(startNode)) {
-
+				
 				if (step is Yarn.Dialogue.LineResult) {
-
+					
 					// Wait for line to finish displaying
 					var lineResult = step as Yarn.Dialogue.LineResult;
 					yield return StartCoroutine (this.dialogueUI.RunLine (lineResult.line));

@@ -131,7 +131,9 @@ namespace Yarn.Unity.Example {
 				Debug.LogWarning("There are more options to present than there are" +
 				                 "buttons to present them in. This will cause problems.");
 			}
-			
+
+
+
 			// Display each option in a button, and make it visible
 			int i = 0;
 			foreach (var optionString in optionsCollection.options) {

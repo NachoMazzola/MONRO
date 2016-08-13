@@ -2,26 +2,37 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Text;
+using Yarn.Unity;
+using System.Collections.Generic;
 
 public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 
-	public Transform ConversationPrefab;
+	public Transform ConversationOptionsPrefab;
+
+	// The buttons that let the user choose an option
+	public List<Button> optionButtons;
+	// A delegate (ie a function-stored-in-a-variable) that
+	// we call to tell the dialogue system about what option
+	// the user selected
+	private Yarn.OptionChooser SetSelectedOption;
 
 	[Tooltip("How quickly to show the text, in seconds per character")]
 	public float textSpeed = 0.025f;
 
-	private Transform instantiatedConversation;
+	private Transform instantiatedPlayerConversation;
 
-	private Transform thePlayer;
-	private Transform theNPC;
+	private Text theText;
+	private Text theNPCText;
+
+	private ArrayList conversationParticipants;
+
+	DialogueRunner dialogRunner;
 
 
 	void Awake() {
-		instantiatedConversation =  Instantiate(ConversationPrefab, new Vector2(), Quaternion.identity) as Transform;
-		thePlayer = GameObject.FindGameObjectWithTag("Player").transform;
-
-		instantiatedConversation.SetParent(thePlayer);
-
+		conversationParticipants = new ArrayList();
+		dialogRunner = FindObjectOfType<DialogueRunner> ();
+		ConversationOptionsPrefab.gameObject.SetActive(false);
 	}
 
 	// Use this for initialization
@@ -31,47 +42,123 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 	}
+
+	public void AddParticipant(Transform participant) {
+		conversationParticipants.Add(participant);
+	}
+
+	private Character GetParticipant(string participant) {
+		int dotIdx = participant.IndexOf(".");
+		string participantCorrectName = participant.Substring(0, dotIdx);
+
+		foreach (Transform t in conversationParticipants) {
+			Character conversationInterface = t.GetComponent<Character>();
+			if (conversationInterface.ConversationName == participantCorrectName) {
+				return conversationInterface;
+			}
+		}	
+
+		Debug.Log("Careful!!, there is no character named" + participantCorrectName);
+
+		return null;
+	}
+
 
 	//YARN INTERFACE IMPLEMENTATION
 	// Show a line of dialogue, gradually
 	public override IEnumerator RunLine (Yarn.Line line) {
+		Character whoIsTalking = GetParticipant(dialogRunner.dialogue.currentNode);
 
-		// Show the text
-		Text theText = instantiatedConversation.gameObject.GetComponentInChildren<Text>();
-		theText.gameObject.SetActive (true);
-
-		if (textSpeed > 0.0f) {
-			// Display the line one character at a time
-			var stringBuilder = new StringBuilder ();
-
-			foreach (char c in line.text) {
-				stringBuilder.Append (c);
-				theText.text = stringBuilder.ToString ();
-				yield return new WaitForSeconds (textSpeed);
+		if (whoIsTalking != null) {
+			if (instantiatedPlayerConversation != null) {
+				instantiatedPlayerConversation.gameObject.SetActive(true);
+				if (theText != null) {
+					theText.gameObject.SetActive(true);
+				}
 			}
-		} else {
-			// Display the line immediately if textSpeed == 0
-			theText.text = line.text;
+			else {
+				instantiatedPlayerConversation = whoIsTalking.GetConversationCaptionCanvas();
+				instantiatedPlayerConversation.gameObject.SetActive(true);
+				theText = instantiatedPlayerConversation.gameObject.GetComponentInChildren<Text>();
+				theText.gameObject.SetActive(true);
+			}
+
+			theText.color = whoIsTalking.CharacterTalkColor;
+
+			if (textSpeed > 0.0f) {
+				// Display the line one character at a time
+				var stringBuilder = new StringBuilder ();
+
+				foreach (char c in line.text) {
+					stringBuilder.Append (c);
+					theText.text = stringBuilder.ToString ();
+					yield return new WaitForSeconds (textSpeed);
+				}
+			} else {
+				// Display the line immediately if textSpeed == 0
+				theText.text = line.text;
+			}
+
+			// Wait for any user input
+			while (Input.anyKeyDown == false) {
+				yield return null;
+			}
+
+			// Hide the text and prompt
+			instantiatedPlayerConversation.gameObject.SetActive (false);
+
+			yield break;
 		}
-
-		// Wait for any user input
-		while (Input.anyKeyDown == false) {
-			yield return null;
-		}
-
-		// Hide the text and prompt
-		theText.gameObject.SetActive (false);
-
-		yield break;
 	}
 
 	// Show a list of options, and wait for the player to make a selection.
 	public override IEnumerator RunOptions (Yarn.Options optionsCollection, 
 		Yarn.OptionChooser optionChooser)
 	{
+
+		// Do a little bit of safety checking
+		if (optionsCollection.options.Count > optionButtons.Count) {
+			Debug.LogWarning("There are more options to present than there are" +
+				"buttons to present them in. This will cause problems.");
+		}
+
+		ConversationOptionsPrefab.gameObject.SetActive(true);
+
+		// Display each option in a button, and make it visible
+		int i = 0;
+		foreach (var optionString in optionsCollection.options) {
+			optionButtons [i].gameObject.SetActive (true);
+			optionButtons [i].GetComponentInChildren<Text> ().text = optionString;
+			i++;
+		}
+
+		// Record that we're using it
+		SetSelectedOption = optionChooser;
+
+		// Wait until the chooser has been used and then removed (see SetOption below)
+		while (SetSelectedOption != null) {
+			yield return null;
+		}
+
+		// Hide all the buttons
+		foreach (var button in optionButtons) {
+			button.gameObject.SetActive (false);
+		}
+
 		yield break;
+	}
+
+	// Called by buttons to make a selection.
+	public void SetOption (int selectedOption)
+	{
+		// Call the delegate to tell the dialogue system that we've
+		// selected an option.
+		SetSelectedOption (selectedOption);
+
+		// Now remove the delegate so that the loop in RunOptions will exit
+		SetSelectedOption = null; 
 	}
 
 	public override IEnumerator RunCommand (Yarn.Command command) {
@@ -83,14 +170,27 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 		Debug.Log ("Dialogue starting!");
 
 		// Enable the dialogue controls.
-		if (instantiatedConversation != null)
-			instantiatedConversation.gameObject.SetActive(true);
-		
+		if (instantiatedPlayerConversation != null)
+			instantiatedPlayerConversation.gameObject.SetActive(true);
 
 		yield break;
 	}
 
 	public override IEnumerator DialogueComplete () {
+
+		ConversationOptionsPrefab.gameObject.SetActive(false);
+		instantiatedPlayerConversation.gameObject.SetActive(false);
+
+		instantiatedPlayerConversation = null;
+		theText = null;
+
+		foreach (Transform t in conversationParticipants) {
+			Character conversationInterface = t.GetComponent<Character>();
+			conversationInterface.ResetState();
+		}	
+
+		conversationParticipants.RemoveRange(0, conversationParticipants.Count-1);
+
 		yield break;
 	}
 		

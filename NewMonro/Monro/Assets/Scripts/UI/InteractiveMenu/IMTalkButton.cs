@@ -5,10 +5,16 @@ using Yarn.Unity;
 
 public class IMTalkButton : IMActionButton {
 
+	private bool startDialogue;
+	private Player playerComp;
+	private NPC theNPC;
 
 	// Use this for initialization
 	void Start () {
 		OnStart();
+
+		playerComp = player.GetComponent<Player>();
+		startDialogue = false;
 	}
 
 	// Update is called once per frame
@@ -23,16 +29,30 @@ public class IMTalkButton : IMActionButton {
 
 	public override void OnUpdate() {
 		base.OnUpdate();
+
+		if (playerComp.animStateMachine.GetCurrentState() == PlayerStateMachine.PlayerStates.PlayerTalk) {
+			if (startDialogue) {
+				startDialogue = false;
+
+				FindObjectOfType<DialogueRunner> ().StartDialogue (theNPC.ConversationNode);
+			}
+		}
 	}
 
 	//interface methods
 
 	override public void ExecuteAction() {
-		Player playerComp = player.GetComponent<Player>();
+		
 		InteractiveObject theObj = interactiveObject.GetComponent<InteractiveObject>();
-		playerComp.MoveToKeepDistance(theObj.transform);
+		theNPC = theObj.GetComponent<NPC>();
+		playerComp.GoTalkToNPC(theObj.transform);
 
+		DialogueRunner dialogRunner = FindObjectOfType<DialogueRunner> ();
+		DialogueUI theConversationUI = dialogRunner.dialogueUI as DialogueUI;
 
-		FindObjectOfType<DialogueRunner> ().StartDialogue ("Valkyria.intro");
+		theConversationUI.AddParticipant(player.transform);
+		theConversationUI.AddParticipant(theObj.transform);
+
+		startDialogue = true;
 	}
 }
