@@ -4,8 +4,8 @@
 		"tags": "Valkyria",
 		"body": "Hello, Monrjiall. I'm a Valkyria\n\n[[Monrjiall.Intro]]",
 		"position": {
-			"x": 636,
-			"y": 722
+			"x": 789,
+			"y": 988
 		},
 		"colorID": 3
 	},
@@ -14,18 +14,18 @@
 		"tags": "Morjiall",
 		"body": "What is a \"Valkyria\"?\n\n[[Valkyria.explains]]",
 		"position": {
-			"x": 938,
-			"y": 730
+			"x": 1091,
+			"y": 996
 		},
 		"colorID": 1
 	},
 	{
 		"title": "Valkyria.explains",
 		"tags": "",
-		"body": "I'm supposed to take you to Valhalla as you are dead. But I'm afraid I can't do that\n\n[[Monrjiall.Choices]]",
+		"body": "I'm supposed to take you to Valhalla as you are dead. \nBut I'm afraid I can't do that.\n\n[[Monrjiall.Choices]]",
 		"position": {
-			"x": 1322,
-			"y": 741
+			"x": 1475,
+			"y": 1007
 		},
 		"colorID": 3
 	},
@@ -34,28 +34,28 @@
 		"tags": "",
 		"body": "[[What do you mean \"you can't\"?|Valkyria.Orders]]\n[[I didn't want to go to Valhalla anyway|Valkyria.Destiny]]\n[[You wretched witch! I will kill you!|Valkyria.Sarcasm]]",
 		"position": {
-			"x": 1609,
-			"y": 754
+			"x": 1762,
+			"y": 1020
 		},
 		"colorID": 1
 	},
 	{
 		"title": "Valkyria.Orders",
 		"tags": "",
-		"body": "Unfortunately, no order has been given to take you to Valhalla and I suspect I know why",
+		"body": "Unfortunately, no order has been given \nto take you to Valhalla and I suspect I know why",
 		"position": {
-			"x": 1580,
-			"y": 1035
+			"x": 1733,
+			"y": 1301
 		},
 		"colorID": 3
 	},
 	{
 		"title": "Valkyria.Destiny",
 		"tags": "",
-		"body": "But you must! It is your destiny to reach the afterworld after dying in battle!",
+		"body": "But you must! \nIt is your destiny to reach the afterworld after dying in battle!",
 		"position": {
-			"x": 1294,
-			"y": 1046
+			"x": 1447,
+			"y": 1312
 		},
 		"colorID": 3
 	},
@@ -64,8 +64,8 @@
 		"tags": "",
 		"body": "Well, this is going nowhere, fast",
 		"position": {
-			"x": 992,
-			"y": 1078
+			"x": 1145,
+			"y": 1344
 		},
 		"colorID": 3
 	}

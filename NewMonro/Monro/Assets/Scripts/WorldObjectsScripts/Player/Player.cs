@@ -55,7 +55,14 @@ public class Player : Character
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetMouseButtonDown (0) || Input.GetMouseButton (0)) {
+		Debug.Log("Player state: " + animStateMachine.GetCurrentState ());
+
+		if (Input.GetMouseButtonDown(0) || Input.GetMouseButton (0)) {
+			if (animStateMachine.GetCurrentState () == PlayerStateMachine.PlayerStates.PlayerTalk) {
+				return;
+			}
+
+
 			targetPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 
 			currentFacingDirection = targetPosition.x > this.transform.position.x ? MovingDirection.MovingRight : MovingDirection.MovingLeft;
@@ -76,9 +83,8 @@ public class Player : Character
 			if (hitColliders != null && hitColliders.Length == 2) {
 				hitCollider = hitColliders[0].gameObject.GetComponent<InteractiveObject>().GetTappbleCollider();
 
-
 				//avoid moving the player if tapped in a HotSpot or a button in the HotSpot menu
-				if (hitCollider != null && hitCollider != this.GetComponent<BoxCollider2D> ()) {
+				if (hitCollider != null && hitCollider.gameObject != this.gameObject) {
 					canMove = hitCollider.gameObject.tag != "InteractiveObject" && EventSystem.current.currentSelectedGameObject.tag != "IMButton";
 					canMove = hitCollider.isTrigger; //we re check here because we may have clicked in the circle collider of a HotSpot.. in this case, we must move the player there
 				}
@@ -105,7 +111,7 @@ public class Player : Character
 			animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayerWalk);
 		}
 
-		if (transform.position.x == targetPosition.x && animStateMachine.GetCurrentState () != PlayerStateMachine.PlayerStates.PlayerIdle) {
+		if (canMove && transform.position.x == targetPosition.x && animStateMachine.GetCurrentState () != PlayerStateMachine.PlayerStates.PlayerIdle) {
 			canMove = false;
 
 			if (shouldPickUpItem) {

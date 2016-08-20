@@ -25,6 +25,9 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 	private Text theNPCText;
 
 	private ArrayList conversationParticipants;
+	private float optionButtonYDisplacement;
+	private int inactiveButtons;
+
 
 	DialogueRunner dialogRunner;
 
@@ -33,6 +36,11 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 		conversationParticipants = new ArrayList();
 		dialogRunner = FindObjectOfType<DialogueRunner> ();
 		ConversationOptionsPrefab.gameObject.SetActive(false);
+
+
+		foreach (Button optionButton in optionButtons) {
+			optionButton.gameObject.SetActive (false);
+		}
 	}
 
 	// Use this for initialization
@@ -134,6 +142,20 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 			i++;
 		}
 
+		inactiveButtons = optionButtons.Count - optionsCollection.options.Count;
+
+		if (inactiveButtons > 0) {
+			float bHeight = optionButtons[0].GetComponent<RectTransform>().rect.height;
+			optionButtonYDisplacement = bHeight * inactiveButtons;
+			for (int j = 0; j < optionButtons.Count; j++) {
+				Button currentButton = optionButtons[j];
+				RectTransform buttonRect = currentButton.GetComponent<RectTransform>();
+
+				buttonRect.anchoredPosition = new Vector2(buttonRect.anchoredPosition.x, buttonRect.anchoredPosition.y - optionButtonYDisplacement);
+
+			}
+		}
+
 		// Record that we're using it
 		SetSelectedOption = optionChooser;
 
@@ -190,6 +212,19 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 		}	
 
 		conversationParticipants.RemoveRange(0, conversationParticipants.Count-1);
+
+		//set the buttons as they were before displacing them!
+		if (inactiveButtons > 0) {
+			float bHeight = optionButtons[0].GetComponent<RectTransform>().rect.height;
+			optionButtonYDisplacement = bHeight * inactiveButtons;
+			for (int j = 0; j < optionButtons.Count; j++) {
+				Button currentButton = optionButtons[j];
+				RectTransform buttonRect = currentButton.GetComponent<RectTransform>();
+
+				buttonRect.anchoredPosition = new Vector2(buttonRect.anchoredPosition.x, buttonRect.anchoredPosition.y + optionButtonYDisplacement);
+
+			}
+		}
 
 		yield break;
 	}

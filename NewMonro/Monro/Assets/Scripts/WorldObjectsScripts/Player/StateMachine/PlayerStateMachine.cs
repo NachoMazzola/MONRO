@@ -18,6 +18,7 @@ public class PlayerStateMachine : MonoBehaviour {
 
 	private const string animParamIsWalking = "isMoving";
 	private const string animParamIsPickingUp = "isPickingUp";
+	private const string animParamIsTalking = "isTalking";
 
 	void Awake() {
 		currentState = PlayerStates.PlayerIdle;
@@ -53,20 +54,27 @@ public class PlayerStateMachine : MonoBehaviour {
 		case PlayerStates.PlayerIdle: 
 			stateMachineAnimator.SetBool(animParamIsWalking, false);
 			stateMachineAnimator.SetBool(animParamIsPickingUp, false);
+			stateMachineAnimator.SetBool(animParamIsTalking, false);
 			break;
 
 		case PlayerStates.PlayerWalk:
 			stateMachineAnimator.SetBool(animParamIsWalking, true);
 			stateMachineAnimator.SetBool(animParamIsPickingUp, false);
-
+			stateMachineAnimator.SetBool(animParamIsTalking, false);
 			break;
 
 		case PlayerStates.PlayePickUp:
 			stateMachineAnimator.SetBool(animParamIsWalking, false);
 			stateMachineAnimator.SetBool(animParamIsPickingUp, true);
-
+			stateMachineAnimator.SetBool(animParamIsTalking, false);
 			break;
 
+		case PlayerStates.PlayerTalk:
+			stateMachineAnimator.SetBool(animParamIsTalking, true);
+			stateMachineAnimator.SetBool(animParamIsPickingUp, false);
+			stateMachineAnimator.SetBool(animParamIsWalking, false);
+
+			break;
 		}
 	}
 

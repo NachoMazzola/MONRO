@@ -36,8 +36,10 @@ public class InteractiveObject : MonoBehaviour {
 			//2 colliders means that the "tappable" collider has been tapped.. we ignore
 			//if the circle collider has been tapped or not. We only care if the "tappable" was tapped
 			if (hitColliders != null && hitColliders.Length == 2) {
-				InteractiveMenu intMenuComp = this.GetComponent<InteractiveMenu>();
-				isShowingMenu = intMenuComp.ToggleMenu();
+				if (hitColliders[0].gameObject == this.gameObject) {
+					InteractiveMenu intMenuComp = this.GetComponent<InteractiveMenu>();
+					isShowingMenu = intMenuComp.ToggleMenu();	
+				}
 			}
 		}
 
