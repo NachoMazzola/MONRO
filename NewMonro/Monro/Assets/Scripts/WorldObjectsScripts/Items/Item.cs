@@ -2,7 +2,9 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class Item : MonoBehaviour, IDropHandler {
+public class Item : MonoBehaviour , IDraggable {
+
+	public Transform ItemWorldRepTransform;
 
 	protected string itemName;
 	protected string itemId;
@@ -20,7 +22,18 @@ public class Item : MonoBehaviour, IDropHandler {
 	
 	}
 
-	public void OnDrop(PointerEventData eventData) {
+	public virtual void ActivateInventoryItem() {
+		this.gameObject.SetActive(true);
+	}
+
+	public void IDraggableStartedDrag() {
 		
+	}
+
+	public void IDraggableIsDragging() {
+		
+	}
+
+	public void IDraggableFinishedDragging() {
 	}
 }

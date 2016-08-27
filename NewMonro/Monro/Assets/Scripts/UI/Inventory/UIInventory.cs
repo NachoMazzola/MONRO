@@ -66,7 +66,7 @@ public class UIInventory : MonoBehaviour {
 	public void AddItemToInventory(Transform item) {
 		
 		Transform theInstantiatedItem = Instantiate(item, new Vector2(), Quaternion.identity) as Transform;
-		theInstantiatedItem.gameObject.AddComponent<DragHandler>();
+		//theInstantiatedItem.gameObject.AddComponent<DragHandler>();
 
 		itemList.Add(theInstantiatedItem);
 

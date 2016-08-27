@@ -55,8 +55,6 @@ public class Player : Character
 	// Update is called once per frame
 	void Update ()
 	{
-		Debug.Log("Player state: " + animStateMachine.GetCurrentState ());
-
 		if (Input.GetMouseButtonDown(0) || Input.GetMouseButton (0)) {
 			if (animStateMachine.GetCurrentState () == PlayerStateMachine.PlayerStates.PlayerTalk) {
 				return;
@@ -118,6 +116,8 @@ public class Player : Character
 				animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayePickUp);
 
 				shouldPickUpItem = false;
+
+				Debug.Log("Player state: " + animStateMachine.GetCurrentState ());
 			}
 			else if (willTalkToNPC) {
 				animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayerTalk);
@@ -189,6 +189,8 @@ public class Player : Character
 		itemToPickUp.gameObject.SetActive (false);
 
 		itemToPickUp = null;
+
+		ResetState();
 	}
 		
 	override  public void ResetState() {
