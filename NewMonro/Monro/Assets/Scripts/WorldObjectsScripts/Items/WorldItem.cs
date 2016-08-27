@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class WorldItem : MonoBehaviour {
 
@@ -24,8 +25,12 @@ public class WorldItem : MonoBehaviour {
 
 			if (inventoryItemRepresentation != null) {
 				inventoryItemRepresentation.ActivateInventoryItem();
-			}
 
+				GameObject inv = GameObject.Find("UIInventory");
+				UIInventory invScp = inv.GetComponent<UIInventory>();
+
+				invScp.EnableScrolling(true);
+			}
 		}
 
 	}
@@ -35,6 +40,24 @@ public class WorldItem : MonoBehaviour {
 		theDragging.SetDraggingObject(this.gameObject);
 
 		IsBeingDragged = true;
+
+		GameObject inv = GameObject.Find("UIInventory");
+		UIInventory invScp = inv.GetComponent<UIInventory>();
+
+		invScp.EnableScrolling(false);
 	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if (other && other.gameObject.tag == "Player") {
+			Debug.Log("ENTRE EN LA COLISION PAPI!");
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D other) {
+		if (other && other.gameObject.tag == "Player") {
+			Debug.Log("ME SALI DE LA COLISION PAPI!");
+		}
+	}
+
 
 }

@@ -70,9 +70,9 @@ public class UIInventory : MonoBehaviour {
 
 		itemList.Add(theInstantiatedItem);
 
-		Image itemImage = item.gameObject.GetComponent<Image>();
-		Vector2 sprite_size = itemImage.sprite.rect.size;
-		Vector2 local_sprite_size = sprite_size / itemImage.sprite.pixelsPerUnit;
+		Sprite itemImage = item.gameObject.GetComponent<SpriteRenderer>().sprite;
+		Vector2 sprite_size = itemImage.rect.size;
+		Vector2 local_sprite_size = sprite_size / itemImage.pixelsPerUnit;
 
 		//first item
 		if (itemList.Count == 1) {
@@ -88,13 +88,22 @@ public class UIInventory : MonoBehaviour {
 
 		theInstantiatedItem.position = lastItemPosition;
 		theInstantiatedItem.SetParent(inventoryContent.transform);
-		theInstantiatedItem.localScale = new Vector2(1, 1);
+		//theInstantiatedItem.localScale = new Vector2(1, 1);
 
 		lastItemPosition = theInstantiatedItem.position;
 
 
 		OpenInventoryButton btnComp = openInventoryButton.GetComponent<OpenInventoryButton>();
 		btnComp.PlayAddingItemToInventoryAnim();
+
+	}
+
+
+	public void EnableScrolling(bool  enable) {
+		ScrollRect c = this.GetComponentInChildren<ScrollRect>();
+		if (c != null) {
+			c.enabled = enable;
+		}
 
 	}
 

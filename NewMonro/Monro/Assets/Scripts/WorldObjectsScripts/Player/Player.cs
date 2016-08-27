@@ -71,7 +71,6 @@ public class Player : Character
 				this.transform.localScale = theScale;
 
 				lastFacingDirection = currentFacingDirection;
-
 			}
 
 			//playerCaption.PreserveOriginalScale (this.transform.localScale.x);

@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class Item : MonoBehaviour , IDraggable {
+public class Item : MonoBehaviour {
 
 	public Transform ItemWorldRepTransform;
 
@@ -25,15 +25,5 @@ public class Item : MonoBehaviour , IDraggable {
 	public virtual void ActivateInventoryItem() {
 		this.gameObject.SetActive(true);
 	}
-
-	public void IDraggableStartedDrag() {
 		
-	}
-
-	public void IDraggableIsDragging() {
-		
-	}
-
-	public void IDraggableFinishedDragging() {
-	}
 }
