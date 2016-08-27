@@ -21,7 +21,7 @@ public class IMActionButton : MonoBehaviour {
 	}
 
 	public virtual void OnStart() {
-		player = GameObject.Find("Player");
+		player = GameObject.Find("PlayerViking");
 		interactiveObject = this.transform.gameObject;
 	}
 

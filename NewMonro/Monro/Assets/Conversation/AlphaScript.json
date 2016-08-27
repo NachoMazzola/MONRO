@@ -2,7 +2,7 @@
 	{
 		"title": "Monrjiall.Start",
 		"tags": "",
-		"body": "Ahhhh! I will kill you all!!\nHa ha! See? You probably all died out of sheer dread of the thought of fighting me! You pitiful cowards!\n\n[[Valkyrie.Entrance]]\n",
+		"body": "Ahhhh! I will kill you all!!\nHa ha! See? You probably all died out of sheer dread of the thought of fighting me! You pitiful cowards!\n\n[[Hildr.Entrance]]\n",
 		"position": {
 			"x": 83,
 			"y": 165
@@ -10,7 +10,7 @@
 		"colorID": 0
 	},
 	{
-		"title": "Valkyrie.Entrance",
+		"title": "Hildr.Entrance",
 		"tags": "",
 		"body": "Stupid Gods, ordering me around, while they goof off in Asgard as we do all the work. \r\n“Collect the dead from the battle. Stop picking only the pretty ones.\" \r\n\"Don’t leave them in the sun, they start to smell. Don’t use them as puppets to scare the other valkyries.”\r\nWhat? They told me there were no survivors, why is one of them alive? And why is he laughing like an idiot?\r\nMmm… maybe this idiot can be of some use...\r\n\r\n[[Hildr.Intro]]",
 		"position": {
