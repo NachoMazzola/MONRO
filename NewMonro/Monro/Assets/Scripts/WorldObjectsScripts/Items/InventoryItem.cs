@@ -20,20 +20,24 @@ public class InventoryItem : Item {
 			Vector3 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			targetPosition.z = -0.1f;
 			instanciatedWorldItem = Instantiate(ItemWorldRepTransform, targetPosition, Quaternion.identity) as Transform;
-			this.gameObject.SetActive(false);
+		
+			this.GetComponent<SpriteRenderer>().enabled = false;
+
 
 			wItem = instanciatedWorldItem.GetComponent<WorldItem>();
 			wItem.StartDragging();
 			wItem.inventoryItemRepresentation = this;
+			wItem.gameObject.SetActive(true);
 		}
 	}
 
 	void OnMouseUp() {
-		this.gameObject.SetActive(true);
+		this.GetComponent<SpriteRenderer>().enabled = true;
 	}
 
 	override public void ActivateInventoryItem() {
 		base.ActivateInventoryItem();
+		this.GetComponent<SpriteRenderer>().enabled = true;
 
 		Destroy(instanciatedWorldItem.gameObject);
 

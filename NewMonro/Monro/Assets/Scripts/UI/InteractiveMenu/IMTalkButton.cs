@@ -10,11 +10,15 @@ public class IMTalkButton : IMActionButton {
 	private NPC theNPC;
 
 	// Use this for initialization
+	void OnAwake() {
+		playerComp = player.GetComponent<Player>();
+		startDialogue = false;
+	}
+
 	void Start () {
 		OnStart();
 
-		playerComp = player.GetComponent<Player>();
-		startDialogue = false;
+
 	}
 
 	// Update is called once per frame
@@ -29,14 +33,16 @@ public class IMTalkButton : IMActionButton {
 
 	public override void OnUpdate() {
 		base.OnUpdate();
+		if (playerComp) {
+			if (playerComp.animStateMachine.GetCurrentState() == PlayerStateMachine.PlayerStates.PlayerTalk) {
+				if (startDialogue) {
+					startDialogue = false;
 
-		if (playerComp.animStateMachine.GetCurrentState() == PlayerStateMachine.PlayerStates.PlayerTalk) {
-			if (startDialogue) {
-				startDialogue = false;
-
-				FindObjectOfType<DialogueRunner> ().StartDialogue (theNPC.ConversationNode);
-			}
+					FindObjectOfType<DialogueRunner> ().StartDialogue (theNPC.ConversationNode);
+				}
+			}	
 		}
+
 	}
 
 	//interface methods

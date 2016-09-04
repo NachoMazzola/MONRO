@@ -35,8 +35,23 @@ public class Player : Character
 	private PlayerInventory inventory;
 
 
-	void Awake ()
-	{
+	void Awake (){
+		OnAwake();
+	}
+
+	// Use this for initialization
+	void Start () {
+		OnStart();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		OnUpdate();
+	}
+
+	override public void OnAwake() {
+		base.OnAwake();
+
 		animStateMachine = GetComponent<PlayerStateMachine> ();
 		inventory = GetComponent<PlayerInventory> ();
 		//playerCaption = GetComponent<PlayerCaption> ();
@@ -45,62 +60,18 @@ public class Player : Character
 		lastFacingDirection = currentFacingDirection;
 	}
 
-	// Use this for initialization
-	void Start ()
-	{
+	override public void OnStart() {
+		base.OnStart();
+
 		xAxisOnlyPosition = new Vector2 ();
 		yOriginalPos = transform.position.y;
 	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		if (Input.GetMouseButtonDown(0) || Input.GetMouseButton (0)) {
-			if (animStateMachine.GetCurrentState () == PlayerStateMachine.PlayerStates.PlayerTalk) {
-				return;
-			}
 
-
-			targetPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-
-			currentFacingDirection = targetPosition.x > this.transform.position.x ? MovingDirection.MovingRight : MovingDirection.MovingLeft;
-			if (currentFacingDirection != lastFacingDirection) {
-
-				Vector2 theScale = this.transform.localScale;
-				theScale.x = this.transform.localScale.x * -1;
-				this.transform.localScale = theScale;
-
-				lastFacingDirection = currentFacingDirection;
-			}
-
-			//playerCaption.PreserveOriginalScale (this.transform.localScale.x);
-
-			Collider2D[] hitColliders = Physics2D.OverlapPointAll(targetPosition); 
-			Collider2D hitCollider = null;
-			if (hitColliders != null && hitColliders.Length == 2) {
-				hitCollider = hitColliders[0].gameObject.GetComponent<InteractiveObject>().GetTappbleCollider();
-
-				//avoid moving the player if tapped in a HotSpot or a button in the HotSpot menu
-				if (hitCollider != null && hitCollider.gameObject != this.gameObject) {
-					canMove = hitCollider.gameObject.tag != "InteractiveObject" && EventSystem.current.currentSelectedGameObject.tag != "IMButton";
-					canMove = hitCollider.isTrigger; //we re check here because we may have clicked in the circle collider of a HotSpot.. in this case, we must move the player there
-				}
-			}
-			else {
-				//avoid moving the player if tapped in any UI (like Inventory)
-				EventSystem c = EventSystem.current;
-				GameObject f = c.gameObject;
-				if (EventSystem.current.currentSelectedGameObject != null) {
-					canMove = EventSystem.current.currentSelectedGameObject.tag != "UIElement";	
-				} else {
-					canMove = true;
-				}
-			}
-		}
-
+	override public void OnUpdate() {
+		base.OnUpdate();
 
 		if (canMove) {
-			
+
 			xAxisOnlyPosition.x = targetPosition.x;
 			xAxisOnlyPosition.y = yOriginalPos;
 			transform.position = Vector2.MoveTowards (transform.position, xAxisOnlyPosition, Time.deltaTime * PlayerMovementSpeed);
@@ -127,7 +98,38 @@ public class Player : Character
 			}
 
 		}
+
 	}
+
+
+
+	override public void IWOTapped(Vector2 tapPos, GameObject other) {
+		Debug.Log("TAP");
+
+		if (animStateMachine.GetCurrentState () == PlayerStateMachine.PlayerStates.PlayerTalk) {
+			return;
+		}
+
+
+		targetPosition = tapPos;
+
+		currentFacingDirection = targetPosition.x > this.transform.position.x ? MovingDirection.MovingRight : MovingDirection.MovingLeft;
+		if (currentFacingDirection != lastFacingDirection) {
+
+			Vector2 theScale = this.transform.localScale;
+			theScale.x = this.transform.localScale.x * -1;
+			this.transform.localScale = theScale;
+
+			lastFacingDirection = currentFacingDirection;
+		}
+
+		canMove = other == null;
+	}
+
+	override public void IWOTapHold(Vector2 tapPos, GameObject other) {
+		Debug.Log("HOLD TAP");
+	}
+
 
 	public void MoveTo (Vector2 newPosition)
 	{
