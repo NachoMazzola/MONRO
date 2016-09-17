@@ -5,8 +5,21 @@ using UnityEngine.UI;
 
 public class Character : MonoBehaviour, IWorldInteractionObserver {
 
+	public enum CharacterType
+	{
+		Player,
+		NPC
+	}
+
+
 	public string ConversationName;
 	public Color CharacterTalkColor;
+
+	[HideInInspector]
+	public CharacterType characterType;
+
+	[HideInInspector]
+	public SpriteRenderer characterSprite;
 
 	void Awake() {
 		
@@ -23,7 +36,7 @@ public class Character : MonoBehaviour, IWorldInteractionObserver {
 	}
 
 	virtual public void OnAwake() {
-		
+		characterSprite = this.GetComponent<SpriteRenderer>();
 	}
 
 	virtual public void OnStart() {

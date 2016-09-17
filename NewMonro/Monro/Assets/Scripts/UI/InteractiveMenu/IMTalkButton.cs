@@ -10,15 +10,14 @@ public class IMTalkButton : IMActionButton {
 	private NPC theNPC;
 
 	// Use this for initialization
-	void OnAwake() {
+	void Awake() {
+		OnAwake();
 		playerComp = player.GetComponent<Player>();
 		startDialogue = false;
 	}
 
 	void Start () {
 		OnStart();
-
-
 	}
 
 	// Update is called once per frame

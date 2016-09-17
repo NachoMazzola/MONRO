@@ -10,6 +10,10 @@ public class IMActionButton : MonoBehaviour {
 	protected GameObject player;
 	protected GameObject interactiveObject;
 
+	void Awake() {
+		OnAwake();
+	}
+
 	// Use this for initialization
 	void Start () {
 		OnStart();
@@ -20,9 +24,13 @@ public class IMActionButton : MonoBehaviour {
 		OnUpdate();
 	}
 
-	public virtual void OnStart() {
+	public virtual void OnAwake() {
 		player = GameObject.Find("PlayerViking");
 		interactiveObject = this.transform.gameObject;
+	}
+
+	public virtual void OnStart() {
+		
 	}
 
 	public virtual void OnUpdate() {

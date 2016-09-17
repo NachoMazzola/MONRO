@@ -25,7 +25,6 @@ public class Player : Character
 	private bool canMove = false;
 	private float yOriginalPos;
 
-
 	private bool shouldPickUpItem;
 	private Transform itemToPickUp;
 	private PlayerCaption playerCaption;
@@ -51,7 +50,7 @@ public class Player : Character
 
 	override public void OnAwake() {
 		base.OnAwake();
-
+		characterType = CharacterType.Player;
 		animStateMachine = GetComponent<PlayerStateMachine> ();
 		inventory = GetComponent<PlayerInventory> ();
 		//playerCaption = GetComponent<PlayerCaption> ();
@@ -105,7 +104,6 @@ public class Player : Character
 
 	override public void IWOTapped(Vector2 tapPos, GameObject other) {
 		Debug.Log("TAP");
-
 		if (animStateMachine.GetCurrentState () == PlayerStateMachine.PlayerStates.PlayerTalk) {
 			return;
 		}
@@ -113,23 +111,28 @@ public class Player : Character
 
 		targetPosition = tapPos;
 
-		currentFacingDirection = targetPosition.x > this.transform.position.x ? MovingDirection.MovingRight : MovingDirection.MovingLeft;
-		if (currentFacingDirection != lastFacingDirection) {
-
-			Vector2 theScale = this.transform.localScale;
-			theScale.x = this.transform.localScale.x * -1;
-			this.transform.localScale = theScale;
-
-			lastFacingDirection = currentFacingDirection;
-		}
+		DecideFacingDirection();
 
 		canMove = other == null;
+
 	}
 
 	override public void IWOTapHold(Vector2 tapPos, GameObject other) {
 		Debug.Log("HOLD TAP");
 	}
 
+	void DecideFacingDirection() {
+		MovingDirection theMovingDirection = targetPosition.x > this.transform.position.x ? MovingDirection.MovingRight : MovingDirection.MovingLeft;
+		if (theMovingDirection != currentFacingDirection) {
+
+			Vector2 theScale = characterSprite.transform.localScale;
+			theScale.x = characterSprite.transform.localScale.x * -1;
+			characterSprite.transform.localScale = theScale;
+
+			lastFacingDirection = currentFacingDirection;
+			currentFacingDirection = theMovingDirection;
+		}
+	}
 
 	public void MoveTo (Vector2 newPosition)
 	{
@@ -150,6 +153,7 @@ public class Player : Character
 		Vector2 newPos = new Vector2(newX, moveToObj.position.y);
 
 		targetPosition = newPos;
+		DecideFacingDirection();
 		canMove = true;
 	}
 
@@ -175,6 +179,18 @@ public class Player : Character
 		pCaption.ShowCaption(caption);
 	}
 
+	override public Transform GetConversationCaptionCanvas() {
+		Transform theCaption = base.GetConversationCaptionCanvas();
+		if (currentFacingDirection == MovingDirection.MovingLeft) {
+			Vector3 invertedScale = new Vector3(theCaption.localScale.x*-1, theCaption.localScale.y);
+			theCaption.localScale = invertedScale;
+		}
+		else {
+			Vector3 invertedScale = new Vector3(Mathf.Abs(theCaption.localScale.x), theCaption.localScale.y);
+			theCaption.localScale = invertedScale;
+		}
+		return theCaption;
+	}
 
 	/*
 	 * This method is called when the PickUp animaiton ends. It is wired up from the Animaiton Panel in Inspector, hence the name AnimEndEvent 
@@ -196,5 +212,8 @@ public class Player : Character
 		
 	override  public void ResetState() {
 		animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayerIdle);
+		Transform theCaption = base.GetConversationCaptionCanvas();
+		Vector3 invertedScale = new Vector3(Mathf.Abs(theCaption.localScale.x), theCaption.localScale.y);
+		theCaption.localScale = invertedScale;
 	}
 }

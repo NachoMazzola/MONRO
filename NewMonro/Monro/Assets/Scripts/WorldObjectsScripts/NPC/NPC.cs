@@ -5,6 +5,10 @@ public class NPC : Character {
 
 	public string ConversationNode;
 
+	void Awake() {
+		characterType = CharacterType.NPC;
+	}
+
 	// Use this for initialization
 	void Start () {
 	

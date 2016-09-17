@@ -28,6 +28,8 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 	private float optionButtonYDisplacement;
 	private int inactiveButtons;
 
+	private Character lastOneWhoTalked;
+	private Character whoIsTalking;
 
 	DialogueRunner dialogRunner;
 
@@ -77,22 +79,35 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 	//YARN INTERFACE IMPLEMENTATION
 	// Show a line of dialogue, gradually
 	public override IEnumerator RunLine (Yarn.Line line) {
-		Character whoIsTalking = GetParticipant(dialogRunner.dialogue.currentNode);
+		whoIsTalking = GetParticipant(dialogRunner.dialogue.currentNode);
+
+		//volver a pedir el conv canvas solo cuando el que habla cambio
 
 		if (whoIsTalking != null) {
-			if (instantiatedPlayerConversation != null) {
-				instantiatedPlayerConversation.gameObject.SetActive(true);
-				if (theText != null) {
-					theText.gameObject.SetActive(true);
-				}
-			}
-			else {
+			if (lastOneWhoTalked == null || whoIsTalking.characterType != lastOneWhoTalked.characterType) {
+
 				instantiatedPlayerConversation = whoIsTalking.GetConversationCaptionCanvas();
-				instantiatedPlayerConversation.gameObject.SetActive(true);
-				theText = instantiatedPlayerConversation.gameObject.GetComponentInChildren<Text>();
-				theText.gameObject.SetActive(true);
+				lastOneWhoTalked = whoIsTalking;
 			}
 
+			instantiatedPlayerConversation.gameObject.SetActive(true);
+			theText = instantiatedPlayerConversation.gameObject.GetComponentInChildren<Text>();
+			theText.gameObject.SetActive(true);
+
+
+//			if (instantiatedPlayerConversation != null) {
+//				instantiatedPlayerConversation.gameObject.SetActive(true);
+//				if (theText != null) {
+//					theText.gameObject.SetActive(true);
+//				}
+//			}
+//			else {
+//				
+//				instantiatedPlayerConversation.gameObject.SetActive(true);
+//				theText = instantiatedPlayerConversation.gameObject.GetComponentInChildren<Text>();
+//				theText.gameObject.SetActive(true);
+//			}
+//
 			theText.color = whoIsTalking.CharacterTalkColor;
 
 			if (textSpeed > 0.0f) {
