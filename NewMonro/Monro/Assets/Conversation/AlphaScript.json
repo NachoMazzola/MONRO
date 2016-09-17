@@ -1,31 +1,51 @@
 [
 	{
-		"title": "Monrjiall.Start",
+		"title": "Hildr.Start",
 		"tags": "",
-		"body": "Ahhhh! I will kill you all!!\nHa ha! See? You probably all died out of sheer dread of the thought of fighting me! You pitiful cowards!\n\n[[Hildr.Entrance]]\n",
+		"body": "Valiant warrior! \nI ask you your name\nso that I may know who it is that has been so wrongfully cheated.\n\n[[Monrjiall.response]]\n",
 		"position": {
-			"x": 83,
-			"y": 165
+			"x": -144,
+			"y": -19
 		},
 		"colorID": 0
 	},
 	{
-		"title": "Hildr.Entrance",
+		"title": "Monrjiall.response",
 		"tags": "",
-		"body": "Stupid Gods, ordering me around, while they goof off in Asgard as we do all the work. \r\n“Collect the dead from the battle. Stop picking only the pretty ones.\" \r\n\"Don’t leave them in the sun, they start to smell. Don’t use them as puppets to scare the other valkyries.”\r\nWhat? They told me there were no survivors, why is one of them alive? And why is he laughing like an idiot?\r\nMmm… maybe this idiot can be of some use...\r\n\r\n[[Hildr.Intro]]",
+		"body": "[[I will not tell you anything, you foul witch! I do not know you, therefore I cannot trust you!|Hildr.trust]]\n[[Who has been cheated? And what does my name have to do with the poor fellow?|Hildr.confused]]\n[[The name’s Monrjiall, son of M’gsroell. Now, what’s this about somebody being cheated?|Hildr.explains]]",
 		"position": {
-			"x": 410,
-			"y": 175
+			"x": 152,
+			"y": -20
 		},
 		"colorID": 0
 	},
 	{
-		"title": "Hildr.Intro",
+		"title": "Hildr.trust",
 		"tags": "",
-		"body": "Valiant warrior! \nI ask you your name, so that I may know who it is that has been so wrongfully cheated.",
+		"body": "I can assure you, I’m trustworthy.\n\n[[Monrjiall.trust]]",
 		"position": {
-			"x": 709,
-			"y": 198
+			"x": 444,
+			"y": -16
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.trust",
+		"tags": "",
+		"body": "Oh, very well then.\n\n[[Hildr.easy]]",
+		"position": {
+			"x": 711,
+			"y": -17
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.easy",
+		"tags": "",
+		"body": "Well, this might be easier than I thought...",
+		"position": {
+			"x": 964,
+			"y": -16
 		},
 		"colorID": 0
 	}
