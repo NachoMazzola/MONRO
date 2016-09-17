@@ -148,7 +148,7 @@ public class Player : Character
 			dirChange = -1;
 		}
 	
-		float newX = moveToObj.position.x + (theCollider.radius+0.5f)*dirChange; 
+		float newX = moveToObj.position.x*moveToObj.transform.localScale.x + (theCollider.radius+0.5f)*dirChange; 
 
 		Vector2 newPos = new Vector2(newX, moveToObj.position.y);
 
