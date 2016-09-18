@@ -2,10 +2,10 @@
 	{
 		"title": "Hildr.Start",
 		"tags": "",
-		"body": "Valiant warrior! \nI ask you your name\nso that I may know who it is that has been so wrongfully cheated.\n\n[[Monrjiall.response]]\n",
+		"body": "Valiant warrior! \nI ask you your name...\n...so that I may know who it is that has been so wrongfully cheated.\n\n[[Monrjiall.response]]\n",
 		"position": {
-			"x": -144,
-			"y": -19
+			"x": 640,
+			"y": 640
 		},
 		"colorID": 0
 	},
@@ -14,8 +14,8 @@
 		"tags": "",
 		"body": "[[I will not tell you anything, you foul witch! I do not know you, therefore I cannot trust you!|Hildr.trust]]\n[[Who has been cheated? And what does my name have to do with the poor fellow?|Hildr.confused]]\n[[The name’s Monrjiall, son of M’gsroell. Now, what’s this about somebody being cheated?|Hildr.explains]]",
 		"position": {
-			"x": 152,
-			"y": -20
+			"x": 640,
+			"y": 303
 		},
 		"colorID": 0
 	},
@@ -24,8 +24,8 @@
 		"tags": "",
 		"body": "I can assure you, I’m trustworthy.\n\n[[Monrjiall.trust]]",
 		"position": {
-			"x": 444,
-			"y": -16
+			"x": 286,
+			"y": -53
 		},
 		"colorID": 0
 	},
@@ -34,18 +34,258 @@
 		"tags": "",
 		"body": "Oh, very well then.\n\n[[Hildr.easy]]",
 		"position": {
-			"x": 711,
-			"y": -17
+			"x": 666,
+			"y": -49
 		},
 		"colorID": 0
 	},
 	{
 		"title": "Hildr.easy",
 		"tags": "",
-		"body": "Well, this might be easier than I thought...",
+		"body": "Well, this might be easier than I thought...\n\n[[Monrjiall.response]]",
 		"position": {
-			"x": 964,
-			"y": -16
+			"x": 962,
+			"y": -41
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.confused",
+		"tags": "",
+		"body": "No, your name... \r\nI mean, that’s… \r\nWhat?\r\n\r\n[[Monrjiall.victorious]]\r\n",
+		"position": {
+			"x": 977,
+			"y": 298
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.victorious",
+		"tags": "",
+		"body": "Hah! You cannot match my wits!\n\n[[Hildr.hard]]",
+		"position": {
+			"x": 1272,
+			"y": 300
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.hard",
+		"tags": "",
+		"body": "*sigh* This is gonna be harder than I thought...\n\n[[Monrjiall.response]]",
+		"position": {
+			"x": 981,
+			"y": 637
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.explains",
+		"tags": "",
+		"body": "YOU have been cheated, Monrjiall! \r\nBy the very same Gods you pray upon. \r\nThe very same Gods that have you doing their bidding. \r\nThose Gods have deserted you and denied you of your well deserved reward. \r\nThe same reward every fallen warrior receives after dying in battle.\r\n\r\n[[Monrjiall.curse]]\r\n",
+		"position": {
+			"x": 282,
+			"y": 299
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.curse",
+		"tags": "",
+		"body": "Curse you, Gods! You deceiving bastards!\n.....\nWhat was that about dying?\n\n[[Hildr.death]]",
+		"position": {
+			"x": -44,
+			"y": 296
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.death",
+		"tags": "",
+		"body": "I’m afraid you have died today, Monrjiall. \nIn the bloody battle that took place on this field today... \n...you perished while battling fiercely against several enemies. \nBy all rights, I should be taking you to Valhalla at this very moment. \nHowever, I seem to be incapable of doing so. \nThat can only mean someone doesn’t want you in Valhalla. \nAnd only the Gods have that kind of power.\n\n[[Monrjiall.replies]]",
+		"position": {
+			"x": -43,
+			"y": 577
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.replies",
+		"tags": "",
+		"body": "[[It cannot be! I can’t be dead! You must be mistaken!|Hildr.deadViking]]\n[[How fiercely was I battling?|Hildr.fiercely]]\n[[The Gods will rue the day they chose to cross the great Monrjiall!|Hildr.question]]\n",
+		"position": {
+			"x": -44,
+			"y": 876
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.deadViking",
+		"tags": "",
+		"body": "Trust me, you’re dead. I know a dead viking when I see one.\n\n[[Monrjiall.fine]]",
+		"position": {
+			"x": -336,
+			"y": 860
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.fine",
+		"tags": "",
+		"body": "But I feel fine!\n\n[[Hildr.exactly]]",
+		"position": {
+			"x": -621,
+			"y": 870
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.exactly",
+		"tags": "",
+		"body": "Which is exactly what a dead viking would say if he didn’t think he was dead.\n\n[[Monrjiall.replies]]",
+		"position": {
+			"x": -337,
+			"y": 1141
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.fiercely",
+		"tags": "",
+		"body": "What?\n\n[[Monrjiall.repeat]]",
+		"position": {
+			"x": 262,
+			"y": 872
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.repeat",
+		"tags": "",
+		"body": "When I died, you said I was battling fiercely. How fiercely?\n\n[[Hildr.unsure]]",
+		"position": {
+			"x": 572,
+			"y": 871
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.unsure",
+		"tags": "",
+		"body": "Uhmm...\nVery fiercely?\n\n[[Monrjiall.enemies]]",
+		"position": {
+			"x": 862,
+			"y": 874
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.enemies",
+		"tags": "",
+		"body": "Unsurprising. And how many enemies did I defeat before my befalling? \nFifty? A hundred?\n\n[[Hildr.hundred]]",
+		"position": {
+			"x": 874,
+			"y": 1163
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.hundred",
+		"tags": "",
+		"body": "*sigh* I don’t know. \nSure, one hundred enemies.\n\n[[Monrjiall.proud]]",
+		"position": {
+			"x": 545,
+			"y": 1172
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.proud",
+		"tags": "",
+		"body": "Ha! If that’s not worthy of Valhalla, then it must be a very empty place up there!\n\n[[Monrjiall.replies]]",
+		"position": {
+			"x": 263,
+			"y": 1173
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.question",
+		"tags": "",
+		"body": "What is it you intend to do?\n\n[[Monrjiall.revenge]]",
+		"position": {
+			"x": -48,
+			"y": 1153
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.revenge",
+		"tags": "",
+		"body": "I shall climb to Asgard itself and make my axe decide their fate, as they decided mine.\n\n[[Hildr.unwise]]",
+		"position": {
+			"x": -58,
+			"y": 1431
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.unwise",
+		"tags": "",
+		"body": "That may not be a wise thing to do. \nThe gods are powerful and ever watchful... \n...ready to dispose of any they deem as potential threats.\n\n[[Monrjiall.question]]",
+		"position": {
+			"x": 261,
+			"y": 1436
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.question",
+		"tags": "",
+		"body": "Then what am I to do? I cannot sit and do nothing about this.\r\n\r\n[[Hildr.valor]]",
+		"position": {
+			"x": 548,
+			"y": 1426
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.valor",
+		"tags": "",
+		"body": "Nor should you. \nThere’s still a way for you to enter Valhalla. \nYou will have to prove your valor and worth by performing three tasks.\n\n[[Monrjiall.easy]]",
+		"position": {
+			"x": 869,
+			"y": 1426
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.easy",
+		"tags": "",
+		"body": "In that case, I will be in Valhalla in no time. \nI have more valor and worth than anyone here. \nI’ll get right to it!\n\n[[Hildr.but]]",
+		"position": {
+			"x": 861,
+			"y": 1679
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.but",
+		"tags": "",
+		"body": "But...\n\n[[Monrjiall.off]]",
+		"position": {
+			"x": 537,
+			"y": 1696
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.off",
+		"tags": "",
+		"body": "Off I go!",
+		"position": {
+			"x": 253,
+			"y": 1698
 		},
 		"colorID": 0
 	}
