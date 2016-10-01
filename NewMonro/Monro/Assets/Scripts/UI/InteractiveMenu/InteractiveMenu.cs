@@ -11,6 +11,11 @@ public class InteractiveMenu : MonoBehaviour {
 	private RectTransform[] instantiatedButtons;
 	private bool menuOn = false;
 
+	private BoxCollider2D theBoxCollider;
+
+	void Awake() {
+		theBoxCollider = this.GetComponent<BoxCollider2D>();
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -48,6 +53,7 @@ public class InteractiveMenu : MonoBehaviour {
 //			}
 //
 			//float ang = ((iter * 180.0f) / buttons.Length) - 45.0f;
+
 			float ang = ((iter * 360.0f) / buttons.Length);
 			Vector2 pos = new Vector2();
 			pos.x = transform.position.x + ButtonDistance * Mathf.Sin(ang * Mathf.Deg2Rad);

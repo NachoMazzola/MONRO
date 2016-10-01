@@ -49,6 +49,12 @@ public class IMTalkButton : IMActionButton {
 	override public void ExecuteAction() {
 		
 		InteractiveObject theObj = interactiveObject.GetComponent<InteractiveObject>();
+		InteractiveMenu theIntMenu = theObj.GetComponent<InteractiveMenu>();
+		if (theIntMenu != null) {
+			theIntMenu.ToggleMenu();
+		}
+
+
 		theNPC = theObj.GetComponent<NPC>();
 		playerComp.GoTalkToNPC(theObj.transform);
 
