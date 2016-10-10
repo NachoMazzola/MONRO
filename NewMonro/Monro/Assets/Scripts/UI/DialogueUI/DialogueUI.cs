@@ -33,7 +33,6 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 
 	DialogueRunner dialogRunner;
 
-
 	void Awake() {
 		conversationParticipants = new ArrayList();
 		dialogRunner = FindObjectOfType<DialogueRunner> ();
@@ -167,7 +166,6 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 				RectTransform buttonRect = currentButton.GetComponent<RectTransform>();
 
 				buttonRect.anchoredPosition = new Vector2(buttonRect.anchoredPosition.x, buttonRect.anchoredPosition.y - optionButtonYDisplacement);
-
 			}
 		}
 
@@ -184,6 +182,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 			button.gameObject.SetActive (false);
 		}
 
+		resetDialogueOptionsButtons();
 		yield break;
 	}
 
@@ -228,6 +227,13 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 
 		conversationParticipants.RemoveRange(0, conversationParticipants.Count-1);
 
+		resetDialogueOptionsButtons();
+
+		yield break;
+	}
+		
+	void resetDialogueOptionsButtons() {
+
 		//set the buttons as they were before displacing them!
 		if (inactiveButtons > 0) {
 			float bHeight = optionButtons[0].GetComponent<RectTransform>().rect.height;
@@ -237,11 +243,8 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 				RectTransform buttonRect = currentButton.GetComponent<RectTransform>();
 
 				buttonRect.anchoredPosition = new Vector2(buttonRect.anchoredPosition.x, buttonRect.anchoredPosition.y + optionButtonYDisplacement);
-
 			}
 		}
-
-		yield break;
 	}
-		
+
 }
