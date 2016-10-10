@@ -12,7 +12,7 @@
 	{
 		"title": "Monrjiall.response",
 		"tags": "",
-		"body": "[[I will not tell you anything, you foul witch! I do not know you, therefore I cannot trust you!|Hildr.trust]]\n[[Who has been cheated? And what does my name have to do with the poor fellow?|Hildr.confused]]\n[[The name’s Monrjiall, son of M’gsroell. Now, what’s this about somebody being cheated?|Hildr.explains]]",
+		"body": "<<if not visited (\"Hildr.trust\")>>\n[[I will not tell you anything, you foul witch! I do not know you, therefore I cannot trust you!|Hildr.trust]]\n<<endif>>\n<<if not visited (\"Hildr.confused\")>>\n[[Who has been cheated? And what does my name have to do with the poor fellow?|Hildr.confused]]\n<<endif>>\n[[The name’s Monrjiall, son of M’gsroell. Now, what’s this about somebody being cheated?|Hildr.explains]]",
 		"position": {
 			"x": 640,
 			"y": 303
@@ -42,7 +42,7 @@
 	{
 		"title": "Hildr.easy",
 		"tags": "",
-		"body": "Well, this might be easier than I thought...\n\n[[Monrjiall.response]]",
+		"body": "<<if not visited (\"Hildr.confused\")>>\nWell, this might be easier than I thought...\n<<else>>\nOn second thought, this might not be so hard...\n<<endif>>\n[[Monrjiall.response]]",
 		"position": {
 			"x": 962,
 			"y": -41
@@ -72,7 +72,7 @@
 	{
 		"title": "Hildr.hard",
 		"tags": "",
-		"body": "*sigh* This is gonna be harder than I thought...\n\n[[Monrjiall.response]]",
+		"body": "<<if not visited (\"Hildr.trust\")>>\n*sigh* This is gonna be harder than I thought...\n<<else>>\nWell, this may not be so easy after all...\n<<endif>>\n\n[[Monrjiall.response]]",
 		"position": {
 			"x": 981,
 			"y": 637
@@ -112,7 +112,7 @@
 	{
 		"title": "Monrjiall.replies",
 		"tags": "",
-		"body": "[[It cannot be! I can’t be dead! You must be mistaken!|Hildr.deadViking]]\n[[How fiercely was I battling?|Hildr.fiercely]]\n[[The Gods will rue the day they chose to cross the great Monrjiall!|Hildr.question]]\n",
+		"body": "<<if not visited (\"Hildr.deadViking\")>>\n[[It cannot be! I can’t be dead! You must be mistaken!|Hildr.deadViking]]\n<<endif>>\n<<if not visited (\"Hildr.fiercely\")>>\n[[How fiercely was I battling?|Hildr.fiercely]]\n<<endif>>\n[[The Gods will rue the day they chose to cross the great Monrjiall!|Hildr.question]]\n",
 		"position": {
 			"x": -44,
 			"y": 876
@@ -234,8 +234,8 @@
 		"tags": "",
 		"body": "That may not be a wise thing to do. \nThe gods are powerful and ever watchful... \n...ready to dispose of any they deem as potential threats.\n\n[[Monrjiall.question]]",
 		"position": {
-			"x": 261,
-			"y": 1436
+			"x": 257,
+			"y": 1428
 		},
 		"colorID": 0
 	},
@@ -264,8 +264,8 @@
 		"tags": "",
 		"body": "In that case, I will be in Valhalla in no time. \nI have more valor and worth than anyone here. \nI’ll get right to it!\n\n[[Hildr.but]]",
 		"position": {
-			"x": 861,
-			"y": 1679
+			"x": 867,
+			"y": 1697
 		},
 		"colorID": 0
 	},
@@ -274,8 +274,8 @@
 		"tags": "",
 		"body": "But...\n\n[[Monrjiall.off]]",
 		"position": {
-			"x": 537,
-			"y": 1696
+			"x": 547,
+			"y": 1699
 		},
 		"colorID": 0
 	},
@@ -284,8 +284,8 @@
 		"tags": "",
 		"body": "Off I go!",
 		"position": {
-			"x": 253,
-			"y": 1698
+			"x": 259,
+			"y": 1701
 		},
 		"colorID": 0
 	}
