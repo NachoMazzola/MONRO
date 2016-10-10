@@ -1,0 +1,22 @@
+[
+	{
+		"title": "Hildr.StartPEPE",
+		"tags": "",
+		"body": "Valiant PEPE! \nI ask you your PEPE...\n...so that I may know who it is that has been so wrongfully cheated.\n\n[[Monrjiall.responseP]]\n",
+		"position": {
+			"x": 640,
+			"y": 640
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.responseP",
+		"tags": "",
+		"body": "I will not tell you anything, you foul witch! I do not know you, therefore I cannot trust you!",
+		"position": {
+			"x": 640,
+			"y": 303
+		},
+		"colorID": 0
+	}
+]
