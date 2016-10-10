@@ -9,6 +9,7 @@ public class InteractiveObject : MonoBehaviour
 	public Transform Item;
 	public string Caption;
 	public Sprite HighlightedSprite;
+	public bool allowInteraction;
 
 	private SpriteRenderer theSpriteRenderer;
 	private Sprite originalSprite;
@@ -18,6 +19,7 @@ public class InteractiveObject : MonoBehaviour
 
 	void Awake ()
 	{
+		allowInteraction = true;
 		theSpriteRenderer = GetComponent<SpriteRenderer> ();	
 		originalSprite = theSpriteRenderer.sprite;
 	
@@ -37,6 +39,10 @@ public class InteractiveObject : MonoBehaviour
 
 	void OnMouseDown ()
 	{
+		if (!allowInteraction) {
+			return;
+		}
+
 		Vector2 targetPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 		Collider2D[] hitColliders = Physics2D.OverlapPointAll (targetPosition); 
 		

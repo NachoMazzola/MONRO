@@ -115,6 +115,10 @@ public class Player : Character
 
 		canMove = other == null;
 
+		//temporal fix
+		animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayerWalk);
+		willTalkToNPC = false;
+		shouldPickUpItem = false;
 	}
 
 	override public void IWOTapHold(Vector2 tapPos, GameObject other) {

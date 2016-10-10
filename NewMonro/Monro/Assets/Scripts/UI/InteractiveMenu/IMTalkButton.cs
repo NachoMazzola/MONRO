@@ -58,6 +58,9 @@ public class IMTalkButton : IMActionButton {
 		theNPC = theObj.GetComponent<NPC>();
 		playerComp.GoTalkToNPC(theObj.transform);
 
+		InteractiveObject intObj = theObj.GetComponent<InteractiveObject>();
+		intObj.allowInteraction = false;
+
 		DialogueRunner dialogRunner = FindObjectOfType<DialogueRunner> ();
 		DialogueUI theConversationUI = dialogRunner.dialogueUI as DialogueUI;
 
