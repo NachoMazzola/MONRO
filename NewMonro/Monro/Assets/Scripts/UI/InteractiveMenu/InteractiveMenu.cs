@@ -83,7 +83,4 @@ public class InteractiveMenu : MonoBehaviour {
 		return menuOn;
 	}
 
-	public void caca() {
-		Debug.Log("CONCHIPAPI");
-	}
 }

@@ -20,6 +20,8 @@ public class NPC : Character {
 	}
 
 	override public void ResetState() {
+		InteractiveObject intObj = this.GetComponent<InteractiveObject>();
+		intObj.allowInteraction = true;
 
 	}
 }
