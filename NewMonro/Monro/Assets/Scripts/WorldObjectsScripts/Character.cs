@@ -11,15 +11,38 @@ public class Character : MonoBehaviour, IWorldInteractionObserver {
 		NPC
 	}
 
+	public enum MovingDirection
+	{
+		MovingRight,
+		MovingLeft
+	}
 
-	public string ConversationName;
-	public Color CharacterTalkColor;
+	[HideInInspector]
+	public IState currentState;
+
+	[HideInInspector]
+	public IState lastState;
+
+	[HideInInspector]
+	public PlayerStateMachine animStateMachine;
 
 	[HideInInspector]
 	public CharacterType characterType;
-
 	[HideInInspector]
 	public SpriteRenderer characterSprite;
+	[HideInInspector]
+	public bool canMove = false;
+	[HideInInspector]
+	public MovingDirection currentFacingDirection;
+	[HideInInspector]
+	public MovingDirection lastFacingDirection;
+
+
+	public string ConversationName;
+	public Color CharacterTalkColor;
+	public float MovementSpeed = 4.0f;
+	public bool StartFacingRight = true;
+
 
 	void Awake() {
 		
@@ -37,6 +60,10 @@ public class Character : MonoBehaviour, IWorldInteractionObserver {
 
 	virtual public void OnAwake() {
 		characterSprite = this.GetComponent<SpriteRenderer>();
+		currentFacingDirection = StartFacingRight ? MovingDirection.MovingRight : MovingDirection.MovingLeft;
+		lastFacingDirection = currentFacingDirection;
+
+		SwapFacingDirectionTo(currentFacingDirection);
 	}
 
 	virtual public void OnStart() {
@@ -63,4 +90,21 @@ public class Character : MonoBehaviour, IWorldInteractionObserver {
 	virtual public void IWOTapHold(Vector2 tapPos, GameObject other) {
 		
 	}
+
+	virtual public void ChangeToState(PlayerStateMachine.PlayerStates newState) {
+		
+	}
+
+	public void SwapFacingDirectionTo(MovingDirection newFacingDir) {
+		float theScaleFacingRight = 1;
+		float theScaleFacingLeft = -1;
+
+		Vector2 theScale = this.characterSprite.transform.localScale;
+		theScale.x = newFacingDir == MovingDirection.MovingRight ? theScaleFacingRight : theScaleFacingLeft;
+		this.characterSprite.transform.localScale = theScale;
+
+		lastFacingDirection = currentFacingDirection;
+		currentFacingDirection = newFacingDir;
+	}
+		
 }

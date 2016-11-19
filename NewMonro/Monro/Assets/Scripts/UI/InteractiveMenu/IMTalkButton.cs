@@ -5,15 +5,9 @@ using Yarn.Unity;
 
 public class IMTalkButton : IMActionButton {
 
-	private bool startDialogue;
-	private Player playerComp;
-	private NPC theNPC;
-
 	// Use this for initialization
 	void Awake() {
 		OnAwake();
-		playerComp = player.GetComponent<Player>();
-		startDialogue = false;
 	}
 
 	void Start () {
@@ -32,41 +26,43 @@ public class IMTalkButton : IMActionButton {
 
 	public override void OnUpdate() {
 		base.OnUpdate();
-		if (playerComp) {
-			if (playerComp.animStateMachine.GetCurrentState() == PlayerStateMachine.PlayerStates.PlayerTalk) {
-				if (startDialogue) {
-					startDialogue = false;
-
-					FindObjectOfType<DialogueRunner> ().StartDialogue (theNPC.ConversationNode);
-				}
-			}	
-		}
-
 	}
 
 	//interface methods
 
 	override public void ExecuteAction() {
-		
+		Player playerComp = player.GetComponent<Player>();
+
 		InteractiveObject theObj = interactiveObject.GetComponent<InteractiveObject>();
+		theObj.allowInteraction = false;
 		InteractiveMenu theIntMenu = theObj.GetComponent<InteractiveMenu>();
 		if (theIntMenu != null) {
 			theIntMenu.ToggleMenu();
 		}
 
-
-		theNPC = theObj.GetComponent<NPC>();
-		playerComp.GoTalkToNPC(theObj.transform);
-
-		InteractiveObject intObj = theObj.GetComponent<InteractiveObject>();
-		intObj.allowInteraction = false;
-
 		DialogueRunner dialogRunner = FindObjectOfType<DialogueRunner> ();
 		DialogueUI theConversationUI = dialogRunner.dialogueUI as DialogueUI;
 
-		theConversationUI.AddParticipant(player.transform);
-		theConversationUI.AddParticipant(theObj.transform);
+		theConversationUI.dialogRunner.AddParticipant(playerComp.transform);
+		theConversationUI.dialogRunner.AddParticipant(theObj.transform);
 
-		startDialogue = true;
+		playerComp.stateTransitionData = new StateTransitionData(theObj.GetComponent<NPC>());
+
+		playerComp.ChangeToState(PlayerStateMachine.PlayerStates.PlayerWalk);
+		(playerComp.currentState as StateWalk).SetupState(GetCorrectTalkingPosition(theObj.transform), true, PlayerStateMachine.PlayerStates.PlayerTalk);
+	}
+
+	public Vector2 GetCorrectTalkingPosition(Transform moveToObj) {
+		Player playerComp = player.GetComponent<Player>();
+		CircleCollider2D theCollider = moveToObj.GetComponent<CircleCollider2D>();
+		int dirChange = 1; 
+		Character talkTo = moveToObj.gameObject.GetComponent<Character>();
+		if (talkTo.currentFacingDirection == Character.MovingDirection.MovingLeft) {
+			dirChange = -1;
+		}
+
+		float newX = moveToObj.position.x + (theCollider.radius+0.5f)*dirChange; 
+
+		return new Vector2(newX, moveToObj.position.y);
 	}
 }

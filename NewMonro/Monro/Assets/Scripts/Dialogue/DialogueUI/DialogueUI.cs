@@ -24,17 +24,17 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 	private Text theText;
 	private Text theNPCText;
 
-	private ArrayList conversationParticipants;
+
 	private float optionButtonYDisplacement;
 	private int inactiveButtons;
 
 	private Character lastOneWhoTalked;
 	private Character whoIsTalking;
 
-	DialogueRunner dialogRunner;
+	public DialogueRunner dialogRunner;
 
 	void Awake() {
-		conversationParticipants = new ArrayList();
+
 		dialogRunner = FindObjectOfType<DialogueRunner> ();
 		ConversationOptionsPrefab.gameObject.SetActive(false);
 
@@ -54,15 +54,11 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 		
 	}
 
-	public void AddParticipant(Transform participant) {
-		conversationParticipants.Add(participant);
-	}
-
 	private Character GetParticipant(string participant) {
 		int dotIdx = participant.IndexOf(".");
 		string participantCorrectName = participant.Substring(0, dotIdx);
 
-		foreach (Transform t in conversationParticipants) {
+		foreach (Transform t in dialogRunner.conversationParticipants) {
 			Character conversationInterface = t.GetComponent<Character>();
 			if (conversationInterface.ConversationName == participantCorrectName) {
 				return conversationInterface;
@@ -93,20 +89,6 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 			theText = instantiatedPlayerConversation.gameObject.GetComponentInChildren<Text>();
 			theText.gameObject.SetActive(true);
 
-
-//			if (instantiatedPlayerConversation != null) {
-//				instantiatedPlayerConversation.gameObject.SetActive(true);
-//				if (theText != null) {
-//					theText.gameObject.SetActive(true);
-//				}
-//			}
-//			else {
-//				
-//				instantiatedPlayerConversation.gameObject.SetActive(true);
-//				theText = instantiatedPlayerConversation.gameObject.GetComponentInChildren<Text>();
-//				theText.gameObject.SetActive(true);
-//			}
-//
 			theText.color = whoIsTalking.CharacterTalkColor;
 
 			if (textSpeed > 0.0f) {
@@ -220,12 +202,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 		instantiatedPlayerConversation = null;
 		theText = null;
 
-		foreach (Transform t in conversationParticipants) {
-			Character conversationInterface = t.GetComponent<Character>();
-			conversationInterface.ResetState();
-		}	
-
-		conversationParticipants.RemoveRange(0, conversationParticipants.Count-1);
+		dialogRunner.DialogueComplete();
 
 		resetDialogueOptionsButtons();
 

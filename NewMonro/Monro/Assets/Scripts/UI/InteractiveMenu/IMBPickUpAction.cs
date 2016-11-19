@@ -25,8 +25,13 @@ public class IMBPickUpAction : IMActionButton {
 
 	override public void ExecuteAction() {
 		Player playerComp = player.GetComponent<Player>();
-		playerComp.MoveToAndPickUp(this.transform.position, interactiveObject.transform);
 
+		playerComp.itemToPickUp = interactiveObject.transform;
+		playerComp.ChangeToState(PlayerStateMachine.PlayerStates.PlayerWalk);
+		(playerComp.currentState as StateWalk).SetupState(this.transform.position, true, PlayerStateMachine.PlayerStates.PlayePickUp);
+
+
+		//playerComp.MoveToAndPickUp(this.transform.position, interactiveObject.transform);
 
 	}
 

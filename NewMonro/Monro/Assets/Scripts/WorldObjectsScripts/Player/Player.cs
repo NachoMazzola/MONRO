@@ -2,36 +2,40 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
+public struct StateTransitionData {
+	public Character otherCharacter;
+	public ArrayList otherCharacters; 
+
+	public StateTransitionData(Character otherCharacter, ArrayList otherCharacters = null) {
+		this.otherCharacter = otherCharacter;
+		this.otherCharacters = otherCharacters;
+	}
+}
+
 
 public class Player : Character
 {
-	public enum MovingDirection
-	{
-		MovingRight,
-		MovingLeft
-	}
-
-	public float PlayerMovementSpeed = 4.0f;
-	public bool StartFacingRight = true;
+	[HideInInspector]
+	public Vector2 targetPosition;
+	[HideInInspector]
+	public Transform itemToPickUp;
+	[HideInInspector]
+	public PlayerInventory inventory;
 
 	[HideInInspector]
-	public PlayerStateMachine animStateMachine;
+	public StateTransitionData stateTransitionData;
 
-	private MovingDirection currentFacingDirection;
-	private MovingDirection lastFacingDirection;
 
-	private Vector2 targetPosition;
 	private Vector2 xAxisOnlyPosition;
-	private bool canMove = false;
 	private float yOriginalPos;
-
 	private bool shouldPickUpItem;
-	private Transform itemToPickUp;
+
 	private PlayerCaption playerCaption;
 
 	private bool willTalkToNPC;
 
-	private PlayerInventory inventory;
+
+
 
 
 	void Awake (){
@@ -55,8 +59,7 @@ public class Player : Character
 		inventory = GetComponent<PlayerInventory> ();
 		//playerCaption = GetComponent<PlayerCaption> ();
 
-		currentFacingDirection = StartFacingRight ? MovingDirection.MovingRight : MovingDirection.MovingLeft;
-		lastFacingDirection = currentFacingDirection;
+		ChangeToState(PlayerStateMachine.PlayerStates.PlayerIdle);
 	}
 
 	override public void OnStart() {
@@ -69,39 +72,9 @@ public class Player : Character
 	override public void OnUpdate() {
 		base.OnUpdate();
 
-		if (canMove) {
-
-			xAxisOnlyPosition.x = targetPosition.x;
-			xAxisOnlyPosition.y = yOriginalPos;
-			transform.position = Vector2.MoveTowards (transform.position, xAxisOnlyPosition, Time.deltaTime * PlayerMovementSpeed);
-
-			animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayerWalk);
-		}
-
-		if (canMove && transform.position.x == targetPosition.x && animStateMachine.GetCurrentState () != PlayerStateMachine.PlayerStates.PlayerIdle) {
-			canMove = false;
-
-			if (shouldPickUpItem) {
-				animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayePickUp);
-
-				shouldPickUpItem = false;
-
-				Debug.Log("Player state: " + animStateMachine.GetCurrentState ());
-			}
-			else if (willTalkToNPC) {
-				animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayerTalk);
-				willTalkToNPC = false;
-
-			}else {
-				animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayerIdle);
-			}
-
-		}
-
+		currentState.StateUpdate();
 	}
-
-
-
+		
 	override public void IWOTapped(Vector2 tapPos, GameObject other) {
 		Debug.Log("TAP");
 		if (animStateMachine.GetCurrentState () == PlayerStateMachine.PlayerStates.PlayerTalk) {
@@ -110,71 +83,18 @@ public class Player : Character
 
 
 		targetPosition = tapPos;
-
-		DecideFacingDirection();
-
 		canMove = other == null;
 
-		//temporal fix
-		animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayerWalk);
-		willTalkToNPC = false;
-		shouldPickUpItem = false;
+		if (other == null) {
+			this.ChangeToState(PlayerStateMachine.PlayerStates.PlayerWalk);
+			(this.currentState as StateWalk).optionalStateToTransitionOnEnd = PlayerStateMachine.PlayerStates.PlayerIdle;	
+		}
 	}
 
 	override public void IWOTapHold(Vector2 tapPos, GameObject other) {
 		Debug.Log("HOLD TAP");
 	}
-
-	void DecideFacingDirection() {
-		MovingDirection theMovingDirection = targetPosition.x > this.transform.position.x ? MovingDirection.MovingRight : MovingDirection.MovingLeft;
-		if (theMovingDirection != currentFacingDirection) {
-
-			Vector2 theScale = characterSprite.transform.localScale;
-			theScale.x = characterSprite.transform.localScale.x * -1;
-			characterSprite.transform.localScale = theScale;
-
-			lastFacingDirection = currentFacingDirection;
-			currentFacingDirection = theMovingDirection;
-		}
-	}
-
-	public void MoveTo (Vector2 newPosition)
-	{
-		targetPosition = newPosition;
-		canMove = true;
-	}
-
-	public void MoveToKeepDistance(Transform moveToObj) {
-
-		CircleCollider2D theCollider = moveToObj.GetComponent<CircleCollider2D>();
-		int dirChange = 1; 
-		if (currentFacingDirection == MovingDirection.MovingRight) {
-			dirChange = -1;
-		}
-	
-		float newX = moveToObj.position.x + (theCollider.radius+0.5f)*dirChange; 
-
-		Vector2 newPos = new Vector2(newX, moveToObj.position.y);
-
-		targetPosition = newPos;
-		DecideFacingDirection();
-		canMove = true;
-	}
-
-	public void GoTalkToNPC(Transform NPC) {
-		MoveToKeepDistance(NPC);
-		willTalkToNPC = true;
-	}
-
-
-	public void MoveToAndPickUp (Vector2 newPosition, Transform itemToPickUp)
-	{
-		this.shouldPickUpItem = true;
-		this.itemToPickUp = itemToPickUp;
-
-		MoveTo (newPosition);
-	}
-
+		
 	public void ShowCaption(string caption) {
 		Transform theCaption = GetConversationCaptionCanvas();
 		theCaption.gameObject.SetActive(true);
@@ -199,25 +119,52 @@ public class Player : Character
 	/*
 	 * This method is called when the PickUp animaiton ends. It is wired up from the Animaiton Panel in Inspector, hence the name AnimEndEvent 
 	*/
-	public void AnimEndEventPutItemInInventory ()
-	{
-		
-		UIInventory theInv = GameObject.Find ("UIInventory").GetComponent<UIInventory> ();
-
-		inventory.AddItem (itemToPickUp.GetComponent<InteractiveObject> ().GetComponent<Item> ());
-		theInv.AddItemToInventory (itemToPickUp.GetComponent<InteractiveObject> ().Item);
-
-		itemToPickUp.gameObject.SetActive (false);
-
-		itemToPickUp = null;
-
+	public void AnimEndEventPutItemInInventory () {
 		ResetState();
 	}
 		
 	override  public void ResetState() {
-		animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayerIdle);
+		currentState.StateEnd();
+		ChangeToState(PlayerStateMachine.PlayerStates.PlayerIdle);
+
 		Transform theCaption = base.GetConversationCaptionCanvas();
 		Vector3 invertedScale = new Vector3(Mathf.Abs(theCaption.localScale.x), theCaption.localScale.y);
 		theCaption.localScale = invertedScale;
+	}
+
+
+	override public void ChangeToState(PlayerStateMachine.PlayerStates newState) {
+
+		if (currentState != null) {
+			lastState = currentState;
+		}
+
+		switch(newState) {
+		case PlayerStateMachine.PlayerStates.PlayerIdle:
+			currentState = this.gameObject.AddComponent<StateIdle>();
+			currentState.SetCharacterOwner(this);
+			break;
+
+		case PlayerStateMachine.PlayerStates.PlayerWalk:
+			currentState = this.gameObject.AddComponent<StateWalk>();
+			currentState.SetCharacterOwner(this);
+			(currentState as StateWalk).SetupState(targetPosition);
+
+			break;
+
+		case PlayerStateMachine.PlayerStates.PlayePickUp:
+			currentState = this.gameObject.AddComponent<StatePickUp>();
+			currentState.SetCharacterOwner(this);
+
+			break;
+
+		case PlayerStateMachine.PlayerStates.PlayerTalk:
+			currentState = this.gameObject.AddComponent<StateTalk>();
+			currentState.SetCharacterOwner(this);
+
+			break;
+		}
+
+		currentState.StateStart();
 	}
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PlayerStateMachine : MonoBehaviour {
 
 	public enum PlayerStates {
+		PlayerNone,
 		PlayerIdle,
 		PlayerWalk,
 		PlayePickUp,

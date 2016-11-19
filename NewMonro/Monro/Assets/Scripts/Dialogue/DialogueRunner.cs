@@ -55,6 +55,8 @@ namespace Yarn.Unity
 
 		public bool automaticCommands = true;
 
+		public ArrayList conversationParticipants;
+
 		// Our conversation engine
 		// Automatically created on first access
 		private Dialogue _dialogue;
@@ -72,8 +74,31 @@ namespace Yarn.Unity
 			}
 		}
 
+		/*
+		 * CUSTOM SHIT!
+		*/
+
+		public void AddParticipant(Transform participant) {
+			conversationParticipants.Add(participant);
+		}
+
+		public void DialogueComplete() {
+			foreach (Transform t in conversationParticipants) {
+				Character conversationInterface = t.GetComponent<Character>();
+				conversationInterface.ResetState();
+			}
+
+			conversationParticipants.RemoveRange(0, conversationParticipants.Count-1);
+		}
+		/*
+		 * CUSTOM SHIT - END!
+		*/
+
+
 		void Start ()
 		{
+			conversationParticipants = new ArrayList();
+
 			// Ensure that we have our Implementation object
 			if (dialogueUI == null) {
 				Debug.LogError ("Implementation was not set! Can't run the dialogue!");
