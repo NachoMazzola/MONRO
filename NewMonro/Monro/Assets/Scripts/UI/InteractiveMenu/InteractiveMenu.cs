@@ -46,7 +46,6 @@ public class InteractiveMenu : MonoBehaviour {
 
 			instantiatedButtons[iter] =  theButton;
 
-
 //			float offset = 45.0f;
 //			if (iter == 3) {
 //				offset = 45.0f * 2;

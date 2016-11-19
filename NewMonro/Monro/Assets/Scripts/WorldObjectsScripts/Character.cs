@@ -41,7 +41,6 @@ public class Character : MonoBehaviour, IWorldInteractionObserver {
 	public string ConversationName;
 	public Color CharacterTalkColor;
 	public float MovementSpeed = 4.0f;
-	public bool StartFacingRight = true;
 
 
 	void Awake() {
@@ -60,10 +59,10 @@ public class Character : MonoBehaviour, IWorldInteractionObserver {
 
 	virtual public void OnAwake() {
 		characterSprite = this.GetComponent<SpriteRenderer>();
-		currentFacingDirection = StartFacingRight ? MovingDirection.MovingRight : MovingDirection.MovingLeft;
-		lastFacingDirection = currentFacingDirection;
+		Vector2 theScale = this.characterSprite.transform.localScale;
 
-		SwapFacingDirectionTo(currentFacingDirection);
+		currentFacingDirection = theScale.x > 0 ? MovingDirection.MovingRight : MovingDirection.MovingLeft;
+		lastFacingDirection = currentFacingDirection;
 	}
 
 	virtual public void OnStart() {

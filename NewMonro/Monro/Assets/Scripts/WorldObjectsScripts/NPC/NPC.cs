@@ -5,15 +5,9 @@ public class NPC : Character {
 
 	public string ConversationNode;
 
-	void Awake() {
-		characterType = CharacterType.NPC;
+	void Awake (){
+		OnAwake();
 	}
-
-//	//EL PROBLEMA ESTA ACA!! AL PARECER, AL LLAMAR AL ONAWAKE DE CHARACTER ALGO SE CARAJEA
-//	//Y NO MUESTRA EL MENU
-//	void Awake (){
-//		OnAwake();
-//	}
 
 	// Use this for initialization
 	void Start () {

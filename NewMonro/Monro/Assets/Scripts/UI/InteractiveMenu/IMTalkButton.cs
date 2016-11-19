@@ -53,7 +53,6 @@ public class IMTalkButton : IMActionButton {
 	}
 
 	public Vector2 GetCorrectTalkingPosition(Transform moveToObj) {
-		Player playerComp = player.GetComponent<Player>();
 		CircleCollider2D theCollider = moveToObj.GetComponent<CircleCollider2D>();
 		int dirChange = 1; 
 		Character talkTo = moveToObj.gameObject.GetComponent<Character>();
