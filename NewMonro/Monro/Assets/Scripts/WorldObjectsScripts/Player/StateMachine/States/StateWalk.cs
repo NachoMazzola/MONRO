@@ -71,6 +71,11 @@ public class StateWalk : State {
 	public override void StateEnd() {
 		stateCharacterOwner.canMove = false;
 
+		StateTransitionData stData = (stateCharacterOwner as Player).stateTransitionData;
+		if (stData.otherCharacter != null) {
+			stData.otherCharacter.ResetState();
+		}
+
 		base.StateEnd();
 	}
 
