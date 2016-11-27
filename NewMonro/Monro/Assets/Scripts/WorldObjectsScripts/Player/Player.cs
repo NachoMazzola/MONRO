@@ -35,9 +35,6 @@ public class Player : Character
 	private bool willTalkToNPC;
 
 
-
-
-
 	void Awake (){
 		OnAwake();
 	}

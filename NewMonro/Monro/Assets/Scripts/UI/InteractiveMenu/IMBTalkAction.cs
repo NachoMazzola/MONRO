@@ -3,7 +3,7 @@ using System.Collections;
 using Yarn.Unity;
 
 
-public class IMTalkButton : IMActionButton {
+public class IMBTalkAction: IMActionButton {
 
 	// Use this for initialization
 	void Awake() {
@@ -31,6 +31,8 @@ public class IMTalkButton : IMActionButton {
 	//interface methods
 
 	override public void ExecuteAction() {
+		base.ExecuteAction();
+
 		Player playerComp = player.GetComponent<Player>();
 
 		InteractiveObject theObj = interactiveObject.GetComponent<InteractiveObject>();

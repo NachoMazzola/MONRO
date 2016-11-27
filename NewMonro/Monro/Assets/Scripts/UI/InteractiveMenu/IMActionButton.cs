@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Yarn.Unity;
+
 
 public class IMActionButton : MonoBehaviour {
 
+	public string dialogueReferVariable; 
 	public Transform ButtonPrefab;
 
 	protected GameObject player;
@@ -39,6 +42,11 @@ public class IMActionButton : MonoBehaviour {
 		
 	public virtual void ExecuteAction() {
 		Debug.Log("ACTION BUTTON");
+
+		DialogueRunner dialogRunner = FindObjectOfType<DialogueRunner> ();
+		ExampleVariableStorage dialogueStorage = dialogRunner.variableStorage as ExampleVariableStorage;
+
+		dialogueStorage.SetValue(dialogueReferVariable, new Yarn.Value(true));
 	}
 		
 }

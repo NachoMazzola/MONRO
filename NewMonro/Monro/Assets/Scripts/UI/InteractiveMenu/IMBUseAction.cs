@@ -16,6 +16,7 @@ public class IMBUseAction : IMActionButton {
 
 	override public void ExecuteAction() {
 		Debug.Log("USE BUTTON");
+		base.ExecuteAction();
 	}
 
 
