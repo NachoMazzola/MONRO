@@ -207,8 +207,8 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 		ConversationOptionsPrefab.gameObject.SetActive(false);
 		instantiatedPlayerConversation.gameObject.SetActive(false);
 
-		instantiatedPlayerConversation = null;
-		theText = null;
+		//instantiatedPlayerConversation = null;
+		theText.text = "";
 
 		dialogRunner.DialogueComplete();
 
