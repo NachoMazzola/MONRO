@@ -46,7 +46,9 @@ public class IMActionButton : MonoBehaviour {
 		DialogueRunner dialogRunner = FindObjectOfType<DialogueRunner> ();
 		ExampleVariableStorage dialogueStorage = dialogRunner.variableStorage as ExampleVariableStorage;
 
-		dialogueStorage.SetValue(dialogueReferVariable, new Yarn.Value(true));
+		string propeVariable = "$"+dialogueReferVariable;
+
+		dialogueStorage.SetValue(propeVariable, new Yarn.Value(true));
 	}
 		
 }
