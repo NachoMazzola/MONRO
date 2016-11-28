@@ -1,0 +1,12 @@
+[
+	{
+		"title": "Hildr.Start",
+		"tags": "",
+		"body": "<<if $lookedAt is true>>\nMiraste eso, no?\n<<else>>\nMirá eso\n<<endif>>",
+		"position": {
+			"x": 540,
+			"y": 244
+		},
+		"colorID": 0
+	}
+]
