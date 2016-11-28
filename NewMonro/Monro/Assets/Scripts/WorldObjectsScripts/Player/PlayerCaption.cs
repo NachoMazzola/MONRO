@@ -35,17 +35,18 @@ public class PlayerCaption : MonoBehaviour {
 
 	public void ShowCaption(string caption) {
 		if (showingCaption == true) {
-			Text showingText = SetCaptionText(caption);
-
-			showingText.CrossFadeAlpha(1.0f, 0, false);
-			showingText.CrossFadeColor(Color.white, 0, false, false);
-
-			StopCoroutine(hideUICoroutine);
-			StopCoroutine(removeCaptionCoroutine);
-
-
-			StartCoroutine(HideTalkUI(instantiatedCaption.gameObject, CaptionDurationUntilFade, showingText));
-
+			return;
+//			Text showingText = SetCaptionText(caption);
+//
+//			showingText.CrossFadeAlpha(1.0f, 0, false);
+//			showingText.CrossFadeColor(Color.white, 0, false, false);
+//
+//			StopCoroutine(hideUICoroutine);
+//			StopCoroutine(removeCaptionCoroutine);
+//
+//
+//			StartCoroutine(HideTalkUI(instantiatedCaption.gameObject, CaptionDurationUntilFade, showingText));
+//
 			return;
 		}
 
@@ -54,6 +55,7 @@ public class PlayerCaption : MonoBehaviour {
 
 		//InstantiateCaption();
 		instantiatedCaption = this.gameObject.transform;
+		instantiatedCaption.gameObject.SetActive(true);
 
 		Text theText = SetCaptionText(caption);
 
@@ -85,9 +87,8 @@ public class PlayerCaption : MonoBehaviour {
 		yield return new WaitForSeconds (secondsToWait);
 		guiParentCanvas.SetActive (false);
 
-		Destroy(instantiatedCaption.gameObject);
-		instantiatedCaption = null;
 
+		instantiatedCaption.gameObject.SetActive(false);
 		showingCaption = false;
 	}
 
