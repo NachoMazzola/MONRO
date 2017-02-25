@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Linq;
 
 public class InteractiveMenu : MonoBehaviour {
 
@@ -8,13 +10,15 @@ public class InteractiveMenu : MonoBehaviour {
 	public float ButtonDistance = 35.0f;
 
 	private RectTransform menu;
-	private RectTransform[] instantiatedButtons;
+	private List<RectTransform> instantiatedButtons;
 	private bool menuOn = false;
+	private int maxButtons = 4;
+	private List<IMActionButton> buttons;
+	private int lastAddedButtonIdx = 0;
 
-	private BoxCollider2D theBoxCollider;
 
 	void Awake() {
-		theBoxCollider = this.GetComponent<BoxCollider2D>();
+		//theBoxCollider = this.GetComponent<BoxCollider2D>();
 	}
 
 	// Use this for initialization
@@ -23,13 +27,14 @@ public class InteractiveMenu : MonoBehaviour {
 		menu.SetParent(this.transform);
 
 
-		IMActionButton[] buttons = GetComponents<IMActionButton>();
-		if (buttons == null || buttons.Length == 0) {
+		buttons = GetComponents<IMActionButton>().ToList();
+		if (buttons == null || buttons.Count == 0) {
 			Debug.Log("WARNING: MENU DOES NOT HAVE ANY BUTTON ACTIONS!");
 			return;
 		}
-			
-		instantiatedButtons = new RectTransform[buttons.Length];
+
+
+		instantiatedButtons = new List<RectTransform>(buttons.Count);//  new RectTransform[buttons.Count];
 
 		int iter = 0;
 		foreach (IMActionButton comp in buttons) {
@@ -37,35 +42,47 @@ public class InteractiveMenu : MonoBehaviour {
 				continue;
 			}
 
-			RectTransform theButton = Instantiate(comp.ButtonPrefab, this.transform.position, Quaternion.identity) as RectTransform;
-			theButton.SetParent(menu);
+			if (iter == maxButtons) {
+				break;
+			}
 
-			Button buttonComp = theButton.GetComponent<Button>();
-			buttonComp.onClick.RemoveAllListeners();
-			buttonComp.onClick.AddListener(comp.ExecuteAction);
+			comp.menu = this;
 
-			instantiatedButtons[iter] =  theButton;
-
-//			float offset = 45.0f;
-//			if (iter == 3) {
-//				offset = 45.0f * 2;
-//			}
-//
-			//float ang = ((iter * 180.0f) / buttons.Length) - 45.0f;
-
-			float ang = ((iter * 360.0f) / buttons.Length);
-			Vector2 pos = new Vector2();
-			pos.x = transform.position.x + ButtonDistance * Mathf.Sin(ang * Mathf.Deg2Rad);
-			pos.y = transform.position.y + ButtonDistance * Mathf.Cos(ang * Mathf.Deg2Rad);
-
-			theButton.anchoredPosition = pos;
+			AddButtonToMenu(comp, iter);
 
 			iter++;
+			lastAddedButtonIdx = iter;
 		}
 			
 		menu.gameObject.SetActive(menuOn);
 	}
 		
+	private void AddButtonToMenu(IMActionButton button, int btnIndex) {
+		RectTransform theButton = Instantiate(button.ButtonPrefab, this.transform.position, Quaternion.identity) as RectTransform;
+		theButton.SetParent(menu);
+
+		Button buttonComp = theButton.GetComponent<Button>();
+		buttonComp.onClick.RemoveAllListeners();
+		buttonComp.onClick.AddListener(button.ExecuteAction);
+
+		instantiatedButtons.Add(theButton);
+		//instantiatedButtons[btnIndex] =  theButton;
+
+		//			float offset = 45.0f;
+		//			if (iter == 3) {
+		//				offset = 45.0f * 2;
+		//			}
+		//
+		//float ang = ((iter * 180.0f) / buttons.Length) - 45.0f;
+
+		float ang = ((btnIndex * 360.0f) / buttons.Count);
+		Vector2 pos = new Vector2();
+		pos.x = transform.position.x + ButtonDistance * Mathf.Sin(ang * Mathf.Deg2Rad);
+		pos.y = transform.position.y + ButtonDistance * Mathf.Cos(ang * Mathf.Deg2Rad);
+
+		theButton.anchoredPosition = pos;
+	}
+
 	// Update is called once per frame
 	void Update () {
 	
@@ -80,6 +97,18 @@ public class InteractiveMenu : MonoBehaviour {
 
 	public bool menuIsOn() {
 		return menuOn;
+	}
+
+	public void AddButton(IMActionButton newButton) {
+		if (lastAddedButtonIdx == maxButtons) {
+			Debug.Log("WARNING: NO SE PUEDEN AGREGAR MAS BOTONES!");
+			return;
+		}
+		if (buttons.Contains(newButton)) {
+			return;
+		}
+		buttons.Add(newButton);
+		AddButtonToMenu(newButton, lastAddedButtonIdx);
 	}
 
 }

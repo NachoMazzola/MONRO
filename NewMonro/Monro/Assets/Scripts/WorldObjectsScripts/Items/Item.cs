@@ -7,7 +7,7 @@ public class Item : MonoBehaviour {
 	public Transform ItemWorldRepTransform;
 
 	protected string itemName;
-	protected string itemId;
+	public string itemId;
 	protected string itemDescription;
 
 

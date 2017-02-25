@@ -8,21 +8,14 @@ public class InteractiveObject : MonoBehaviour
 
 	public Transform Item;
 	public string Caption;
-	public Sprite HighlightedSprite;
+
 	public bool allowInteraction;
-
-	private SpriteRenderer theSpriteRenderer;
-	private Sprite originalSprite;
-
 
 	private bool isShowingMenu;
 
 	void Awake ()
 	{
 		allowInteraction = true;
-		theSpriteRenderer = GetComponent<SpriteRenderer> ();	
-		originalSprite = theSpriteRenderer.sprite;
-	
 		isShowingMenu = false;
 	}
 
@@ -60,26 +53,19 @@ public class InteractiveObject : MonoBehaviour
 	void OnTriggerEnter2D (Collider2D other)
 	{
 		if (other && other.gameObject.tag == "Player" && !isShowingMenu) {
-			HighlightObject ();
+			HighlightableObject highlight = this.GetComponent<HighlightableObject>();
+			highlight.HighlightObject ();
 		}
 	}
 
 	void OnTriggerExit2D (Collider2D other)
 	{
 		if (other && other.gameObject.tag == "Player" && !isShowingMenu) {
-			RemoveHighlight ();
+			HighlightableObject highlight = this.GetComponent<HighlightableObject>();
+			highlight.RemoveHighlight ();
 		}
 	}
 
-	public void HighlightObject ()
-	{
-		theSpriteRenderer.sprite = HighlightedSprite;
-	}
-
-	public void RemoveHighlight ()
-	{
-		theSpriteRenderer.sprite = originalSprite;
-	}
 
 	public BoxCollider2D GetTappbleCollider ()
 	{

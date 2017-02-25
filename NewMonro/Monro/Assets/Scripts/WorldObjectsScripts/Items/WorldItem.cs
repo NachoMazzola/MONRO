@@ -7,7 +7,7 @@ public class WorldItem : MonoBehaviour {
 	private DragHandler theDragging;
 
 	public bool IsBeingDragged;
-
+	public bool ItemHasBeenUsed;
 	public Item inventoryItemRepresentation;
 
 	// Use this for initialization
@@ -20,19 +20,26 @@ public class WorldItem : MonoBehaviour {
 	void Update () {
 		if (Input.GetMouseButtonUp(0))
 		{
-			IsBeingDragged = false;
-			this.gameObject.SetActive(false);
-
-			if (inventoryItemRepresentation != null) {
-				inventoryItemRepresentation.ActivateInventoryItem();
-
-				GameObject inv = GameObject.Find("UIInventory");
-				UIInventory invScp = inv.GetComponent<UIInventory>();
-
-				invScp.EnableScrolling(true);
-			}
+			StopDragging();
 		}
 
+	}
+
+	public void StopDragging() {
+		IsBeingDragged = false;
+		this.gameObject.SetActive(false);
+
+		if (!ItemHasBeenUsed && inventoryItemRepresentation != null) {
+			inventoryItemRepresentation.ActivateInventoryItem();
+
+			GameObject inv = GameObject.Find("UIInventory");
+			UIInventory invScp = inv.GetComponent<UIInventory>();
+
+			invScp.EnableScrolling(true);
+		}
+		else {
+			Destroy(this);
+		}
 	}
 
 	public void StartDragging() {
@@ -47,17 +54,19 @@ public class WorldItem : MonoBehaviour {
 		invScp.EnableScrolling(false);
 	}
 
-	void OnTriggerEnter2D(Collider2D other) {
-		if (other && other.gameObject.tag == "Player") {
-			Debug.Log("ENTRE EN LA COLISION PAPI!");
-		}
+	public void ItemIsOverObject(Transform other) {
+		HighlightableObject highlight = this.GetComponent<HighlightableObject>();
+		highlight.HighlightObject();
+
+		ItemAction theAction = this.GetComponent<ItemAction>();
+		Character theChar = other.GetComponent<Character>();
+		theAction.ExecuteAction(theChar);
+
 	}
 
-	void OnTriggerExit2D(Collider2D other) {
-		if (other && other.gameObject.tag == "Player") {
-			Debug.Log("ME SALI DE LA COLISION PAPI!");
-		}
+	public void ItemHasBeenReleasedOverObject(Transform other) {
+		HighlightableObject highlight = this.GetComponent<HighlightableObject>();
+		highlight.RemoveHighlight();
+
 	}
-
-
 }

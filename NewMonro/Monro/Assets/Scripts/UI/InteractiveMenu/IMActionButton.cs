@@ -7,6 +7,15 @@ using Yarn.Unity;
 
 public class IMActionButton : MonoBehaviour {
 
+	public bool AddsTalkAction = false;
+	public bool AddsUseAction = false;
+	public bool AddsPickUpAction = false;
+	public bool AddsLookAtAction = false;
+		
+
+	[HideInInspector]
+	public InteractiveMenu menu;
+
 	public string dialogueReferVariable; 
 	public Transform ButtonPrefab;
 
@@ -49,6 +58,20 @@ public class IMActionButton : MonoBehaviour {
 		string propeVariable = "$"+dialogueReferVariable;
 
 		dialogueStorage.SetValue(propeVariable, new Yarn.Value(true));
+
+		AddActionOnfinish();
 	}
-		
+
+	public virtual void AddActionOnfinish() {
+		if (AddsTalkAction) {
+			menu.gameObject.AddComponent<IMBTalkAction>();
+			IMBTalkAction talkAction = menu.GetComponent<IMBTalkAction>();
+			Transform buttoT = Resources.Load("/Prefabs/UIPrefabs/MenuPrefabs/IMBLookAt") as Transform;
+			if (buttoT == null) {
+				Debug.Log("PREFAB NOT FOUND BITCH");
+			}
+			talkAction.ButtonPrefab = Resources.Load("Prefabs/UIPrefabs/MenuPrefabs/IMBLookAt") as Transform;//  this.ButtonPrefab;
+			menu.AddButton(talkAction);
+		}
+	}
 }

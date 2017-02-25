@@ -4,6 +4,7 @@ using System.Collections;
 public class IMBLookAtAction : IMActionButton {
 
 
+
 	// Use this for initialization
 	void Start () {
 		OnStart();
@@ -31,5 +32,6 @@ public class IMBLookAtAction : IMActionButton {
 		Player thePlayer = player.GetComponent<Player>();
 		InteractiveObject theObj = interactiveObject.GetComponent<InteractiveObject>();
 		thePlayer.ShowCaption(theObj.Caption);
+
 	}
 }
