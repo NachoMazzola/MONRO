@@ -54,7 +54,9 @@ public class InteractiveObject : MonoBehaviour
 	{
 		if (other && other.gameObject.tag == "Player" && !isShowingMenu) {
 			HighlightableObject highlight = this.GetComponent<HighlightableObject>();
-			highlight.HighlightObject ();
+			if (highlight != null) {
+				highlight.HighlightObject ();
+			}
 		}
 	}
 
@@ -62,7 +64,9 @@ public class InteractiveObject : MonoBehaviour
 	{
 		if (other && other.gameObject.tag == "Player" && !isShowingMenu) {
 			HighlightableObject highlight = this.GetComponent<HighlightableObject>();
-			highlight.RemoveHighlight ();
+			if (highlight != null) {
+				highlight.RemoveHighlight ();
+			}
 		}
 	}
 

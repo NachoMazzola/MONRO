@@ -66,10 +66,11 @@ public class IMActionButton : MonoBehaviour {
 		if (AddsTalkAction) {
 			menu.gameObject.AddComponent<IMBTalkAction>();
 			IMBTalkAction talkAction = menu.GetComponent<IMBTalkAction>();
-			Transform buttoT = Resources.Load("/Prefabs/UIPrefabs/MenuPrefabs/IMBLookAt") as Transform;
+			Transform buttoT = Resources.Load("Prefabs/UIPrefabs/MenuPrefabs/IMBLookAt") as Transform;
 			if (buttoT == null) {
 				Debug.Log("PREFAB NOT FOUND BITCH");
 			}
+
 			talkAction.ButtonPrefab = Resources.Load("Prefabs/UIPrefabs/MenuPrefabs/IMBLookAt") as Transform;//  this.ButtonPrefab;
 			menu.AddButton(talkAction);
 		}
