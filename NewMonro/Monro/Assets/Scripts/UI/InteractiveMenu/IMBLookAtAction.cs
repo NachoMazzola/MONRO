@@ -38,7 +38,10 @@ public class IMBLookAtAction : IMActionButton {
 
 		Player thePlayer = player.GetComponent<Player>();
 		InteractiveObject theObj = interactiveObject.GetComponent<InteractiveObject>();
-		thePlayer.ShowCaption(theObj.Caption);
 
+		StartCoroutine(AddActionOnFinishAfterCoroutine(thePlayer.ShowCaption(theObj.Caption)));
+
+
+		Debug.Log("CAQUITA LOCA LOCA LOCA!!!");
 	}
 }

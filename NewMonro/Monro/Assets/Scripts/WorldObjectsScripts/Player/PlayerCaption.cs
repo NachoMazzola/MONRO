@@ -33,9 +33,9 @@ public class PlayerCaption : MonoBehaviour {
 	
 	}
 
-	public void ShowCaption(string caption) {
+	public IEnumerator ShowCaption(string caption) {
 		if (showingCaption == true) {
-			return;
+			yield return null;
 //			Text showingText = SetCaptionText(caption);
 //
 //			showingText.CrossFadeAlpha(1.0f, 0, false);
@@ -60,7 +60,7 @@ public class PlayerCaption : MonoBehaviour {
 		Text theText = SetCaptionText(caption);
 
 		hideUICoroutine = HideTalkUI(instantiatedCaption.gameObject, CaptionDurationUntilFade, theText);
-		StartCoroutine(hideUICoroutine);
+		yield return StartCoroutine(hideUICoroutine);
 	}
 
 	Text SetCaptionText(string caption) {
@@ -80,7 +80,6 @@ public class PlayerCaption : MonoBehaviour {
 		removeCaptionCoroutine = RemoveCaptionAfterSeconds(1.5f, guiParentCanvas);
 
 		StartCoroutine(removeCaptionCoroutine);
-
 	}
 
 	IEnumerator RemoveCaptionAfterSeconds(float secondsToWait, GameObject guiParentCanvas) {

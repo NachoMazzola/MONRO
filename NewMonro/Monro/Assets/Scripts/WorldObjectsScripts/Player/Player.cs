@@ -26,8 +26,6 @@ public class Player : Character
 	public StateTransitionData stateTransitionData;
 
 
-	private Vector2 xAxisOnlyPosition;
-	private float yOriginalPos;
 	private bool shouldPickUpItem;
 
 	private PlayerCaption playerCaption;
@@ -62,8 +60,7 @@ public class Player : Character
 	override public void OnStart() {
 		base.OnStart();
 
-		xAxisOnlyPosition = new Vector2 ();
-		yOriginalPos = transform.position.y;
+
 	}
 
 	override public void OnUpdate() {
@@ -92,12 +89,12 @@ public class Player : Character
 		Debug.Log("HOLD TAP");
 	}
 		
-	public void ShowCaption(string caption) {
+	public IEnumerator ShowCaption(string caption) {
 		Transform theCaption = GetConversationCaptionCanvas();
 		theCaption.gameObject.SetActive(true);
 
 		PlayerCaption pCaption = theCaption.GetComponent<PlayerCaption>();
-		pCaption.ShowCaption(caption);
+		return pCaption.ShowCaption(caption);
 	}
 
 	override public Transform GetConversationCaptionCanvas() {

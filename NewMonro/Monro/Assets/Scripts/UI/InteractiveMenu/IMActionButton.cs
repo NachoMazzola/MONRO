@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Yarn.Unity;
+using System.Collections;
 
 public enum IMActionButtonType {
 	Pickup,
@@ -66,10 +67,15 @@ public class IMActionButton : MonoBehaviour {
 
 		dialogueStorage.SetValue(propeVariable, new Yarn.Value(true));
 
+		//AddActionOnfinish();
+	}
+
+	public IEnumerator AddActionOnFinishAfterCoroutine(IEnumerator coroutineToWait) {
+		yield return StartCoroutine(coroutineToWait);
 		AddActionOnfinish();
 	}
 
-	public virtual void AddActionOnfinish() {
+	public void AddActionOnfinish() {
 
 		IMActionButton actionBtn = null;
 		Transform actionBtnTransform = null;
