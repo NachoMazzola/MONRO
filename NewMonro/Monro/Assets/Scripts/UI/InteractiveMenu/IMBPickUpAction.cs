@@ -13,6 +13,11 @@ public class IMBPickUpAction : IMActionButton {
 		OnUpdate();
 	}
 
+	public override void OnAwake() {
+		base.OnAwake();
+		buttonType = IMActionButtonType.Pickup;
+	}
+
 	public override void OnStart() {
 		base.OnStart ();
 
@@ -34,7 +39,6 @@ public class IMBPickUpAction : IMActionButton {
 
 
 		//playerComp.MoveToAndPickUp(this.transform.position, interactiveObject.transform);
-
 	}
 
 

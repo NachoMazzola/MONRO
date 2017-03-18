@@ -19,6 +19,11 @@ public class IMBTalkAction: IMActionButton {
 		OnUpdate();
 	}
 
+	public override void OnAwake() {
+		base.OnAwake();
+		buttonType = IMActionButtonType.Talk;
+	}
+
 	public override void OnStart() {
 		base.OnStart ();
 

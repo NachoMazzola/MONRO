@@ -47,7 +47,7 @@ public class PlayerCaption : MonoBehaviour {
 //
 //			StartCoroutine(HideTalkUI(instantiatedCaption.gameObject, CaptionDurationUntilFade, showingText));
 //
-			return;
+
 		}
 
 

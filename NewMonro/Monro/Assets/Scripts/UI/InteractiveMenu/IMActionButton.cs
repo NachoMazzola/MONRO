@@ -4,14 +4,21 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Yarn.Unity;
 
+public enum IMActionButtonType {
+	Pickup,
+	LookAt,
+	Talk,
+	Use,
+	None
+}
+
 
 public class IMActionButton : MonoBehaviour {
+	
+	public IMActionButtonType AddsActionOnExecution = IMActionButtonType.None;
 
-	public bool AddsTalkAction = false;
-	public bool AddsUseAction = false;
-	public bool AddsPickUpAction = false;
-	public bool AddsLookAtAction = false;
-		
+	[HideInInspector]
+	public IMActionButtonType buttonType;
 
 	[HideInInspector]
 	public InteractiveMenu menu;
@@ -63,16 +70,54 @@ public class IMActionButton : MonoBehaviour {
 	}
 
 	public virtual void AddActionOnfinish() {
-		if (AddsTalkAction) {
-			menu.gameObject.AddComponent<IMBTalkAction>();
-			IMBTalkAction talkAction = menu.GetComponent<IMBTalkAction>();
-			Transform buttoT = Resources.Load("Prefabs/UIPrefabs/MenuPrefabs/IMBLookAt") as Transform;
-			if (buttoT == null) {
-				Debug.Log("PREFAB NOT FOUND BITCH");
+
+		IMActionButton actionBtn = null;
+		Transform actionBtnTransform = null;
+		switch(AddsActionOnExecution) {
+			case IMActionButtonType.Talk:
+
+			IMBTalkAction talkComponent = menu.gameObject.GetComponent<IMBTalkAction>();
+			if (talkComponent == null) {
+				actionBtn = menu.gameObject.AddComponent<IMBTalkAction>();	
+				actionBtnTransform = (Resources.Load("Prefabs/UIPrefabs/MenuPrefabs/IMBLookAt") as GameObject).transform;
 			}
 
-			talkAction.ButtonPrefab = Resources.Load("Prefabs/UIPrefabs/MenuPrefabs/IMBLookAt") as Transform;//  this.ButtonPrefab;
-			menu.AddButton(talkAction);
+			break;
+
+			case IMActionButtonType.LookAt:
+
+			IMActionButton lookAtComponent = menu.gameObject.GetComponent<IMBLookAtAction>();
+			if (lookAtComponent == null) {
+				actionBtn = menu.gameObject.AddComponent<IMBLookAtAction>();
+				actionBtnTransform = (Resources.Load("Prefabs/UIPrefabs/MenuPrefabs/IMBLookAt") as GameObject).transform;
+			}
+			break;
+
+			case IMActionButtonType.Pickup:
+			IMBPickUpAction pUpComponent = menu.gameObject.GetComponent<IMBPickUpAction>();
+			if (pUpComponent == null) {
+				actionBtn = menu.gameObject.AddComponent<IMBPickUpAction>();
+				actionBtnTransform = (Resources.Load("Prefabs/UIPrefabs/MenuPrefabs/IMBLookAt") as GameObject).transform;
+			}
+
+			break;
+
+			case IMActionButtonType.Use:
+			IMBUseAction useComponent = menu.gameObject.GetComponent<IMBUseAction>();
+			if (useComponent == null) {
+				actionBtn = menu.gameObject.AddComponent<IMBUseAction>();
+				actionBtnTransform = (Resources.Load("Prefabs/UIPrefabs/MenuPrefabs/IMBLookAt") as GameObject).transform;
+			}
+
+			break;
+		}
+			
+		if (actionBtn != null && actionBtnTransform != null) {
+			actionBtn.ButtonPrefab = actionBtnTransform;
+			menu.AddButton(actionBtn);
+		}
+		else {
+			Debug.Log("PREFAB NOT FOUND BITCH");
 		}
 	}
 }

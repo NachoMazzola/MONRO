@@ -3,7 +3,9 @@ using System.Collections;
 
 public class IMBLookAtAction : IMActionButton {
 
-
+	void Awake() {
+		OnAwake();
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -13,6 +15,11 @@ public class IMBLookAtAction : IMActionButton {
 	// Update is called once per frame
 	void Update () {
 		OnUpdate();
+	}
+
+	public override void OnAwake() {
+		base.OnAwake();
+		buttonType = IMActionButtonType.LookAt;
 	}
 
 	public override void OnStart() {

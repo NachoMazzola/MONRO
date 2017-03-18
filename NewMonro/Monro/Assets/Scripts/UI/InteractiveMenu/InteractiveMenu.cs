@@ -104,11 +104,20 @@ public class InteractiveMenu : MonoBehaviour {
 			Debug.Log("WARNING: NO SE PUEDEN AGREGAR MAS BOTONES!");
 			return;
 		}
-		if (buttons.Contains(newButton)) {
-			return;
+
+		bool alreadyContainsButton = false;
+		foreach (IMActionButton b in buttons) {
+			if (b.buttonType == newButton.buttonType) {
+				alreadyContainsButton = true;
+				break;
+			}
 		}
-		buttons.Add(newButton);
-		AddButtonToMenu(newButton, lastAddedButtonIdx);
+
+		if (alreadyContainsButton == false) {
+			buttons.Add(newButton);
+			AddButtonToMenu(newButton, lastAddedButtonIdx);	
+		}
+
 	}
 
 }

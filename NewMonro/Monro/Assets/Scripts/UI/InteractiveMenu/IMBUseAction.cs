@@ -14,6 +14,11 @@ public class IMBUseAction : IMActionButton {
 	
 	}
 
+	public override void OnAwake() {
+		base.OnAwake();
+		buttonType = IMActionButtonType.Use;
+	}
+
 	override public void ExecuteAction() {
 		Debug.Log("USE BUTTON");
 		base.ExecuteAction();
