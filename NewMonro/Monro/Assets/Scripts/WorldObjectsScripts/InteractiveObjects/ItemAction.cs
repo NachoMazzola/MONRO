@@ -38,7 +38,7 @@ public class ItemAction: MonoBehaviour {
 	}
 
 	public void ExecuteAction(Character onCharacter) {
-		theItem = this.GetComponent<WorldItem>().inventoryItemRepresentation;
+		theItem = this.GetComponent<WorldItem>().itemModel;
 
 		if (theItem.itemId != MatchesWithId) {
 			TriggerCaption(onCharacter);
@@ -55,7 +55,7 @@ public class ItemAction: MonoBehaviour {
 			TriggerAnimation(onCharacter);
 		}
 
-		this.GetComponent<WorldItem>().ItemHasBeenUsed = true;
+		this.GetComponent<WorldItem>().itemModel.ItemHasBeenUsed = true;
 		this.GetComponent<WorldItem>().StopDragging();
 
 		//DO SHIT IN CHILDREN

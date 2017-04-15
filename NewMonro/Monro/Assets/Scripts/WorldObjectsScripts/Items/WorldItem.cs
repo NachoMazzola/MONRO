@@ -7,8 +7,7 @@ public class WorldItem : MonoBehaviour {
 	private DragHandler theDragging;
 
 	public bool IsBeingDragged;
-	public bool ItemHasBeenUsed;
-	public Item inventoryItemRepresentation;
+	public Item itemModel;
 
 	// Use this for initialization
 	void Start () {
@@ -29,8 +28,8 @@ public class WorldItem : MonoBehaviour {
 		IsBeingDragged = false;
 		this.gameObject.SetActive(false);
 
-		if (!ItemHasBeenUsed && inventoryItemRepresentation != null) {
-			inventoryItemRepresentation.ActivateInventoryItem();
+		if (itemModel != null && !itemModel.ItemHasBeenUsed) {
+			itemModel.ActivateInventoryItem();
 
 			GameObject inv = GameObject.Find("UIInventory");
 			UIInventory invScp = inv.GetComponent<UIInventory>();
@@ -54,19 +53,15 @@ public class WorldItem : MonoBehaviour {
 		invScp.EnableScrolling(false);
 	}
 
-	public void ItemIsOverObject(Transform other) {
+	public virtual void ItemIsOverObject(Transform other) {
 		HighlightableObject highlight = this.GetComponent<HighlightableObject>();
 		highlight.HighlightObject();
-
-		ItemAction theAction = this.GetComponent<ItemAction>();
-		Character theChar = other.GetComponent<Character>();
-		theAction.ExecuteAction(theChar);
-
 	}
 
-	public void ItemHasBeenReleasedOverObject(Transform other) {
+	public virtual void ItemHasBeenReleasedOverObject(Transform other) {
 		HighlightableObject highlight = this.GetComponent<HighlightableObject>();
 		highlight.RemoveHighlight();
 
 	}
+
 }

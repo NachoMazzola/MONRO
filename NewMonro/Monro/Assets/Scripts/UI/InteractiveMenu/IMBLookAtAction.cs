@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class IMBLookAtAction : IMActionButton {
+	
 
 	void Awake() {
 		OnAwake();
@@ -40,8 +41,5 @@ public class IMBLookAtAction : IMActionButton {
 		InteractiveObject theObj = interactiveObject.GetComponent<InteractiveObject>();
 
 		StartCoroutine(AddActionOnFinishAfterCoroutine(thePlayer.ShowCaption(theObj.Caption)));
-
-
-		Debug.Log("CAQUITA LOCA LOCA LOCA!!!");
 	}
 }

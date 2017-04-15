@@ -18,6 +18,7 @@ public class IMActionButton : MonoBehaviour {
 	
 	public IMActionButtonType AddsActionOnExecution = IMActionButtonType.None;
 
+
 	[HideInInspector]
 	public IMActionButtonType buttonType;
 
@@ -67,7 +68,7 @@ public class IMActionButton : MonoBehaviour {
 
 		dialogueStorage.SetValue(propeVariable, new Yarn.Value(true));
 
-		//AddActionOnfinish();
+		ExecutePuzzleAction();
 	}
 
 	public IEnumerator AddActionOnFinishAfterCoroutine(IEnumerator coroutineToWait) {
@@ -124,6 +125,13 @@ public class IMActionButton : MonoBehaviour {
 		}
 		else {
 			Debug.Log("PREFAB NOT FOUND BITCH");
+		}
+	}
+
+	void ExecutePuzzleAction() {
+		InteractivePuzzleAction intPA = this.gameObject.GetComponent<InteractivePuzzleAction>();
+		if (intPA != null) {
+			intPA.Execute();
 		}
 	}
 }
