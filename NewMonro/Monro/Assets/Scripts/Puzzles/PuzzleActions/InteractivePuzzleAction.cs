@@ -6,9 +6,9 @@ public class InteractivePuzzleAction: PuzzleAction {
 
 	public IMActionButtonType executesOnAction;
 
-	public override void Execute() {
+	public override bool Execute() {
 		if (puzzleGameObject == null) {
-			return;
+			return false;
 		}
 		IMActionButton[] actions = this.GetComponents<IMActionButton>();
 		bool matches = false;
@@ -21,6 +21,9 @@ public class InteractivePuzzleAction: PuzzleAction {
 
 		if (matches) {
 			UpdateGPOState();
+			return true;
 		}
+
+		return false;
 	}
 }

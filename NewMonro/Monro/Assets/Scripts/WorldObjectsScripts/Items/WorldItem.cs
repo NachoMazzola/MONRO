@@ -9,6 +9,8 @@ public class WorldItem : MonoBehaviour {
 	public bool IsBeingDragged;
 	public Item itemModel;
 
+	private Transform gameobjectItmeIsOver;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -28,7 +30,16 @@ public class WorldItem : MonoBehaviour {
 		IsBeingDragged = false;
 		this.gameObject.SetActive(false);
 
-		if (itemModel != null && !itemModel.ItemHasBeenUsed) {
+		if (gameobjectItmeIsOver != null) {
+			DropItemPuzzleAction dropPuzzleAction = gameobjectItmeIsOver.GetComponent<DropItemPuzzleAction>();
+			if (dropPuzzleAction != null) {
+				dropPuzzleAction.worldItem = this;
+				if (dropPuzzleAction.Execute()) {
+					Destroy(this);
+				}
+			}
+		}
+		else if (itemModel != null && !itemModel.ItemHasBeenUsed) {
 			itemModel.ActivateInventoryItem();
 
 			GameObject inv = GameObject.Find("UIInventory");
@@ -54,13 +65,16 @@ public class WorldItem : MonoBehaviour {
 	}
 
 	public virtual void ItemIsOverObject(Transform other) {
-		HighlightableObject highlight = this.GetComponent<HighlightableObject>();
-		highlight.HighlightObject();
+		gameobjectItmeIsOver = other;
+//
+//		HighlightableObject highlight = this.GetComponent<HighlightableObject>();
+//		highlight.HighlightObject();
 	}
 
 	public virtual void ItemHasBeenReleasedOverObject(Transform other) {
-		HighlightableObject highlight = this.GetComponent<HighlightableObject>();
-		highlight.RemoveHighlight();
+		gameobjectItmeIsOver = null;
+//		HighlightableObject highlight = this.GetComponent<HighlightableObject>();
+//		highlight.RemoveHighlight();
 
 	}
 

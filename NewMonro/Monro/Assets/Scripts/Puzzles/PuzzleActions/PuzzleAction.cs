@@ -17,8 +17,8 @@ public class PuzzleAction : MonoBehaviour {
 		
 	}
 
-	public virtual void Execute() {
-		
+	public virtual bool Execute() {
+		return true;
 	}
 
 	public virtual void UpdateGPOState() {

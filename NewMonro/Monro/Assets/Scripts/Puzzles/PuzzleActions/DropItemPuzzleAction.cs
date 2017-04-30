@@ -6,6 +6,9 @@ public class DropItemPuzzleAction : PuzzleAction {
 
 	public string droppableItemId;
 
+	[HideInInspector]
+	public WorldItem worldItem;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,18 +19,14 @@ public class DropItemPuzzleAction : PuzzleAction {
 		
 	}
 
-	public override void Execute() {
-		UpdateGPOState();
-	}
+	public override bool Execute() {
+		if (worldItem != null && worldItem.itemModel.itemId == droppableItemId) {
+			UpdateGPOState();
 
-	void OnTriggerEnter2D (Collider2D other) {
-		WorldItem item = other.transform.parent.gameObject.GetComponent<WorldItem> ();
-		if (item != null && item.itemModel.itemId == droppableItemId) {
-			Execute();
+			return true;
 		}
+
+		return false;
 	}
 
-	void OnTriggerExit2D (Collider2D other) {
-		
-	}
 }
