@@ -35,7 +35,7 @@ public class TestPuzzleBox : PuzzleResolver {
 
 
 	void OnTriggerEnter2D (Collider2D other) {
-		WorldItem item = other.transform.parent.gameObject.GetComponent<WorldItem> ();
+		DraggableWorldItem item = other.transform.parent.gameObject.GetComponent<DraggableWorldItem> ();
 		PuzzleSolverManager.getComponent().ResolvePuzzle(this, item.itemModel, puzzleId);
 	}
 

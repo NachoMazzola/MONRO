@@ -22,7 +22,7 @@ public class WorldItemCollision : MonoBehaviour
 			return;
 		}
 
-		WorldItem item = this.transform.parent.gameObject.GetComponent<WorldItem> ();
+		DraggableWorldItem item = this.transform.parent.gameObject.GetComponent<DraggableWorldItem> ();
 		item.ItemIsOverObject (other.transform);
 
 		switch (other.gameObject.tag) {
@@ -40,7 +40,7 @@ public class WorldItemCollision : MonoBehaviour
 			return;
 		}
 
-		WorldItem item = this.transform.parent.gameObject.GetComponent<WorldItem> ();
+		DraggableWorldItem item = this.transform.parent.gameObject.GetComponent<DraggableWorldItem> ();
 		item.ItemHasBeenReleasedOverObject(other.transform);
 
 		switch (other.gameObject.tag) {

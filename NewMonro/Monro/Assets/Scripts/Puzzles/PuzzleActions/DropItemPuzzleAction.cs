@@ -7,7 +7,7 @@ public class DropItemPuzzleAction : PuzzleAction {
 	public string droppableItemId;
 
 	[HideInInspector]
-	public WorldItem worldItem;
+	public DraggableWorldItem worldItem;
 
 	// Use this for initialization
 	void Start () {

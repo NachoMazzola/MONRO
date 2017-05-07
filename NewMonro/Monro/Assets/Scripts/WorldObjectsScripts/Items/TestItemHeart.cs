@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestItemHeart : WorldItem {
-
+public class TestItemHeart : DraggableWorldItem {
+	
 	// Use this for initialization
 	void Start () {
 		
@@ -21,16 +21,16 @@ public class TestItemHeart : WorldItem {
 	public override void ItemHasBeenReleasedOverObject(Transform other) {
 		base.ItemHasBeenReleasedOverObject(other);
 
-		if (other.gameObject.tag == "InteractiveObject") {
-			PuzzleResolver puzzleSolver = other.gameObject.GetComponent<PuzzleResolver>();
-			if (puzzleSolver != null) {
-				//do some shit
-				StopDragging();
-				itemModel.ItemHasBeenUsed = true;
-				PuzzleSolverManager.getComponent().ResolvePuzzle(puzzleSolver, itemModel, itemModel.resolvesPuzzleId);
+//		if (other.gameObject.tag == "InteractiveObject") {
+//			PuzzleResolver puzzleSolver = other.gameObject.GetComponent<PuzzleResolver>();
+//			if (puzzleSolver != null) {
+//				//do some shit
+//				StopDragging();
+//				itemModel.ItemHasBeenUsed = true;
+//				PuzzleSolverManager.getComponent().ResolvePuzzle(puzzleSolver, itemModel, itemModel.resolvesPuzzleId);
+//			}
+//		}
 
-			}
-		}
 
 	}
 }
