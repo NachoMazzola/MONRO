@@ -22,6 +22,8 @@ public class WorldItemCollision : MonoBehaviour
 			return;
 		}
 
+		Debug.Log(other);
+
 		DraggableWorldItem item = this.transform.parent.gameObject.GetComponent<DraggableWorldItem> ();
 		item.ItemIsOverObject (other.transform);
 

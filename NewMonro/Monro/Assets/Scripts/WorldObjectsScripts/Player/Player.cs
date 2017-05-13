@@ -19,8 +19,6 @@ public class Player : Character
 	public Vector2 targetPosition;
 	[HideInInspector]
 	public Transform itemToPickUp;
-	[HideInInspector]
-	public PlayerInventory inventory;
 
 	[HideInInspector]
 	public StateTransitionData stateTransitionData;
@@ -51,7 +49,7 @@ public class Player : Character
 		base.OnAwake();
 		characterType = CharacterType.Player;
 		animStateMachine = GetComponent<PlayerStateMachine> ();
-		inventory = GetComponent<PlayerInventory> ();
+
 		//playerCaption = GetComponent<PlayerCaption> ();
 
 		ChangeToState(PlayerStateMachine.PlayerStates.PlayerIdle);

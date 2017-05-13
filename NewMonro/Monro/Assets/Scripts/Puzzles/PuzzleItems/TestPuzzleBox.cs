@@ -14,7 +14,7 @@ public class TestPuzzleBox : PuzzleResolver {
 		
 	}
 
-	public override void PuzzleResolved(Item item) {
+	public override void PuzzleResolved(DBItem item) {
 		if (item.ItemHasBeenUsed == false) {
 			GameObject.Find("ValkyriePrefab2 (1)").SetActive(false);
 			item.ItemHasBeenUsed = true;	
@@ -25,11 +25,11 @@ public class TestPuzzleBox : PuzzleResolver {
 		
 	}
 
-	public override void PuzzleNotResolvedButItemIsRelated(Item item) {
+	public override void PuzzleNotResolvedButItemIsRelated(DBItem item) {
 		
 	}
 
-	public override void PuzzleNotResolved(Item item) {
+	public override void PuzzleNotResolved(DBItem item) {
 		
 	}
 

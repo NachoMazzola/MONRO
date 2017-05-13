@@ -18,8 +18,7 @@ public class ItemsDataService : DataService {
 	}
 
 	public DBItem GetCombinedItem(string rhItem, string lhItem) {
-		IEnumerable<DBItem> combination = _connection.Table<DBItem>().Where(x => x.ItemId == rhItem && x.CombinesWithId == lhItem);
-		DBItem theItem = combination as DBItem;
+		DBItem theItem = _connection.Table<DBItem>().Where(x => x.ItemId == rhItem && x.CombinesWithId == lhItem).FirstOrDefault();
 		if (theItem != null) {
 			return GetItemById(theItem.CombinedItemResultId);
 		}

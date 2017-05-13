@@ -4,39 +4,30 @@ using UnityEngine;
 
 public class ItemCombinator : MonoBehaviour {
 
-	static public ItemCombinator getComponent () {
-		return GameObject.Find ("ItemCombinator").GetComponent<ItemCombinator> ();
-	}
-
+	private ItemsDataService dataBase;
+	private PlayerInventory inventory;
+	private UIInventory uiInventory;
 
 	// Use this for initialization
 	void Start () {
-		//levantar la base de datos de items!
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		dataBase = DBAccess.getComponent().itemsDataBase;
+		uiInventory = this.gameObject.GetComponent<UIInventory>();
+		inventory = this.gameObject.GetComponent<PlayerInventory>();
 	}
 
-	public bool CombineItems(Item rhItem, Item lhItem) {
+	public bool CombineItems(DBItem rhItem, DBItem lhItem) {
+		DBItem combined = dataBase.GetCombinedItem(rhItem.ItemId, lhItem.ItemId);
+		if (combined != null) {
+			inventory.AddItem(combined);
+			GameObject pPrefab = Resources.Load(combined.ItemPrefab) as GameObject;
+			uiInventory.AddItemToInventory(pPrefab.transform);
 
-		//chequear como comparar los items!
+			return true;
+		}
 
-		InstantiateCombinationResult();
-
-		Destroy(rhItem.gameObject);
-		Destroy(lhItem.gameObject);
-
-		return true;
-	}
-
-	public void InstantiateCombinationResult() {
-		GameObject inv = GameObject.Find("UIInventory");
-		UIInventory invScp = inv.GetComponent<UIInventory>();
-
-		GameObject pPrefab = Resources.Load("UIInventoryItemCombinationTest") as GameObject;
-
-		invScp.AddItemToInventory(pPrefab.transform);
+//		Destroy(rhItem.gameObject);
+//		Destroy(lhItem.gameObject);
+//
+		return false;
 	}
 }

@@ -12,4 +12,7 @@ public class DBItem {
 	public string CombinesWithId {get; set;}
 	public string Description {get; set;}
 	public string CombinedItemResultId {get; set;}
+	public string ItemPrefab {get; set;}
+
+	public bool ItemHasBeenUsed;
 }

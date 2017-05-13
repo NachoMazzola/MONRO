@@ -10,8 +10,8 @@ public abstract class PuzzleResolver : MonoBehaviour {
 	public List<string> relatedItemsIds;
 	public List<string> triggerIds;
 
-	public abstract void PuzzleResolved(Item item);
+	public abstract void PuzzleResolved(DBItem item);
 	public abstract void PuzzleStateChanged(int newStep);
-	public abstract void PuzzleNotResolvedButItemIsRelated(Item item);
-	public abstract void PuzzleNotResolved(Item item);
+	public abstract void PuzzleNotResolvedButItemIsRelated(DBItem item);
+	public abstract void PuzzleNotResolved(DBItem item);
 }

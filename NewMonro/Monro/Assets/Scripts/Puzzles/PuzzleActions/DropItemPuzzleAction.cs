@@ -20,7 +20,7 @@ public class DropItemPuzzleAction : PuzzleAction {
 	}
 
 	public override bool Execute() {
-		if (worldItem != null && worldItem.itemModel.itemId == droppableItemId) {
+		if (worldItem != null && worldItem.itemModel.ItemId == droppableItemId) {
 			UpdateGPOState();
 
 			return true;

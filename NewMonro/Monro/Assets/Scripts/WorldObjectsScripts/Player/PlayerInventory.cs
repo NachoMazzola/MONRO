@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour {
 
-	private List<Item> items;
+	private List<DBItem> items;
 
 	void Awake() {
-		items = new List<Item>();
+		items = new List<DBItem>();
 	}
 
 	// Use this for initialization
@@ -22,8 +22,15 @@ public class PlayerInventory : MonoBehaviour {
 	
 	}
 
-	public void AddItem(Item theItem) {
+	public void AddItem(DBItem theItem) {
 		items.Add(theItem);
+	}
+
+	public void AddItemById(string itemId) {
+		DBItem itm = DBAccess.getComponent().itemsDataBase.GetItemById(itemId);
+		if (itm != null) {
+			AddItem(itm);
+		}
 	}
 
 }

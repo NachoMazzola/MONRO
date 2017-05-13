@@ -6,17 +6,21 @@ public class DraggableWorldItem : MonoBehaviour {
 
 	private DragHandler theDragging;
 	private Transform gameobjectItmeIsOver;
+	private UIInventory inventory;
 
 	public bool IsBeingDragged;
 
 	[HideInInspector]
-	public Item itemModel;
+	public DBItem itemModel;
 
+	void Awake() {
+		GameObject inv = GameObject.Find("UIInventory");
+		inventory =  inv.GetComponent<UIInventory>();
+	}
 
 	// Use this for initialization
 	void Start () {
 		
-
 	}
 	
 	// Update is called once per frame
@@ -29,6 +33,7 @@ public class DraggableWorldItem : MonoBehaviour {
 	public void StopDragging() {
 		IsBeingDragged = false;
 		this.gameObject.SetActive(false);
+		theDragging.draggingMode = false;
 
 		HandleDrop();
 	}
@@ -39,10 +44,7 @@ public class DraggableWorldItem : MonoBehaviour {
 
 		IsBeingDragged = true;
 
-		GameObject inv = GameObject.Find("UIInventory");
-		UIInventory invScp = inv.GetComponent<UIInventory>();
-
-		invScp.EnableScrolling(false);
+		inventory.EnableScrolling(false);
 	}
 
 	public virtual void ItemIsOverObject(Transform other) {
@@ -70,14 +72,18 @@ public class DraggableWorldItem : MonoBehaviour {
 				return;
 			}
 			else {
-				Item it = gameobjectItmeIsOver.GetComponent<Item>();
+				//this is when we drop an uiinventoryitem over another uiinventoryitem ==> COMBINATION!
+				DBItem it = gameobjectItmeIsOver.GetComponent<DBItemLoader>().itemModel;
 				if (it != null) {
-					ItemCombinator.getComponent().CombineItems(it, this.itemModel);
-
+					bool combinationResult = inventory.GetComponent<ItemCombinator>().CombineItems(it, this.itemModel);
+					if (!combinationResult) {
+						
+					}
 				}
 			}
-
 		}
-
+		else {
+			GameObject.Destroy(this.gameObject);
+		}
 	}
 }

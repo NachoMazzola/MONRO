@@ -59,7 +59,7 @@ public class UIInventory : MonoBehaviour {
 		inventoryScrollViewContainer.SetActive(false);
 	}
 
-	public void LoadItems(List<Item> theItemList) {
+	public void LoadItems(List<DBItem> theItemList) {
 		//TODO: LOAD STORED ITEMS FROM HardDrive
 	}
 
@@ -88,6 +88,7 @@ public class UIInventory : MonoBehaviour {
 
 		theInstantiatedItem.position = lastItemPosition;
 		theInstantiatedItem.SetParent(inventoryContent.transform);
+		theInstantiatedItem.SetSiblingIndex(0);
 		//theInstantiatedItem.localScale = new Vector2(1, 1);
 
 		lastItemPosition = theInstantiatedItem.position;
@@ -104,7 +105,5 @@ public class UIInventory : MonoBehaviour {
 		if (c != null) {
 			c.enabled = enable;
 		}
-
 	}
-
 }

@@ -45,13 +45,14 @@ public class StatePickUp : State {
 
 		Debug.Log("STATE PICKUP END");
 
-		UIInventory theInv = GameObject.Find ("UIInventory").GetComponent<UIInventory> ();
+		GameObject invObj = GameObject.Find ("UIInventory");
+		UIInventory theInv = invObj.GetComponent<UIInventory> ();
+		PlayerInventory pInventory = invObj.GetComponent<PlayerInventory>();
 
-		(stateCharacterOwner as Player).inventory.AddItem (itemToPickUp.GetComponent<InteractiveObject> ().GetComponent<Item> ());
+		pInventory.AddItemById (itemToPickUp.GetComponent<InteractiveObject> ().Item.GetComponent<DBItemLoader> ().itemId);
 		theInv.AddItemToInventory (itemToPickUp.GetComponent<InteractiveObject> ().Item);
 
-		itemToPickUp.gameObject.SetActive (false);
-
+		GameObject.Destroy(itemToPickUp.gameObject);
 		itemToPickUp = null;
 
 		base.StateEnd();

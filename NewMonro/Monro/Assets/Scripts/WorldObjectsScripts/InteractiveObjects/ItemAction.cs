@@ -8,7 +8,7 @@ public class ItemAction: MonoBehaviour {
 	public string TriggerOptionalAnimation;
 	public string MatchesWithId;
 
-	private Item theItem;
+	private DBItem theItem;
 
 	void Awake() {
 		
@@ -40,7 +40,7 @@ public class ItemAction: MonoBehaviour {
 	public void ExecuteAction(Character onCharacter) {
 		theItem = this.GetComponent<DraggableWorldItem>().itemModel;
 
-		if (theItem.itemId != MatchesWithId) {
+		if (theItem.ItemId != MatchesWithId) {
 			TriggerCaption(onCharacter);
 			if (TriggerOptionalAnimation != null && TriggerOptionalAnimation != "") {
 				TriggerIncorrectAnimation(onCharacter);

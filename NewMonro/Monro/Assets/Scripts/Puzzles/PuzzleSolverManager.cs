@@ -11,7 +11,7 @@ public class PuzzleSolverManager : MonoBehaviour {
 	}
 
 
-	public void NotifyPuzzleResolved(Item item, string puzzleId) {
+	public void NotifyPuzzleResolved(DBItem item, string puzzleId) {
 		foreach (PuzzleResolver pR in observers) {
 			pR.PuzzleResolved(item);
 		}
@@ -49,16 +49,16 @@ public class PuzzleSolverManager : MonoBehaviour {
 	}
 
 
-	public void ResolvePuzzle(PuzzleResolver interactiveObject, Item item, string puzzleId) {
+	public void ResolvePuzzle(PuzzleResolver interactiveObject, DBItem item, string puzzleId) {
 		//resuelve el puzzle?
-		if (interactiveObject.itemIds.Contains(item.itemId) && interactiveObject.itemIds.Count == 1) {
+		if (interactiveObject.itemIds.Contains(item.ItemId) && interactiveObject.itemIds.Count == 1) {
 			//hace algo
 			interactiveObject.PuzzleResolved(item);
 			NotifyPuzzleResolved(item, puzzleId);
 		}
 		else {
 			//no lo resuelve pero esta relacionado con el puzzle
-			if (interactiveObject.relatedItemsIds.Contains(item.itemId)) {
+			if (interactiveObject.relatedItemsIds.Contains(item.ItemId)) {
 				interactiveObject.PuzzleNotResolvedButItemIsRelated(item);
 			}
 			//no lo resuelve
