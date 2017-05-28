@@ -26,4 +26,14 @@ public class OpenInventoryButton : MonoBehaviour {
 	public void AnimEventAddingItemAnimFinished() {
 		buttonAnimator.SetBool("itemAdded", false);
 	}
+
+	void OnTriggerEnter2D (Collider2D other)
+	{
+		if (other == null) {
+			return;
+		}
+
+		UIInventory inv = GameObject.Find("UIInventory").GetComponent<UIInventory>();
+		inv.OpenInventory();
+	}
 }

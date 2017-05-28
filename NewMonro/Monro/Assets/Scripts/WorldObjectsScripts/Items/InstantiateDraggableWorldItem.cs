@@ -14,10 +14,6 @@ public class InstantiateDraggableWorldItem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-//		if (Input.GetMouseButtonDown(0)) {
-//			BoxCollider boxC = GameObject.Find("UIInventory").GetComponent<BoxCollider>();
-//			boxC.enabled = false;
-//		}
 	}
 
 	void OnMouseDown() {
@@ -32,6 +28,7 @@ public class InstantiateDraggableWorldItem : MonoBehaviour {
 			wItem.StartDragging();
 			wItem.itemModel = this.GetComponent<DBItemLoader>().itemModel;
 			wItem.gameObject.SetActive(true);
+		
 		}
 	}
 

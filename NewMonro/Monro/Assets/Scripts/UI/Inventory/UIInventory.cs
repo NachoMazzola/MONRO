@@ -10,6 +10,7 @@ public class UIInventory : MonoBehaviour {
 	private GameObject inventoryContent;
 	private Button openInventoryButton;
 	private Button closeInventoryButton;
+	private BoxCollider2D inventoryCollider;
 
 	private List<Transform> itemList;
 	private bool isOpened;
@@ -30,6 +31,8 @@ public class UIInventory : MonoBehaviour {
 		openInventoryButton = GameObject.Find("OpenInventoryButton").GetComponent<Button>();
 		closeInventoryButton = GameObject.Find("CloseInventoryButton").GetComponent<Button>();
 		closeInventoryButton.gameObject.SetActive(false);
+
+		inventoryCollider = GetComponent<BoxCollider2D>();
 	}
 
 	// Use this for initialization
@@ -49,6 +52,7 @@ public class UIInventory : MonoBehaviour {
 		openInventoryButton.gameObject.SetActive(false);
 		closeInventoryButton.gameObject.SetActive(true);
 		inventoryScrollViewContainer.SetActive(true);
+		inventoryCollider.enabled = true;
 	}
 
 	public void CloseInventory() {
@@ -57,6 +61,8 @@ public class UIInventory : MonoBehaviour {
 		openInventoryButton.gameObject.SetActive(true);
 		closeInventoryButton.gameObject.SetActive(false);
 		inventoryScrollViewContainer.SetActive(false);
+		inventoryCollider.enabled = false;
+
 	}
 
 	public void LoadItems(List<DBItem> theItemList) {

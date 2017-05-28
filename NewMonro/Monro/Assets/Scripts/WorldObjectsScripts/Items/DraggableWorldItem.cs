@@ -20,7 +20,6 @@ public class DraggableWorldItem : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -39,6 +38,7 @@ public class DraggableWorldItem : MonoBehaviour {
 	}
 
 	public void StartDragging() {
+		
 		theDragging = this.GetComponent<DragHandler>();
 		theDragging.SetDraggingObject(this.gameObject);
 
