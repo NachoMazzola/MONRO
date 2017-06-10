@@ -8,16 +8,18 @@ public class UIInventory : MonoBehaviour {
 
 	private GameObject inventoryScrollViewContainer;
 	private GameObject inventoryContent;
-	private Button openInventoryButton;
+	private ScrollRect theScrollRect;
 	private Button closeInventoryButton;
 	private BoxCollider2D inventoryCollider;
 
 	private List<Transform> itemList;
-	private bool isOpened;
+
+	public bool isOpened;
 
 	private Vector2 lastItemPosition;
 
-	private Animator inventoryAnimator;
+
+	private List<IInventoryObserver> inventoryObservers;
 
 	void Awake() {
 		isOpened = false;
@@ -26,43 +28,46 @@ public class UIInventory : MonoBehaviour {
 		inventoryScrollViewContainer = GameObject.Find("InventoryScrollViewContainer");
 		inventoryScrollViewContainer.SetActive(false);
 
-		inventoryContent = inventoryScrollViewContainer.transform.FindChild("InventoryContentPanel").gameObject;
+		inventoryContent = inventoryScrollViewContainer.transform.Find("InventoryContentPanel").gameObject;
 
-		openInventoryButton = GameObject.Find("OpenInventoryButton").GetComponent<Button>();
 		closeInventoryButton = GameObject.Find("CloseInventoryButton").GetComponent<Button>();
 		closeInventoryButton.gameObject.SetActive(false);
 
 		inventoryCollider = GetComponent<BoxCollider2D>();
-	}
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+		theScrollRect = inventoryScrollViewContainer.GetComponent<ScrollRect>();
+		theScrollRect.vertical = false;
 
+	}
 
 	public void OpenInventory() {
+		if (isOpened == true) {
+			return;
+		}
 		isOpened = true;
 
-		openInventoryButton.gameObject.SetActive(false);
 		closeInventoryButton.gameObject.SetActive(true);
 		inventoryScrollViewContainer.SetActive(true);
 		inventoryCollider.enabled = true;
+
+		foreach (IInventoryObserver obs in inventoryObservers) {
+			obs.OnInventoryOpened();
+		}
 	}
 
 	public void CloseInventory() {
+		if (isOpened == false) {
+			return;
+		}
 		isOpened = false;
 
-		openInventoryButton.gameObject.SetActive(true);
 		closeInventoryButton.gameObject.SetActive(false);
 		inventoryScrollViewContainer.SetActive(false);
 		inventoryCollider.enabled = false;
 
+		foreach (IInventoryObserver obs in inventoryObservers) {
+			obs.OnInventoryClosed();
+		}
 	}
 
 	public void LoadItems(List<DBItem> theItemList) {
@@ -99,17 +104,27 @@ public class UIInventory : MonoBehaviour {
 
 		lastItemPosition = theInstantiatedItem.position;
 
-
-		OpenInventoryButton btnComp = openInventoryButton.GetComponent<OpenInventoryButton>();
-		btnComp.PlayAddingItemToInventoryAnim();
-
+		foreach (IInventoryObserver obs in inventoryObservers) {
+			obs.OnInventoryAddedItem();
+		}
 	}
 
 
-	public void EnableScrolling(bool  enable) {
-		ScrollRect c = this.GetComponentInChildren<ScrollRect>();
-		if (c != null) {
-			c.enabled = enable;
+	public void EnableScrolling(bool enable) {
+		theScrollRect.horizontal = enable;
+	}
+
+	public void AddInventoryObserver(IInventoryObserver obs) {
+		if (inventoryObservers == null) {
+			inventoryObservers = new List<IInventoryObserver>();
 		}
+		inventoryObservers.Add(obs);
+	}
+
+	public void RemoveInventoryObserver(IInventoryObserver obs) {
+		if (inventoryObservers == null) {
+			inventoryObservers = new List<IInventoryObserver>();
+		}
+		inventoryObservers.Remove(obs);
 	}
 }

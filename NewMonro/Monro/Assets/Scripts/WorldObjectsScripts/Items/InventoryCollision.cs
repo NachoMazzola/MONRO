@@ -20,15 +20,19 @@ public class InventoryCollision : MonoBehaviour {
 			return;
 		}
 
-		Debug.Log("INVENTORY COLLIDION : " + other);
-
-
+		//Debug.Log("INVENTORY COLLITION ENTER : " + other);
 	}
 
-	void OnTriggerExit2D (Collider2D other)
-	{
+	void OnTriggerExit2D (Collider2D other) {
 		if (other == null) {
 			return;
+		}
+
+		if (other.transform.parent != null) {
+			DraggableWorldItem dwItem = other.transform.parent.GetComponent<DraggableWorldItem>();
+			if (dwItem !=null && dwItem.IsBeingDraggedOverInventory && !dwItem.IsBeingDragged) {
+				return;
+			}
 		}
 
 		UIInventory inv = GameObject.Find("UIInventory").GetComponent<UIInventory>();

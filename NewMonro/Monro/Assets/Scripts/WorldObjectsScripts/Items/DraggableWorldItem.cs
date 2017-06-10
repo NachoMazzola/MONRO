@@ -9,6 +9,7 @@ public class DraggableWorldItem : MonoBehaviour {
 	private UIInventory inventory;
 
 	public bool IsBeingDragged;
+	public bool IsBeingDraggedOverInventory;
 
 	[HideInInspector]
 	public DBItem itemModel;
@@ -16,6 +17,8 @@ public class DraggableWorldItem : MonoBehaviour {
 	void Awake() {
 		GameObject inv = GameObject.Find("UIInventory");
 		inventory =  inv.GetComponent<UIInventory>();
+
+		IsBeingDraggedOverInventory = true; //always is instanciated being dragged from inventory
 	}
 
 	// Use this for initialization
@@ -31,8 +34,9 @@ public class DraggableWorldItem : MonoBehaviour {
 
 	public void StopDragging() {
 		IsBeingDragged = false;
-		this.gameObject.SetActive(false);
 		theDragging.draggingMode = false;
+
+		inventory.EnableScrolling(true);
 
 		HandleDrop();
 	}
@@ -67,9 +71,8 @@ public class DraggableWorldItem : MonoBehaviour {
 			if (dropPuzzleAction != null) {
 				dropPuzzleAction.worldItem = this;
 				if (dropPuzzleAction.Execute()) {
-					Destroy(this);
+					Destroy(this.gameObject);
 				}
-				return;
 			}
 			else {
 				//this is when we drop an uiinventoryitem over another uiinventoryitem ==> COMBINATION!
@@ -77,13 +80,14 @@ public class DraggableWorldItem : MonoBehaviour {
 				if (it != null) {
 					bool combinationResult = inventory.GetComponent<ItemCombinator>().CombineItems(it, this.itemModel);
 					if (!combinationResult) {
-						
+						Destroy(this.gameObject);
 					}
 				}
 			}
 		}
 		else {
-			GameObject.Destroy(this.gameObject);
+			Destroy(this.gameObject);
 		}
 	}
+
 }

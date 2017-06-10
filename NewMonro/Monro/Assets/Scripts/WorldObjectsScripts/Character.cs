@@ -73,7 +73,7 @@ public class Character : MonoBehaviour, IWorldInteractionObserver {
 	}
 
 	virtual public Transform GetConversationCaptionCanvas() {
-		Transform theCaption = this.transform.FindChild("TextCaption");
+		Transform theCaption = this.transform.Find("TextCaption");
 
 		return theCaption;
 	}

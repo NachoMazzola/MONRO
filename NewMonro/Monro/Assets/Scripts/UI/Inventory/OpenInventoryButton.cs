@@ -1,30 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OpenInventoryButton : MonoBehaviour {
+public class OpenInventoryButton : MonoBehaviour, IInventoryObserver {
 
 	private Animator buttonAnimator;
+	private UIInventory inventory;
 
 	void Awake() {
 		buttonAnimator = GetComponent<Animator>();
-	}
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-	public void PlayAddingItemToInventoryAnim() {
-		buttonAnimator.SetBool("itemAdded", true);
+		inventory = GameObject.Find("UIInventory").GetComponent<UIInventory>();
+		inventory.AddInventoryObserver(this);
 	}
 
 	public void AnimEventAddingItemAnimFinished() {
 		buttonAnimator.SetBool("itemAdded", false);
+	}
+
+	void OnMouseDown() {
+		inventory.OpenInventory();
 	}
 
 	void OnTriggerEnter2D (Collider2D other)
@@ -32,8 +25,20 @@ public class OpenInventoryButton : MonoBehaviour {
 		if (other == null) {
 			return;
 		}
-
-		UIInventory inv = GameObject.Find("UIInventory").GetComponent<UIInventory>();
-		inv.OpenInventory();
+		inventory.OpenInventory();
 	}
+
+	public void OnInventoryOpened() {
+		this.gameObject.SetActive(false);
+	}
+
+	public void OnInventoryClosed() {
+		this.gameObject.SetActive(true);
+	}
+
+	public void OnInventoryAddedItem() {
+		buttonAnimator.SetBool("itemAdded", true);
+	}
+
+	public void OnInventoryRemovedItem() {}
 }

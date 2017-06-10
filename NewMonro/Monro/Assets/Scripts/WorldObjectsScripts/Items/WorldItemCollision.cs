@@ -4,16 +4,10 @@ using System.Collections;
 public class WorldItemCollision : MonoBehaviour
 {
 
-	// Use this for initialization
-	void Start ()
-	{
-	
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	
+	private DraggableWorldItem draggableItem;
+
+	void Awake() {
+		draggableItem = this.transform.parent.gameObject.GetComponent<DraggableWorldItem> ();	
 	}
 
 	void OnTriggerEnter2D (Collider2D other)
@@ -22,18 +16,12 @@ public class WorldItemCollision : MonoBehaviour
 			return;
 		}
 
-		Debug.Log(other);
-
-		DraggableWorldItem item = this.transform.parent.gameObject.GetComponent<DraggableWorldItem> ();
-		item.ItemIsOverObject (other.transform);
-
-		switch (other.gameObject.tag) {
-		case "Player":
-			break;
-
-		case "InteractiveObject":
-			break;
+		UIInventory theInventory = other.gameObject.GetComponent<UIInventory>();
+		if (theInventory != null) {
+			draggableItem.IsBeingDraggedOverInventory = true;
 		}
+			
+		draggableItem.ItemIsOverObject (other.transform);
 	}
 
 	void OnTriggerExit2D (Collider2D other)
@@ -42,15 +30,11 @@ public class WorldItemCollision : MonoBehaviour
 			return;
 		}
 
-		DraggableWorldItem item = this.transform.parent.gameObject.GetComponent<DraggableWorldItem> ();
-		item.ItemHasBeenReleasedOverObject(other.transform);
-
-		switch (other.gameObject.tag) {
-		case "Player":
-			break;
-
-		case "InteractiveObject":
-			break;
+		UIInventory theInventory = other.gameObject.GetComponent<UIInventory>();
+		if (theInventory != null && draggableItem.IsBeingDragged) {
+			draggableItem.IsBeingDraggedOverInventory = false;
 		}
+			
+		draggableItem.ItemHasBeenReleasedOverObject(other.transform);
 	}
 }

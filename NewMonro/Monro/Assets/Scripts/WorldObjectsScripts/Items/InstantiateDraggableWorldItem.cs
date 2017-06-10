@@ -7,15 +7,6 @@ public class InstantiateDraggableWorldItem : MonoBehaviour {
 	public Transform ItemWorldRepTransform;
 	private Transform instanciatedWorldItem;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
-
 	void OnMouseDown() {
 		if (ItemWorldRepTransform != null) {
 			Vector3 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -28,10 +19,6 @@ public class InstantiateDraggableWorldItem : MonoBehaviour {
 			wItem.StartDragging();
 			wItem.itemModel = this.GetComponent<DBItemLoader>().itemModel;
 			wItem.gameObject.SetActive(true);
-		
 		}
 	}
-
-
-
 }
