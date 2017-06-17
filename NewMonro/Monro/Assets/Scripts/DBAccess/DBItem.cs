@@ -13,6 +13,7 @@ public class DBItem {
 	public string Description {get; set;}
 	public string CombinedItemResultId {get; set;}
 	public string ItemPrefab {get; set;}
+	public string ItemSprite {get; set;}
 
 	public bool ItemHasBeenUsed;
 }

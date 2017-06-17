@@ -6,8 +6,12 @@ using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour {
 
+	private const int itemContainerW = 50;
+	private const int itemContainerH = 50;
+	private const int maxItems = 4;
+
 	private GameObject inventoryScrollViewContainer;
-	private GameObject inventoryContent;
+	private Transform inventoryContent;
 	private ScrollRect theScrollRect;
 	private Button closeInventoryButton;
 	private BoxCollider2D inventoryCollider;
@@ -17,7 +21,9 @@ public class UIInventory : MonoBehaviour {
 	public bool isOpened;
 
 	private Vector2 lastItemPosition;
+	private ItemContainerCreator containerCreator;
 
+	private Canvas canvas;
 
 	private List<IInventoryObserver> inventoryObservers;
 
@@ -28,7 +34,7 @@ public class UIInventory : MonoBehaviour {
 		inventoryScrollViewContainer = GameObject.Find("InventoryScrollViewContainer");
 		inventoryScrollViewContainer.SetActive(false);
 
-		inventoryContent = inventoryScrollViewContainer.transform.Find("InventoryContentPanel").gameObject;
+		inventoryContent = inventoryScrollViewContainer.transform.Find("InventoryContentPanel");
 
 		closeInventoryButton = GameObject.Find("CloseInventoryButton").GetComponent<Button>();
 		closeInventoryButton.gameObject.SetActive(false);
@@ -38,6 +44,8 @@ public class UIInventory : MonoBehaviour {
 		theScrollRect = inventoryScrollViewContainer.GetComponent<ScrollRect>();
 		theScrollRect.vertical = false;
 
+		containerCreator = inventoryContent.GetComponent<ItemContainerCreator>();
+		canvas = this.gameObject.GetComponent<Canvas>();
 	}
 
 	public void OpenInventory() {
@@ -53,6 +61,10 @@ public class UIInventory : MonoBehaviour {
 		foreach (IInventoryObserver obs in inventoryObservers) {
 			obs.OnInventoryOpened();
 		}
+
+		//TODO: 5 esta hardcodeado, deberiamos poner un numero maximo para el scrolling.. por lo menos calcular
+		//de acuerdo con el ancho del item una vez q tengamos wxh definidos
+		//theScrollRect.horizontal = itemList.Count > 5;
 	}
 
 	public void CloseInventory() {
@@ -77,32 +89,30 @@ public class UIInventory : MonoBehaviour {
 	public void AddItemToInventory(Transform item) {
 		
 		Transform theInstantiatedItem = Instantiate(item, new Vector2(), Quaternion.identity) as Transform;
-		//theInstantiatedItem.gameObject.AddComponent<DragHandler>();
-
 		itemList.Add(theInstantiatedItem);
 
-		Sprite itemImage = item.gameObject.GetComponent<SpriteRenderer>().sprite;
-		Vector2 sprite_size = itemImage.rect.size;
-		Vector2 local_sprite_size = sprite_size / itemImage.pixelsPerUnit;
+		Transform container = containerCreator.createContainerWithItemImage(theInstantiatedItem);
+
+		container.transform.SetParent(inventoryContent, false);
+		((RectTransform)container.transform).sizeDelta = new Vector2(itemContainerW, itemContainerH);
+
 
 		//first item
 		if (itemList.Count == 1) {
 			lastItemPosition = new Vector2();
-			lastItemPosition.x = inventoryContent.transform.position.x - local_sprite_size.x/2;
-			lastItemPosition.y = inventoryContent.transform.position.y;
 		}
 		else {
-			Vector2 newPos = new Vector2(lastItemPosition.x - local_sprite_size.x, lastItemPosition.y);	
+			Vector2 newPos = new Vector2(lastItemPosition.x - itemContainerW, 0);	
 			lastItemPosition = newPos;
 		}
 
+		((RectTransform)container.transform).anchoredPosition = lastItemPosition;
+		lastItemPosition = ((RectTransform)container.transform).anchoredPosition;
 
-		theInstantiatedItem.position = lastItemPosition;
-		theInstantiatedItem.SetParent(inventoryContent.transform);
-		theInstantiatedItem.SetSiblingIndex(0);
-		//theInstantiatedItem.localScale = new Vector2(1, 1);
+		if (itemList.Count == maxItems) {
+			//TODO: hacer crecer el container
+		}
 
-		lastItemPosition = theInstantiatedItem.position;
 
 		foreach (IInventoryObserver obs in inventoryObservers) {
 			obs.OnInventoryAddedItem();

@@ -10,9 +10,13 @@ public class DBItemLoader : MonoBehaviour {
 	public DBItem itemModel;
 
 	void Awake() {
-		itemModel = DBAccess.getComponent().itemsDataBase.GetItemById(itemId);
-		if (itemModel == null) {
-			Debug.LogError("No hay ningun item en la base con Id = " + itemId);
+		DBAccess dataBase = DBAccess.getComponent();
+		if (dataBase) {
+			itemModel = dataBase.itemsDataBase.GetItemById(itemId);
+			if (itemModel == null) {
+				Debug.LogError("No hay ningun item en la base con Id = " + itemId);
+			}
 		}
+
 	}
 }
