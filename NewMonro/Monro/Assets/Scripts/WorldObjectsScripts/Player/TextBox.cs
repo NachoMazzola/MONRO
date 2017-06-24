@@ -53,7 +53,7 @@ public class TextBox : MonoBehaviour {
 		yield return StartCoroutine(hideUICoroutine);
 	}
 
-	private void PositionateCaptionOverGameObject(Transform overGameObject) {
+	public void PositionateCaptionOverGameObject(Transform overGameObject) {
 		Transform textBoxPosition = overGameObject.transform.Find("TextBoxPosition");
 		Transform panelTransform = (RectTransform)this.gameObject.transform.GetChild (0);
 		if (textBoxPosition) {

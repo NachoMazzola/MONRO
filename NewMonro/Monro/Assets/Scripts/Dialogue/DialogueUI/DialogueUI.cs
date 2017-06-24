@@ -83,17 +83,15 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 
 				instantiatedPlayerConversation = whoIsTalking.GetConversationCaptionCanvas();
 				lastOneWhoTalked = whoIsTalking;
+
+				//TODO: RESOLVE QUE MIERDA PASA ACA! - LA PRIMERA VEZ QUE HABLA CADA UNO PONE EL TEXBOX EN CUALQUIER LADO!
+				//YA LA SEGUNDA VEZ SE POSICIONA BIEN!
+				TextBox t = instantiatedPlayerConversation.GetComponent<TextBox>();
+				t.PositionateCaptionOverGameObject(whoIsTalking.transform);
 			}
 
 			instantiatedPlayerConversation.gameObject.SetActive(true);
 			theText = instantiatedPlayerConversation.gameObject.GetComponentInChildren<Text>();
-
-			//THIS IS A SHITTY CODE, BUT FUCK IT......
-			if (whoIsTalking.transform.localScale.x < 0) {
-				if (theText.transform.localScale.x > 0) {
-					theText.transform.localScale = new Vector2(theText.transform.localScale.x*-1, theText.transform.localScale.y);
-				}
-			}
 
 			theText.gameObject.SetActive(true);
 
