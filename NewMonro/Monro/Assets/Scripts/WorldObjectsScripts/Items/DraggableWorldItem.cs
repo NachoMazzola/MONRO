@@ -71,17 +71,24 @@ public class DraggableWorldItem : MonoBehaviour {
 			if (dropPuzzleAction != null) {
 				dropPuzzleAction.worldItem = this;
 				if (dropPuzzleAction.Execute()) {
-					Destroy(this.gameObject);
 				}
+
+				Destroy(this.gameObject);
 			}
 			else {
 				//this is when we drop an uiinventoryitem over another uiinventoryitem ==> COMBINATION!
-				DBItem it = gameobjectItmeIsOver.GetComponent<DBItemLoader>().itemModel;
-				if (it != null) {
-					bool combinationResult = inventory.GetComponent<ItemCombinator>().CombineItems(it, this.itemModel);
-					if (!combinationResult) {
-						Destroy(this.gameObject);
+				DBItemLoader itemLoader = gameobjectItmeIsOver.GetComponent<DBItemLoader>();
+				if (itemLoader != null) {
+					DBItem it = itemLoader.itemModel;
+					if (it != null) {
+						bool combinationResult = inventory.GetComponent<ItemCombinator>().CombineItems(it, this.itemModel);
+						if (!combinationResult) {
+							Destroy(this.gameObject);
+						}
 					}
+				}
+				else {
+					Destroy(this.gameObject);
 				}
 			}
 		}

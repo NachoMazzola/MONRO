@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InstantiateDraggableWorldItem : MonoBehaviour, IPointerDownHandler
+public class InstantiateDraggableWorldItem : MonoBehaviour, IPointerDownHandler, IPointerClickHandler
 {
 
 	public Transform ItemWorldRepTransform;
@@ -11,38 +11,37 @@ public class InstantiateDraggableWorldItem : MonoBehaviour, IPointerDownHandler
 
 	private DBItem instanciatedItemModel;
 
-//	void OnMouseDown ()
-//	{
-////		if (ItemWorldRepTransform != null) {
-////			Vector3 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-////			targetPosition.z = -0.1f;
-////			instanciatedWorldItem = Instantiate(ItemWorldRepTransform, targetPosition, Quaternion.identity) as Transform;
-////
-////			//this.GetComponent<SpriteRenderer>().enabled = false;
-////
-////			DraggableWorldItem wItem = instanciatedWorldItem.GetComponent<DraggableWorldItem>();
-////			wItem.StartDragging();
-////			wItem.itemModel = this.GetComponent<DBItemLoader>().itemModel;
-////			wItem.gameObject.SetActive(true);
-////		}
-//	}
+	private float holdDelta;
+	private const float maxTimeToHoldToInstantiate = 0.5f;
+
+	[HideInInspector]
+	public bool holdDown = false;
+
+	void Update() {
+		if (holdDown) {
+			holdDelta += Time.deltaTime;
+		}
+
+		if (holdDown && holdDelta >= maxTimeToHoldToInstantiate) {
+			InstantiateDraggable();
+			holdDown = false;
+			holdDelta = 0;
+		}
+	}
 
 	private void InstantiateItem ()
 	{
 		Vector3 targetPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 		targetPosition.z = -0.1f;
 		instanciatedWorldItem = Instantiate (ItemWorldRepTransform, targetPosition, Quaternion.identity) as Transform;
-		
-		//this.GetComponent<SpriteRenderer>().enabled = false;
-		
+
 		DraggableWorldItem wItem = instanciatedWorldItem.GetComponent<DraggableWorldItem> ();
 		wItem.StartDragging ();
 		wItem.itemModel = instanciatedItemModel;
 		wItem.gameObject.SetActive (true);
 	}
 
-	public void OnPointerDown (PointerEventData eventData)
-	{
+	private void InstantiateDraggable() {
 		if (this.gameObject.transform.childCount == 0) {
 			Debug.Log ("No childs in container!! Doing nothing...");
 			return;
@@ -53,11 +52,21 @@ public class InstantiateDraggableWorldItem : MonoBehaviour, IPointerDownHandler
 		string itemId = itemInContainerTransform.GetComponent<DBItemLoader> ().itemId;
 
 		instanciatedItemModel = DBAccess.getComponent ().itemsDataBase.GetItemById (itemId);
-		//TODO: Fijate que levante bien el insanciatedItemModel.ItemPrefab asi se lo pasas por parametro en vez del
-		//string hardcodeado!
-		GameObject o = Resources.Load("UIWorldItemHeart") as GameObject;
+		GameObject o = Resources.Load(instanciatedItemModel.ItemPrefab) as GameObject;
+		if (o == null) {
+			Debug.Log("ERROR -- Cannot load dbitem prefab");
+			return;
+		}
 		ItemWorldRepTransform = o.transform;
 
 		InstantiateItem();
+	}
+
+	public void OnPointerDown (PointerEventData eventData) {
+		holdDown = true;
+	}
+
+	public void OnPointerClick(PointerEventData eventData) {
+		holdDown = false;
 	}
 }
