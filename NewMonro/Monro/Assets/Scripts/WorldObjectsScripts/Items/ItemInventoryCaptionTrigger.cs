@@ -29,9 +29,8 @@ public class ItemInventoryCaptionTrigger : MonoBehaviour, IPointerDownHandler, I
 		}
 
 		if (!isHoldingDown) {
-//			Player pl = GameObject.Find("PlayerViking").GetComponent<Player>();
-//			pl.ShowCaption(caption);
-//
+			Player pl = GameObject.Find("PlayerViking").GetComponent<Player>();
+			StartCoroutine(pl.ShowCaption(caption));
 			Debug.Log("InventoryCaptionTrigger SHOW CAPTION: " + caption);
 		}
 	}

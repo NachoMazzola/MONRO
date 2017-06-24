@@ -25,9 +25,6 @@ public class Player : Character
 
 
 	private bool shouldPickUpItem;
-
-	private PlayerCaption playerCaption;
-
 	private bool willTalkToNPC;
 
 
@@ -50,20 +47,15 @@ public class Player : Character
 		characterType = CharacterType.Player;
 		animStateMachine = GetComponent<PlayerStateMachine> ();
 
-		//playerCaption = GetComponent<PlayerCaption> ();
-
 		ChangeToState(PlayerStateMachine.PlayerStates.PlayerIdle);
 	}
 
 	override public void OnStart() {
 		base.OnStart();
-
-
 	}
 
 	override public void OnUpdate() {
 		base.OnUpdate();
-
 		currentState.StateUpdate();
 	}
 		
@@ -72,8 +64,7 @@ public class Player : Character
 		if (animStateMachine.GetCurrentState () == PlayerStateMachine.PlayerStates.PlayerTalk) {
 			return;
 		}
-
-
+			
 		targetPosition = tapPos;
 		canMove = other == null;
 
@@ -88,26 +79,13 @@ public class Player : Character
 	}
 		
 	public IEnumerator ShowCaption(string caption) {
-		Transform theCaption = GetConversationCaptionCanvas();
+		Transform theCaption = base.GetConversationCaptionCanvas();
 		theCaption.gameObject.SetActive(true);
 
-		PlayerCaption pCaption = theCaption.GetComponent<PlayerCaption>();
-		return pCaption.ShowCaption(caption);
+		TextBox pCaption = theCaption.GetComponent<TextBox>();
+		return pCaption.ShowCaptionFromGameObject(caption, this.gameObject, true);
 	}
-
-	override public Transform GetConversationCaptionCanvas() {
-		Transform theCaption = base.GetConversationCaptionCanvas();
-		if (currentFacingDirection == MovingDirection.MovingLeft) {
-			Vector3 invertedScale = new Vector3(theCaption.localScale.x*-1, theCaption.localScale.y);
-			theCaption.localScale = invertedScale;
-		}
-		else {
-			Vector3 invertedScale = new Vector3(Mathf.Abs(theCaption.localScale.x), theCaption.localScale.y);
-			theCaption.localScale = invertedScale;
-		}
-		return theCaption;
-	}
-
+		
 	/*
 	 * This method is called when the PickUp animaiton ends. It is wired up from the Animaiton Panel in Inspector, hence the name AnimEndEvent 
 	*/
@@ -118,12 +96,7 @@ public class Player : Character
 	override  public void ResetState() {
 		currentState.StateEnd();
 		ChangeToState(PlayerStateMachine.PlayerStates.PlayerIdle);
-
-		Transform theCaption = base.GetConversationCaptionCanvas();
-		Vector3 invertedScale = new Vector3(Mathf.Abs(theCaption.localScale.x), theCaption.localScale.y);
-		theCaption.localScale = invertedScale;
 	}
-
 
 	override public void ChangeToState(PlayerStateMachine.PlayerStates newState) {
 

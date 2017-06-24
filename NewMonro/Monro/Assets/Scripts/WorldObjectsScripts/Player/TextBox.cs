@@ -2,65 +2,69 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class PlayerCaption : MonoBehaviour {
+public class TextBox : MonoBehaviour {
 
-	public Transform PlayerCaptionPrefab;
 	public float CaptionDurationUntilFade = 3.0f;
 	public float CaptionFadeDuration = 1.5f;
 
-
 	private Transform instantiatedCaption;
 	private bool showingCaption;
-	private Vector2 originalScale;
 
 	private IEnumerator hideUICoroutine;
 	private IEnumerator removeCaptionCoroutine;
 
-
+	private bool shouldAttachToCaller;
+	private Transform followTransform;
 
 	void Awake() {
-		originalScale = new Vector2(0.02f, 0.01f);
 	}
 
 	// Use this for initialization
 	void Start () {
-			
-
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (shouldAttachToCaller && followTransform) {
+			PositionateCaptionOverGameObject(followTransform);
+		}
 	}
 
-	public IEnumerator ShowCaption(string caption) {
+	public IEnumerator ShowCaptionFromGameObject(string caption, GameObject fromGO, bool followCaller) {
 		if (showingCaption == true) {
 			yield return null;
-//			Text showingText = SetCaptionText(caption);
-//
-//			showingText.CrossFadeAlpha(1.0f, 0, false);
-//			showingText.CrossFadeColor(Color.white, 0, false, false);
-//
-//			StopCoroutine(hideUICoroutine);
-//			StopCoroutine(removeCaptionCoroutine);
-//
-//
-//			StartCoroutine(HideTalkUI(instantiatedCaption.gameObject, CaptionDurationUntilFade, showingText));
-//
-
 		}
-
+		shouldAttachToCaller = followCaller;
+		if (shouldAttachToCaller) {
+			followTransform = fromGO.transform;
+		}
 
 		showingCaption = true;
 
-		//InstantiateCaption();
 		instantiatedCaption = this.gameObject.transform;
 		instantiatedCaption.gameObject.SetActive(true);
+
+		PositionateCaptionOverGameObject(fromGO.transform);
 
 		Text theText = SetCaptionText(caption);
 
 		hideUICoroutine = HideTalkUI(instantiatedCaption.gameObject, CaptionDurationUntilFade, theText);
 		yield return StartCoroutine(hideUICoroutine);
+	}
+
+	private void PositionateCaptionOverGameObject(Transform overGameObject) {
+		Transform textBoxPosition = overGameObject.transform.Find("TextBoxPosition");
+		Transform panelTransform = (RectTransform)this.gameObject.transform.GetChild (0);
+		if (textBoxPosition) {
+			Vector2 gameObjectPosToScreen = Camera.main.WorldToScreenPoint(textBoxPosition.position);
+			panelTransform.position = gameObjectPosToScreen;
+		}
+		else {
+			Debug.Log("WARNING: Caption Caller does not have sprite! - Positioning textbox at 0,0");
+			Vector2 gameObjectPosToScreen = Camera.main.WorldToScreenPoint(overGameObject.position);
+			panelTransform.position = gameObjectPosToScreen;
+		}
 	}
 
 	Text SetCaptionText(string caption) {
@@ -89,24 +93,11 @@ public class PlayerCaption : MonoBehaviour {
 
 		instantiatedCaption.gameObject.SetActive(false);
 		showingCaption = false;
+		shouldAttachToCaller = false;
+		followTransform = null;
 	}
 
 	public bool CaptionIsBeingShown() {
 		return showingCaption;
-	}
-
-	public void PreserveOriginalScale(float playerXScale) {
-		if (instantiatedCaption != null) {
-			if (playerXScale < 0) {
-				Vector2 captionScale = originalScale;
-				captionScale.x *= -1;
-				instantiatedCaption.localScale = captionScale;
-			}
-			else {
-				instantiatedCaption.localScale = originalScale;
-			}
-
-
-		}	
 	}
 }
