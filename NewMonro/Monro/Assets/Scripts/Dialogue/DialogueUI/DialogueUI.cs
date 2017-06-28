@@ -20,12 +20,6 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 	[Tooltip ("How quickly to show the text, in seconds per character")]
 	public float textSpeed = 0.025f;
 
-	private Transform instantiatedPlayerConversation;
-
-	private Text theText;
-	private Text theNPCText;
-
-
 	private float optionButtonYDisplacement;
 	private int inactiveButtons;
 
@@ -176,8 +170,6 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 		Debug.Log ("Dialogue starting!");
 
 		// Enable the dialogue controls.
-		if (instantiatedPlayerConversation != null)
-			instantiatedPlayerConversation.gameObject.SetActive (true);
 
 		yield break;
 	}
@@ -186,15 +178,14 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 	{
 
 		ConversationOptionsPrefab.gameObject.SetActive (false);
-		instantiatedPlayerConversation.gameObject.SetActive (false);
-
-		//instantiatedPlayerConversation = null;
-		theText.text = "";
-
 		dialogRunner.DialogueComplete ();
-
 		resetDialogueOptionsButtons ();
 
+		lastOneWhoTalked = null;
+
+		yield return whoIsTalking.HideCaption(0.0f);
+		whoIsTalking = null;
+	
 		yield break;
 	}
 

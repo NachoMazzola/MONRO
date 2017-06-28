@@ -104,6 +104,7 @@ public class TextBox : MonoBehaviour {
 		yield return new WaitForSeconds (secondsToWait);
 		guiParentCanvas.SetActive (false);
 
+		StopAllCoroutines();
 
 		this.gameObject.SetActive(false);
 		showingCaption = false;
