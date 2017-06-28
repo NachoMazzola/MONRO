@@ -78,6 +78,22 @@ public class Character : MonoBehaviour, IWorldInteractionObserver {
 		return theCaption;
 	}
 
+	public IEnumerator ShowCaption(string caption, TextBox.DisappearMode removalMode = TextBox.DisappearMode.Fade) {
+		Transform theCaption = GetConversationCaptionCanvas();
+		theCaption.gameObject.SetActive(true);
+
+		TextBox pCaption = theCaption.GetComponent<TextBox>();
+		pCaption.TextColor = CharacterTalkColor;
+		return pCaption.ShowCaptionFromGameObject(caption, this.gameObject, true, removalMode);
+	}
+
+	public IEnumerator HideCaption(float afterSeconds) {
+		Transform theCaption = GetConversationCaptionCanvas();
+		TextBox pCaption = theCaption.GetComponent<TextBox>();
+
+		return pCaption.RemoveCaptionAfterSeconds(0.0f, pCaption.gameObject);
+	}
+
 	virtual public void ResetState() {
 		
 	}

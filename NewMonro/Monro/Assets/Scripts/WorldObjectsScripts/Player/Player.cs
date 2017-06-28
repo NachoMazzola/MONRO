@@ -78,14 +78,6 @@ public class Player : Character
 		Debug.Log("HOLD TAP");
 	}
 		
-	public IEnumerator ShowCaption(string caption) {
-		Transform theCaption = base.GetConversationCaptionCanvas();
-		theCaption.gameObject.SetActive(true);
-
-		TextBox pCaption = theCaption.GetComponent<TextBox>();
-		return pCaption.ShowCaptionFromGameObject(caption, this.gameObject, true);
-	}
-		
 	/*
 	 * This method is called when the PickUp animaiton ends. It is wired up from the Animaiton Panel in Inspector, hence the name AnimEndEvent 
 	*/

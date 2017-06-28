@@ -1,37 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Text;
 
 public class TextBox : MonoBehaviour {
 
+	public enum DisappearMode {
+		Fade,
+		WaitInput
+	}
+
 	public float CaptionDurationUntilFade = 3.0f;
 	public float CaptionFadeDuration = 1.5f;
+	public float TextSpeed = 0.025f;
+	public Color TextColor = Color.black;
 
-	private Transform instantiatedCaption;
 	private bool showingCaption;
-
 	private IEnumerator hideUICoroutine;
 	private IEnumerator removeCaptionCoroutine;
-
 	private bool shouldAttachToCaller;
 	private Transform followTransform;
 
-	void Awake() {
-	}
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
+
+		//mantain the texbox "attached" to the caller
 		if (shouldAttachToCaller && followTransform) {
 			PositionateCaptionOverGameObject(followTransform);
 		}
 	}
 
-	public IEnumerator ShowCaptionFromGameObject(string caption, GameObject fromGO, bool followCaller) {
+	public IEnumerator ShowCaptionFromGameObject(string caption, GameObject fromGO, bool followCaller, DisappearMode removalMode = DisappearMode.Fade) {
 		if (showingCaption == true) {
 			yield return null;
 		}
@@ -42,15 +41,37 @@ public class TextBox : MonoBehaviour {
 
 		showingCaption = true;
 
-		instantiatedCaption = this.gameObject.transform;
-		instantiatedCaption.gameObject.SetActive(true);
+		this.gameObject.SetActive(true);
 
 		PositionateCaptionOverGameObject(fromGO.transform);
 
-		Text theText = SetCaptionText(caption);
+		Text theText = this.transform.GetComponentInChildren<Text>();
+		theText.color = TextColor;
 
-		hideUICoroutine = HideTalkUI(instantiatedCaption.gameObject, CaptionDurationUntilFade, theText);
-		yield return StartCoroutine(hideUICoroutine);
+		if (TextSpeed > 0.0f) {
+			// Display the line one character at a time
+			var stringBuilder = new StringBuilder ();
+
+			foreach (char c in caption) {
+				stringBuilder.Append (c);
+				theText.text = stringBuilder.ToString ();
+				yield return new WaitForSeconds (TextSpeed);
+			}
+		} else {
+			// Display the line immediately if textSpeed == 0
+			theText.text = caption;
+		}
+
+		if (removalMode == DisappearMode.Fade) {
+			hideUICoroutine = HideTalkUI(this.gameObject, CaptionDurationUntilFade, theText);
+			yield return StartCoroutine(hideUICoroutine);
+		}
+		else {
+			// Wait for any user input
+			while (Input.anyKeyDown == false) {
+				yield return null;
+			}
+		}
 	}
 
 	public void PositionateCaptionOverGameObject(Transform overGameObject) {
@@ -67,14 +88,7 @@ public class TextBox : MonoBehaviour {
 		}
 	}
 
-	Text SetCaptionText(string caption) {
-		Text theText = instantiatedCaption.gameObject.GetComponentInChildren<Text>();
-		theText.text = caption;
-
-		return theText;
-	}
-
-	IEnumerator HideTalkUI (GameObject guiParentCanvas, float secondsToWait, Text textToFade)
+	public IEnumerator HideTalkUI (GameObject guiParentCanvas, float secondsToWait, Text textToFade)
 	{
 		yield return new WaitForSeconds (secondsToWait);
 
@@ -86,12 +100,12 @@ public class TextBox : MonoBehaviour {
 		StartCoroutine(removeCaptionCoroutine);
 	}
 
-	IEnumerator RemoveCaptionAfterSeconds(float secondsToWait, GameObject guiParentCanvas) {
+	public IEnumerator RemoveCaptionAfterSeconds(float secondsToWait, GameObject guiParentCanvas) {
 		yield return new WaitForSeconds (secondsToWait);
 		guiParentCanvas.SetActive (false);
 
 
-		instantiatedCaption.gameObject.SetActive(false);
+		this.gameObject.SetActive(false);
 		showingCaption = false;
 		shouldAttachToCaller = false;
 		followTransform = null;

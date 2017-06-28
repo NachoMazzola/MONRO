@@ -5,7 +5,8 @@ using System.Text;
 using Yarn.Unity;
 using System.Collections.Generic;
 
-public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
+public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
+{
 
 	public Transform ConversationOptionsPrefab;
 
@@ -16,7 +17,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 	// the user selected
 	private Yarn.OptionChooser SetSelectedOption;
 
-	[Tooltip("How quickly to show the text, in seconds per character")]
+	[Tooltip ("How quickly to show the text, in seconds per character")]
 	public float textSpeed = 0.025f;
 
 	private Transform instantiatedPlayerConversation;
@@ -33,10 +34,11 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 
 	public DialogueRunner dialogRunner;
 
-	void Awake() {
+	void Awake ()
+	{
 
 		dialogRunner = FindObjectOfType<DialogueRunner> ();
-		ConversationOptionsPrefab.gameObject.SetActive(false);
+		ConversationOptionsPrefab.gameObject.SetActive (false);
 
 
 		foreach (Button optionButton in optionButtons) {
@@ -45,27 +47,30 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		
 	}
 
-	private Character GetParticipant(string participant) {
-		int dotIdx = participant.IndexOf(".");
-		string participantCorrectName = participant.Substring(0, dotIdx);
+	private Character GetParticipant (string participant)
+	{
+		int dotIdx = participant.IndexOf (".");
+		string participantCorrectName = participant.Substring (0, dotIdx);
 
 		foreach (Transform t in dialogRunner.conversationParticipants) {
-			Character conversationInterface = t.GetComponent<Character>();
+			Character conversationInterface = t.GetComponent<Character> ();
 			if (conversationInterface.ConversationName == participantCorrectName) {
 				return conversationInterface;
 			}
 		}	
 
-		Debug.Log("Careful!!, there is no character named" + participantCorrectName);
+		Debug.Log ("Careful!!, there is no character named" + participantCorrectName);
 
 		return null;
 	}
@@ -73,51 +78,26 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 
 	//YARN INTERFACE IMPLEMENTATION
 	// Show a line of dialogue, gradually
-	public override IEnumerator RunLine (Yarn.Line line) {
-		whoIsTalking = GetParticipant(dialogRunner.dialogue.currentNode);
+	public override IEnumerator RunLine (Yarn.Line line)
+	{
+		whoIsTalking = GetParticipant (dialogRunner.dialogue.currentNode);
 
 		//volver a pedir el conv canvas solo cuando el que habla cambio
 
 		if (whoIsTalking != null) {
-			if (lastOneWhoTalked == null || whoIsTalking.characterType != lastOneWhoTalked.characterType) {
-
-				instantiatedPlayerConversation = whoIsTalking.GetConversationCaptionCanvas();
+			if (lastOneWhoTalked == null) {
 				lastOneWhoTalked = whoIsTalking;
-
-				//TODO: RESOLVE QUE MIERDA PASA ACA! - LA PRIMERA VEZ QUE HABLA CADA UNO PONE EL TEXBOX EN CUALQUIER LADO!
-				//YA LA SEGUNDA VEZ SE POSICIONA BIEN!
-				TextBox t = instantiatedPlayerConversation.GetComponent<TextBox>();
-				t.PositionateCaptionOverGameObject(whoIsTalking.transform);
 			}
 
-			instantiatedPlayerConversation.gameObject.SetActive(true);
-			theText = instantiatedPlayerConversation.gameObject.GetComponentInChildren<Text>();
+			if (whoIsTalking.characterType != lastOneWhoTalked.characterType) {
 
-			theText.gameObject.SetActive(true);
+				yield return lastOneWhoTalked.HideCaption (0.0f);
 
-			theText.color = whoIsTalking.CharacterTalkColor;
-
-			if (textSpeed > 0.0f) {
-				// Display the line one character at a time
-				var stringBuilder = new StringBuilder ();
-
-				foreach (char c in line.text) {
-					stringBuilder.Append (c);
-					theText.text = stringBuilder.ToString ();
-					yield return new WaitForSeconds (textSpeed);
-				}
-			} else {
-				// Display the line immediately if textSpeed == 0
-				theText.text = line.text;
+				lastOneWhoTalked = whoIsTalking;
 			}
 
-			// Wait for any user input
-			while (Input.anyKeyDown == false) {
-				yield return null;
-			}
 
-			// Hide the text and prompt
-			instantiatedPlayerConversation.gameObject.SetActive (false);
+			yield return StartCoroutine (whoIsTalking.ShowCaption (line.text, TextBox.DisappearMode.WaitInput));
 
 			yield break;
 		}
@@ -125,16 +105,16 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 
 	// Show a list of options, and wait for the player to make a selection.
 	public override IEnumerator RunOptions (Yarn.Options optionsCollection, 
-		Yarn.OptionChooser optionChooser)
+	                                        Yarn.OptionChooser optionChooser)
 	{
 
 		// Do a little bit of safety checking
 		if (optionsCollection.options.Count > optionButtons.Count) {
-			Debug.LogWarning("There are more options to present than there are" +
-				"buttons to present them in. This will cause problems.");
+			Debug.LogWarning ("There are more options to present than there are" +
+			"buttons to present them in. This will cause problems.");
 		}
 
-		ConversationOptionsPrefab.gameObject.SetActive(true);
+		ConversationOptionsPrefab.gameObject.SetActive (true);
 
 		// Display each option in a button, and make it visible
 		int i = 0;
@@ -147,13 +127,13 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 		inactiveButtons = optionButtons.Count - optionsCollection.options.Count;
 
 		if (inactiveButtons > 0) {
-			float bHeight = optionButtons[0].GetComponent<RectTransform>().rect.height;
+			float bHeight = optionButtons [0].GetComponent<RectTransform> ().rect.height;
 			optionButtonYDisplacement = bHeight * inactiveButtons;
 			for (int j = 0; j < optionButtons.Count; j++) {
-				Button currentButton = optionButtons[j];
-				RectTransform buttonRect = currentButton.GetComponent<RectTransform>();
+				Button currentButton = optionButtons [j];
+				RectTransform buttonRect = currentButton.GetComponent<RectTransform> ();
 
-				buttonRect.anchoredPosition = new Vector2(buttonRect.anchoredPosition.x, buttonRect.anchoredPosition.y - optionButtonYDisplacement);
+				buttonRect.anchoredPosition = new Vector2 (buttonRect.anchoredPosition.x, buttonRect.anchoredPosition.y - optionButtonYDisplacement);
 			}
 		}
 
@@ -170,7 +150,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 			button.gameObject.SetActive (false);
 		}
 
-		resetDialogueOptionsButtons();
+		resetDialogueOptionsButtons ();
 		yield break;
 	}
 
@@ -185,47 +165,51 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour {
 		SetSelectedOption = null; 
 	}
 
-	public override IEnumerator RunCommand (Yarn.Command command) {
+	public override IEnumerator RunCommand (Yarn.Command command)
+	{
 		yield break;
 	}
 
-	public override IEnumerator DialogueStarted () {
+	public override IEnumerator DialogueStarted ()
+	{
 
 		Debug.Log ("Dialogue starting!");
 
 		// Enable the dialogue controls.
 		if (instantiatedPlayerConversation != null)
-			instantiatedPlayerConversation.gameObject.SetActive(true);
+			instantiatedPlayerConversation.gameObject.SetActive (true);
 
 		yield break;
 	}
 
-	public override IEnumerator DialogueComplete () {
+	public override IEnumerator DialogueComplete ()
+	{
 
-		ConversationOptionsPrefab.gameObject.SetActive(false);
-		instantiatedPlayerConversation.gameObject.SetActive(false);
+		ConversationOptionsPrefab.gameObject.SetActive (false);
+		instantiatedPlayerConversation.gameObject.SetActive (false);
 
 		//instantiatedPlayerConversation = null;
 		theText.text = "";
 
-		dialogRunner.DialogueComplete();
+		dialogRunner.DialogueComplete ();
 
-		resetDialogueOptionsButtons();
+		resetDialogueOptionsButtons ();
 
 		yield break;
 	}
-		
-	void resetDialogueOptionsButtons() {
+
+	void resetDialogueOptionsButtons ()
+	{
 
 		//set the buttons as they were before displacing them!
 		if (inactiveButtons > 0) {
-			float bHeight = optionButtons[0].GetComponent<RectTransform>().rect.height;
+			float bHeight = optionButtons [0].GetComponent<RectTransform> ().rect.height;
 			optionButtonYDisplacement = bHeight * inactiveButtons;
 			for (int j = 0; j < optionButtons.Count; j++) {
-				Button currentButton = optionButtons[j];
-				RectTransform buttonRect = currentButton.GetComponent<RectTransform>();
+				Button currentButton = optionButtons [j];
+				RectTransform buttonRect = currentButton.GetComponent<RectTransform> ();
 
-				buttonRect.anchoredPosition = new Vector2(buttonRect.anchoredPosition.x, buttonRect.anchoredPosition.y + optionButtonYDisplacement);
+				buttonRect.anchoredPosition = new Vector2 (buttonRect.anchoredPosition.x, buttonRect.anchoredPosition.y + optionButtonYDisplacement);
 			}
 		}
 	}
