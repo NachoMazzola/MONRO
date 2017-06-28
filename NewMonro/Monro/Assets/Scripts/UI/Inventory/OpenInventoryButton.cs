@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OpenInventoryButton : MonoBehaviour, IInventoryObserver {
+public class OpenInventoryButton : MonoBehaviour, IInventoryObserver, IWorldInteractionObserver {
 
 	private Animator buttonAnimator;
 	private UIInventory inventory;
@@ -12,12 +12,30 @@ public class OpenInventoryButton : MonoBehaviour, IInventoryObserver {
 		inventory.AddInventoryObserver(this);
 	}
 
+	void Start() {
+		WorldInteractionController.getComponent().AddObserver(this);
+	}
+
+	void OnDestroy() {
+		if (WorldInteractionController.getComponent()) {
+			WorldInteractionController.getComponent().RemoveObserver(this);
+		}
+	}
+
 	public void AnimEventAddingItemAnimFinished() {
 		buttonAnimator.SetBool("itemAdded", false);
 	}
+		
+	virtual public void IWOTapped(Vector2 tapPos, GameObject other) {
+		if (other != this.gameObject) {
+			return;
+		}
 
-	void OnMouseDown() {
 		inventory.OpenInventory();
+	}
+
+	virtual public void IWOTapHold(Vector2 tapPos, GameObject other) {
+
 	}
 
 	void OnTriggerEnter2D (Collider2D other)

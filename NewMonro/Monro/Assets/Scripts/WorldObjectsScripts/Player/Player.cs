@@ -60,6 +60,10 @@ public class Player : Character
 	}
 		
 	override public void IWOTapped(Vector2 tapPos, GameObject other) {
+		if (other != this.gameObject) {
+			return;
+		}
+
 		Debug.Log("TAP");
 		if (animStateMachine.GetCurrentState () == PlayerStateMachine.PlayerStates.PlayerTalk) {
 			return;
@@ -76,6 +80,9 @@ public class Player : Character
 
 	override public void IWOTapHold(Vector2 tapPos, GameObject other) {
 		Debug.Log("HOLD TAP");
+		if (other != this.gameObject) {
+			return;
+		}
 	}
 		
 	/*

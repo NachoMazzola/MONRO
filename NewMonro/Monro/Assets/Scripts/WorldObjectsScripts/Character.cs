@@ -70,6 +70,10 @@ public class Character : MonoBehaviour, IWorldInteractionObserver {
 	}
 
 	virtual public void OnUpdate() {
+		WorldInteractionController.getComponent().RemoveObserver(this);
+	}
+
+	void OnDestroy() {
 	}
 
 	virtual public Transform GetConversationCaptionCanvas() {

@@ -17,23 +17,29 @@ public class WorldInteractionController: MonoBehaviour
 	private WorldInteractionType currentInteraction;
 	private List<IWorldInteractionObserver> worldObservers;
 
-	static public WorldInteractionController getComponent ()
-	{
-		return GameObject.Find ("WorldInteractionController").GetComponent<WorldInteractionController> ();
+	static public WorldInteractionController getComponent () {
+		GameObject controller = GameObject.Find ("WorldInteractionController");
+		if (controller) {
+			return controller.GetComponent<WorldInteractionController> ();
+		}
+		return null;
 	}
 
 	void Awake ()
 	{
 		worldObservers = new List<IWorldInteractionObserver> ();
-
 	}
 
-	// Use this for initialization
-	void Start ()
+	void OnDestroy() {
+		worldObservers.RemoveAll(ImplementsInterface);
+		worldObservers = null;
+	}
+
+	private static bool ImplementsInterface(IWorldInteractionObserver s)
 	{
-	
+		return true;
 	}
-	
+
 	// Update is called once per frame
 	void Update ()
 	{
