@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour {
 
-	private const int itemContainerW = 50;
-	private const int itemContainerH = 50;
+	private const int itemContainerW = 1024;
+	private const int itemContainerH = 768;
 	private const int maxItems = 4;
 
 	private GameObject inventoryScrollViewContainer;
@@ -102,7 +102,7 @@ public class UIInventory : MonoBehaviour {
 			lastItemPosition = new Vector2();
 		}
 		else {
-			Vector2 newPos = new Vector2(lastItemPosition.x - itemContainerW, 0);	
+			Vector2 newPos = new Vector2(lastItemPosition.x - ((RectTransform)container.transform).rect.size.x * container.localScale.x, 0);	
 			lastItemPosition = newPos;
 		}
 

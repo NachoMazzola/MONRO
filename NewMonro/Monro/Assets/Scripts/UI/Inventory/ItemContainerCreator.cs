@@ -11,7 +11,7 @@ public class ItemContainerCreator : MonoBehaviour {
 	public Transform createContainerWithItemImage(Transform itemImage) {
 		Transform container = Instantiate(itemContainer, new Vector2(), Quaternion.identity) as Transform;
 		container.SetParent(this.transform);
-		container.localScale = new Vector2(1,1);
+		container.localScale = new Vector2(0.25f,1);
 
 		itemImage.SetParent(container);
 		((RectTransform)itemImage.transform).anchoredPosition = new Vector2();
