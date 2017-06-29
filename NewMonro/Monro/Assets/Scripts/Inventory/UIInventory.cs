@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour {
 
-	private const int itemContainerW = 1024;
-	private const int itemContainerH = 768;
+	private const int itemContainerW = 50;
+	private const int itemContainerH = 44;
 	private const int maxItems = 4;
 
 	private GameObject inventoryScrollViewContainer;
@@ -31,7 +31,7 @@ public class UIInventory : MonoBehaviour {
 		isOpened = false;
 		itemList = new List<Transform>();
 
-		inventoryScrollViewContainer = GameObject.Find("InventoryScrollViewContainer");
+		inventoryScrollViewContainer = GameObject.Find("Inventory");
 		inventoryScrollViewContainer.SetActive(false);
 
 		inventoryContent = inventoryScrollViewContainer.transform.Find("InventoryContentPanel");

@@ -15,7 +15,7 @@ public class DraggableWorldItem : MonoBehaviour {
 	public DBItem itemModel;
 
 	void Awake() {
-		GameObject inv = GameObject.Find("UIInventory");
+		GameObject inv = GameObject.Find("UI");
 		inventory =  inv.GetComponent<UIInventory>();
 
 		IsBeingDraggedOverInventory = true; //always is instanciated being dragged from inventory

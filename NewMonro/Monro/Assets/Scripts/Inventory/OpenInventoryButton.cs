@@ -1,41 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OpenInventoryButton : MonoBehaviour, IInventoryObserver, IWorldInteractionObserver {
+public class OpenInventoryButton : MonoBehaviour, IInventoryObserver {
 
 	private Animator buttonAnimator;
 	private UIInventory inventory;
 
 	void Awake() {
 		buttonAnimator = GetComponent<Animator>();
-		inventory = GameObject.Find("UIInventory").GetComponent<UIInventory>();
+		inventory = GameObject.Find("UI").GetComponent<UIInventory>();
 		inventory.AddInventoryObserver(this);
 	}
-
-	void Start() {
-		WorldInteractionController.getComponent().AddObserver(this);
-	}
-
-	void OnDestroy() {
-		if (WorldInteractionController.getComponent()) {
-			WorldInteractionController.getComponent().RemoveObserver(this);
-		}
-	}
-
+		
 	public void AnimEventAddingItemAnimFinished() {
 		buttonAnimator.SetBool("itemAdded", false);
 	}
-		
-	virtual public void IWOTapped(Vector2 tapPos, GameObject other) {
-		if (other != this.gameObject) {
-			return;
-		}
 
+	public void OpenInventory() {
 		inventory.OpenInventory();
-	}
-
-	virtual public void IWOTapHold(Vector2 tapPos, GameObject other) {
-
 	}
 
 	void OnTriggerEnter2D (Collider2D other)
