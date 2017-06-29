@@ -31,15 +31,16 @@ public class UIInventory : MonoBehaviour {
 		isOpened = false;
 		itemList = new List<Transform>();
 
-		inventoryScrollViewContainer = GameObject.Find("Inventory");
+		Transform UI = GameObject.Find("UI").transform;
+
+		inventoryScrollViewContainer = UI.Find("Inventory").gameObject;
 		inventoryScrollViewContainer.SetActive(false);
+		inventoryCollider = inventoryScrollViewContainer.GetComponent<BoxCollider2D>();
 
 		inventoryContent = inventoryScrollViewContainer.transform.Find("InventoryContentPanel");
 
-		closeInventoryButton = GameObject.Find("CloseInventoryButton").GetComponent<Button>();
+		closeInventoryButton = UI.Find("CloseInventoryButton").GetComponent<Button>();
 		closeInventoryButton.gameObject.SetActive(false);
-
-		inventoryCollider = GetComponent<BoxCollider2D>();
 
 		theScrollRect = inventoryScrollViewContainer.GetComponent<ScrollRect>();
 		theScrollRect.vertical = false;

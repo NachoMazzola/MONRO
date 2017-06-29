@@ -35,6 +35,7 @@ public class InstantiateDraggableWorldItem : MonoBehaviour, IPointerDownHandler,
 		targetPosition.z = -0.1f;
 		instanciatedWorldItem = Instantiate (ItemWorldRepTransform, targetPosition, Quaternion.identity) as Transform;
 
+
 		DraggableWorldItem wItem = instanciatedWorldItem.GetComponent<DraggableWorldItem> ();
 		wItem.StartDragging ();
 		wItem.itemModel = instanciatedItemModel;

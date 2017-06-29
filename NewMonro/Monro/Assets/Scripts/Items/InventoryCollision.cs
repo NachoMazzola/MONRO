@@ -35,7 +35,7 @@ public class InventoryCollision : MonoBehaviour {
 			}
 		}
 
-		UIInventory inv = GameObject.Find("UIInventory").GetComponent<UIInventory>();
+		UIInventory inv = GameObject.Find("UI").GetComponent<UIInventory>();
 		inv.CloseInventory();
 	}
 }

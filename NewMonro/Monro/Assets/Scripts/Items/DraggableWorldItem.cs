@@ -34,7 +34,9 @@ public class DraggableWorldItem : MonoBehaviour {
 
 	public void StopDragging() {
 		IsBeingDragged = false;
-		theDragging.draggingMode = false;
+		if (theDragging) {
+			theDragging.draggingMode = false;
+		}
 
 		inventory.EnableScrolling(true);
 
