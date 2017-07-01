@@ -2,10 +2,10 @@
 	{
 		"title": "Hildr.Start1",
 		"tags": "",
-		"body": "<<if not visited (\"Monrjiall.off\")>>\nValiant warrior! \nI ask you your name...\n...so that I may know who it is that has been so wrongfully cheated.\n\n[[Monrjiall.response]]\n\n<<else>>\nYou must search for a solution in this field.\nCome talk to me after you've looked everywhere.\n<<endif>>\n\n",
+		"body": "<<if not visited (\"Monrjiall.off\")>>\nValiant warrior! \nI ask you your name...\n...so that I may know who it is that has been so wrongfully cheated.\n\n[[Monrjiall.response]]\n\n<<else>>\n[[Hildr.Second]]\n<<endif>>\n\n",
 		"position": {
-			"x": 640,
-			"y": 640
+			"x": 634,
+			"y": 634
 		},
 		"colorID": 0
 	},
@@ -290,9 +290,9 @@
 		"colorID": 0
 	},
 	{
-		"title": "Hildr.Start",
+		"title": "Hildr.Second",
 		"tags": "",
-		"body": "<<if not visited (\"Hildr.Start1\")>>\n[[Hildr.progress]]\n<<else>>\n[[Hildr.progress]]\n<<endif>>",
+		"body": "<<if $mimirMet is true>>\n[[Hildr.progress]]\n<<else>>\nYou must search for a solution in this field.\nCome talk to me after you've looked everywhere.\n<<endif>>",
 		"position": {
 			"x": 307,
 			"y": 625
