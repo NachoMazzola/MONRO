@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 {
 
-	public Transform ConversationOptionsPrefab;
+	public DialogueRunner dialogRunner;
 
 	// The buttons that let the user choose an option
 	public List<Button> optionButtons;
@@ -22,33 +22,27 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 	private float optionButtonYDisplacement;
 	private int inactiveButtons;
+	private Transform conversationOptionsPanel;
 
 	private Character lastOneWhoTalked;
 	private Character whoIsTalking;
 
-	public DialogueRunner dialogRunner;
+
 
 	void Awake ()
 	{
 
 		dialogRunner = FindObjectOfType<DialogueRunner> ();
-		ConversationOptionsPrefab.gameObject.SetActive (false);
+		conversationOptionsPanel = GameObject.Find("UI").transform.Find("ConversationOptionsPanel").transform;
+		conversationOptionsPanel.gameObject.SetActive (false);
 
 
 		foreach (Button optionButton in optionButtons) {
 			optionButton.gameObject.SetActive (false);
 		}
 	}
-
-	// Use this for initialization
-	void Start ()
-	{
 		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
+	void Start() {
 		
 	}
 
@@ -108,7 +102,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 			"buttons to present them in. This will cause problems.");
 		}
 
-		ConversationOptionsPrefab.gameObject.SetActive (true);
+		conversationOptionsPanel.gameObject.SetActive (true);
 
 		// Display each option in a button, and make it visible
 		int i = 0;
@@ -177,7 +171,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 	public override IEnumerator DialogueComplete ()
 	{
 
-		ConversationOptionsPrefab.gameObject.SetActive (false);
+		conversationOptionsPanel.gameObject.SetActive (false);
 		dialogRunner.DialogueComplete ();
 		resetDialogueOptionsButtons ();
 
