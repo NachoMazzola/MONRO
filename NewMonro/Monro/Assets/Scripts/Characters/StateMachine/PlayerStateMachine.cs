@@ -41,11 +41,7 @@ public class PlayerStateMachine : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-
-
-	}
+	void Update () {}
 
 	public void SetState(PlayerStates newState) {
 		lastState = currentState;

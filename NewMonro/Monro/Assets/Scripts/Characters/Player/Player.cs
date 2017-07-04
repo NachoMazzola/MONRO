@@ -131,4 +131,14 @@ public class Player : Character
 
 		currentState.StateStart();
 	}
+
+	public void StartMoving(MovingDirection movingDirection) {
+		SwapFacingDirectionTo(movingDirection);
+		ChangeToState(PlayerStateMachine.PlayerStates.PlayerWalk);
+		(currentState as StateWalk).SetupState(null, true, PlayerStateMachine.PlayerStates.PlayerIdle);
+	}
+
+	public void StopMoving() {
+		currentState.StateEnd();
+	}
 }

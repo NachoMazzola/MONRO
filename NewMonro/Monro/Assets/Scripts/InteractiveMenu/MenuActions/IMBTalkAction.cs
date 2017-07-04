@@ -56,7 +56,7 @@ public class IMBTalkAction: IMActionButton {
 		playerComp.stateTransitionData = new StateTransitionData(theObj.GetComponent<NPC>());
 
 		playerComp.ChangeToState(PlayerStateMachine.PlayerStates.PlayerWalk);
-		(playerComp.currentState as StateWalk).SetupState(GetCorrectTalkingPosition(theObj.transform), true, PlayerStateMachine.PlayerStates.PlayerTalk);
+		(playerComp.currentState as StateWalk).SetupState(theObj.transform, true, PlayerStateMachine.PlayerStates.PlayerTalk);
 	}
 
 	public Vector2 GetCorrectTalkingPosition(Transform moveToObj) {
