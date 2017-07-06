@@ -35,7 +35,7 @@ public class MovementController : MonoBehaviour {
 			}
 		}
 		else {
-			floor = GameObject.Find("ParallaxFloor").transform;	
+			floor = GameObject.Find("Floor").transform;	
 			if (floor == null) {
 				Debug.LogError("WARNING: CONTROLLER CAND FIND FLOOR TO CONTROL!");
 			}
@@ -48,6 +48,11 @@ public class MovementController : MonoBehaviour {
 	}
 
 	public void UpdateMovement() {
+		//TODO: Hace que el piso una vez que el sultimo segmento esta dentro de la camara, ya no se deberia scrollear mas!
+		//probablemente haya que mover el codigo del chequeo de bordes de la camara en ParallaxScrolling.cs a un script
+		//propio dentro de la camara!!
+
+
 		if (movingRight) {
 			thePlayer.SwapFacingDirectionTo(Character.MovingDirection.MovingRight);
 			if (MovePlayer) {
@@ -87,5 +92,13 @@ public class MovementController : MonoBehaviour {
 		movingRight = false;
 
 		thePlayer.StopMoving();
+	}
+
+	public bool IsMoving() {
+		return movingLeft || movingRight;
+	}
+
+	public Character.MovingDirection GetMovingDirection() {
+		return thePlayer.currentFacingDirection;
 	}
 }
