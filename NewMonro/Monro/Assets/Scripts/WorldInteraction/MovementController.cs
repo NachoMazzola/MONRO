@@ -8,15 +8,11 @@ public class MovementController : MonoBehaviour {
 	public bool movingRight;
 	[HideInInspector]
 	public bool movingLeft;
+	[HideInInspector]
+	public bool MovePlayer = true; 
+
 
 	private Player thePlayer;
-	private Transform floor;
-
-	/*
-	 * TRUE => the player gets moved.
-	 * FALSE => The floor gets moved.
-	*/
-	public bool MovePlayer = false; 
 
 	[HideInInspector]
 	public Transform targetTransform;
@@ -34,12 +30,6 @@ public class MovementController : MonoBehaviour {
 				Debug.LogError("WARNING: CONTROLLER CAND FIND PLAYER TO CONTROL!");
 			}
 		}
-		else {
-			floor = GameObject.Find("Floor").transform;	
-			if (floor == null) {
-				Debug.LogError("WARNING: CONTROLLER CAND FIND FLOOR TO CONTROL!");
-			}
-		}
 	}
 	
 	// Update is called once per frame
@@ -48,27 +38,17 @@ public class MovementController : MonoBehaviour {
 	}
 
 	public void UpdateMovement() {
-		//TODO: Hace que el piso una vez que el sultimo segmento esta dentro de la camara, ya no se deberia scrollear mas!
-		//probablemente haya que mover el codigo del chequeo de bordes de la camara en ParallaxScrolling.cs a un script
-		//propio dentro de la camara!!
-
-
+		
 		if (movingRight) {
 			thePlayer.SwapFacingDirectionTo(Character.MovingDirection.MovingRight);
 			if (MovePlayer) {
 				thePlayer.transform.position += new Vector3(1 * thePlayer.MovementSpeed * Time.deltaTime, 0, 0);	
-			}
-			else {
-				floor.transform.position -= new Vector3(1 * thePlayer.MovementSpeed * Time.deltaTime, 0, 0);	
 			}
 		}
 		else if (movingLeft) {
 			thePlayer.SwapFacingDirectionTo(Character.MovingDirection.MovingLeft);
 			if (MovePlayer) {
 				thePlayer.transform.position -= new Vector3(1 * thePlayer.MovementSpeed * Time.deltaTime, 0, 0);	
-			}
-			else {
-				floor.transform.position += new Vector3(1 * thePlayer.MovementSpeed * Time.deltaTime, 0, 0);	
 			}
 		}
 	}
@@ -100,5 +80,13 @@ public class MovementController : MonoBehaviour {
 
 	public Character.MovingDirection GetMovingDirection() {
 		return thePlayer.currentFacingDirection;
+	}
+
+	public float GetPlayerPosition() {
+		return thePlayer.transform.position.x;
+	}
+
+	public float GetMovementSpeed() {
+		return thePlayer.MovementSpeed;
 	}
 }

@@ -15,10 +15,16 @@ public class ParallaxScrolling : MonoBehaviour
 	public float frontLayersSpeed = 1.5f;
 
 	private MovementController movementController;
+	private float cameraLeftBorder;
+	private float cameraRightBorder;
 
 	// Use this for initialization
 	void Start ()
 	{
+		float dist = (transform.position - Camera.main.transform.position).z;
+		cameraLeftBorder = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, dist)).x;
+		cameraRightBorder = Camera.main.ViewportToWorldPoint (new Vector3 (1, 0, dist)).x;
+	
 		movementController = GameObject.Find ("MovementController").GetComponent<MovementController> ();
 		if (movementController == null) {
 			Debug.LogError ("PARALLAX: NO MOVEMENT CONTROLLER FOUND IN SCENE!");
@@ -42,8 +48,8 @@ public class ParallaxScrolling : MonoBehaviour
 			}
 		}
 	}
-
-	private void MoveLayer (Transform layer, float speed)
+		
+	private void MoveLayer (Transform layer, float speed, bool loop = true)
 	{
 		if (movementController.GetMovingDirection () == Character.MovingDirection.MovingRight) {
 			layer.position -= new Vector3 (1 * speed * Time.deltaTime, 0, 0);	
@@ -51,40 +57,33 @@ public class ParallaxScrolling : MonoBehaviour
 			layer.position += new Vector3 (1 * speed * Time.deltaTime, 0, 0);
 		}
 
-		CheckIfLayerIsWithinViewport (layer);
+		CheckIfLayerIsWithinViewport (layer, loop);
 	}
 
-	private void CheckIfLayerIsWithinViewport (Transform layer)
+	/*
+	 * Checks if the layer is withing viewport and moves it to the next section if it is not, so it can
+	 * simulate a "continued" effect
+	*/
+	private void CheckIfLayerIsWithinViewport (Transform layer, bool loop = true)
 	{
 		//This is the background moving direction. If the player moves ->, the background should move <-
 		Character.MovingDirection movDir = movementController.GetMovingDirection () == Character.MovingDirection.MovingLeft ? Character.MovingDirection.MovingRight : Character.MovingDirection.MovingLeft;
 		SpriteRenderer spRenderer = layer.GetComponent<SpriteRenderer> ();
 
-		var dist = (transform.position - Camera.main.transform.position).z;
-		float leftBorder = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, dist)).x;
-		float rightBorder = Camera.main.ViewportToWorldPoint (new Vector3 (1, 0, dist)).x;
-
-
-		// Determine entry and exit border using direction
-		Vector3 exitBorder = Vector3.zero;
-		Vector3 entryBorder = Vector3.zero;
-
-		if (movDir == Character.MovingDirection.MovingLeft) {
-			exitBorder.x = leftBorder;
-			entryBorder.x = rightBorder;
-		} else {
-			exitBorder.x = rightBorder;
-			entryBorder.x = leftBorder;
-		}
+		float dist = (transform.position - Camera.main.transform.position).z;
+		cameraLeftBorder = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, dist)).x;
+		cameraRightBorder = Camera.main.ViewportToWorldPoint (new Vector3 (1, 0, dist)).x;
 
 		if (layer != null) {
 
-			if ((movDir == Character.MovingDirection.MovingLeft && (layer.position.x + spRenderer.bounds.size.x/2 < exitBorder.x))) {
-				layer.position = new Vector2(entryBorder.x + spRenderer.bounds.size.x/2, layer.position.y);
-			}
+			if (loop) {
+				if ((movDir == Character.MovingDirection.MovingLeft && (layer.position.x + spRenderer.bounds.size.x/2 < cameraLeftBorder))) {
+					layer.position = new Vector2(cameraRightBorder + spRenderer.bounds.size.x/2, layer.position.y);
+				}
 
-			if ((movDir == Character.MovingDirection.MovingRight && (layer.position.x - spRenderer.bounds.size.x/2 > exitBorder.x))) {
-				layer.position = new Vector2(entryBorder.x - spRenderer.bounds.size.x/2, layer.position.y);
+				if ((movDir == Character.MovingDirection.MovingRight && (layer.position.x - spRenderer.bounds.size.x/2 > cameraRightBorder))) {
+					layer.position = new Vector2(cameraLeftBorder - spRenderer.bounds.size.x/2, layer.position.y);
+				}	
 			}
 		}
 	}

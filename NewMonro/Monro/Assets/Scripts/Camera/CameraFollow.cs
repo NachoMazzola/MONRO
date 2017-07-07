@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 	
 public class CameraFollow : MonoBehaviour
@@ -7,10 +9,17 @@ public class CameraFollow : MonoBehaviour
 
 	public Transform target;
 
-	public float minPosition = -5.3f;
-	public float maxPosition = 5.3f;
+	private float minPosition = -5.3f;
+	private float maxPosition = 5.3f;
 		
-	public float moveSpeed = 1.0f;
+	private float moveSpeed = 1.0f;
+
+	void Start() {
+		SetupMaxAndMinLimits();
+
+		Player pl = GameObject.Find("PlayerViking").GetComponent<Player>();
+		moveSpeed = pl.MovementSpeed;
+	}
 
 	// Update is called once per frame
 	void Update ()
@@ -26,6 +35,17 @@ public class CameraFollow : MonoBehaviour
 
 		transform.position = newPosition;
 	}
+
+	private void SetupMaxAndMinLimits() {
+		Transform floor = GameObject.Find("Floor").transform;
+
+		Transform lastSection = floor.GetChild(floor.childCount-1);
+		Transform firstSection = floor.GetChild(0);
+
+		this.maxPosition = lastSection.position.x;
+		this.minPosition = firstSection.position.x;
+	}
+
 }
 
 
