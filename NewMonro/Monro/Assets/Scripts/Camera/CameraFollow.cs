@@ -9,16 +9,19 @@ public class CameraFollow : MonoBehaviour
 
 	public Transform target;
 
-	private float minPosition = -5.3f;
-	private float maxPosition = 5.3f;
+	[HideInInspector]
+	public float minPosition = -5.3f;
+	[HideInInspector]
+	public float maxPosition = 5.3f;
 		
-	private float moveSpeed = 1.0f;
+	private float moveSpeed;
+	private Player player;
 
 	void Start() {
-		SetupMaxAndMinLimits();
+		player = GameObject.Find("PlayerViking").GetComponent<Player>();
+		moveSpeed = player.MovementSpeed;
 
-		Player pl = GameObject.Find("PlayerViking").GetComponent<Player>();
-		moveSpeed = pl.MovementSpeed;
+		SetupMaxAndMinLimits();
 	}
 
 	// Update is called once per frame
@@ -44,6 +47,13 @@ public class CameraFollow : MonoBehaviour
 
 		this.maxPosition = lastSection.position.x;
 		this.minPosition = firstSection.position.x;
+
+		float lastSectionSpriteWidth = lastSection.GetComponent<SpriteRenderer>().bounds.size.x;
+		float firstSectionSpriteWidth = firstSection.GetComponent<SpriteRenderer>().bounds.size.x;
+
+		MovementController movCtr = GameObject.Find("MovementController").GetComponent<MovementController>();
+		movCtr.movementLimitLeft = this.minPosition - firstSectionSpriteWidth/2 + player.characterSprite.bounds.size.x/2;
+		movCtr.movementLimitRight = this.maxPosition + lastSectionSpriteWidth/2 - player.characterSprite.bounds.size.x/2;
 	}
 
 }

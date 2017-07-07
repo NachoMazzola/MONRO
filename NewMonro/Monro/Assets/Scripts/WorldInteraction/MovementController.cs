@@ -11,8 +11,11 @@ public class MovementController : MonoBehaviour {
 	[HideInInspector]
 	public bool MovePlayer = true; 
 
+	public float movementLimitRight;
+	public float movementLimitLeft;
 
 	private Player thePlayer;
+
 
 	[HideInInspector]
 	public Transform targetTransform;
@@ -42,13 +45,24 @@ public class MovementController : MonoBehaviour {
 		if (movingRight) {
 			thePlayer.SwapFacingDirectionTo(Character.MovingDirection.MovingRight);
 			if (MovePlayer) {
-				thePlayer.transform.position += new Vector3(1 * thePlayer.MovementSpeed * Time.deltaTime, 0, 0);	
+				if (thePlayer.transform.position.x + thePlayer.characterSprite.bounds.size.x/2 >= movementLimitRight) {
+					StopMoving();
+				}
+				else {
+					thePlayer.transform.position += new Vector3(1 * thePlayer.MovementSpeed * Time.deltaTime, 0, 0);		
+				}
+
 			}
 		}
 		else if (movingLeft) {
 			thePlayer.SwapFacingDirectionTo(Character.MovingDirection.MovingLeft);
 			if (MovePlayer) {
-				thePlayer.transform.position -= new Vector3(1 * thePlayer.MovementSpeed * Time.deltaTime, 0, 0);	
+				if (thePlayer.transform.position.x - thePlayer.characterSprite.bounds.size.x/2 <= movementLimitLeft) {
+					StopMoving();
+				}
+				else {
+					thePlayer.transform.position -= new Vector3(1 * thePlayer.MovementSpeed * Time.deltaTime, 0, 0);		
+				}
 			}
 		}
 	}
