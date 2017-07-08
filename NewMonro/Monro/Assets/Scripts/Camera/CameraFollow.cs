@@ -56,6 +56,9 @@ public class CameraFollow : MonoBehaviour
 		movCtr.movementLimitRight = this.maxPosition + lastSectionSpriteWidth/2 - player.characterSprite.bounds.size.x/2;
 	}
 
+	public bool ReachedLimitPosition() {
+		return this.transform.position.x == maxPosition || this.transform.position.x == minPosition;
+	}
 }
 
 

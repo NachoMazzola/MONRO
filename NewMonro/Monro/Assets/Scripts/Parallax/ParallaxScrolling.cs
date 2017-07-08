@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ParallaxScrolling : MonoBehaviour
 {
+	[HideInInspector]
+	public bool allowParallax = true;
 
 	public List<Transform> backLayers;
 	public float backLayersSpeed = 0.5f;
@@ -18,6 +20,8 @@ public class ParallaxScrolling : MonoBehaviour
 	private float cameraLeftBorder;
 	private float cameraRightBorder;
 
+	private CameraFollow cameraFollow;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -29,12 +33,17 @@ public class ParallaxScrolling : MonoBehaviour
 		if (movementController == null) {
 			Debug.LogError ("PARALLAX: NO MOVEMENT CONTROLLER FOUND IN SCENE!");
 		}
+
+		cameraFollow = Camera.main.GetComponent<CameraFollow>();
+		if (cameraFollow == null) {
+			Debug.LogError ("PARALLAX: NO CAMERA FOLLOW SCRIPT DETECTED!");
+		}
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
-		if (movementController.IsMoving ()) {
+		if (movementController.IsMoving () && !cameraFollow.ReachedLimitPosition()) {
 			foreach (Transform backLayer in backLayers) {
 				MoveLayer (backLayer, backLayersSpeed);
 			}
