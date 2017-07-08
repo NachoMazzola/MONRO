@@ -40,16 +40,16 @@ public class ParallaxScrolling : MonoBehaviour
 			}
 
 			foreach (Transform middleLayer in middleLayers) {
-				MoveLayer(middleLayer, middleLayersSpeed);
+				MoveLayer (middleLayer, middleLayersSpeed);
 			}
 
 			foreach (Transform frontLayer in frontLayers) {
-				MoveLayer(frontLayer, frontLayersSpeed);
+				MoveLayer (frontLayer, frontLayersSpeed);
 			}
 		}
 	}
-		
-	private void MoveLayer (Transform layer, float speed, bool loop = true)
+
+	private void MoveLayer (Transform layer, float speed)
 	{
 		if (movementController.GetMovingDirection () == Character.MovingDirection.MovingRight) {
 			layer.position -= new Vector3 (1 * speed * Time.deltaTime, 0, 0);	
@@ -57,34 +57,36 @@ public class ParallaxScrolling : MonoBehaviour
 			layer.position += new Vector3 (1 * speed * Time.deltaTime, 0, 0);
 		}
 
-		CheckIfLayerIsWithinViewport (layer, loop);
+		CheckIfLayerIsWithinViewport (layer);
 	}
 
 	/*
 	 * Checks if the layer is withing viewport and moves it to the next section if it is not, so it can
 	 * simulate a "continued" effect
 	*/
-	private void CheckIfLayerIsWithinViewport (Transform layer, bool loop = true)
+	private void CheckIfLayerIsWithinViewport (Transform layer)
 	{
 		//This is the background moving direction. If the player moves ->, the background should move <-
 		Character.MovingDirection movDir = movementController.GetMovingDirection () == Character.MovingDirection.MovingLeft ? Character.MovingDirection.MovingRight : Character.MovingDirection.MovingLeft;
 		SpriteRenderer spRenderer = layer.GetComponent<SpriteRenderer> ();
 
 		float dist = (transform.position - Camera.main.transform.position).z;
+
 		cameraLeftBorder = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, dist)).x;
 		cameraRightBorder = Camera.main.ViewportToWorldPoint (new Vector3 (1, 0, dist)).x;
 
 		if (layer != null) {
 
-			if (loop) {
-				if ((movDir == Character.MovingDirection.MovingLeft && (layer.position.x + spRenderer.bounds.size.x/2 < cameraLeftBorder))) {
-					layer.position = new Vector2(cameraRightBorder + spRenderer.bounds.size.x/2, layer.position.y);
-				}
-
-				if ((movDir == Character.MovingDirection.MovingRight && (layer.position.x - spRenderer.bounds.size.x/2 > cameraRightBorder))) {
-					layer.position = new Vector2(cameraLeftBorder - spRenderer.bounds.size.x/2, layer.position.y);
-				}	
+			if ((movDir == Character.MovingDirection.MovingLeft && (layer.position.x + spRenderer.bounds.size.x / 2 < cameraLeftBorder))) {
+				float diff = cameraLeftBorder - (layer.position.x + spRenderer.bounds.size.x / 2);
+				layer.position = new Vector2 (cameraRightBorder - diff + spRenderer.bounds.size.x / 2, layer.position.y);
 			}
+
+			if ((movDir == Character.MovingDirection.MovingRight && (layer.position.x - spRenderer.bounds.size.x / 2 > cameraRightBorder))) {
+				float diff = (layer.position.x - spRenderer.bounds.size.x / 2) - cameraRightBorder;
+				layer.position = new Vector2 (cameraLeftBorder + diff - spRenderer.bounds.size.x / 2, layer.position.y);
+			}	
+
 		}
 	}
 
