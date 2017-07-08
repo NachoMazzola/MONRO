@@ -422,20 +422,10 @@
 	{
 		"title": "Monrjiall.trials",
 		"tags": "",
-		"body": "<<if not visited (\"Mimir.trial1\")>>\n[[How can I prove my knowledge wothy...er...est..ness? |Mimir.trial1]]\n<<elseif visited (\"Mimir.trial1\") and $HoenirKnown is false>>\n[[Can you repeat the knowledge question? |Mimir.trial1repeat]]\n<<elseif visited (\"Mimir.trial1\") and $HoenirKnown is true and not visited (\"Mimir.trial1complete\")>>\n[[Hello, Mimir… or should I say HOENIR! |Mimir.trial1complete]]\n<<endif>>\n\n[[LOGIC THINKING PUZZLE |Mimir.trial2]]\n\n<<if not visited (\"Mimir.trial3\")>>\n[[My sight is impeccable, what is it you want me to observe? |Mimir.trial3]]\n<<elseif visited (\"Mimir.trial3\") and $ItemObserved is false>>\n[[What is it I’m looking for? |Mimir.trial3repeat]]\n<<elseif visited (\"Mimir.trial3\") and $ItemObserved is true and not visited (\"Mimir.trial3complete\")>>\n[[Did you see that [ITEM]? That’s not something you see everyday on a battlefield, is it? |Mimir.trial3complete]]\n<<endif>>\n\n<<if visited (\"Mimir.trial3\") and visited (\"Mimir.trial2\") and visited (\"Mimir.trial1\")>>\n[[I'll be right back|Mimir.Exit]]\n<<endif>>",
+		"body": "<<if not visited (\"Mimir.trial1\")>>\n[[How can I prove my knowledge wothy...er...est..ness? |Mimir.trial1]]\n<<elseif visited (\"Mimir.trial1\") and $HoenirKnown is false>>\n[[Can you repeat the knowledge question? |Mimir.trial1repeat]]\n<<elseif visited (\"Mimir.trial1\") and $HoenirKnown is true and not visited (\"Mimir.trial1complete\")>>\n[[Hello, Mimir… or should I say HOENIR! |Mimir.trial1complete]]\n<<endif>>\n\n<<if not visited (\"Mimir.trial2\")>>\n[[How can I prove my logic thinking? |Mimir.trial2]]\n<<endif>>\n\n<<if not visited (\"Mimir.trial3\")>>\n[[My sight is impeccable, what is it you want me to observe? |Mimir.trial3]]\n<<elseif visited (\"Mimir.trial3\") and $ItemObserved is false>>\n[[What is it I’m looking for? |Mimir.trial3repeat]]\n<<elseif visited (\"Mimir.trial3\") and $ItemObserved is true and not visited (\"Mimir.trial3complete\")>>\n[[Did you see that [ITEM]? That’s not something you see everyday on a battlefield, is it? |Mimir.trial3complete]]\n<<endif>>\n\n<<if visited (\"Mimir.trial3\") and visited (\"Mimir.trial2\") and visited (\"Mimir.trial1\")>>\n[[I'll be right back|Mimir.Exit]]\n<<endif>>",
 		"position": {
-			"x": -1806,
-			"y": 1047
-		},
-		"colorID": 0
-	},
-	{
-		"title": "Monrjiall.Hello",
-		"tags": "",
-		"body": "<<if not visited (\"Monrjiall.Hello1\")>>\n[[Monrjiall.trials]]\n<<else>>\n[[Monrjiall.trials]]\n<<endif>>",
-		"position": {
-			"x": -1814,
-			"y": 293
+			"x": -1808,
+			"y": 1045
 		},
 		"colorID": 0
 	},
@@ -444,15 +434,15 @@
 		"tags": "",
 		"body": "Off to a great start there, my friend. \nAnyway, any scholar worth his salt should have the basic lore regarding his Gods history. \nBefore I was killed, I lived for a while with the Vanir Gods, along with another Aesir God such as myself. \nYou have to name that God to prove your knowledge.\n[[Monrjiall.silence]]",
 		"position": {
-			"x": -2095,
-			"y": 1037
+			"x": -2105,
+			"y": 1038
 		},
 		"colorID": 0
 	},
 	{
 		"title": "Mimir.trial2",
 		"tags": "",
-		"body": "Answer 2\n\n[[Monrjiall.trials]]",
+		"body": "You can't.\n\n[[Monrjiall.whatwhy]]",
 		"position": {
 			"x": -1229,
 			"y": 757
@@ -545,7 +535,7 @@
 		"body": "Right, easy. I’ll be right back.\r\n\r\n[[Monrjiall.trials]]\r\n",
 		"position": {
 			"x": -1808,
-			"y": 765
+			"y": 763
 		},
 		"colorID": 0
 	},
@@ -706,6 +696,136 @@
 		"position": {
 			"x": -952,
 			"y": 1024
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.hello",
+		"tags": "",
+		"body": "<<if not visited (\"Monrjiall.Hello1\")>>\n[[Monrjiall.Hello1]]\n<<else>>\n[[Monrjiall.trials]]\n<<endif>>",
+		"position": {
+			"x": -1821,
+			"y": 291
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.whatwhy",
+		"tags": "",
+		"body": "What? Why?\n\n[[Mimir.lazy]]",
+		"position": {
+			"x": -947,
+			"y": 760
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.lazy",
+		"tags": "",
+		"body": "The Game Designer of this game is too lazy, so there’s no puzzle here. \nAt least not in this Alpha version.\n\n[[Monrjiall.shame]]",
+		"position": {
+			"x": -950,
+			"y": 534
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.shame",
+		"tags": "",
+		"body": "Huh. That’s a shame.\n\n[[Mimir.silence]]",
+		"position": {
+			"x": -1227,
+			"y": 535
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.silence",
+		"tags": "",
+		"body": "...\n\n[[Monrjiall.silence2]]",
+		"position": {
+			"x": -1500,
+			"y": 534
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.silence2",
+		"tags": "",
+		"body": "...\n\n[[Mimir.finalVersion]]",
+		"position": {
+			"x": -1519,
+			"y": 279
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.finalVersion",
+		"tags": "",
+		"body": "Oh, but there will be a puzzle here in the final version.\n\n[[Monrjiall.sure]]",
+		"position": {
+			"x": -1206,
+			"y": 292
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.sure",
+		"tags": "",
+		"body": "Oh, yeah, I’m sure.\r\n\r\n[[Mimir.greatPuzzle]]",
+		"position": {
+			"x": -955,
+			"y": 294
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.greatPuzzle",
+		"tags": "",
+		"body": "And it will be a great puzzle!\n\n[[Monrjiall.believe]]",
+		"position": {
+			"x": -694,
+			"y": 287
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.silence2",
+		"tags": "",
+		"body": "...\n\n[[Monrjiall.done]]",
+		"position": {
+			"x": -1211,
+			"y": 45
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.believe",
+		"tags": "",
+		"body": "Oh, I believe you, yes.\n\n[[Mimir.silence2]]",
+		"position": {
+			"x": -955,
+			"y": 49
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.sadly",
+		"tags": "",
+		"body": "Sadly, yes, we are.\n\n[[Monrjiall.trials]]",
+		"position": {
+			"x": -1811,
+			"y": 56
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.done",
+		"tags": "",
+		"body": "Are we done here?\n\n[[Mimir.sadly]]",
+		"position": {
+			"x": -1502,
+			"y": 41
 		},
 		"colorID": 0
 	}
