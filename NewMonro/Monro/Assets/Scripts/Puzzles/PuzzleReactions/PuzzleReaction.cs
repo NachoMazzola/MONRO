@@ -23,11 +23,9 @@ public class PuzzleReaction : MonoBehaviour, PuzzleNotificationObserver {
 	}
 
 	public virtual void OnAwake() {
-		
 	}
 
 	public virtual void OnStart() {
-		
 	}
 
 	public virtual void OnUpdate() {
