@@ -12,7 +12,7 @@ public enum PuzzleState {
 
 public class Puzzle : MonoBehaviour {
 
-	public PGOState puzzleState = PGOState.Disabled;
+	public PuzzleState puzzleState = PuzzleState.Disabled;
 	public string puzzleId;
 	public int maxSteps;
 	public int currentStep;
@@ -27,7 +27,15 @@ public class Puzzle : MonoBehaviour {
 
 	public void UpdatePuzzleWithAction(IMActionButtonType action, Transform actionReceiver) {
 		foreach (PReaction pr in puzzleReactions) {
+			pr.parent = this;
 			pr.ExecuteReaction(action, actionReceiver);
+		}
+	}
+
+	public void IncrementPuzzleStep() {
+		currentStep++;
+		if (currentStep == maxSteps) {
+			puzzleState = PuzzleState.Completed;
 		}
 	}
 

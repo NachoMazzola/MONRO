@@ -60,6 +60,9 @@ public class IMActionButton : MonoBehaviour {
 		
 	public virtual void ExecuteAction() {
 		Debug.Log("ACTION BUTTON");
+		PuzzleManager pmgr = GameObject.Find("PuzzleManager").GetComponent<PuzzleManager>();
+		pmgr.UpdatePuzzlesWithAction(this.buttonType, this.transform);
+
 
 		DialogueRunner dialogRunner = FindObjectOfType<DialogueRunner> ();
 		ExampleVariableStorage dialogueStorage = dialogRunner.variableStorage as ExampleVariableStorage;
