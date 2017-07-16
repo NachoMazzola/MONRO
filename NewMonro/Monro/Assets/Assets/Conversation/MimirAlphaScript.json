@@ -4,8 +4,8 @@
 		"tags": "",
 		"body": "Hello?\n<<set $mimirMet to true>>\n[[Mimir.Hello]]\n",
 		"position": {
-			"x": 112,
-			"y": 282
+			"x": 113,
+			"y": 260
 		},
 		"colorID": 0
 	},
@@ -14,8 +14,8 @@
 		"tags": "",
 		"body": "Hello\n\n[[Monrjiall.Head]]",
 		"position": {
-			"x": 388,
-			"y": 279
+			"x": 398,
+			"y": 259
 		},
 		"colorID": 0
 	},
@@ -24,8 +24,8 @@
 		"tags": "",
 		"body": "So… you are a head… but you can talk…\r\n\r\n[[Mimir.correct]]",
 		"position": {
-			"x": 656,
-			"y": 280
+			"x": 676,
+			"y": 263
 		},
 		"colorID": 0
 	},
@@ -702,10 +702,10 @@
 	{
 		"title": "Mimir.hello",
 		"tags": "",
-		"body": "<<if not visited (\"Monrjiall.Hello1\")>>\n[[Monrjiall.Hello1]]\n<<else>>\n[[Monrjiall.trials]]\n<<endif>>",
+		"body": "<<if $mimirMet is false>>\n[[Monrjiall.Hello1]]\n<<else>>\n[[Monrjiall.trials]]\n<<endif>>",
 		"position": {
-			"x": -1821,
-			"y": 291
+			"x": -1818,
+			"y": 271
 		},
 		"colorID": 0
 	},
@@ -754,8 +754,8 @@
 		"tags": "",
 		"body": "...\n\n[[Mimir.finalVersion]]",
 		"position": {
-			"x": -1519,
-			"y": 279
+			"x": -1514,
+			"y": 272
 		},
 		"colorID": 0
 	},
@@ -764,8 +764,8 @@
 		"tags": "",
 		"body": "Oh, but there will be a puzzle here in the final version.\n\n[[Monrjiall.sure]]",
 		"position": {
-			"x": -1206,
-			"y": 292
+			"x": -1226,
+			"y": 268
 		},
 		"colorID": 0
 	},
@@ -774,8 +774,8 @@
 		"tags": "",
 		"body": "Oh, yeah, I’m sure.\r\n\r\n[[Mimir.greatPuzzle]]",
 		"position": {
-			"x": -955,
-			"y": 294
+			"x": -950,
+			"y": 267
 		},
 		"colorID": 0
 	},
@@ -814,8 +814,8 @@
 		"tags": "",
 		"body": "Sadly, yes, we are.\n\n[[Monrjiall.trials]]",
 		"position": {
-			"x": -1811,
-			"y": 56
+			"x": -1815,
+			"y": 18
 		},
 		"colorID": 0
 	},
