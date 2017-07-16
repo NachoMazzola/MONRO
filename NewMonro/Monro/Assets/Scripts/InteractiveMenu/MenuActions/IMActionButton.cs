@@ -86,7 +86,7 @@ public class IMActionButton : MonoBehaviour {
 			IMBTalkAction talkComponent = menu.gameObject.GetComponent<IMBTalkAction>();
 			if (talkComponent == null) {
 				actionBtn = menu.gameObject.AddComponent<IMBTalkAction>();	
-				actionBtnTransform = (Resources.Load("Prefabs/UIPrefabs/MenuPrefabs/IMBLookAt") as GameObject).transform;
+				actionBtnTransform = (Resources.Load("IMBLookAt") as GameObject).transform;
 			}
 
 			break;
@@ -96,7 +96,7 @@ public class IMActionButton : MonoBehaviour {
 			IMActionButton lookAtComponent = menu.gameObject.GetComponent<IMBLookAtAction>();
 			if (lookAtComponent == null) {
 				actionBtn = menu.gameObject.AddComponent<IMBLookAtAction>();
-				actionBtnTransform = (Resources.Load("Prefabs/UIPrefabs/MenuPrefabs/IMBLookAt") as GameObject).transform;
+				actionBtnTransform = (Resources.Load("IMBLookAt") as GameObject).transform;
 			}
 			break;
 
@@ -104,7 +104,7 @@ public class IMActionButton : MonoBehaviour {
 			IMBPickUpAction pUpComponent = menu.gameObject.GetComponent<IMBPickUpAction>();
 			if (pUpComponent == null) {
 				actionBtn = menu.gameObject.AddComponent<IMBPickUpAction>();
-				actionBtnTransform = (Resources.Load("Prefabs/UIPrefabs/MenuPrefabs/IMBLookAt") as GameObject).transform;
+				actionBtnTransform = (Resources.Load("IMBLookAt") as GameObject).transform;
 			}
 
 			break;
@@ -113,7 +113,7 @@ public class IMActionButton : MonoBehaviour {
 			IMBUseAction useComponent = menu.gameObject.GetComponent<IMBUseAction>();
 			if (useComponent == null) {
 				actionBtn = menu.gameObject.AddComponent<IMBUseAction>();
-				actionBtnTransform = (Resources.Load("Prefabs/UIPrefabs/MenuPrefabs/IMBLookAt") as GameObject).transform;
+				actionBtnTransform = (Resources.Load("IMBLookAt") as GameObject).transform;
 			}
 
 			break;
