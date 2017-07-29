@@ -16,9 +16,6 @@ public enum IMActionButtonType {
 
 public class IMActionButton : MonoBehaviour {
 	
-	public IMActionButtonType AddsActionOnExecution = IMActionButtonType.None;
-
-
 	[HideInInspector]
 	public IMActionButtonType buttonType;
 
@@ -60,76 +57,22 @@ public class IMActionButton : MonoBehaviour {
 		
 	public virtual void ExecuteAction() {
 		Debug.Log("ACTION BUTTON");
-		PuzzleManager pmgr = GameObject.Find("PuzzleManager").GetComponent<PuzzleManager>();
-		pmgr.UpdatePuzzlesWithAction(this.buttonType, this.transform);
-
-
-		DialogueRunner dialogRunner = FindObjectOfType<DialogueRunner> ();
-		ExampleVariableStorage dialogueStorage = dialogRunner.variableStorage as ExampleVariableStorage;
-
-		string propeVariable = "$"+dialogueReferVariable;
-
-		dialogueStorage.SetValue(propeVariable, new Yarn.Value(true));
+		GameObject puzzleManager = GameObject.Find("PuzzleManager");
+		if (puzzleManager) {
+			PuzzleManager pmgr = puzzleManager.GetComponent<PuzzleManager>();
+			if (pmgr != null) {
+				PuzzleActionType puzzleType = pmgr.TransformActionButtonTypeToPuzzleActionType(this.buttonType);
+				pmgr.UpdatePuzzlesWithAction(puzzleType, this.transform);	
+			}
+		}
 
 		ExecutePuzzleAction();
 	}
 
 	public IEnumerator AddActionOnFinishAfterCoroutine(IEnumerator coroutineToWait) {
 		yield return StartCoroutine(coroutineToWait);
-		AddActionOnfinish();
 	}
-
-	public void AddActionOnfinish() {
-
-		IMActionButton actionBtn = null;
-		Transform actionBtnTransform = null;
-		switch(AddsActionOnExecution) {
-			case IMActionButtonType.Talk:
-
-			IMBTalkAction talkComponent = menu.gameObject.GetComponent<IMBTalkAction>();
-			if (talkComponent == null) {
-				actionBtn = menu.gameObject.AddComponent<IMBTalkAction>();	
-				actionBtnTransform = (Resources.Load("IMBLookAt") as GameObject).transform;
-			}
-
-			break;
-
-			case IMActionButtonType.LookAt:
-
-			IMActionButton lookAtComponent = menu.gameObject.GetComponent<IMBLookAtAction>();
-			if (lookAtComponent == null) {
-				actionBtn = menu.gameObject.AddComponent<IMBLookAtAction>();
-				actionBtnTransform = (Resources.Load("IMBLookAt") as GameObject).transform;
-			}
-			break;
-
-			case IMActionButtonType.Pickup:
-			IMBPickUpAction pUpComponent = menu.gameObject.GetComponent<IMBPickUpAction>();
-			if (pUpComponent == null) {
-				actionBtn = menu.gameObject.AddComponent<IMBPickUpAction>();
-				actionBtnTransform = (Resources.Load("IMBLookAt") as GameObject).transform;
-			}
-
-			break;
-
-			case IMActionButtonType.Use:
-			IMBUseAction useComponent = menu.gameObject.GetComponent<IMBUseAction>();
-			if (useComponent == null) {
-				actionBtn = menu.gameObject.AddComponent<IMBUseAction>();
-				actionBtnTransform = (Resources.Load("IMBLookAt") as GameObject).transform;
-			}
-
-			break;
-		}
-			
-		if (actionBtn != null && actionBtnTransform != null) {
-			actionBtn.ButtonPrefab = actionBtnTransform;
-			menu.AddButton(actionBtn);
-		}
-		else {
-			Debug.Log("PREFAB NOT FOUND BITCH");
-		}
-	}
+		
 
 	void ExecutePuzzleAction() {
 		InteractivePuzzleAction intPA = this.gameObject.GetComponent<InteractivePuzzleAction>();

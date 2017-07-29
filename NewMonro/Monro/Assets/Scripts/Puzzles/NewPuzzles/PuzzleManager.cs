@@ -15,9 +15,24 @@ public class PuzzleManager : MonoBehaviour {
 		}
 	}
 
-	public void UpdatePuzzlesWithAction(IMActionButtonType action, Transform actionReceiver) {
+	public void UpdatePuzzlesWithAction(PuzzleActionType action, Transform actionReceiver) {
 		foreach (Puzzle p in puzzleList) {
 			p.UpdatePuzzleWithAction(action, actionReceiver);
+		}
+	}
+
+	public PuzzleActionType TransformActionButtonTypeToPuzzleActionType(IMActionButtonType buttonType) {
+		switch(buttonType) {
+		case IMActionButtonType.LookAt:
+			return PuzzleActionType.LookAt;
+		case IMActionButtonType.Pickup:
+			return PuzzleActionType.PickUp;
+		case IMActionButtonType.Talk:
+			return PuzzleActionType.Talk;
+		case IMActionButtonType.Use:
+			return PuzzleActionType.Use;
+			default:
+			return PuzzleActionType.None;
 		}
 	}
 }
