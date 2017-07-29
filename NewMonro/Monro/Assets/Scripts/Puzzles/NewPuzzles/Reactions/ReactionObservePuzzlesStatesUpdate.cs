@@ -25,10 +25,29 @@ public class ReactionObservePuzzlesStatesUpdate: MonoBehaviour, IPReaction, IPuz
 
 	public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
 		this.theAction = theAction;
-		puzzle.AddObserver(this);
+		if (AllPuzzlesAlreadyUpdated()) {
+			return true;
+		}
+		else {
+			puzzle.AddObserver(this);	
+		}
+
 		return false;
 	}
 
+	private bool AllPuzzlesAlreadyUpdated() {
+		bool allPuzzlesUpdated = true;
+		foreach (Transform t in puzzlesToWatch) {
+			Puzzle p = t.GetComponent<Puzzle>();
+			if (p != null) {
+				if (p.puzzleState != StateToWatch) {
+					return false;
+				}		
+			}
+		}
+
+		return allPuzzlesUpdated;
+	}
 
 	//IPuzzleReactionObserver
 	public void UpdatedState(Puzzle updatedPuzzle) {

@@ -56,6 +56,10 @@ public class Puzzle : MonoBehaviour {
 		internalObservers.Remove(obs);
 	}
 
+	public bool IsObserver(IPuzzleReactionObserver obs) {
+		return internalObservers.Contains(obs);
+	}
+
 	public void UpdatePuzzleState(Puzzle puzzle) {
 		foreach (IPuzzleReactionObserver obs in internalObservers) {
 			obs.UpdatedState(puzzle);
