@@ -28,13 +28,13 @@ public class InteractiveMenu : MonoBehaviour {
 
 
 		buttons = GetComponents<IMActionButton>().ToList();
-		if (buttons == null || buttons.Count == 0) {
-			Debug.Log("WARNING: MENU DOES NOT HAVE ANY BUTTON ACTIONS!");
-			return;
+		if (buttons == null) {
+			instantiatedButtons = new List<RectTransform>();//  new RectTransform[buttons.Count];	
+			buttons = new List<IMActionButton>();
 		}
-
-
-		instantiatedButtons = new List<RectTransform>(buttons.Count);//  new RectTransform[buttons.Count];
+		else {
+			instantiatedButtons = new List<RectTransform>(buttons.Count);//  new RectTransform[buttons.Count];
+		}
 
 		int iter = 0;
 		foreach (IMActionButton comp in buttons) {

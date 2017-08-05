@@ -10,7 +10,7 @@ public class ActionPuzzlesChangeState : PAction, IPuzzleReactionObserver {
 	private int puzzlesChecked = 0;
 
 
-	override public void ExecuteAction(PuzzleActionType action, Transform actionReceiver) {}
+	override public void ExecuteAction(PuzzleActionType action, Transform actionReceiver = null, Dictionary<string, object> extraData = null) {}
 
 	override public void SetPuzzleParent(Puzzle pParent) {
 		base.SetPuzzleParent(pParent);

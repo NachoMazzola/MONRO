@@ -33,9 +33,9 @@ public class Puzzle : MonoBehaviour {
 		}
 	}
 		
-	public void UpdatePuzzleWithAction(PuzzleActionType action, Transform actionReceiver) {
+	public void UpdatePuzzleWithAction(PuzzleActionType action, Transform actionReceiver = null, Dictionary<string, object> extraData = null) {
 		foreach (PAction pr in puzzleActions) {
-			pr.ExecuteAction(action, actionReceiver);
+			pr.ExecuteAction(action, actionReceiver, extraData);
 		}
 	}
 

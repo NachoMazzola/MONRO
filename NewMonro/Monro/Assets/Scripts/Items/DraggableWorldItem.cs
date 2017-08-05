@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class DraggableWorldItem : MonoBehaviour {
 
@@ -69,9 +70,11 @@ public class DraggableWorldItem : MonoBehaviour {
 
 	private void HandleDrop() {
 		if (gameobjectItmeIsOver != null) {
-			//PuzzleManager.UpdatePuzzleWithAction(PuzzleActionType.DropItemOver, gameobjectItmeIsOver);
 
-
+			Dictionary<string, object> extraData = new Dictionary<string, object>();
+			extraData.Add("itemId", this.itemModel.Id);
+			PuzzleManager.UpdatePuzzleWithAction(PuzzleActionType.DropItemOver, gameobjectItmeIsOver, extraData);
+			return;
 
 			DropItemPuzzleAction dropPuzzleAction = gameobjectItmeIsOver.GetComponent<DropItemPuzzleAction>();
 			if (dropPuzzleAction != null) {
