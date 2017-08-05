@@ -16,34 +16,35 @@ public class Puzzle : MonoBehaviour {
 	public PuzzleState puzzleState = PuzzleState.Disabled;
 	public string puzzleId;
 	public int maxSteps;
-	public int currentStep;
+	public int currentStep = 0;
 
 	private List<PAction> puzzleActions;
 	private List<IPuzzleReactionObserver> internalObservers;
 
 	// Use this for initialization
 	void Start () {
+		internalObservers = new List<IPuzzleReactionObserver>();
 		puzzleActions = new List<PAction>();
 		for (int i = 0; i < this.transform.childCount; i++) {
 			Transform child = this.transform.GetChild(i);
 			PAction action = child.GetComponent<PAction>();
-
+			action.SetPuzzleParent(this);
 			puzzleActions.Add(action);
 		}
-
-		internalObservers = new List<IPuzzleReactionObserver>();
 	}
 		
 	public void UpdatePuzzleWithAction(PuzzleActionType action, Transform actionReceiver) {
 		foreach (PAction pr in puzzleActions) {
-			pr.parent = this;
 			pr.ExecuteAction(action, actionReceiver);
 		}
 	}
 
 	public void IncrementPuzzleStep() {
 		currentStep++;
-		if (currentStep == maxSteps) {
+		if (currentStep == 1) {
+			puzzleState = PuzzleState.Enabled;
+		}
+		else if (currentStep == maxSteps) {
 			puzzleState = PuzzleState.Completed;
 		}
 	}

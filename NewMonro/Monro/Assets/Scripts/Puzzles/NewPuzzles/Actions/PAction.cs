@@ -33,7 +33,11 @@ public abstract class PAction: MonoBehaviour {
 		}
 	}
 
- 	public abstract void ExecuteAction(PuzzleActionType action, Transform actionReceiver);
+ 	public abstract void ExecuteAction(PuzzleActionType action, Transform actionReceiver = null);
+
+	public virtual void SetPuzzleParent(Puzzle pParent) {
+		parent = pParent;
+	}
 
 	public void ActionFinished() {
 		if (IncrementSteps) {
@@ -43,7 +47,7 @@ public abstract class PAction: MonoBehaviour {
 		Executed = true;
 	}
 
-	protected bool ExecuteAllReactions(Transform actionReceiver) {
+	protected bool ExecuteAllReactions(Transform actionReceiver = null) {
 		int actionExecutedCount = 0;
 		foreach (IPReaction r in reactions) {
 			if (r.Execute(actionReceiver, parent, this)) {

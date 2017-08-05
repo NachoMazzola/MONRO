@@ -21,7 +21,7 @@ public class PuzzleManager : MonoBehaviour {
 		}
 	}
 
-	public PuzzleActionType TransformActionButtonTypeToPuzzleActionType(IMActionButtonType buttonType) {
+	public static PuzzleActionType TransformActionButtonTypeToPuzzleActionType(IMActionButtonType buttonType) {
 		switch(buttonType) {
 		case IMActionButtonType.LookAt:
 			return PuzzleActionType.LookAt;
@@ -33,6 +33,16 @@ public class PuzzleManager : MonoBehaviour {
 			return PuzzleActionType.Use;
 			default:
 			return PuzzleActionType.None;
+		}
+	}
+
+	public static void UpdatePuzzleWithAction(PuzzleActionType action, Transform actionReceiver) {
+		GameObject puzzleManager = GameObject.Find("PuzzleManager");
+		if (puzzleManager) {
+			PuzzleManager pmgr = puzzleManager.GetComponent<PuzzleManager>();
+			if (pmgr != null) {
+				pmgr.UpdatePuzzlesWithAction(action, actionReceiver);	
+			}
 		}
 	}
 }

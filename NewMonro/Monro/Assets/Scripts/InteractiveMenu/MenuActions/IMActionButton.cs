@@ -57,14 +57,9 @@ public class IMActionButton : MonoBehaviour {
 		
 	public virtual void ExecuteAction() {
 		Debug.Log("ACTION BUTTON");
-		GameObject puzzleManager = GameObject.Find("PuzzleManager");
-		if (puzzleManager) {
-			PuzzleManager pmgr = puzzleManager.GetComponent<PuzzleManager>();
-			if (pmgr != null) {
-				PuzzleActionType puzzleType = pmgr.TransformActionButtonTypeToPuzzleActionType(this.buttonType);
-				pmgr.UpdatePuzzlesWithAction(puzzleType, this.transform);	
-			}
-		}
+
+		PuzzleActionType puzzleType = PuzzleManager.TransformActionButtonTypeToPuzzleActionType(this.buttonType);
+		PuzzleManager.UpdatePuzzleWithAction(puzzleType, this.transform);
 
 		ExecutePuzzleAction();
 	}
