@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PuzzleManager : MonoBehaviour {
 
 	private List<Puzzle> puzzleList;
+	private PuzzleActionTracker actionsTracker;
 
 	// Use this for initialization
 	void Start () {
+		actionsTracker = new PuzzleActionTracker();
 		puzzleList = new List<Puzzle>();
 		for (int i = 0; i < this.transform.childCount; i++) {
 			Puzzle aPuzzle = this.transform.GetChild(i).GetComponent<Puzzle>();
@@ -16,7 +19,11 @@ public class PuzzleManager : MonoBehaviour {
 	}
 
 	public void UpdatePuzzlesWithAction(PuzzleActionType action, Transform actionReceiver = null, Dictionary<string, object> extraData = null) {
+		if (actionReceiver != null) {
+			actionsTracker.AddAction(action, actionReceiver);
+		}
 		foreach (Puzzle p in puzzleList) {
+			p.actionTracker = this.actionsTracker;
 			p.UpdatePuzzleWithAction(action, actionReceiver, extraData);
 		}
 	}

@@ -9,8 +9,6 @@ public enum PuzzleState {
 	Completed
 }
 
-
-
 public class Puzzle : MonoBehaviour {
 
 	public PuzzleState puzzleState = PuzzleState.Disabled;
@@ -20,6 +18,8 @@ public class Puzzle : MonoBehaviour {
 
 	private List<PAction> puzzleActions;
 	private List<IPuzzleReactionObserver> internalObservers;
+
+	public PuzzleActionTracker actionTracker;
 
 	// Use this for initialization
 	void Start () {
@@ -35,7 +35,9 @@ public class Puzzle : MonoBehaviour {
 		
 	public void UpdatePuzzleWithAction(PuzzleActionType action, Transform actionReceiver = null, Dictionary<string, object> extraData = null) {
 		foreach (PAction pr in puzzleActions) {
-			pr.ExecuteAction(action, actionReceiver, extraData);
+			if (pr.Executed == false) {
+				pr.ExecuteAction(action, actionReceiver, extraData);	
+			}
 		}
 	}
 

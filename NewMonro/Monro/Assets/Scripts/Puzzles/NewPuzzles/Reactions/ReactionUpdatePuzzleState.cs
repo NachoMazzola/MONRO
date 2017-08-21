@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReactionUpdatePuzzleState : MonoBehaviour, IPReaction {
+public class ReactionUpdatePuzzleState : IPReaction {
 
 	public Transform PuzzleToWatch;
 	public PuzzleState NewState;
 
-	public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
+	override public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
 		Puzzle wachedPuzzle = PuzzleToWatch.GetComponent<Puzzle> ();
 		if (wachedPuzzle) {
 			wachedPuzzle.puzzleState = NewState;

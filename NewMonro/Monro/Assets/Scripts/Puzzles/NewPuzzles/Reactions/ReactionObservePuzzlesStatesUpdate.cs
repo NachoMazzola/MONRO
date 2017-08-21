@@ -11,9 +11,7 @@ using UnityEngine;
  * Step -mensaje-> PuzzleManager --> Puzzles --> Steps
 */
 
-
-
-public class ReactionObservePuzzlesStatesUpdate: MonoBehaviour, IPReaction, IPuzzleReactionObserver
+public class ReactionObservePuzzlesStatesUpdate: IPReaction, IPuzzleReactionObserver
 {
 
 	public PuzzleState StateToWatch;
@@ -23,7 +21,7 @@ public class ReactionObservePuzzlesStatesUpdate: MonoBehaviour, IPReaction, IPuz
 	private int puzzlesChecked = 0;
 	private PAction theAction;
 
-	public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
+	override public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
 		this.theAction = theAction;
 		if (AllPuzzlesAlreadyUpdated()) {
 			return true;

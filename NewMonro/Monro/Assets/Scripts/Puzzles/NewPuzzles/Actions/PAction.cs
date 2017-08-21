@@ -20,7 +20,7 @@ public abstract class PAction: MonoBehaviour {
 
 	[HideInInspector]
 	public Puzzle parent;
-
+	[HideInInspector]
 	public IPReaction theReaction;
 
 	protected List<IPReaction> reactions;
@@ -50,11 +50,12 @@ public abstract class PAction: MonoBehaviour {
 	protected bool ExecuteAllReactions(Transform actionReceiver = null) {
 		int actionExecutedCount = 0;
 		foreach (IPReaction r in reactions) {
-			if (r.Execute(actionReceiver, parent, this)) {
-				actionExecutedCount++;
+			if (r.AllConditionsApply(this.parent)) {
+				if (r.Execute(actionReceiver, parent, this)) {
+					actionExecutedCount++;
+				}	
 			}
 		}
-
 		return actionExecutedCount == reactions.Count;
 	} 
 }
