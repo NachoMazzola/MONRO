@@ -60,19 +60,9 @@ public class IMActionButton : MonoBehaviour {
 
 		PuzzleActionType puzzleType = PuzzleManager.TransformActionButtonTypeToPuzzleActionType(this.buttonType);
 		PuzzleManager.UpdatePuzzleWithAction(puzzleType, this.transform);
-
-		ExecutePuzzleAction();
 	}
 
 	public IEnumerator AddActionOnFinishAfterCoroutine(IEnumerator coroutineToWait) {
 		yield return StartCoroutine(coroutineToWait);
-	}
-		
-
-	void ExecutePuzzleAction() {
-		InteractivePuzzleAction intPA = this.gameObject.GetComponent<InteractivePuzzleAction>();
-		if (intPA != null) {
-			intPA.Execute();
-		}
 	}
 }

@@ -76,7 +76,7 @@ public class DraggableWorldItem : MonoBehaviour {
 			PuzzleManager.UpdatePuzzleWithAction(PuzzleActionType.DropItemOver, gameobjectItmeIsOver, extraData);
 			return;
 
-			DropItemPuzzleAction dropPuzzleAction = gameobjectItmeIsOver.GetComponent<DropItemPuzzleAction>();
+/*			DropItemPuzzleAction dropPuzzleAction = gameobjectItmeIsOver.GetComponent<DropItemPuzzleAction>();
 			if (dropPuzzleAction != null) {
 				dropPuzzleAction.worldItem = this;
 				if (dropPuzzleAction.Execute()) {
@@ -103,6 +103,8 @@ public class DraggableWorldItem : MonoBehaviour {
 		}
 		else {
 			Destroy(this.gameObject);
+		}
+		*/
 		}
 	}
 
