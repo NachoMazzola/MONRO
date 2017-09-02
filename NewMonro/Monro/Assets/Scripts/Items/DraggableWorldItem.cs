@@ -16,7 +16,7 @@ public class DraggableWorldItem : MonoBehaviour {
 	public DBItem itemModel;
 
 	void Awake() {
-		GameObject inv = GameObject.Find("UI");
+		GameObject inv = GameObject.Find("UI-Inventory");
 		inventory =  inv.GetComponent<UIInventory>();
 
 		IsBeingDraggedOverInventory = true; //always is instanciated being dragged from inventory
@@ -76,6 +76,7 @@ public class DraggableWorldItem : MonoBehaviour {
 			PuzzleManager.UpdatePuzzleWithAction(PuzzleActionType.DropItemOver, gameobjectItmeIsOver, extraData);
 
 
+
 /*			DropItemPuzzleAction dropPuzzleAction = gameobjectItmeIsOver.GetComponent<DropItemPuzzleAction>();
 			if (dropPuzzleAction != null) {
 				dropPuzzleAction.worldItem = this;
@@ -106,6 +107,8 @@ public class DraggableWorldItem : MonoBehaviour {
 		}
 		*/
 		}
+
+		Destroy(this.gameObject);
 	}
 
 }

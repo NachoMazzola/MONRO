@@ -8,7 +8,7 @@ public class OpenInventoryButton : MonoBehaviour, IInventoryObserver {
 
 	void Awake() {
 		buttonAnimator = GetComponent<Animator>();
-		inventory = GameObject.Find("UI").GetComponent<UIInventory>();
+		inventory = GameObject.Find("UI-Inventory").GetComponent<UIInventory>();
 		inventory.AddInventoryObserver(this);
 	}
 		

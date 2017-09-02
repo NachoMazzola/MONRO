@@ -31,7 +31,7 @@ public class UIInventory : MonoBehaviour {
 		isOpened = false;
 		itemList = new List<Transform>();
 
-		Transform UI = GameObject.Find("UI").transform;
+		Transform UI = GameObject.Find("UI-Inventory").transform;
 
 		inventoryScrollViewContainer = UI.Find("Inventory").gameObject;
 		inventoryScrollViewContainer.SetActive(false);
