@@ -7,6 +7,7 @@ public class ConditionInteractiveActionTriggered : MonoBehaviour, IPCondition {
 	public List<Transform> interactiveObjects;
 	public PuzzleActionType actionToTrigger = PuzzleActionType.None;
 
+
 	public bool ConditionApplies(Puzzle inPuzzle) {
 		PuzzleActionTracker tracker = inPuzzle.actionTracker;
 		foreach (Transform t in interactiveObjects) {

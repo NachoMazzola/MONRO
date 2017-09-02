@@ -74,7 +74,7 @@ public class DraggableWorldItem : MonoBehaviour {
 			Dictionary<string, object> extraData = new Dictionary<string, object>();
 			extraData.Add("itemId", this.itemModel.Id);
 			PuzzleManager.UpdatePuzzleWithAction(PuzzleActionType.DropItemOver, gameobjectItmeIsOver, extraData);
-			return;
+
 
 /*			DropItemPuzzleAction dropPuzzleAction = gameobjectItmeIsOver.GetComponent<DropItemPuzzleAction>();
 			if (dropPuzzleAction != null) {

@@ -1,8 +1,8 @@
 [
 	{
-		"title": "Intro",
+		"title": "Hildr.Intro",
 		"tags": "",
-		"body": "Hello, Pija\n\n<<move PuzzleManager>>",
+		"body": "<<DialogueAction PuzzleManager PEPITO>> Hello, Pija",
 		"position": {
 			"x": 9,
 			"y": 64

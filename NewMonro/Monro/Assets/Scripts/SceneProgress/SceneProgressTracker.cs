@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using Yarn.Unity;
 
 public class SceneProgressTracker : MonoBehaviour {
 
@@ -14,4 +15,9 @@ public class SceneProgressTracker : MonoBehaviour {
 	void Update () {}
 
 	//TODO: Agregar mas funciones que devuelvan validaciones Ej: Abrio X + Tiene X item + Hablo con X
+
+	[YarnCommand("move")]
+	public void caca(string pepon) {
+		Debug.Log("ME CAGO EN LA MIERDA!");
+	}
 }
