@@ -26,4 +26,15 @@ public abstract class IPReaction: MonoBehaviour {
 
 		return acceptedConditions == conditions.Count;
 	}
+
+	protected Transform GetTransformFromId(string id) {
+		InteractiveObject[] intsObjs = GameObject.FindObjectsOfType<InteractiveObject>();
+		foreach (InteractiveObject iObj in intsObjs) {
+			if (iObj.Id == id) {
+				return iObj.transform;
+			}
+		}
+
+		return null;
+	}
 }

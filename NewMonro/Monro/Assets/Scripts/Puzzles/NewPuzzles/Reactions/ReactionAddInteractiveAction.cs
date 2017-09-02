@@ -5,7 +5,7 @@ using UnityEngine;
 public class ReactionAddInteractiveAction : IPReaction {
 
 	public List<PuzzleActionType> ActionToAdd;
-	public List<Transform> AddActionTo;
+	public List<string> AddActionToIds;
 
 	private InteractiveMenu menu;
 
@@ -14,8 +14,9 @@ public class ReactionAddInteractiveAction : IPReaction {
 		IMActionButton actionBtn = null;
 		Transform actionBtnTransform = null;
 		bool actionOk = true;
-		foreach (Transform t in AddActionTo) {
-			menu = t.GetComponent<InteractiveMenu>();
+		foreach (string tId in AddActionToIds) {
+			Transform obj = GetTransformFromId(tId);
+			menu = obj.GetComponent<InteractiveMenu>();
 			if (menu == null) {
 				Debug.LogError("ERROR: WANT TO ADD ACTION INTO AN INTERACTIVE OBJECT THAT DOES NOT HAVE AN INTERACTIVE MENU -- :" ,actionReceiver);
 				actionOk = false;

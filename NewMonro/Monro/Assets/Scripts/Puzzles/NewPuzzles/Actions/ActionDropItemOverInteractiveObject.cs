@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class ActionDropItemOverInteractiveObject : PAction {
 
-	public Transform DropOverThis;
+	public string DropOverThis;
 	public string ItemId;
 	private const PuzzleActionType actionTrigger = PuzzleActionType.DropItemOver;
 
 	override public void ExecuteAction(PuzzleActionType action, Transform actionReceiver = null, Dictionary<string, object> extraData = null) {
-		if (action == actionTrigger && actionReceiver == DropOverThis && extraData != null) {
+		Transform dOverTransform = GetTransformFromId(DropOverThis);
+		if (action == actionTrigger && actionReceiver == dOverTransform && extraData != null) {
 			if ((extraData["itemId"] as string) == ItemId) {
 				if (ExecuteAllReactions(actionReceiver)) {
 					ActionFinished();

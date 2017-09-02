@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class InteractiveObject : MonoBehaviour, IWorldInteractionObserver
 {
-
+	public string Id;
 	public Transform Item;
 	public string Caption;
 

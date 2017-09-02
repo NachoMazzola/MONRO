@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ActionTriggerInteractiveAction : PAction {
 
-	public Transform ActionReceiver;
+	public string ActionReceiverId;
 	public PuzzleActionType ActionTrigger = PuzzleActionType.None;
 
 	override public void ExecuteAction(PuzzleActionType action, Transform actionReceiver = null, Dictionary<string, object> extraData = null) {
-		if (action == ActionTrigger && actionReceiver == ActionReceiver) {
+		Transform dOverTransform = GetTransformFromId(ActionReceiverId);
+		if (action == ActionTrigger && actionReceiver == dOverTransform) {
 			if (ExecuteAllReactions(actionReceiver)) {
 				ActionFinished();
 			}

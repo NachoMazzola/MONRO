@@ -58,4 +58,15 @@ public abstract class PAction: MonoBehaviour {
 		}
 		return actionExecutedCount == reactions.Count;
 	} 
+
+	protected Transform GetTransformFromId(string id) {
+		InteractiveObject[] intsObjs = GameObject.FindObjectsOfType<InteractiveObject>();
+		foreach (InteractiveObject iObj in intsObjs) {
+			if (iObj.Id == id) {
+				return iObj.transform;
+			}
+		}
+
+		return null;
+	}
 }
