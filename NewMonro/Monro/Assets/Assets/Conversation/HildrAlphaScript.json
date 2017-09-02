@@ -282,7 +282,7 @@
 	{
 		"title": "Monrjiall.off",
 		"tags": "",
-		"body": "Off I go!",
+		"body": "Off I go!\n...\nThis river is blocking my way!\nCursed Gods!\nStop trying to hinder my way at every turn!\n\n[[Hildr.creek]]\n",
 		"position": {
 			"x": 259,
 			"y": 1701
@@ -366,6 +366,36 @@
 		"position": {
 			"x": -365,
 			"y": 335
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.creek",
+		"tags": "",
+		"body": "Uhm...\nThat's just a creek, I don't think the gods... \nI mean...\nNevermind.\nYou will need to create some sort of bridge to cross over that creek.\n\n[[Monrjiall.noBridge]]\n\n",
+		"position": {
+			"x": -52,
+			"y": 1692
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.noBridge",
+		"tags": "",
+		"body": "But there are no bridges here!\n\n[[Hildr.LookAround]]",
+		"position": {
+			"x": -337,
+			"y": 1685
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.LookAround",
+		"tags": "",
+		"body": "I'll tell you what.\nLook around for a bit...\nSee if you can come up with something to get through the creek.\nIf you're still out of ideas then, come talk to me again...\nAnd I will give you my aid.",
+		"position": {
+			"x": -343,
+			"y": 1440
 		},
 		"colorID": 0
 	}
