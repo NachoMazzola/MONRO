@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Yarn.Unity;
 
 public class PuzzleManager : MonoBehaviour {
 
@@ -49,6 +49,20 @@ public class PuzzleManager : MonoBehaviour {
 			PuzzleManager pmgr = puzzleManager.GetComponent<PuzzleManager>();
 			if (pmgr != null) {
 				pmgr.UpdatePuzzlesWithAction(action, actionReceiver, extraData);	
+			}
+		}
+	}
+
+
+	[YarnCommand("DialogueAction")]
+	public void DialogueAction(string action) {
+		foreach (Puzzle p in puzzleList) {
+			foreach (PAction pa in p.puzzleActions) {
+				if (pa is ActionDialogueAction) {
+					if ((pa as ActionDialogueAction).ActionName == action) {
+						pa.ExecuteAction(PuzzleActionType.None);
+					}
+				}
 			}
 		}
 	}

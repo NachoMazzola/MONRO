@@ -16,10 +16,12 @@ public class Puzzle : MonoBehaviour {
 	public int maxSteps;
 	public int currentStep = 0;
 
-	private List<PAction> puzzleActions;
-	private List<IPuzzleReactionObserver> internalObservers;
-
+	[HideInInspector]
 	public PuzzleActionTracker actionTracker;
+	[HideInInspector]
+	public List<PAction> puzzleActions;
+
+	private List<IPuzzleReactionObserver> internalObservers;
 
 	// Use this for initialization
 	void Start () {
