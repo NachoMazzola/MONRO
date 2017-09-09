@@ -120,6 +120,9 @@ public class UIInventory : MonoBehaviour {
 		}
 	}
 
+	public void RemoveItem(string itemId) {
+		
+	}
 
 	public void EnableScrolling(bool enable) {
 		theScrollRect.horizontal = enable;
