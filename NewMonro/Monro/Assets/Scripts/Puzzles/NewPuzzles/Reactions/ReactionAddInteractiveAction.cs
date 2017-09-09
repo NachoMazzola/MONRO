@@ -29,7 +29,7 @@ public class ReactionAddInteractiveAction : IPReaction {
 					IMBTalkAction talkComponent = menu.gameObject.GetComponent<IMBTalkAction>();
 					if (talkComponent == null) {
 						actionBtn = menu.gameObject.AddComponent<IMBTalkAction>();	
-						actionBtnTransform = (Resources.Load("IMBTalk") as GameObject).transform;
+						actionBtnTransform = (Resources.Load("IMBTalkTo") as GameObject).transform;
 					}
 
 					break;

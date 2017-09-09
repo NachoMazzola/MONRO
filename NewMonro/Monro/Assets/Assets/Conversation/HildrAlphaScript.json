@@ -2,7 +2,7 @@
 	{
 		"title": "Hildr.Start1",
 		"tags": "",
-		"body": "<<if not visited (\"Monrjiall.off\")>>\nValiant warrior! \nI ask you your name...\n...so that I may know who it is that has been so wrongfully cheated.\n\n[[Monrjiall.response]]\n\n<<else>>\n[[Hildr.Second]]\n<<endif>>\n\n",
+		"body": "<<DialogueAction PuzzleManager AddLookMimir>>\n<<if not visited (\"Monrjiall.off\")>>\nValiant warrior! \nI ask you your name...\n...so that I may know who it is that has been so wrongfully cheated.\n\n[[Monrjiall.response]]\n\n<<else>>\n[[Hildr.Second]]\n<<endif>>\n\n",
 		"position": {
 			"x": 634,
 			"y": 634
@@ -142,10 +142,10 @@
 	{
 		"title": "Hildr.exactly",
 		"tags": "",
-		"body": "Which is exactly what a dead viking would say if he didn’t think he was dead.\n\n[[Monrjiall.replies]]",
+		"body": "Which is exactly what a dead viking would say if he didn’t think he was dead.\n\n[[Monrjiall.ByTheGods]]",
 		"position": {
-			"x": -337,
-			"y": 1141
+			"x": -633,
+			"y": 1146
 		},
 		"colorID": 0
 	},
@@ -302,7 +302,7 @@
 	{
 		"title": "Hildr.progress",
 		"tags": "",
-		"body": "Have you figured out how to cross that stream?\r\n\r\n[[Monrjiall.Stream]]",
+		"body": "<<DialogueAction PuzzleManager askedHildr>>\r\n\r\nHave you figured out how to cross that stream?\r\n\r\n[[Monrjiall.Stream]]",
 		"position": {
 			"x": -348,
 			"y": 616
@@ -362,7 +362,7 @@
 	{
 		"title": "Hildr.NotSure",
 		"tags": "",
-		"body": "I’m not so sure you do...\n\n<<set $HoenirKnown to true>>",
+		"body": "I’m not so sure you do...",
 		"position": {
 			"x": -365,
 			"y": 335
@@ -396,6 +396,16 @@
 		"position": {
 			"x": -343,
 			"y": 1440
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.ByTheGods",
+		"tags": "",
+		"body": "By the Gods, you are right!\n\n[[Monrjiall.replies]]",
+		"position": {
+			"x": -343,
+			"y": 1148
 		},
 		"colorID": 0
 	}
