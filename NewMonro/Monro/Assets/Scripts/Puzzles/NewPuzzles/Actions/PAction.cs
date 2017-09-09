@@ -9,6 +9,7 @@ public enum PuzzleActionType {
 	Use,
 	CombineItems,
 	DropItemOver,
+	Dialogue,
 	None
 }
 

@@ -60,7 +60,7 @@ public class PuzzleManager : MonoBehaviour {
 			foreach (PAction pa in p.puzzleActions) {
 				if (pa is ActionDialogueAction) {
 					if ((pa as ActionDialogueAction).ActionName == action) {
-						pa.ExecuteAction(PuzzleActionType.None);
+						pa.ExecuteAction(PuzzleActionType.Dialogue);
 					}
 				}
 			}
