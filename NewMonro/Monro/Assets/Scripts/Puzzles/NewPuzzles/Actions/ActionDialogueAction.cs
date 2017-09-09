@@ -6,7 +6,7 @@ public class ActionDialogueAction : PAction {
 
 	public string ActionName;
 
-	override public void ExecuteAction(PuzzleActionType action, Transform actionReceiver = null, Dictionary<string, object> extraData = null) {
+	override public void ExecuteAction(PuzzleActionType action, Transform actionReceiver = null, Dictionary<string, string> extraData = null) {
 		if (action == PuzzleActionType.Dialogue) {
 			if (ExecuteAllReactions(actionReceiver)) {
 				ActionFinished();

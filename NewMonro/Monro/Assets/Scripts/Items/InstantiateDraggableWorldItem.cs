@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InstantiateDraggableWorldItem : MonoBehaviour, IPointerDownHandler, IPointerClickHandler
 {
@@ -35,7 +36,6 @@ public class InstantiateDraggableWorldItem : MonoBehaviour, IPointerDownHandler,
 		targetPosition.z = -0.1f;
 		instanciatedWorldItem = Instantiate (ItemWorldRepTransform, targetPosition, Quaternion.identity) as Transform;
 
-
 		DraggableWorldItem wItem = instanciatedWorldItem.GetComponent<DraggableWorldItem> ();
 		wItem.StartDragging ();
 		wItem.itemModel = instanciatedItemModel;
@@ -59,7 +59,7 @@ public class InstantiateDraggableWorldItem : MonoBehaviour, IPointerDownHandler,
 			return;
 		}
 		ItemWorldRepTransform = o.transform;
-
+	
 		InstantiateItem();
 	}
 

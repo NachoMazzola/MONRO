@@ -34,7 +34,7 @@ public abstract class PAction: MonoBehaviour {
 		}
 	}
 
-	public abstract void ExecuteAction(PuzzleActionType action, Transform actionReceiver = null, Dictionary<string, object> extraData = null);
+	public abstract void ExecuteAction(PuzzleActionType action, Transform actionReceiver = null, Dictionary<string, string> extraData = null);
 
 	public virtual void SetPuzzleParent(Puzzle pParent) {
 		parent = pParent;

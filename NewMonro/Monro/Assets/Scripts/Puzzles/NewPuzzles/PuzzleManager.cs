@@ -18,7 +18,7 @@ public class PuzzleManager : MonoBehaviour {
 		}
 	}
 
-	public void UpdatePuzzlesWithAction(PuzzleActionType action, Transform actionReceiver = null, Dictionary<string, object> extraData = null) {
+	public void UpdatePuzzlesWithAction(PuzzleActionType action, Transform actionReceiver = null, Dictionary<string, string> extraData = null) {
 		if (actionReceiver != null) {
 			actionsTracker.AddAction(action, actionReceiver);
 		}
@@ -43,7 +43,7 @@ public class PuzzleManager : MonoBehaviour {
 		}
 	}
 
-	public static void UpdatePuzzleWithAction(PuzzleActionType action, Transform actionReceiver = null, Dictionary<string, object> extraData = null) {
+	public static void UpdatePuzzleWithAction(PuzzleActionType action, Transform actionReceiver = null, Dictionary<string, string> extraData = null) {
 		GameObject puzzleManager = GameObject.Find("PuzzleManager");
 		if (puzzleManager) {
 			PuzzleManager pmgr = puzzleManager.GetComponent<PuzzleManager>();

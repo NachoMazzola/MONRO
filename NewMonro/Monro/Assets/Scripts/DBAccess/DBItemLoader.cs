@@ -10,6 +10,7 @@ public class DBItemLoader : MonoBehaviour {
 	public DBItem itemModel;
 
 	void Awake() {
+		return;
 		DBAccess dataBase = DBAccess.getComponent();
 		if (dataBase) {
 			itemModel = dataBase.itemsDataBase.GetItemById(itemId);
