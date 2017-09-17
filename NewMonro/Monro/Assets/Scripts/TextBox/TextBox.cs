@@ -71,6 +71,16 @@ public class TextBox : MonoBehaviour {
 			while (Input.anyKeyDown == false) {
 				yield return null;
 			}
+
+			this.gameObject.SetActive (false);
+
+			StopAllCoroutines();
+
+			this.gameObject.SetActive(false);
+			showingCaption = false;
+			shouldAttachToCaller = false;
+			followTransform = null;
+
 		}
 	}
 

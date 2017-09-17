@@ -82,7 +82,7 @@ public class Character : MonoBehaviour, IWorldInteractionObserver {
 		return theCaption;
 	}
 
-	public IEnumerator ShowCaption(string caption, TextBox.DisappearMode removalMode = TextBox.DisappearMode.Fade) {
+	public IEnumerator ShowCaption(string caption, TextBox.DisappearMode removalMode = TextBox.DisappearMode.WaitInput) {
 		Transform theCaption = GetConversationCaptionCanvas();
 		theCaption.gameObject.SetActive(true);
 
