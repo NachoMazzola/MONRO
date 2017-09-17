@@ -23,13 +23,13 @@ public class UIInventory : MonoBehaviour {
 	private Vector2 lastItemPosition;
 	private ItemContainerCreator containerCreator;
 
-	private Canvas canvas;
-
 	private List<IInventoryObserver> inventoryObservers;
+	private InventoryModel inventoryModel;
 
 	void Awake() {
 		isOpened = false;
 		itemList = new List<Transform>();
+		inventoryModel = new InventoryModel();
 
 		Transform UI = GameObject.Find("UI-Inventory").transform;
 
@@ -46,7 +46,6 @@ public class UIInventory : MonoBehaviour {
 		theScrollRect.vertical = false;
 
 		containerCreator = inventoryContent.GetComponent<ItemContainerCreator>();
-		canvas = this.gameObject.GetComponent<Canvas>();
 	}
 
 	public void OpenInventory() {
@@ -90,13 +89,17 @@ public class UIInventory : MonoBehaviour {
 	public void AddItemToInventory(Transform item) {
 		
 		Transform theInstantiatedItem = Instantiate(item, new Vector2(), Quaternion.identity) as Transform;
-		itemList.Add(theInstantiatedItem);
-
 		Transform container = containerCreator.createContainerWithItemImage(theInstantiatedItem);
 
 		container.transform.SetParent(inventoryContent, false);
 		((RectTransform)container.transform).sizeDelta = new Vector2(itemContainerW, itemContainerH);
 
+		DBItemLoader itemLoader = item.GetComponent<DBItemLoader>();
+		container.GetComponent<ItemContainerPanel>().itemModel = itemLoader.itemModel;
+
+		inventoryModel.AddItem(itemLoader.itemModel);
+
+		itemList.Add(container);
 
 		//first item
 		if (itemList.Count == 1) {
@@ -121,7 +124,25 @@ public class UIInventory : MonoBehaviour {
 	}
 
 	public void RemoveItem(string itemId) {
-		
+		Transform itemToRemove = null;
+		DBItem itemModelToRemove = null;
+		foreach (Transform container in itemList) {
+			DBItem itemModel = container.GetComponent<ItemContainerPanel>().itemModel;
+			if (itemModel.ItemId == itemId) {
+				itemToRemove = container;
+				itemModelToRemove = itemModel;
+				break;
+			}
+		}
+
+		if (itemToRemove != null) {
+			itemList.Remove(itemToRemove);
+			inventoryModel.removeItem(itemModelToRemove);
+
+			Destroy(itemToRemove);
+		}
+
+		//Reorder UI list!!!
 	}
 
 	public void EnableScrolling(bool enable) {

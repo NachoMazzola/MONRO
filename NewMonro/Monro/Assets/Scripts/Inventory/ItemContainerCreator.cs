@@ -8,7 +8,6 @@ public class ItemContainerCreator : MonoBehaviour {
 
 	public Transform itemContainer;
 
-
 	public Transform createContainerWithItemImage(Transform itemImage) {
 		Transform container = Instantiate(itemContainer, new Vector3(), Quaternion.identity) as Transform;
 		container.SetParent(this.transform);
