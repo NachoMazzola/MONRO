@@ -12,6 +12,7 @@ public class InteractiveObject : MonoBehaviour, IWorldInteractionObserver
 	public bool allowInteraction;
 
 	private bool isShowingMenu;
+	private InteractiveMenu actionsMenu;
 
 	void Awake ()
 	{
@@ -21,10 +22,14 @@ public class InteractiveObject : MonoBehaviour, IWorldInteractionObserver
 
 	void Start() {
 		WorldInteractionController.getComponent().AddObserver(this);
+		actionsMenu = this.GetComponent<InteractiveMenu> ();
 	}
 
 	virtual public void IWOTapped(Vector2 tapPos, GameObject other) {
 		if (other != this.gameObject) {
+			if (isShowingMenu && actionsMenu != null) {
+				isShowingMenu = actionsMenu.ToggleMenu();
+			}
 			return;
 		}
 
