@@ -38,15 +38,24 @@ public class InteractiveObject : MonoBehaviour, IWorldInteractionObserver
 		//2 colliders means that the "tappable" collider has been tapped.. we ignore
 		//if the circle collider has been tapped or not. We only care if the "tappable" was tapped
 		if (hitColliders != null && hitColliders.Length == 2) {
-
 			InteractiveMenu intMenuComp = this.GetComponent<InteractiveMenu> ();
-			isShowingMenu = intMenuComp.ToggleMenu ();	
-
+			isShowingMenu = intMenuComp.ToggleMenu ();
 		}
 	}
 
 	virtual public void IWOTapHold(Vector2 tapPos, GameObject other) {
 
+	}
+
+	virtual public void IWOInterruptInteractions() {
+		if (isShowingMenu) {
+			InteractiveMenu intMenuComp = this.GetComponent<InteractiveMenu> ();
+			isShowingMenu = intMenuComp.ToggleMenu ();		
+		}
+	}
+
+	virtual public Transform IWOGetTransform() {
+		return this.transform;
 	}
 
 	//Detecting Collition with a HotSpot

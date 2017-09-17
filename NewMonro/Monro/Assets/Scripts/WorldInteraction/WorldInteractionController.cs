@@ -17,6 +17,11 @@ public class WorldInteractionController: MonoBehaviour
 	private WorldInteractionType currentInteraction;
 	private List<IWorldInteractionObserver> worldObservers;
 
+	Transform lastTappedObject;
+
+	[HideInInspector]
+	public bool enableInteractions = true;
+
 	static public WorldInteractionController getComponent () {
 		GameObject controller = GameObject.Find ("WorldInteractionController");
 		if (controller) {
@@ -43,6 +48,9 @@ public class WorldInteractionController: MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		if (enableInteractions == false) {
+			return;
+		}
 	
 		if (Input.GetMouseButtonUp (0)) {
 			mouseIsPressed = false;
@@ -84,6 +92,8 @@ public class WorldInteractionController: MonoBehaviour
 			} 	
 		}
 
+		lastTappedObject = tappedGO.transform;
+
 		return tappedGO;
 	}
 		
@@ -114,6 +124,14 @@ public class WorldInteractionController: MonoBehaviour
 			currentInteraction = WorldInteractionType.Empty;
 			foreach (IWorldInteractionObserver obs in worldObservers) {
 				obs.IWOTapHold (pos, null);
+			}
+		}
+	}
+
+	public void InterruptInteractions() {
+		foreach (IWorldInteractionObserver obs in worldObservers) {
+			if (this.lastTappedObject != obs.IWOGetTransform()) {
+				obs.IWOInterruptInteractions();	
 			}
 		}
 	}

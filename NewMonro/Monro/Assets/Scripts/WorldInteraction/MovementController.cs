@@ -16,12 +16,15 @@ public class MovementController : MonoBehaviour {
 
 	private Player thePlayer;
 
+	private WorldInteractionController worldInteractionCtr;
 
 	[HideInInspector]
 	public Transform targetTransform;
 
 	// Use this for initialization
 	void Start () {
+
+		worldInteractionCtr = WorldInteractionController.getComponent();
 
 		GameObject playerObj = GameObject.Find("PlayerViking");
 		if (playerObj) {
@@ -41,7 +44,6 @@ public class MovementController : MonoBehaviour {
 	}
 
 	public void UpdateMovement() {
-		
 		if (movingRight) {
 			thePlayer.SwapFacingDirectionTo(Character.MovingDirection.MovingRight);
 			if (MovePlayer) {
@@ -68,6 +70,10 @@ public class MovementController : MonoBehaviour {
 	}
 
 	public void StartMovingRight() {
+		if (worldInteractionCtr.enableInteractions == false) {
+			return;
+		}
+			
 		movingRight = true;
 		movingLeft = false;
 
@@ -75,6 +81,10 @@ public class MovementController : MonoBehaviour {
 	}
 
 	public void StartMovingLeft() {
+		if (worldInteractionCtr.enableInteractions == false) {
+			return;
+		}
+			
 		movingRight = false;
 		movingLeft = true;
 

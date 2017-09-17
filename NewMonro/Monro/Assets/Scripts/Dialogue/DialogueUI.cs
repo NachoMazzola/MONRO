@@ -163,6 +163,12 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 		Debug.Log ("Dialogue starting!");
 
+		UIInventory inv = GameObject.Find("UI-Inventory").GetComponent<UIInventory>();
+		inv.CloseInventory();
+		WorldInteractionController wic = WorldInteractionController.getComponent();
+		wic.enableInteractions = false;
+		wic.InterruptInteractions();
+
 		// Enable the dialogue controls.
 
 		yield break;
@@ -180,6 +186,8 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 		yield return whoIsTalking.HideCaption(0.0f);
 		whoIsTalking = null;
 	
+		WorldInteractionController.getComponent().enableInteractions = true;
+
 		yield break;
 	}
 

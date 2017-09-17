@@ -110,6 +110,14 @@ public class Character : MonoBehaviour, IWorldInteractionObserver {
 		
 	}
 
+	virtual public void IWOInterruptInteractions() {
+		
+	}
+
+	virtual public Transform IWOGetTransform() {
+		return this.transform;
+	}
+
 	virtual public void ChangeToState(PlayerStateMachine.PlayerStates newState) {
 		
 	}

@@ -17,6 +17,9 @@ public class OpenInventoryButton : MonoBehaviour, IInventoryObserver {
 	}
 
 	public void OpenInventory() {
+		if (WorldInteractionController.getComponent().enableInteractions == false) {
+			return;
+		}
 		inventory.OpenInventory();
 	}
 

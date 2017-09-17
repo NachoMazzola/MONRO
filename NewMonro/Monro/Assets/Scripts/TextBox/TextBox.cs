@@ -80,7 +80,6 @@ public class TextBox : MonoBehaviour {
 			showingCaption = false;
 			shouldAttachToCaller = false;
 			followTransform = null;
-
 		}
 	}
 
