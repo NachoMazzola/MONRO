@@ -88,11 +88,13 @@ public class WorldInteractionController: MonoBehaviour
 				}
 				else {
 					tappedGO = EventSystem.current.currentSelectedGameObject;
+
 				}
 			} 	
 		}
-
-		lastTappedObject = tappedGO.transform;
+		else {
+			lastTappedObject = tappedGO.transform;	
+		}
 
 		return tappedGO;
 	}
