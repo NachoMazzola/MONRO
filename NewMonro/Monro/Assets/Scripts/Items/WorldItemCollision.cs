@@ -35,6 +35,6 @@ public class WorldItemCollision : MonoBehaviour
 			draggableItem.IsBeingDraggedOverInventory = false;
 		}
 			
-		draggableItem.ItemHasBeenReleasedOverObject(other.transform);
+		draggableItem.ItemIsNotOverObjectAnyMore(other.transform);
 	}
 }

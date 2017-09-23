@@ -56,13 +56,21 @@ public class DraggableWorldItem : MonoBehaviour {
 
 	public virtual void ItemIsOverObject(Transform other) {
 		gameobjectItmeIsOver = other;
+
+		Debug.Log("ITEM IS OVER: " + other);
+
 //
 //		HighlightableObject highlight = this.GetComponent<HighlightableObject>();
 //		highlight.HighlightObject();
 	}
 
-	public virtual void ItemHasBeenReleasedOverObject(Transform other) {
-		gameobjectItmeIsOver = null;
+	public virtual void ItemIsNotOverObjectAnyMore(Transform other) {
+		if (gameobjectItmeIsOver == other) {
+			gameobjectItmeIsOver = null;
+		}
+
+		Debug.Log("ITEM IS NO LONGER OVER: " + other);
+
 //		HighlightableObject highlight = this.GetComponent<HighlightableObject>();
 //		highlight.RemoveHighlight();
 
@@ -70,10 +78,18 @@ public class DraggableWorldItem : MonoBehaviour {
 
 	private void HandleDrop() {
 		if (gameobjectItmeIsOver != null) {
+			if (gameobjectItmeIsOver.GetComponent<GameEntity>().type == GameEntity.GameEntityType.InventoryItem) {
+				Dictionary<string, string> extraData = new Dictionary<string, string>();
+				extraData.Add("itemId", this.itemModel.ItemId);
+				PuzzleManager.UpdatePuzzleWithAction(PuzzleActionType.CombineItems, gameobjectItmeIsOver, extraData);
+			}
+			else {
+				Dictionary<string, string> extraData = new Dictionary<string, string>();
+				extraData.Add("itemId", this.itemModel.ItemId);
+				PuzzleManager.UpdatePuzzleWithAction(PuzzleActionType.DropItemOver, gameobjectItmeIsOver, extraData);
+			}
 
-			Dictionary<string, string> extraData = new Dictionary<string, string>();
-			extraData.Add("itemId", this.itemModel.ItemId);
-			PuzzleManager.UpdatePuzzleWithAction(PuzzleActionType.DropItemOver, gameobjectItmeIsOver, extraData);
+
 
 
 

@@ -127,7 +127,7 @@ public class UIInventory : MonoBehaviour {
 		Transform itemToRemove = null;
 		DBItem itemModelToRemove = null;
 		foreach (Transform container in itemList) {
-			DBItem itemModel = container.GetComponent<ItemContainerPanel>().itemModel;
+			DBItem itemModel = container.GetChild(container.childCount-1).GetComponent<DBItemLoader>().itemModel;
 			if (itemModel.ItemId == itemId) {
 				itemToRemove = container;
 				itemModelToRemove = itemModel;
@@ -136,6 +136,19 @@ public class UIInventory : MonoBehaviour {
 		}
 
 		if (itemToRemove != null) {
+			foreach (Transform child in itemToRemove) {
+				GameObject.Destroy(child.gameObject);
+			}
+
+			foreach (Transform child in inventoryContent) {
+				if (child == itemToRemove) {
+					GameObject.Destroy(child.gameObject);	
+				}
+			}
+
+
+			//itemToRemove.transform.SetParent(null);
+
 			itemList.Remove(itemToRemove);
 			inventoryModel.removeItem(itemModelToRemove);
 

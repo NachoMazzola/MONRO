@@ -5,12 +5,6 @@ using UnityEngine.UI;
 
 public class Character : MonoBehaviour, IWorldInteractionObserver {
 
-	public enum CharacterType
-	{
-		Player,
-		NPC
-	}
-
 	public enum MovingDirection
 	{
 		MovingRight,
@@ -26,8 +20,6 @@ public class Character : MonoBehaviour, IWorldInteractionObserver {
 	[HideInInspector]
 	public PlayerStateMachine animStateMachine;
 
-	[HideInInspector]
-	public CharacterType characterType;
 	[HideInInspector]
 	public SpriteRenderer characterSprite;
 	[HideInInspector]

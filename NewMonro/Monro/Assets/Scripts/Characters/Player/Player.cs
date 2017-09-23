@@ -44,7 +44,6 @@ public class Player : Character
 
 	override public void OnAwake() {
 		base.OnAwake();
-		characterType = CharacterType.Player;
 		animStateMachine = GetComponent<PlayerStateMachine> ();
 
 		ChangeToState(PlayerStateMachine.PlayerStates.PlayerIdle);

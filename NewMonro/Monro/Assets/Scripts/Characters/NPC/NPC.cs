@@ -21,7 +21,6 @@ public class NPC : Character {
 
 	override public void OnAwake() {
 		base.OnAwake();
-		characterType = CharacterType.NPC;
 	}
 
 	override public void OnStart() {

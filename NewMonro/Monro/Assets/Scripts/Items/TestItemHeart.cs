@@ -18,8 +18,8 @@ public class TestItemHeart : DraggableWorldItem {
 		base.ItemIsOverObject(other);
 	}
 
-	public override void ItemHasBeenReleasedOverObject(Transform other) {
-		base.ItemHasBeenReleasedOverObject(other);
+	public override void ItemIsNotOverObjectAnyMore(Transform other) {
+		base.ItemIsNotOverObjectAnyMore(other);
 
 //		if (other.gameObject.tag == "InteractiveObject") {
 //			PuzzleResolver puzzleSolver = other.gameObject.GetComponent<PuzzleResolver>();

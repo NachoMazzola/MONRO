@@ -12,8 +12,8 @@ public class DBItem {
 	public string CombinesWithId {get; set;}
 	public string Description {get; set;}
 	public string CombinedItemResultId {get; set;}
-	public string ItemPrefab {get; set;}
-	public string ItemSprite {get; set;}
+	public string ItemPrefab {get; set;} //World item prefab
+	public string ItemInventoryPrefab {get; set;} //Inventory Prefab
 
 	public bool ItemHasBeenUsed;
 }

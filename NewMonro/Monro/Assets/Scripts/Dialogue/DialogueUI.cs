@@ -77,7 +77,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 				lastOneWhoTalked = whoIsTalking;
 			}
 
-			if (whoIsTalking.characterType != lastOneWhoTalked.characterType) {
+			if (whoIsTalking.GetComponent<GameEntity>().type != lastOneWhoTalked.GetComponent<GameEntity>().type) {
 
 				yield return lastOneWhoTalked.HideCaption (0.0f);
 
