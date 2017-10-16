@@ -17,3 +17,11 @@ public class DBItem {
 
 	public bool ItemHasBeenUsed;
 }
+
+//Item allready stored in the DB. This represents 
+public class DBStoredItem {
+	[PrimaryKey, AutoIncrement]
+	public int Id { get; set; }
+
+	public string ItemId {get; set;}
+}

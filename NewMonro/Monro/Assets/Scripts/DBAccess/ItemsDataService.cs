@@ -22,14 +22,8 @@ public class ItemsDataService : DataService {
 		if (theItem != null) {
 			return GetItemById(theItem.CombinedItemResultId);
 		}
-//
-//		Item right = GetItemById(rhItem) as Item;
-//		Item left = GetItemById(lhItem) as Item;
-//
-//		if (right != null && left != null) {
-//			
-//		}
-
 		return null;
 	}
+
+
 }

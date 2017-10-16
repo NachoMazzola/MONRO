@@ -9,13 +9,16 @@ public class DBAccess : MonoBehaviour {
 	[HideInInspector]
 	public ItemsDataService itemsDataBase;
 
+	[HideInInspector]
+	public StoredItemsDataService storedItemsDataBase;
+
 	static public DBAccess getComponent ()
 	{
 		return GameObject.Find ("DataBase").GetComponent<DBAccess> ();
 	}
-
-
+		
 	void Awake() {
 		itemsDataBase = new ItemsDataService("Items.db");
+		storedItemsDataBase = new StoredItemsDataService("StoredItems.db");
 	}
 }

@@ -36,9 +36,7 @@ public class IMBPickUpAction : IMActionButton {
 		playerComp.itemToPickUp = interactiveObject.transform;
 		playerComp.ChangeToState(PlayerStateMachine.PlayerStates.PlayerWalk);
 		(playerComp.currentState as StateWalk).SetupState(this.transform, true, PlayerStateMachine.PlayerStates.PlayePickUp);
-
-
-		//playerComp.MoveToAndPickUp(this.transform.position, interactiveObject.transform);
+	
 	}
 
 

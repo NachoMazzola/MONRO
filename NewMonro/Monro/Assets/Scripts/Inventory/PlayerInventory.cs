@@ -22,8 +22,24 @@ public class PlayerInventory : MonoBehaviour {
 	
 	}
 
+	private void LoadUpItemsFromDataBase() {
+		DBAccess dataBase = DBAccess.getComponent();
+		if (dataBase) {
+			
+
+		}
+
+	}
+
 	public void AddItem(DBItem theItem) {
 		items.Add(theItem);
+		DBAccess dataBase = DBAccess.getComponent();
+		dataBase.storedItemsDataBase.StoreItemWithId(theItem.ItemId);
+	}
+
+	public void RemoveItem(string itemId) {
+		DBAccess dataBase = DBAccess.getComponent();
+		dataBase.storedItemsDataBase.RemoveItemWithId(itemId);
 	}
 
 	public void AddItemById(string itemId) {

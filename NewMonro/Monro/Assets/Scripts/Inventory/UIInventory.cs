@@ -16,20 +16,15 @@ public class UIInventory : MonoBehaviour {
 	private Button closeInventoryButton;
 	private BoxCollider2D inventoryCollider;
 
-	private List<Transform> itemList;
-
 	public bool isOpened;
 
 	private Vector2 lastItemPosition;
 	private ItemContainerCreator containerCreator;
 
 	private List<IInventoryObserver> inventoryObservers;
-	private InventoryModel inventoryModel;
 
 	void Awake() {
 		isOpened = false;
-		itemList = new List<Transform>();
-		inventoryModel = new InventoryModel();
 
 		Transform UI = GameObject.Find("UI-Inventory").transform;
 
@@ -97,10 +92,6 @@ public class UIInventory : MonoBehaviour {
 		DBItemLoader itemLoader = item.GetComponent<DBItemLoader>();
 		container.GetComponent<ItemContainerPanel>().itemModel = itemLoader.itemModel;
 
-		inventoryModel.AddItem(itemLoader.itemModel);
-
-		itemList.Add(container);
-
 		//first item
 		if (inventoryContent.childCount == 1) {
 			lastItemPosition = new Vector2();
@@ -114,7 +105,7 @@ public class UIInventory : MonoBehaviour {
 		((RectTransform)container.transform).anchoredPosition = lastItemPosition;
 		lastItemPosition = ((RectTransform)container.transform).anchoredPosition;
 
-		if (itemList.Count == maxItems) {
+		if (inventoryContent.childCount == maxItems) {
 			//TODO: hacer crecer el container
 		}
 
@@ -153,6 +144,7 @@ public class UIInventory : MonoBehaviour {
 		for (int i = 0; i < inventoryContent.childCount; i++) {
 			Transform t = inventoryContent.GetChild(i);
 			((RectTransform)t.transform).anchoredPosition = new Vector2( -i*itemContainerW, 0);
+			lastItemPosition = ((RectTransform)t.transform).anchoredPosition;
 		}
 	}
 

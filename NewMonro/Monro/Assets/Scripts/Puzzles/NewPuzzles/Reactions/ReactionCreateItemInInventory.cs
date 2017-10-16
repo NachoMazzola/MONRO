@@ -20,23 +20,6 @@ public class ReactionCreateItemInInventory : IPReaction {
 
 			return true;
 		}
-
-
-
-//
-//		DBItemLoader itemLoader = actionReceiver.GetComponent<DBItemLoader>();
-//		DBItem it = itemLoader.itemModel;
-//		DBItem itm = DBAccess.getComponent().itemsDataBase.GetItemById(theValue);
-//		
-//		if (it != null && itm != null) {
-//			GameObject inv = GameObject.Find ("UI-Inventory");
-//			UIInventory inventory = inv.GetComponent<UIInventory> ();
-//			bool combinationResult = inventory.GetComponent<ItemCombinator> ().CombineItems (it, itm);
-//			if (!combinationResult) {
-//					
-//			}
-//		}
-//
 		return false;
 	}
 }
