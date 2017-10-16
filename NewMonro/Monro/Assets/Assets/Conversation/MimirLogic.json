@@ -1,0 +1,132 @@
+[
+	{
+		"title": "Mimir.Logic.trial2",
+		"tags": "",
+		"body": "You can't.\n\n[[Monrjiall.Logic.whatwhy]]",
+		"position": {
+			"x": -1525,
+			"y": 775
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Logic.whatwhy",
+		"tags": "",
+		"body": "What? Why?\n\n[[Mimir.Logic.lazy]]",
+		"position": {
+			"x": -1246,
+			"y": 769
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Logic.lazy",
+		"tags": "",
+		"body": "The Game Designer of this game is too lazy, so there’s no puzzle here. \nAt least not in this Alpha version.\n\n[[Monrjiall.Logic.shame]]",
+		"position": {
+			"x": -949,
+			"y": 771
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Logic.shame",
+		"tags": "",
+		"body": "Huh. That’s a shame.\n\n[[Mimir.Logic.silence]]",
+		"position": {
+			"x": -954,
+			"y": 522
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Logic.silence",
+		"tags": "",
+		"body": "...\n\n[[Monrjiall.Logic.silence2]]",
+		"position": {
+			"x": -1253,
+			"y": 522
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Logic.silence2",
+		"tags": "",
+		"body": "...\n\n[[Mimir.Logic.finalVersion]]",
+		"position": {
+			"x": -1530,
+			"y": 528
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Logic.finalVersion",
+		"tags": "",
+		"body": "Oh, but there will be a puzzle here in the final version.\n\n[[Monrjiall.Logic.sure]]",
+		"position": {
+			"x": -1531,
+			"y": 265
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Logic.sure",
+		"tags": "",
+		"body": "Oh, yeah, I’m sure.\r\n\r\n[[Mimir.Logic.greatPuzzle]]",
+		"position": {
+			"x": -1247,
+			"y": 265
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Logic.greatPuzzle",
+		"tags": "",
+		"body": "And it will be a great puzzle!\n\n[[Monrjiall.Logic.believe]]",
+		"position": {
+			"x": -953,
+			"y": 267
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Logic.silence2",
+		"tags": "",
+		"body": "...\n\n[[Monrjiall.Logic.done]]",
+		"position": {
+			"x": -1250,
+			"y": 8
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Logic.believe",
+		"tags": "",
+		"body": "Oh, I believe you, yes.\n\n[[Mimir.Logic.silence2]]",
+		"position": {
+			"x": -957,
+			"y": 7
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Logic.sadly",
+		"tags": "",
+		"body": "<<DialogueAction PuzzleManager pz3complete>>\n\nSadly, yes, we are.\n\n<<set $pz3complete to true>>\n\n<<if $pz2complete is true and $pz3complete is true and $pz4complete is true>>\n<<set $allPzComplete to true>>\n<<endif>>\n\n[[Monrjiall.Puzzles.trials]]",
+		"position": {
+			"x": -1821,
+			"y": 9
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Logic.done",
+		"tags": "",
+		"body": "Are we done here?\n\n[[Mimir.Logic.sadly]]",
+		"position": {
+			"x": -1533,
+			"y": 10
+		},
+		"colorID": 0
+	}
+]

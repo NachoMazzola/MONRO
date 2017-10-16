@@ -1,0 +1,82 @@
+[
+	{
+		"title": "Hildr.Answer.Second",
+		"tags": "",
+		"body": "<<if $mimirMet is true>>\n[[Hildr.Answer.progress]]\n<<else>>\nYou must search for a solution in this field.\nCome talk to me after you've looked everywhere.\n<<endif>>",
+		"position": {
+			"x": -36,
+			"y": 606
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Answer.progress",
+		"tags": "",
+		"body": "<<DialogueAction PuzzleManager askedHildr>>\r\n\r\nHave you figured out how to cross that stream?\r\n\r\n[[Monrjiall.Answer.Stream]]",
+		"position": {
+			"x": -348,
+			"y": 616
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Answer.Stream",
+		"tags": "",
+		"body": "What stream? \nI found a head that talks. \nIt’s saying strange things.\n\n[[Hildr.Answer.Okay]]\n",
+		"position": {
+			"x": -618,
+			"y": 618
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Answer.aesir",
+		"tags": "",
+		"body": "Yes, it’s saying something about an important Aesir God that lived with Vanir or something of the sort.\n\n[[Hildr.Answer.Hoenir]]",
+		"position": {
+			"x": -624,
+			"y": 44
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Answer.Hoenir",
+		"tags": "",
+		"body": "Hoenir? I haven’t heard from him in ages!\n\n[[Monrjiall.Answer.Hoenir]]",
+		"position": {
+			"x": -366,
+			"y": 50
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Answer.Okay",
+		"tags": "",
+		"body": "Right. A head that talks. Okay.\n\n[[Monrjiall.Answer.aesir]]",
+		"position": {
+			"x": -620,
+			"y": 320
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Answer.Hoenir",
+		"tags": "",
+		"body": "Hoenir! Ha! I have you now, head!\n\n[[Hildr.Answer.NotSure]]",
+		"position": {
+			"x": -66,
+			"y": 47
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Answer.NotSure",
+		"tags": "",
+		"body": "I’m not so sure you do...",
+		"position": {
+			"x": -41,
+			"y": 353
+		},
+		"colorID": 0
+	}
+]

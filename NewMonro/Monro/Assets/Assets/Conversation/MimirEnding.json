@@ -1,0 +1,52 @@
+[
+	{
+		"title": "Mimir.Ending.potential",
+		"tags": "",
+		"body": "I see there’s more to you than meets the eye.\nYou may very well have the potential to be of use to me… \nI mean, to achieve your goals…\n\n[[Monrjiall.Ending.awaits]]",
+		"position": {
+			"x": 834,
+			"y": 134
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Ending.Awaits",
+		"tags": "",
+		"body": "Of course I do. \nThe Gods have no idea what awaits them.\n\n[[Mimir.Ending.join]]",
+		"position": {
+			"x": 503,
+			"y": 132
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Ending.join",
+		"tags": "",
+		"body": "Very well... \nI will join your quest and assist you in every way I can...\nuntil I’m safely back at Odin’s side.\n\n[[Monrjiall.Ending.revenge]]",
+		"position": {
+			"x": 114,
+			"y": 311
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Ending.Revenge",
+		"tags": "",
+		"body": "And I have exacted my revenge on all Asgard!\n\n[[Mimir.Ending.ofcourse]]",
+		"position": {
+			"x": 498,
+			"y": 480
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Ending.ofcourse",
+		"tags": "",
+		"body": "Mmm? \r\nOh, yes, of course, that as well.\r\n\r\n<<set $mimirObtained to true>>",
+		"position": {
+			"x": 826,
+			"y": 476
+		},
+		"colorID": 0
+	}
+]

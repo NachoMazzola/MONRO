@@ -1,0 +1,82 @@
+[
+	{
+		"title": "Hildr.Intro.Start1",
+		"tags": "",
+		"body": "<<if $introFinished is false>>\nValiant warrior! \nI ask you your name...\n...so that I may know who it is that has been so wrongfully cheated.\n\n<<DialogueAction PuzzleManager AddLookMimir>>\n\n[[Monrjiall.Intro.response]]\n\n<<else>>\n[[Hildr.Answer.Second]]\n<<endif>>\n\n",
+		"position": {
+			"x": 633,
+			"y": 632
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Intro.response",
+		"tags": "",
+		"body": "<<if not visited (\"Hildr.Intro.trust\")>>\n[[I will not tell you anything, you foul witch! I do not know you, therefore I cannot trust you!|Hildr.Intro.trust]]\n<<endif>>\n<<if not visited (\"Hildr.Intro.confused\")>>\n[[Who has been cheated? And what does my name have to do with the poor fellow?|Hildr.Intro.confused]]\n<<endif>>\n[[The name’s Monrjiall, son of M’gsroell. Now, what’s this about somebody being cheated?|Hildr.Exp.explains]]",
+		"position": {
+			"x": 640,
+			"y": 303
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Intro.trust",
+		"tags": "",
+		"body": "I can assure you, I’m trustworthy.\n\n[[Monrjiall.Intro.trust]]",
+		"position": {
+			"x": 284,
+			"y": -52
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Intro.trust",
+		"tags": "",
+		"body": "Oh, very well then.\n\n[[Hildr.Intro.easy]]",
+		"position": {
+			"x": 663,
+			"y": -49
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Intro.easy",
+		"tags": "",
+		"body": "<<if not visited (\"Hildr.Intro.confused\")>>\nWell, this might be easier than I thought...\n<<else>>\nOn second thought, this might not be so hard...\n<<endif>>\n[[Monrjiall.Intro.response]]",
+		"position": {
+			"x": 958,
+			"y": -41
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Intro.confused",
+		"tags": "",
+		"body": "No, your name... \r\nI mean, that’s… \r\nWhat?\r\n\r\n[[Monrjiall.Intro.victorious]]\r\n",
+		"position": {
+			"x": 977,
+			"y": 298
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Intro.victorious",
+		"tags": "",
+		"body": "Hah! You cannot match my wits!\n\n[[Hildr.Intro.hard]]",
+		"position": {
+			"x": 1272,
+			"y": 300
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Intro.hard",
+		"tags": "",
+		"body": "<<if not visited (\"Hildr.Intro.trust\")>>\n*sigh* This is gonna be harder than I thought...\n<<else>>\nWell, this may not be so easy after all...\n<<endif>>\n\n[[Monrjiall.Intro.response]]",
+		"position": {
+			"x": 981,
+			"y": 637
+		},
+		"colorID": 0
+	}
+]

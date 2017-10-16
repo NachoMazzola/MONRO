@@ -1,0 +1,142 @@
+[
+	{
+		"title": "Hildr.Exp.explains",
+		"tags": "",
+		"body": "YOU have been cheated, Monrjiall! \r\nBy the very same Gods you pray upon. \r\nThe very same Gods that have you doing their bidding. \r\nThose Gods have deserted you and denied you of your well deserved reward. \r\nThe same reward every fallen warrior receives after dying in battle.\r\n\r\n[[Monrjiall.Exp.curse]]\r\n",
+		"position": {
+			"x": 283,
+			"y": 300
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Exp.curse",
+		"tags": "",
+		"body": "Curse you, Gods! You deceiving bastards!\n.....\nWhat was that about dying?\n\n[[Hildr.Exp.death]]",
+		"position": {
+			"x": -44,
+			"y": 296
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Exp.death",
+		"tags": "",
+		"body": "I’m afraid you have died today, Monrjiall. \nIn the bloody battle that took place on this field today... \n...you perished while battling fiercely against several enemies. \nBy all rights, I should be taking you to Valhalla at this very moment. \nHowever, I seem to be incapable of doing so. \nThat can only mean someone doesn’t want you in Valhalla. \nAnd only the Gods have that kind of power.\n\n[[Monrjiall.Exp.replies]]",
+		"position": {
+			"x": -43,
+			"y": 577
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Exp.replies",
+		"tags": "",
+		"body": "<<if not visited (\"Hildr.Exp.deadViking\")>>\n[[It cannot be! I can’t be dead! You must be mistaken!|Hildr.Exp.deadViking]]\n<<endif>>\n<<if not visited (\"Hildr.Exp.fiercely\")>>\n[[How fiercely was I battling?|Hildr.Exp.fiercely]]\n<<endif>>\n[[The Gods will rue the day they chose to cross the great Monrjiall!|Hildr.Quest.question]]\n",
+		"position": {
+			"x": -49,
+			"y": 880
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Exp.deadViking",
+		"tags": "",
+		"body": "Trust me, you’re dead. I know a dead viking when I see one.\n\n[[Monrjiall.Exp.fine]]",
+		"position": {
+			"x": -339,
+			"y": 857
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Exp.fine",
+		"tags": "",
+		"body": "But I feel fine!\n\n[[Hildr.Exp.exactly]]",
+		"position": {
+			"x": -621,
+			"y": 870
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Exp.exactly",
+		"tags": "",
+		"body": "Which is exactly what a dead viking would say if he didn’t think he was dead.\n\n[[Monrjiall.Exp.ByTheGods]]",
+		"position": {
+			"x": -633,
+			"y": 1146
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Exp.fiercely",
+		"tags": "",
+		"body": "What?\n\n[[Monrjiall.Exp.repeat]]",
+		"position": {
+			"x": 238,
+			"y": 859
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Exp.repeat",
+		"tags": "",
+		"body": "When I died, you said I was battling fiercely. How fiercely?\n\n[[Hildr.Exp.unsure]]",
+		"position": {
+			"x": 572,
+			"y": 871
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Exp.unsure",
+		"tags": "",
+		"body": "Uhmm...\nVery fiercely?\n\n[[Monrjiall.Exp.enemies]]",
+		"position": {
+			"x": 852,
+			"y": 882
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Exp.enemies",
+		"tags": "",
+		"body": "Unsurprising. And how many enemies did I defeat before my befalling? \nFifty? A hundred?\n\n[[Hildr.Exp.hundred]]",
+		"position": {
+			"x": 874,
+			"y": 1163
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Exp.hundred",
+		"tags": "",
+		"body": "*sigh* I don’t know. \nSure, one hundred enemies.\n\n[[Monrjiall.Exp.proud]]",
+		"position": {
+			"x": 545,
+			"y": 1172
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Exp.proud",
+		"tags": "",
+		"body": "Ha! If that’s not worthy of Valhalla, then it must be a very empty place up there!\n\n[[Monrjiall.Exp.replies]]",
+		"position": {
+			"x": 263,
+			"y": 1173
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Exp.ByTheGods",
+		"tags": "",
+		"body": "By the Gods, you are right!\n\n[[Monrjiall.Exp.replies]]",
+		"position": {
+			"x": -343,
+			"y": 1145
+		},
+		"colorID": 0
+	}
+]

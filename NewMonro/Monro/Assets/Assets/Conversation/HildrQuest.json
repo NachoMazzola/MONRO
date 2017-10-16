@@ -1,0 +1,112 @@
+[
+	{
+		"title": "Hildr.Quest.question",
+		"tags": "",
+		"body": "What is it you intend to do?\n\n[[Monrjiall.Quest.revenge]]",
+		"position": {
+			"x": -48,
+			"y": 1153
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Quest.revenge",
+		"tags": "",
+		"body": "I shall climb to Asgard itself and make my axe decide their fate, as they decided mine.\n\n[[Hildr.Quest.unwise]]",
+		"position": {
+			"x": -63,
+			"y": 1431
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Quest.unwise",
+		"tags": "",
+		"body": "That may not be a wise thing to do. \nThe gods are powerful and ever watchful... \n...ready to dispose of any they deem as potential threats.\n\n[[Monrjiall.Quest.question]]",
+		"position": {
+			"x": 257,
+			"y": 1428
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Quest.question",
+		"tags": "",
+		"body": "Then what am I to do? I cannot sit and do nothing about this.\r\n\r\n[[Hildr.Quest.valor]]",
+		"position": {
+			"x": 548,
+			"y": 1426
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Quest.valor",
+		"tags": "",
+		"body": "Nor should you. \nThere’s still a way for you to enter Valhalla. \nYou will have to prove your valor and worth by performing three tasks.\n\n[[Monrjiall.Quest.easy]]",
+		"position": {
+			"x": 869,
+			"y": 1426
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Quest.easy",
+		"tags": "",
+		"body": "In that case, I will be in Valhalla in no time. \nI have more valor and worth than anyone here. \nI’ll get right to it!\n\n[[Hildr.Quest.but]]",
+		"position": {
+			"x": 865,
+			"y": 1697
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Quest.but",
+		"tags": "",
+		"body": "But...\n\n[[Monrjiall.Quest.off]]",
+		"position": {
+			"x": 547,
+			"y": 1699
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Quest.off",
+		"tags": "",
+		"body": "Off I go!\n...\nThis river is blocking my way!\nCursed Gods!\nStop trying to hinder my way at every turn!\n\n[[Hildr.Quest.creek]]\n",
+		"position": {
+			"x": 259,
+			"y": 1701
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Quest.creek",
+		"tags": "",
+		"body": "Uhm...\nThat's just a creek, I don't think the gods... \nI mean...\nNevermind.\nYou will need to create some sort of bridge to cross over that creek.\n\n[[Monrjiall.Quest.noBridge]]\n\n",
+		"position": {
+			"x": -52,
+			"y": 1692
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Quest.noBridge",
+		"tags": "",
+		"body": "But there are no bridges here!\n\n[[Hildr.Quest.LookAround]]",
+		"position": {
+			"x": -337,
+			"y": 1685
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Hildr.Quest.LookAround",
+		"tags": "",
+		"body": "I'll tell you what.\nLook around for a bit...\nSee if you can come up with something to get through the creek.\nIf you're still out of ideas then, come talk to me again...\nAnd I will give you my aid.\n\n<<set $introFinished to true>>",
+		"position": {
+			"x": -343,
+			"y": 1440
+		},
+		"colorID": 0
+	}
+]

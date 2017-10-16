@@ -1,0 +1,332 @@
+[
+	{
+		"title": "Mimir.Puzzles.god",
+		"tags": "",
+		"body": "I am a God of Wisdom. \nIt would be unseemly for me to favor a single human from Midgard.\n\n[[Monrjiall.Puzzles.asgard]]",
+		"position": {
+			"x": -161,
+			"y": 1249
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.asgard",
+		"tags": "",
+		"body": "I have matters to attend to with Odin and the rest of the Gods. \r\nMy ultimate goal would take me into Asgard itself.\r\n\r\n[[Mimir.Puzzles.convenient]]",
+		"position": {
+			"x": -167,
+			"y": 1009
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.convenient",
+		"tags": "",
+		"body": "That WOULD seem convenient for my current predicament. \nStill, I should not take part in human affairs without Odin’s consent… \nUnless...\n\n[[Monrjiall.Puzzles.unless]]",
+		"position": {
+			"x": -418,
+			"y": 1016
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.unless",
+		"tags": "",
+		"body": "Unless what?\n\n[[Mimir.Puzzles.worthy]]",
+		"position": {
+			"x": -420,
+			"y": 1259
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.worthy",
+		"tags": "",
+		"body": "Unless said human was worthy of my wisdom... \nExcelling in knowledge, logic thinking and observation skills.\n\n[[Monrjiall.Puzzles.five]]",
+		"position": {
+			"x": -693,
+			"y": 1269
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.five",
+		"tags": "",
+		"body": "HA! Five of my finest attributes!\n\n[[Monrjiall.Puzzles.trials]]",
+		"position": {
+			"x": -692,
+			"y": 1022
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.trials",
+		"tags": "",
+		"body": "<<DialogueAction PuzzleManager startMimirPuzzles>>\n<<if not visited (\"Mimir.Puzzles.trial1\")>>\n[[How can I prove my knowledge wothy...er...est..ness? |Mimir.Puzzles.trial1]]\n<<elseif visited (\"Mimir.Puzzles.trial1\") and $HoenirKnown is false>>\n[[Can you repeat the knowledge question? |Mimir.Puzzles.trial1repeat]]\n<<elseif visited (\"Mimir.Puzzles.trial1\") and $HoenirKnown is true and not visited (\"Mimir.trial1complete\")>>\n[[Hello, Mimir… or should I say HOENIR! |Mimir.Puzzles.trial1complete]]\n<<endif>>\n\n<<if not visited (\"Mimir.Logic.trial2\")>>\n[[How can I prove my logic thinking? |Mimir.Logic.trial2]]\n<<endif>>\n\n<<if not visited (\"Mimir.Puzzles.trial3\")>>\n[[My sight is impeccable, what is it you want me to observe? |Mimir.Puzzles.trial3]]\n<<elseif visited (\"Mimir.Puzzles.trial3\") and $sawItem is false>>\n[[What is it I’m looking for? |Mimir.Puzzles.trial3repeat]]\n<<elseif visited (\"Mimir.Puzzles.trial3\") and $sawItem is true and not visited (\"Mimir.trial3complete\")>>\n[[Did you see that [ITEM]? That’s not something you see everyday on a battlefield, is it? |Mimir.Puzzles.trial3complete]]\n<<endif>>\n\n<<if visited (\"Mimir.Puzzles.trial3\") and visited (\"Mimir.Logic.trial2\") and visited (\"Mimir.Puzzles.trial1\") and $allPzComplete is false>>\n[[I'll be right back|Mimir.Puzzles.Exit]]\n<<endif>>\n\n<<if $allPzComplete is true>>\n[[Mimir.Ending.potential]]\n<<endif>>",
+		"position": {
+			"x": -1808,
+			"y": 1045
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.trial1",
+		"tags": "",
+		"body": "Off to a great start there, my friend. \nAnyway, any scholar worth his salt should have the basic lore regarding his Gods history. \nBefore I was killed, I lived for a while with the Vanir Gods, along with another Aesir God such as myself. \nYou have to name that God to prove your knowledge.\n[[Monrjiall.Puzzles.silence]]",
+		"position": {
+			"x": -2105,
+			"y": 1038
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.trial3",
+		"tags": "",
+		"body": "Something in this field clearly doesn’t belong... \nand was probably introduced by Odin, they same way I arrived.\n\n[[Monrjiall.Puzzles.finger]]",
+		"position": {
+			"x": -1807,
+			"y": 1281
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.trial1repeat",
+		"tags": "",
+		"body": "Who was with me as a guest to the Vanir Gods?\n\n[[Monrjiall.Puzzles.RightEasy]]",
+		"position": {
+			"x": -1498,
+			"y": 756
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.trial1complete",
+		"tags": "",
+		"body": "No, you should not, but that IS the right answer. \nHoenir was the other God the Vanir hosted along with me. \nGood job!\n\n[[Monrjiall.Puzzles.OtherGod]]",
+		"position": {
+			"x": -2092,
+			"y": 1280
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.silence",
+		"tags": "",
+		"body": "....\n\n[[Mimir.Puzzles.Monrjiall?]]",
+		"position": {
+			"x": -2382,
+			"y": 1033
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.Monrjiall?",
+		"tags": "",
+		"body": "Monrjiall?\n\n[[Monrjiall.Puzzles.DoneTalking]]",
+		"position": {
+			"x": -2672,
+			"y": 1032
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.DoneTalking",
+		"tags": "",
+		"body": "Oh, yes, you are done talking.\n\n[[Mimir.Puzzles.answer?]]",
+		"position": {
+			"x": -2678,
+			"y": 778
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.answer?",
+		"tags": "",
+		"body": "Yes, do you know the answer?\r\n\r\n[[Monrjiall.Puzzles.AnswerGoThere]]",
+		"position": {
+			"x": -2381,
+			"y": 775
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.AnswerGoThere",
+		"tags": "",
+		"body": "Of course, everybody knows that… I just need to… um… check something first.\r\n\r\n[[Monrjiall.Puzzles.trials]]",
+		"position": {
+			"x": -2116,
+			"y": 773
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.RightEasy",
+		"tags": "",
+		"body": "Right, easy. I’ll be right back.\r\n\r\n[[Monrjiall.Puzzles.trials]]\r\n",
+		"position": {
+			"x": -1808,
+			"y": 763
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.OtherGod",
+		"tags": "",
+		"body": "<<DialogueAction PuzzleManager pz2complete>>\n\nWhat other God?\n\n<<set $pz2complete to true>>\n\n<<if $pz2complete is true and $pz3complete is true and $pz4complete is true>>\n<<set $allPzComplete to true>>\n<<endif>>\n\n[[Monrjiall.Puzzles.trials]]",
+		"position": {
+			"x": -2381,
+			"y": 1263
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.Exit",
+		"tags": "",
+		"body": "Of course, I'm not going anywhere anytime soon.",
+		"position": {
+			"x": -1813,
+			"y": 527
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.finger",
+		"tags": "",
+		"body": "That’s easy. \r\nThe giant finger that keeps appearing near me every few seconds.\r\n\r\n[[Mimir.Puzzles.What?]]",
+		"position": {
+			"x": -1804,
+			"y": 1528
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.What?",
+		"tags": "",
+		"body": "What?\n\n[[Monrjiall.Puzzles.What?]]",
+		"position": {
+			"x": -1811,
+			"y": 1784
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.What?",
+		"tags": "",
+		"body": "What?\n\n[[Mimir.Puzzles.WhatFinger]]",
+		"position": {
+			"x": -1510,
+			"y": 1786
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.WhatFinger",
+		"tags": "",
+		"body": "What giant finger?\n\n[[Monrjiall.Puzzles.Where?]]",
+		"position": {
+			"x": -1270,
+			"y": 1799
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.Where?",
+		"tags": "",
+		"body": "A giant finger? Where?\n\n[[Mimir.Puzzles.YouGiantFinger]]",
+		"position": {
+			"x": -982,
+			"y": 1787
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.YouGiantFinger",
+		"tags": "",
+		"body": "You just said there was a giant finger!\n\n[[Monrjiall.Puzzles.Nonsense]]",
+		"position": {
+			"x": -988,
+			"y": 1540
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.Nonsense",
+		"tags": "",
+		"body": "I said no such thing! That’s nonsense!\r\n\r\n[[Mimir.Puzzles.Nevermind]]",
+		"position": {
+			"x": -1258,
+			"y": 1542
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.Nevermind",
+		"tags": "",
+		"body": "But… nevermind, search for something that does not belong and tell me what it is.\r\n\r\n[[Monrjiall.Puzzles.OtherFinger]]",
+		"position": {
+			"x": -1531,
+			"y": 1540
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.OtherFinger",
+		"tags": "",
+		"body": "Other than the giant finger then, got it!\r\n\r\n[[Mimir.Puzzles.sigh]]\r\n",
+		"position": {
+			"x": -1214,
+			"y": 1268
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.sigh",
+		"tags": "",
+		"body": "*sigh*\n\n[[Monrjiall.Puzzles.trials]]",
+		"position": {
+			"x": -1511,
+			"y": 1266
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.trial3repeat",
+		"tags": "",
+		"body": "Something that clearly does not belong in this world, the same as me.\n\n[[Monrjiall.Puzzles.SawSomething]]",
+		"position": {
+			"x": -1198,
+			"y": 1053
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.SawSomething",
+		"tags": "",
+		"body": "Yes, I think I saw something.\n\n[[Monrjiall.Puzzles.trials]]",
+		"position": {
+			"x": -1490,
+			"y": 973
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.trial3complete",
+		"tags": "",
+		"body": "That is it! Very observant of you. Well done!\n\n[[Monrjiall.Puzzles.thanks]]",
+		"position": {
+			"x": -963,
+			"y": 1262
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.thanks",
+		"tags": "",
+		"body": "<<DialogueAction PuzzleManager pz4complete>>\n\nThank you! \nThat is what?\n\n<<set $pz4complete to true>>\n\n<<if $pz2complete is true and $pz3complete is true and $pz4complete is true>>\n<<set $allPzComplete to true>>\n<<endif>>\n\n[[Monrjiall.Puzzles.trials]]",
+		"position": {
+			"x": -952,
+			"y": 1024
+		},
+		"colorID": 0
+	}
+]

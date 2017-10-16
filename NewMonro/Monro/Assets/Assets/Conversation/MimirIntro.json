@@ -1,0 +1,172 @@
+[
+	{
+		"title": "Monrjiall.Intro.Hello",
+		"tags": "",
+		"body": "<<if $mimirMet is false>>\nHello?\n<<set $mimirMet to true>>\n[[Mimir.Intro.Hello]]\n\n<<endif>>\n\n<<if $mimirMet is true>>\n[[Mimir.Puzzles.trials]]\n<<endif>>",
+		"position": {
+			"x": 104,
+			"y": 268
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Intro.Hello",
+		"tags": "",
+		"body": "Hello\n\n[[Monrjiall.Intro.Head]]",
+		"position": {
+			"x": 376,
+			"y": 258
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Intro.Head",
+		"tags": "",
+		"body": "So… you are a head… but you can talk…\r\n\r\n[[Mimir.Intro.correct]]",
+		"position": {
+			"x": 640,
+			"y": 258
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Intro.correct",
+		"tags": "",
+		"body": "That is correct, yes. \r\nThe name is Mimir, by the way. \r\nA real pleasure, Mr..?\r\n\r\n[[Monrjiall.Intro.name]]",
+		"position": {
+			"x": 672,
+			"y": 505
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Intro.name",
+		"tags": "",
+		"body": "[[I’m not telling you my name without knowing yours first!|Mimir.Intro.toldYou]]\n[[Why would I tell you my name?|Mimir.Intro.why]]\n[[Monrjiall, son of M’gsroell.|Mimir.Intro.meet]]",
+		"position": {
+			"x": 403,
+			"y": 514
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Intro.toldYou",
+		"tags": "",
+		"body": "But… I just told you my name… \nIt’s Mimir, remember?\n\n[[Monrjiall.Intro.Imember]]",
+		"position": {
+			"x": 136,
+			"y": 530
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Intro.meet",
+		"tags": "",
+		"body": "Well, nice to meet you, Monrjiall.\n\n[[Monrjiall.Head.headAgain]]",
+		"position": {
+			"x": 410,
+			"y": 755
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Intro.why",
+		"tags": "",
+		"body": "Why wouldn't you?\n\n[[Monrjiall.Intro.reason]]",
+		"position": {
+			"x": 690,
+			"y": 789
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Intro.Imember",
+		"tags": "",
+		"body": "Oh... right...\n\n[[Mimir.Intro.well]]",
+		"position": {
+			"x": -155,
+			"y": 542
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Intro.well",
+		"tags": "",
+		"body": "...\nWell?\n\n[[Monrjiall.Intro.wellWhat]]",
+		"position": {
+			"x": -422,
+			"y": 536
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Intro.wellWhat",
+		"tags": "",
+		"body": "Well what?\n\n[[Mimir.Intro.name]]",
+		"position": {
+			"x": -695,
+			"y": 533
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Intro.name",
+		"tags": "",
+		"body": "Your name?\n\n[[Monrjiall.Intro.nameAgain]]",
+		"position": {
+			"x": -692,
+			"y": 771
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Intro.nameAgain",
+		"tags": "",
+		"body": "Right! Monrjiall is my name. \nBut you can call me Monrjiall.\n\n[[Mimir.Intro.remember]]",
+		"position": {
+			"x": -420,
+			"y": 771
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Intro.remember",
+		"tags": "",
+		"body": "...I’ll make sure I remember that...\n\n[[Monrjiall.Head.headAgain]]",
+		"position": {
+			"x": -168,
+			"y": 774
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Intro.reason",
+		"tags": "",
+		"body": "You might be an enemy, or someone dangerous.\r\n\r\n[[Mimir.Intro.head]]",
+		"position": {
+			"x": 677,
+			"y": 1040
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Intro.head",
+		"tags": "",
+		"body": "I’m a bodiless head. \r\nThe worst I could do is bite you relatively hard if you came close enough... \r\nAnd I don’t need your name for that.\r\n\r\n[[Monrjiall.Intro.safe]]",
+		"position": {
+			"x": 673,
+			"y": 1276
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Intro.safe",
+		"tags": "",
+		"body": "Oh, right… Monrjiall is my name, then.\n\n[[Monrjiall.Head.headAgain]]",
+		"position": {
+			"x": 414,
+			"y": 1016
+		},
+		"colorID": 0
+	}
+]

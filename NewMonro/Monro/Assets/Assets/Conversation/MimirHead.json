@@ -1,0 +1,202 @@
+[
+	{
+		"title": "Monrjiall.Head.headAgain",
+		"tags": "",
+		"body": "Why are you only a head? Where is the rest of your body?\n\n[[Mimir.Head.sadStory]]",
+		"position": {
+			"x": 133,
+			"y": 773
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Head.sadStory",
+		"tags": "",
+		"body": "Ah, that is a sad story, indeed. \nWould you like to hear it?\n\n[[Monrjiall.Head.long]]",
+		"position": {
+			"x": 140,
+			"y": 1008
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Head.long",
+		"tags": "",
+		"body": "Is it long?\n\n[[Mimir.Head.long]]",
+		"position": {
+			"x": 142,
+			"y": 1263
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Head.long",
+		"tags": "",
+		"body": "Oh, yes, very. Long and full of sorrow and betrayal.\n\n[[Monrjiall.Head.no]]",
+		"position": {
+			"x": 399,
+			"y": 1258
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Head.no",
+		"tags": "",
+		"body": "Oh… no, then, I would not like to hear it.\n\n[[Mimir.Head.short]]",
+		"position": {
+			"x": 703,
+			"y": 1268
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Head.short",
+		"tags": "",
+		"body": "I’ll give you the short version then. \nI was a guest to the Vanir gods once. \nHowever, their mistrust led them to try and kill me. \nThey beheaded me and sent my head back to Odin. \nOdin valued my wisdom and advice too much to let me die... \nSo he used magic to keep my head alive.\n\n[[Monrjiall.Head.longIndeed]]",
+		"position": {
+			"x": 696,
+			"y": 1527
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Head.odinMimir",
+		"tags": "",
+		"body": "<<if not visited (\"Mimir.Head.sometimes\")>>\n[[Do you give fashion advice to Odin?|Mimir.Head.sometimes]]\n<<endif>>\n<<if not visited (\"Mimir.Head.mission\")>>\n[[If Odin values you so much, how come you are here in Midgard, half-buried in snow and surrounded by dead bodies?|Mimir.Head.mission]]\n<<endif>>\n[[If you are so wise, maybe you can help me on my quest|Mimir.Puzzles.god]]",
+		"position": {
+			"x": 120,
+			"y": 1517
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Head.sometimes",
+		"tags": "",
+		"body": "Sometimes, yes. \nHe’s rather self-conscious about his looks.\n\n[[Monrjiall.Head.fashion]]",
+		"position": {
+			"x": 125,
+			"y": 1766
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Head.fashion",
+		"tags": "",
+		"body": "Would you give me advice on what to wear?\n\n[[Mimir.Head.horns]]",
+		"position": {
+			"x": 109,
+			"y": 2018
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Head.horns",
+		"tags": "",
+		"body": "You can start by removing those horns from your head. \nWho wears that?\n\n[[Monrjiall.Head.odinMimir]]",
+		"position": {
+			"x": 425,
+			"y": 1761
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Head.mission",
+		"tags": "",
+		"body": "Umm, yes… don’t tell anyone... \nBut he sent me on a secret mission.\n\n[[Monrjiall.Head.wow]]",
+		"position": {
+			"x": -162,
+			"y": 1768
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Head.wow",
+		"tags": "",
+		"body": "Wow! Really?? \nWhat is it?\n\n[[Mimir.Head.goodQuestion]]",
+		"position": {
+			"x": -163,
+			"y": 2017
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Head.goodQuestion",
+		"tags": "",
+		"body": "Yes, what is it, good question...\nUnfortunately, I cannot tell you.\nIt's top secret.\n\n[[Monrjiall.Head.ofCourse]]",
+		"position": {
+			"x": -414,
+			"y": 2019
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Head.legs",
+		"tags": "",
+		"body": "Right. Right. \nAnd how do you complete this mission without any legs? \nOr arms? \nOr body at all?\n\n[[Mimir.Head.confess]]",
+		"position": {
+			"x": -418,
+			"y": 1767
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Head.suppose",
+		"tags": "",
+		"body": "I can't tell you that, either, I suppose.\n\n[[Monrjiall.Head.legs]]",
+		"position": {
+			"x": -694,
+			"y": 1773
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Head.ofCourse",
+		"tags": "",
+		"body": "Of course. \nBut where do you have to go for this mission?\n\n[[Mimir.Head.suppose]]\n",
+		"position": {
+			"x": -687,
+			"y": 2019
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Head.confess",
+		"tags": "",
+		"body": "Alright, fine! You caught me! \nOdin gets drunk from time to time and likes throwing me around. \nSometimes it gets out of hand and I end up being hurled through Yggdrasil to other worlds. \nThat’s how I ended up here, in this particular occasion.\n\n[[Monrjiall.Head.understand]]",
+		"position": {
+			"x": -691,
+			"y": 1517
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Head.understand",
+		"tags": "",
+		"body": "I still don’t understand how you are going to complete the mission.\n\n[[Mimir.Head.wow]]",
+		"position": {
+			"x": -420,
+			"y": 1521
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Head.wow",
+		"tags": "",
+		"body": "Wow… just.. wow...\n\n[[Monrjiall.Head.odinMimir]]",
+		"position": {
+			"x": -160,
+			"y": 1519
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Head.longIndeed",
+		"tags": "",
+		"body": "That was rather long for a short version.\n\n[[Monrjiall.Head.odinMimir]]",
+		"position": {
+			"x": 404,
+			"y": 1515
+		},
+		"colorID": 0
+	}
+]
