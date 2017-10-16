@@ -19,7 +19,9 @@ public class ActionDropItemOverInteractiveObject : PAction {
 					if (RemovesItemFromInv) {
 						//remove item from inventory!!!!
 						UIInventory theInventory = GameObject.Find("UI-Inventory").GetComponent<UIInventory>();
-						theInventory.RemoveItem(ItemId);
+						List<string> toRemove = new List<string>();
+						toRemove.Add(ItemId);
+						theInventory.RemoveItems(toRemove);
 					}
 					ActionFinished();
 				}	

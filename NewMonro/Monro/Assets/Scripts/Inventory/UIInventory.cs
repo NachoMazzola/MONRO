@@ -102,13 +102,14 @@ public class UIInventory : MonoBehaviour {
 		itemList.Add(container);
 
 		//first item
-		if (itemList.Count == 1) {
+		if (inventoryContent.childCount == 1) {
 			lastItemPosition = new Vector2();
 		}
 		else {
 			Vector2 newPos = new Vector2(lastItemPosition.x - ((RectTransform)container.transform).rect.size.x * container.localScale.x, 0);	
 			lastItemPosition = newPos;
 		}
+		Debug.Log("INVENTORY LOG: INVENTORY ITEM ADDED IN POSITION: " + lastItemPosition);
 
 		((RectTransform)container.transform).anchoredPosition = lastItemPosition;
 		lastItemPosition = ((RectTransform)container.transform).anchoredPosition;
@@ -122,40 +123,37 @@ public class UIInventory : MonoBehaviour {
 			obs.OnInventoryAddedItem();
 		}
 	}
+		
+	public void RemoveItems(List<string> itemIdList) {
+		List<Transform> toRemove = new List<Transform>();
+		foreach (Transform child in inventoryContent) {
+			DBItem itemModel = child.GetChild(child.childCount-1).GetComponent<DBItemLoader>().itemModel;
+			foreach (string id in itemIdList) {
+				if (itemModel.ItemId == id) {
+					toRemove.Add(child);
+					GameObject.Destroy(child.gameObject);
+					Destroy(child);
 
-	public void RemoveItem(string itemId) {
-		Transform itemToRemove = null;
-		DBItem itemModelToRemove = null;
-		foreach (Transform container in itemList) {
-			DBItem itemModel = container.GetChild(container.childCount-1).GetComponent<DBItemLoader>().itemModel;
-			if (itemModel.ItemId == itemId) {
-				itemToRemove = container;
-				itemModelToRemove = itemModel;
-				break;
-			}
-		}
-
-		if (itemToRemove != null) {
-			foreach (Transform child in itemToRemove) {
-				GameObject.Destroy(child.gameObject);
-			}
-
-			foreach (Transform child in inventoryContent) {
-				if (child == itemToRemove) {
-					GameObject.Destroy(child.gameObject);	
+					//remove children
+					foreach (Transform subChild in child) {
+						GameObject.Destroy(subChild.gameObject);
+					}
+					break;
 				}
 			}
-
-
-			//itemToRemove.transform.SetParent(null);
-
-			itemList.Remove(itemToRemove);
-			inventoryModel.removeItem(itemModelToRemove);
-
-			Destroy(itemToRemove);
 		}
 
-		//Reorder UI list!!!
+		foreach (Transform t in toRemove) {
+			t.SetParent(null);
+		}
+		this.ReorderItems();
+	}
+		
+	private void ReorderItems() {
+		for (int i = 0; i < inventoryContent.childCount; i++) {
+			Transform t = inventoryContent.GetChild(i);
+			((RectTransform)t.transform).anchoredPosition = new Vector2( -i*itemContainerW, 0);
+		}
 	}
 
 	public void EnableScrolling(bool enable) {

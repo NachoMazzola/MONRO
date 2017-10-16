@@ -25,8 +25,11 @@ public class ActionCombineItems : PAction {
 							GameObject inv = GameObject.Find ("UI-Inventory");
 							UIInventory uiInventory = inv.gameObject.GetComponent<UIInventory>();
 
-							uiInventory.RemoveItem(ItemId1);
-							uiInventory.RemoveItem(ItemId2);
+							List<string> toRemoveList = new List<string>();
+							toRemoveList.Add(ItemId1);
+							toRemoveList.Add(ItemId2);
+
+							uiInventory.RemoveItems(toRemoveList);
 						}
 					}
 				}
