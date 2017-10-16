@@ -542,10 +542,10 @@
 	{
 		"title": "Monrjiall.OtherGod",
 		"tags": "",
-		"body": "<<DialogueAction PuzzleManager pz2complete>>\n\nWhat other God?\n\n[[Monrjiall.trials]]",
+		"body": "<<DialogueAction PuzzleManager pz2complete>>\n\nWhat other God?\n\n<<set $pz2complete to true>>\n\n[[Monrjiall.trials]]",
 		"position": {
 			"x": -2381,
-			"y": 1265
+			"y": 1263
 		},
 		"colorID": 0
 	},
@@ -812,10 +812,10 @@
 	{
 		"title": "Mimir.sadly",
 		"tags": "",
-		"body": "<<DialogueAction PuzzleManager pz3complete>>\n\nSadly, yes, we are.\n\n[[Monrjiall.trials]]",
+		"body": "<<DialogueAction PuzzleManager pz3complete>>\n\nSadly, yes, we are.\n\n<<set $pz3complete to true>>\n\n[[Monrjiall.trials]]",
 		"position": {
 			"x": -1815,
-			"y": 18
+			"y": 19
 		},
 		"colorID": 0
 	},
