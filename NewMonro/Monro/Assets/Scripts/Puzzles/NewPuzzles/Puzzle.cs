@@ -11,6 +11,9 @@ public enum PuzzleState {
 
 public class Puzzle : MonoBehaviour {
 
+	public string Description;
+	
+
 	public PuzzleState puzzleState = PuzzleState.Disabled;
 	public string puzzleId;
 	public int maxSteps;
