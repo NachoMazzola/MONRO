@@ -24,4 +24,5 @@ public class DBStoredItem {
 	public int Id { get; set; }
 
 	public string ItemId {get; set;}
+	public bool Used {get; set;}
 }

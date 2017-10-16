@@ -14,7 +14,8 @@ public class PlayerInventory : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		//TODO: UNCOMMENT THIS WHEN WE TAKE A LOOK AT SERIALIZATION!
+		//this.LoadUpItemsFromDataBase();
 	}
 	
 	// Update is called once per frame
@@ -23,23 +24,33 @@ public class PlayerInventory : MonoBehaviour {
 	}
 
 	private void LoadUpItemsFromDataBase() {
+		GameObject inv = GameObject.Find ("UI-Inventory");
+		UIInventory uiInventory = inv.gameObject.GetComponent<UIInventory>();
+
 		DBAccess dataBase = DBAccess.getComponent();
 		if (dataBase) {
-			
-
+			var enume = dataBase.itemsDataBase.GetStoredItems();
+			foreach (DBStoredItem d in enume) {
+				if (d.Used == false) {
+					DBItem it = dataBase.itemsDataBase.GetItemById(d.ItemId);
+					GameObject pPrefab = Resources.Load(it.ItemInventoryPrefab) as GameObject;
+					uiInventory.AddItemToInventory(pPrefab.transform);
+				}
+			}
 		}
-
 	}
 
 	public void AddItem(DBItem theItem) {
 		items.Add(theItem);
 		DBAccess dataBase = DBAccess.getComponent();
-		dataBase.storedItemsDataBase.StoreItemWithId(theItem.ItemId);
+		dataBase.itemsDataBase.StoreItemWithId(theItem.ItemId);
 	}
 
-	public void RemoveItem(string itemId) {
+	public void MarkItemsAsUsed(List<string> itemIds) {
 		DBAccess dataBase = DBAccess.getComponent();
-		dataBase.storedItemsDataBase.RemoveItemWithId(itemId);
+		foreach (string id in itemIds) {
+			dataBase.itemsDataBase.MarkItemAsUsed(id);	
+		}
 	}
 
 	public void AddItemById(string itemId) {
@@ -48,5 +59,4 @@ public class PlayerInventory : MonoBehaviour {
 			AddItem(itm);
 		}
 	}
-
 }

@@ -31,8 +31,7 @@ public class ActionCombineItems : PAction {
 
 							uiInventory.RemoveItems(toRemoveList);
 
-							//uiInventory.GetComponent<PlayerInventory>().RemoveItem(ItemId1);
-							//uiInventory.GetComponent<PlayerInventory>().RemoveItem(ItemId2);
+							uiInventory.GetComponent<PlayerInventory>().MarkItemsAsUsed(toRemoveList);
 						}
 					}
 				}
