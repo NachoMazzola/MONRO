@@ -42,10 +42,20 @@
 	{
 		"title": "Mimir.Ending.ofcourse",
 		"tags": "",
-		"body": "Mmm? \r\nOh, yes, of course, that as well.\r\n\r\n<<set $mimirObtained to true>>",
+		"body": "Mmm? \r\nOh, yes, of course, that as well.\r\n\r\n[[Monrjiall.Ending.destroy]]\r\n",
 		"position": {
 			"x": 826,
 			"y": 476
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Ending.destroy",
+		"tags": "",
+		"body": "<<DialogueAction PuzzleManager mimirObtained>>\n\nTengo a Mimir, tengo!",
+		"position": {
+			"x": 1143,
+			"y": 311
 		},
 		"colorID": 0
 	}
