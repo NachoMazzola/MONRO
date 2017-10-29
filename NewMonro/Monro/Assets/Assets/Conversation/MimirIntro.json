@@ -2,10 +2,10 @@
 	{
 		"title": "Monrjiall.Intro.Hello",
 		"tags": "",
-		"body": "<<if $mimirMet is false>>\nHello?\n<<set $mimirMet to true>>\n[[Mimir.Intro.Hello]]\n\n<<endif>>\n\n<<if $mimirMet is true>>\n[[Mimir.Puzzles.trials]]\n<<endif>>",
+		"body": "<<if $mimirMet is false>>\nHello?\n<<set $mimirMet to true>>\n[[Mimir.Intro.Hello]]\n\n<<endif>>\n\n<<if $mimirMet is true>>\n[[Monrjiall.Puzzles.trials]]\n<<endif>>",
 		"position": {
-			"x": 104,
-			"y": 268
+			"x": 21,
+			"y": 243
 		},
 		"colorID": 0
 	},
