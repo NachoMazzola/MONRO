@@ -159,13 +159,16 @@ namespace Yarn.Unity
 			// Mark that we're in conversation.
 			isDialogueRunning = true;
 
+			Debug.Log ("RUNNING DIALOGUE: " + sourceText);
+
 			// Signal that we're starting up.
 			yield return StartCoroutine(this.dialogueUI.DialogueStarted());
 
 			// Get lines, options and commands from the Dialogue object,
 			// one at a time.
+
 			foreach (Yarn.Dialogue.RunnerResult step in dialogue.Run(startNode)) {
-				
+
 				if (step is Yarn.Dialogue.LineResult) {
 					
 					// Wait for line to finish displaying

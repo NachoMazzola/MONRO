@@ -83,8 +83,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 				lastOneWhoTalked = whoIsTalking;
 			}
-
-
+				
 			yield return StartCoroutine (whoIsTalking.ShowCaption (line.text, TextBox.DisappearMode.WaitInput));
 
 			yield break;
