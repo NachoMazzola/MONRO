@@ -47,9 +47,9 @@ public class StatePickUp : State {
 
 		GameObject invObj = GameObject.Find ("UI-Inventory");
 		UIInventory theInv = invObj.GetComponent<UIInventory> ();
-		PlayerInventory pInventory = invObj.GetComponent<PlayerInventory>();
+		//PlayerInventory pInventory = invObj.GetComponent<PlayerInventory>();
 
-		pInventory.AddItemById (itemToPickUp.GetComponent<InteractiveObject> ().Item.GetComponent<DBItemLoader> ().itemId);
+		//pInventory.AddItemById (itemToPickUp.GetComponent<InteractiveObject> ().Item.GetComponent<DBItemLoader> ().itemId);
 		theInv.AddItemToInventory (itemToPickUp.GetComponent<InteractiveObject> ().Item);
 
 		GameObject.Destroy(itemToPickUp.gameObject);

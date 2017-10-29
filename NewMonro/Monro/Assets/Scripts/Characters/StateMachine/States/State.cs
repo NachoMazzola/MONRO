@@ -46,8 +46,6 @@ public class State : MonoBehaviour, IState {
 		if (optionalStateToTransitionOnEnd != PlayerStateMachine.PlayerStates.PlayerNone) {
 			stateCharacterOwner.ChangeToState(optionalStateToTransitionOnEnd);
 		}
-
-		Destroy(this);
 	}
 
 	public Character GetCharacterOwner() {
