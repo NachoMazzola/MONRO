@@ -130,7 +130,7 @@ namespace SQLite4Unity3d
 		private Dictionary<string, TableMapping> _mappings = null;
 		private Dictionary<string, TableMapping> _tables = null;
 		private System.Diagnostics.Stopwatch _sw;
-		private long _elapsedMilliseconds = 0;
+		private TimeSpan _elapsed = default(TimeSpan);
 
 		private int _transactionDepth = 0;
 		private Random _rand = new Random ();
@@ -155,11 +155,10 @@ namespace SQLite4Unity3d
 		//   - RunInDatabaseLock(Action) similarly locks the database but no transaction (for query)
 		private static Dictionary<string, object> syncObjects = new Dictionary<string, object>();
 
-		public bool TimeExecution { get; set; }
-
 		#region debug tracing
 
 		public bool Trace { get; set; }
+        public bool TimeExecution { get; set; }
 
 		public delegate void TraceHandler (string message);
 		public event TraceHandler TraceEvent;
@@ -168,6 +167,16 @@ namespace SQLite4Unity3d
 		{
 			if (TraceEvent != null) {
 				TraceEvent(message);
+			}
+		}
+
+		public delegate void TimeExecutionHandler (TimeSpan executionTime, TimeSpan totalExecutionTime);
+		public event TimeExecutionHandler TimeExecutionEvent;
+
+		internal void InvokeTimeExecution(TimeSpan executionTime, TimeSpan totalExecutionTime)
+		{
+			if (TimeExecutionEvent != null) {
+				TimeExecutionEvent(executionTime, totalExecutionTime);
 			}
 		}
 
@@ -666,8 +675,8 @@ namespace SQLite4Unity3d
 			
 			if (TimeExecution) {
 				_sw.Stop ();
-				_elapsedMilliseconds += _sw.ElapsedMilliseconds;
-				Debug.WriteLine (string.Format ("Finished in {0} ms ({1:0.0} s total)", _sw.ElapsedMilliseconds, _elapsedMilliseconds / 1000.0));
+				_elapsed += _sw.Elapsed;
+				this.InvokeTimeExecution (_sw.Elapsed, _elapsed);
 			}
 			
 			return r;
@@ -689,8 +698,8 @@ namespace SQLite4Unity3d
 			
 			if (TimeExecution) {
 				_sw.Stop ();
-				_elapsedMilliseconds += _sw.ElapsedMilliseconds;
-				Debug.WriteLine (string.Format ("Finished in {0} ms ({1:0.0} s total)", _sw.ElapsedMilliseconds, _elapsedMilliseconds / 1000.0));
+				_elapsed += _sw.Elapsed;
+				this.InvokeTimeExecution (_sw.Elapsed, _elapsed);
 			}
 			
 			return r;
@@ -1650,6 +1659,14 @@ namespace SQLite4Unity3d
 			get { return true; }
 			set { /* throw?  */ }
 		}
+
+		public UniqueAttribute() : base()
+		{
+		}
+
+		public UniqueAttribute(string name, int order) : base(name, order)
+		{
+		}
 	}
 
 	[AttributeUsage (AttributeTargets.Property)]
@@ -2061,7 +2078,6 @@ namespace SQLite4Unity3d
 				r = SQLite3.Step (stmt);
 				Finalize(stmt);
 			}
-
 			if (r == SQLite3.Result.Done) {
 				int rowsAffected = SQLite3.Changes (_conn.Handle);
 				return rowsAffected;
@@ -2723,6 +2739,15 @@ namespace SQLite4Unity3d
 				return new CompileResult {
 					CommandText = valr.CommandText,
 					Value = valr.Value != null ? ConvertTo (valr.Value, ty) : null
+				};
+			} else if (expr.NodeType == ExpressionType.Not) {
+				var u = (UnaryExpression)expr;
+				var ty = u.Type;
+				var valr = CompileExpr (u.Operand, queryArgs);
+
+				return new CompileResult {
+					CommandText = "NOT " + valr.CommandText,
+					Value = valr.Value != null ? valr.Value : null
 				};
 			} else if (expr.NodeType == ExpressionType.MemberAccess) {
 				var mem = (MemberExpression)expr;

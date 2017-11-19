@@ -1,10 +1,12 @@
 ﻿using SQLite4Unity3d;
 using UnityEngine;
 
+
 #if !UNITY_EDITOR
 using System.Collections;
 using System.IO;
 #endif
+
 using System.Collections.Generic;
 
 public class DataService
@@ -17,6 +19,7 @@ public class DataService
 
 		#if UNITY_EDITOR
 		var dbPath = string.Format (@"Assets/Assets/StreamingAssets/{0}", DatabaseName);
+	
 		#else
 		// check if file exists in Application.persistentDataPath
 		var filepath = string.Format("{0}/{1}", Application.persistentDataPath, DatabaseName);
@@ -33,7 +36,9 @@ public class DataService
 		// then save to Application.persistentDataPath
 		File.WriteAllBytes(filepath, loadDb.bytes);
 		#elif UNITY_IOS
+		Debug.Log("Loading DB in IOS");
 		var loadDb = Application.dataPath + "/Raw/" + DatabaseName;  // this is the path to your StreamingAssets in iOS
+		Debug.Log("Loading DB in path: " + loadDb);
 		// then save to Application.persistentDataPath
 		File.Copy(loadDb, filepath);
 		#elif UNITY_WP8
