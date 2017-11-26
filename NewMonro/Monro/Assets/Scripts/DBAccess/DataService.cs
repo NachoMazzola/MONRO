@@ -18,7 +18,7 @@ public class DataService
 	{
 
 		#if UNITY_EDITOR
-		var dbPath = string.Format (@"Assets/Assets/StreamingAssets/{0}", DatabaseName);
+		var dbPath = string.Format (@"Assets/StreamingAssets/{0}", DatabaseName);
 	
 		#else
 		// check if file exists in Application.persistentDataPath
