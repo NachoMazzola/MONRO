@@ -3,7 +3,7 @@ using System.Collections;
 using System.Text;
 using UnityEngine.UI;
 
-public class Character : MonoBehaviour, IWorldInteractionObserver {
+public class Character : MonoBehaviour, IWorldInteractionObserver, IAnimatable {
 
 	public enum MovingDirection
 	{
@@ -126,4 +126,11 @@ public class Character : MonoBehaviour, IWorldInteractionObserver {
 		currentFacingDirection = newFacingDir;
 	}
 		
+	public Animator GetAnimator() {
+		return this.animStateMachine.stateMachineAnimator;
+	}
+
+	public Transform GetTransform() {
+		return this.transform;
+	}
 }

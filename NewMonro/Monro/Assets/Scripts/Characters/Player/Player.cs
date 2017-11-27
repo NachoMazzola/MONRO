@@ -90,6 +90,7 @@ public class Player : Character
 	public void AnimEndEventPutItemInInventory () {
 		ResetState();
 	}
+
 		
 	override  public void ResetState() {
 		currentState.StateEnd();

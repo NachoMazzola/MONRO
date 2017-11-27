@@ -6,6 +6,7 @@ public class PlayerStateMachine : MonoBehaviour {
 
 	public enum PlayerStates {
 		PlayerNone,
+		PlayerWakeUp, //this is just the beginning state of the intro cutscene
 		PlayerIdle,
 		PlayerWalk,
 		PlayePickUp,
@@ -14,15 +15,16 @@ public class PlayerStateMachine : MonoBehaviour {
 
 	private PlayerStates currentState;
 	private PlayerStates lastState;
-	private Animator stateMachineAnimator;
+	public Animator stateMachineAnimator;
 	private Dictionary<int, PlayerStates> playerStatesDict;
 
 	private const string animParamIsWalking = "isMoving";
 	private const string animParamIsPickingUp = "isPickingUp";
 	private const string animParamIsTalking = "isTalking";
+	private const string animParamShouldWakeUp = "shouldWakeUp";
 
 	void Awake() {
-		currentState = PlayerStates.PlayerIdle;
+		currentState = PlayerStates.PlayerWakeUp;
 		stateMachineAnimator = GetComponent<Animator>();
 		playerStatesDict = new Dictionary<int, PlayerStates>();
 
