@@ -102,7 +102,7 @@
 	{
 		"title": "Hildr.Quest.LookAround",
 		"tags": "",
-		"body": "I'll tell you what.\nLook around for a bit...\nSee if you can come up with something to get through the creek.\nIf you're still out of ideas then, come talk to me again...\nAnd I will give you my aid.\n\n<<set $introFinished to true>>",
+		"body": "I'll tell you what.\nLook around for a bit...\nSee if you can come up with something to get through the creek.\nIf you're still out of ideas then, come talk to me again...\nAnd I will give you my aid.\n\n<<set $introFinished to true>>\n<<DialogueAction PuzzleManager AddLookMimir>>",
 		"position": {
 			"x": -343,
 			"y": 1440
