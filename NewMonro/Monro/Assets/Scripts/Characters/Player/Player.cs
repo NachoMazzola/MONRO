@@ -91,6 +91,13 @@ public class Player : Character
 		ResetState();
 	}
 
+	/*
+	 * This method is called when the WakeUp animaiton ends. It is wired up from the Animaiton Panel in Inspector, hence the name AnimEndEvent 
+	*/
+	public void AnimEndWakingUp() {
+		this.ChangeToState(PlayerStateMachine.PlayerStates.PlayerIdle);
+	}
+
 		
 	override  public void ResetState() {
 		currentState.StateEnd();

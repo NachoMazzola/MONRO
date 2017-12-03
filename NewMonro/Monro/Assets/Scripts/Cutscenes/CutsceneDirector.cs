@@ -7,6 +7,7 @@ public class CutsceneDirector: MonoBehaviour {
 	private List<ICommand> commandQueue;
 	private ICommand currentCutscene;
 	private bool shouldAskForNextCommand = false;
+	private int currentPlayingCommand = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -20,8 +21,8 @@ public class CutsceneDirector: MonoBehaviour {
 		this.currentCutscene = moveCamera;
 
 
-		AnimateCharacterCommand animateCommand = new AnimateCharacterCommand(player.GetComponent<Player>(), "shouldWakeUp");
-
+		AnimateCharacterCommand animateCommand = new AnimateCharacterCommand(player.GetComponent<Player>(), "isWakingUp");
+		animateCommand.Prepare();
 
 		this.QueueCutsceneCommand(moveCamera);
 		this.QueueCutsceneCommand(animateCommand);
@@ -35,9 +36,14 @@ public class CutsceneDirector: MonoBehaviour {
 		if (this.commandQueue.Count == 0) {
 			return null;
 		}
-
-		return this.commandQueue[0];
+			
+			
+		ICommand theCommand = this.commandQueue[0];
+		this.commandQueue.RemoveAt(0);
+		//this.currentPlayingCommand++;
+		return theCommand;
 	}
+
 
 	public void ExecuteCurrentCommand() {
 		this.currentCutscene = this.GetNextCommand();
@@ -50,13 +56,17 @@ public class CutsceneDirector: MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (this.shouldAskForNextCommand) {
+			Debug.Log("COMMAND FINISHED: " + this.currentCutscene);
+
 			this.currentCutscene = this.GetNextCommand();
 			this.shouldAskForNextCommand = false;
 
-			Debug.Log("COMMAND FINISHED");
+			Debug.Log("COMMAND STARTS NEXT FRAME: " + this.currentCutscene);
+
 		}
 
-		if (this.currentCutscene != null) {
+		if (this.currentCutscene != null && !this.shouldAskForNextCommand) {
+			Debug.Log("UPDATING COMMAND: " + this.currentCutscene);
 			this.currentCutscene.UpdateCommand();
 
 			//we set this here just to let know that in the next frame, we 
