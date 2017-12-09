@@ -1,12 +1,22 @@
 [
 	{
-		"title": "Monrjiall.Start22",
+		"title": "Monrjiall.Wakeup",
 		"tags": "",
-		"body": "<<DialogueAction PuzzleManager PEPITO>> Hello, Pija",
+		"body": "Ahhhh! \nI will kill you all!!",
 		"position": {
-			"x": 9,
-			"y": 63
+			"x": -272,
+			"y": -97
 		},
 		"colorID": 3
+	},
+	{
+		"title": "Monrjiall.AfterMovement",
+		"tags": "",
+		"body": "Ha ha! See?\nYou probably all died out of the sheer dreadof the thought of fighting me!\nI pity you, as I can only imagine what it is like...\nTo have a foe of my magnitude in front of you!\n",
+		"position": {
+			"x": 74,
+			"y": -95
+		},
+		"colorID": 0
 	}
 ]
