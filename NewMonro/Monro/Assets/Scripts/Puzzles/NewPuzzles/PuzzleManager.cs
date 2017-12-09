@@ -44,7 +44,7 @@ public class PuzzleManager : MonoBehaviour {
 	}
 
 	public static void UpdatePuzzleWithAction(PuzzleActionType action, Transform actionReceiver = null, Dictionary<string, string> extraData = null) {
-		GameObject puzzleManager = GameObject.Find("PuzzleManager");
+		GameObject puzzleManager = WorldObjectsHelper.getPuzzleManagerGO();
 		if (puzzleManager) {
 			PuzzleManager pmgr = puzzleManager.GetComponent<PuzzleManager>();
 			if (pmgr != null) {

@@ -23,7 +23,7 @@ public class WorldInteractionController: MonoBehaviour
 	public bool enableInteractions = true;
 
 	static public WorldInteractionController getComponent () {
-		GameObject controller = GameObject.Find ("WorldInteractionController");
+		GameObject controller = WorldObjectsHelper.getWorldInteractionControllerGO();
 		if (controller) {
 			return controller.GetComponent<WorldInteractionController> ();
 		}

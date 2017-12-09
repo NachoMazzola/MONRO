@@ -7,7 +7,7 @@ public class ReactionCreateItemInInventory : IPReaction {
 	public string ItemIdToCreate;
 
 	override public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
-		GameObject inv = GameObject.Find ("UI-Inventory");
+		GameObject inv = WorldObjectsHelper.getUIInventoryGO();
 		UIInventory uiInventory = inv.gameObject.GetComponent<UIInventory>();
 		PlayerInventory inventory = inv.gameObject.GetComponent<PlayerInventory>();
 

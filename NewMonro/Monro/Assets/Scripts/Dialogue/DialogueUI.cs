@@ -33,7 +33,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 	{
 
 		dialogRunner = FindObjectOfType<DialogueRunner> ();
-		conversationOptionsPanel = GameObject.Find("UI").transform.Find("ConversationOptionsPanel").transform;
+		conversationOptionsPanel = WorldObjectsHelper.getUIGO().transform.Find("ConversationOptionsPanel").transform;
 		conversationOptionsPanel.gameObject.SetActive (false);
 
 
@@ -162,7 +162,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 		Debug.Log ("Dialogue starting!");
 
-		UIInventory inv = GameObject.Find("UI-Inventory").GetComponent<UIInventory>();
+		UIInventory inv = WorldObjectsHelper.getUIInventoryGO().GetComponent<UIInventory>();
 		inv.CloseInventory();
 		WorldInteractionController wic = WorldInteractionController.getComponent();
 		wic.enableInteractions = false;

@@ -24,7 +24,7 @@ public class PlayerInventory : MonoBehaviour {
 	}
 
 	private void LoadUpItemsFromDataBase() {
-		GameObject inv = GameObject.Find ("UI-Inventory");
+		GameObject inv = WorldObjectsHelper.getUIInventoryGO();
 		UIInventory uiInventory = inv.gameObject.GetComponent<UIInventory>();
 
 		DBAccess dataBase = DBAccess.getComponent();

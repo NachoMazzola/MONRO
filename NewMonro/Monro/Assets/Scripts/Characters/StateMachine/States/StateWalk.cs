@@ -26,7 +26,7 @@ public class StateWalk : State {
 
 		DecideFacingDirection();
 
-		movementController = GameObject.Find("MovementController").GetComponent<MovementController>();
+		movementController = WorldObjectsHelper.getMovementControllerGO().GetComponent<MovementController>();
 		movementController.targetTransform = walkToTransform;
 		movementController.movingLeft = stateCharacterOwner.currentFacingDirection == Character.MovingDirection.MovingLeft;
 		movementController.movingRight = stateCharacterOwner.currentFacingDirection == Character.MovingDirection.MovingRight;

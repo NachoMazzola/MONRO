@@ -7,7 +7,7 @@ public class ConditionDialogueOptionSelected : MonoBehaviour, IPCondition {
 	public List<string> dialogueOptions;
 
 	public bool ConditionApplies(Puzzle inPuzzle) {
-		ExampleVariableStorage dialogueStorage = GameObject.Find("Dialogue").GetComponent<ExampleVariableStorage>();
+		ExampleVariableStorage dialogueStorage = WorldObjectsHelper.getDialogueRunnerGO().GetComponent<ExampleVariableStorage>();
 		int dialogueOptionsFound = 0;
 		if (dialogueStorage != null) {
 			foreach (string option in dialogueOptions) {

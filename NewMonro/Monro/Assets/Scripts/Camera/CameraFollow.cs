@@ -18,7 +18,7 @@ public class CameraFollow : MonoBehaviour
 	private Player player;
 
 	void Start() {
-		player = GameObject.Find("PlayerViking").GetComponent<Player>();
+		player = WorldObjectsHelper.getPlayerGO().GetComponent<Player>();
 		moveSpeed = player.MovementSpeed;
 
 		SetupMaxAndMinLimits();
@@ -40,7 +40,7 @@ public class CameraFollow : MonoBehaviour
 	}
 
 	private void SetupMaxAndMinLimits() {
-		Transform floor = GameObject.Find("Floor").transform;
+		Transform floor = WorldObjectsHelper.getFloorGO().transform;
 
 		Transform lastSection = floor.GetChild(floor.childCount-1);
 		Transform firstSection = floor.GetChild(0);
@@ -51,7 +51,7 @@ public class CameraFollow : MonoBehaviour
 		float lastSectionSpriteWidth = lastSection.GetComponent<SpriteRenderer>().bounds.size.x;
 		float firstSectionSpriteWidth = firstSection.GetComponent<SpriteRenderer>().bounds.size.x;
 
-		MovementController movCtr = GameObject.Find("MovementController").GetComponent<MovementController>();
+		MovementController movCtr = WorldObjectsHelper.getMovementControllerGO().GetComponent<MovementController>();
 		movCtr.movementLimitLeft = this.minPosition - firstSectionSpriteWidth/2 + player.characterSprite.bounds.size.x/2;
 		movCtr.movementLimitRight = this.maxPosition + lastSectionSpriteWidth/2 - player.characterSprite.bounds.size.x/2;
 	}

@@ -26,7 +26,7 @@ public class UIInventory : MonoBehaviour {
 	void Awake() {
 		isOpened = false;
 
-		Transform UI = GameObject.Find("UI-Inventory").transform;
+		Transform UI = WorldObjectsHelper.getUIInventoryGO().transform;
 
 		inventoryScrollViewContainer = UI.Find("Inventory").gameObject;
 		inventoryScrollViewContainer.SetActive(false);

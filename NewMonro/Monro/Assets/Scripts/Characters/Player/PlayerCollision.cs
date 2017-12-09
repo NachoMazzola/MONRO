@@ -9,7 +9,7 @@ public class PlayerCollision : MonoBehaviour {
 
 	void Start() {
 		thePlayer = this.GetComponent<Player>();
-		movementController = GameObject.Find("MovementController").GetComponent<MovementController>();
+		movementController = WorldObjectsHelper.getMovementControllerGO().GetComponent<MovementController>();
 	}
 
 

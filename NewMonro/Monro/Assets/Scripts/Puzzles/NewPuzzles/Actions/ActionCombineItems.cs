@@ -22,7 +22,7 @@ public class ActionCombineItems : PAction {
 						ActionFinished();
 
 						if (RemoveItemsAfterCombination) {
-							GameObject inv = GameObject.Find ("UI-Inventory");
+							GameObject inv = WorldObjectsHelper.getUIInventoryGO();
 							UIInventory uiInventory = inv.gameObject.GetComponent<UIInventory>();
 
 							List<string> toRemoveList = new List<string>();

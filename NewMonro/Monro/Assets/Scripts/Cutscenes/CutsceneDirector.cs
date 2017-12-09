@@ -12,7 +12,7 @@ public class CutsceneDirector: MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.commandQueue = new List<ICommand>();
-		Transform player = GameObject.Find("PlayerViking").transform;
+		Transform player = WorldObjectsHelper.getPlayerGO().transform;
 
 		MoveCameraCommand moveCamera = new MoveCameraCommand(new Vector2(), ScreenHelpers.ScreenBounds().size, 0.6f);
 		moveCamera.Prepare();

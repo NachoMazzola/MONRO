@@ -26,7 +26,7 @@ public class MovementController : MonoBehaviour {
 
 		worldInteractionCtr = WorldInteractionController.getComponent();
 
-		GameObject playerObj = GameObject.Find("PlayerViking");
+		GameObject playerObj = WorldObjectsHelper.getPlayerGO();
 		if (playerObj) {
 			thePlayer = playerObj.GetComponent<Player>();
 		}

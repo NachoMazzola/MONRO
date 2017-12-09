@@ -29,7 +29,7 @@ public class ParallaxScrolling : MonoBehaviour
 		cameraLeftBorder = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, dist)).x;
 		cameraRightBorder = Camera.main.ViewportToWorldPoint (new Vector3 (1, 0, dist)).x;
 	
-		movementController = GameObject.Find ("MovementController").GetComponent<MovementController> ();
+		movementController = WorldObjectsHelper.getMovementControllerGO().GetComponent<MovementController> ();
 		if (movementController == null) {
 			Debug.LogError ("PARALLAX: NO MOVEMENT CONTROLLER FOUND IN SCENE!");
 		}

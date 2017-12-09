@@ -43,7 +43,7 @@ public class IMActionButton : MonoBehaviour {
 	}
 
 	public virtual void OnAwake() {
-		player = GameObject.Find("PlayerViking");
+		player = WorldObjectsHelper.getPlayerGO();
 		interactiveObject = this.transform.gameObject;
 	}
 
