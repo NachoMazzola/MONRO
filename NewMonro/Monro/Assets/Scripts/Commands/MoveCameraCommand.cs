@@ -26,6 +26,10 @@ public class MoveCameraCommand : ICommand {
 		}
 	}
 		
+	public override void WillStart() {
+
+	}
+
 	public override void UpdateCommand ()
 	{
 		var newPosition = Vector3.Lerp (this.cameraObj.position, moveToTarget, movementSpeed * Time.deltaTime);

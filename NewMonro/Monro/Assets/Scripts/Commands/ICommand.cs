@@ -6,6 +6,8 @@ public abstract class ICommand {
 	protected bool finished;
 
 	public virtual void Prepare() {}
+	public virtual void WillStart() {}
 	public virtual void UpdateCommand() {}
 	public virtual bool Finished() { return false; }
+
 }

@@ -24,12 +24,22 @@ public class CutsceneDirector: MonoBehaviour {
 		AnimateCharacterCommand animateCommand = new AnimateCharacterCommand(player.GetComponent<Player>(), "isWakingUp");
 		animateCommand.Prepare();
 
-		StartDialogueCommand dialogueCommand = new StartDialogueCommand();
+		ArrayList participants = new ArrayList();
+		participants.Add(WorldObjectsHelper.getPlayerGO().transform);
+		StartDialogueCommand dialogueCommand = new StartDialogueCommand(participants, "Monrjiall.Wakeup");
 		dialogueCommand.Prepare();
+
+		ChangeSpriteCommand changeSpriteCommand = new ChangeSpriteCommand(true, WorldObjectsHelper.getPlayerGO().GetComponent<SpriteRenderer>());
+
+
+		StartDialogueCommand dialogueCommand2 = new StartDialogueCommand(participants, "Monrjiall.AfterMovement");
+		dialogueCommand2.Prepare();
 
 		this.QueueCutsceneCommand(moveCamera);
 		this.QueueCutsceneCommand(animateCommand);
 		this.QueueCutsceneCommand(dialogueCommand);
+		this.QueueCutsceneCommand(changeSpriteCommand);
+		this.QueueCutsceneCommand(dialogueCommand2);
 	}
 
 	public void QueueCutsceneCommand(ICommand command) {
@@ -52,7 +62,7 @@ public class CutsceneDirector: MonoBehaviour {
 	public void ExecuteCurrentCommand() {
 		this.currentCutscene = this.GetNextCommand();
 		if (this.currentCutscene != null) {
-			this.currentCutscene.Prepare();	
+			this.currentCutscene.Prepare();
 		}
 	}
 
@@ -63,10 +73,12 @@ public class CutsceneDirector: MonoBehaviour {
 			Debug.Log("COMMAND FINISHED: " + this.currentCutscene);
 
 			this.currentCutscene = this.GetNextCommand();
+			if (this.currentCutscene != null) {
+				this.currentCutscene.WillStart();	
+			}
 			this.shouldAskForNextCommand = false;
 
 			Debug.Log("COMMAND STARTS NEXT FRAME: " + this.currentCutscene);
-
 		}
 
 		if (this.currentCutscene != null && !this.shouldAskForNextCommand) {

@@ -21,6 +21,10 @@ public class AnimateCharacterCommand : ICommand {
 		this.theAnimator.SetBool(this.trigger, true);
 	}
 
+	public override void WillStart() {
+		
+	}
+
 	public override void UpdateCommand() {
 		if (this.theAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !this.theAnimator.IsInTransition(0)) {
 			finished = true;

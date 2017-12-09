@@ -54,7 +54,7 @@ public class Character : MonoBehaviour, IWorldInteractionObserver, IAnimatable {
 		Vector2 theScale = this.characterSprite.transform.localScale;
 
 		currentFacingDirection = theScale.x > 0 ? MovingDirection.MovingRight : MovingDirection.MovingLeft;
-		lastFacingDirection = currentFacingDirection;
+		lastFacingDirection = currentFacingDirection == MovingDirection.MovingRight ? MovingDirection.MovingLeft : MovingDirection.MovingRight;
 	}
 
 	virtual public void OnStart() {
