@@ -24,8 +24,12 @@ public class CutsceneDirector: MonoBehaviour {
 		AnimateCharacterCommand animateCommand = new AnimateCharacterCommand(player.GetComponent<Player>(), "isWakingUp");
 		animateCommand.Prepare();
 
+		StartDialogueCommand dialogueCommand = new StartDialogueCommand();
+		dialogueCommand.Prepare();
+
 		this.QueueCutsceneCommand(moveCamera);
 		this.QueueCutsceneCommand(animateCommand);
+		this.QueueCutsceneCommand(dialogueCommand);
 	}
 
 	public void QueueCutsceneCommand(ICommand command) {

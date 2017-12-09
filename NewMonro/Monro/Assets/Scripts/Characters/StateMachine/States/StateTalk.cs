@@ -44,8 +44,7 @@ public class StateTalk : State
 
 		playerComp = stateCharacterOwner as Player;
 		theNPC = playerComp.stateTransitionData.otherCharacter;
-
-		FindObjectOfType<DialogueRunner>().StartDialogue((theNPC as NPC).ConversationNode);
+		WorldObjectsHelper.getDialogueRunnerGO().GetComponent<DialogueRunner>().StartDialogue((theNPC as NPC).ConversationNode);
 	}
 
 	public override void StateUpdate ()
