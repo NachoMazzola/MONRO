@@ -39,4 +39,15 @@ public static class WorldObjectsHelper {
 	public static GameObject getFloorGO() {
 		return GameObject.Find("Floor");
 	}
+
+	public static GameObject getInteractiveObject(string withId) {
+		InteractiveObject[] intsObjs = GameObject.FindObjectsOfType<InteractiveObject>();
+		foreach (InteractiveObject iObj in intsObjs) {
+			if (iObj.Id == withId) {
+				return iObj.gameObject;
+			}
+		}
+
+		return null;
+	}
 }

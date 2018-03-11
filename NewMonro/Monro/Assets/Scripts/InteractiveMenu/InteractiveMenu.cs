@@ -23,8 +23,9 @@ public class InteractiveMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		menu = Instantiate(interactiveMenuCanvas, transform.position, Quaternion.identity) as RectTransform;
+		menu = Instantiate(interactiveMenuCanvas, Vector3.zero, Quaternion.identity) as RectTransform;
 		menu.SetParent(this.transform);
+		menu.anchoredPosition = Vector3.zero;
 
 
 		buttons = GetComponents<IMActionButton>().ToList();

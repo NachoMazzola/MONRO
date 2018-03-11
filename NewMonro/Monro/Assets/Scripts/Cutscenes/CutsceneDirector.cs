@@ -35,11 +35,22 @@ public class CutsceneDirector: MonoBehaviour {
 		StartDialogueCommand dialogueCommand2 = new StartDialogueCommand(participants, "Monrjiall.AfterMovement");
 		dialogueCommand2.Prepare();
 
+
+		GameObject testNPC = WorldObjectsHelper.getInteractiveObject("VK");
+		Transform targetR = WorldObjectsHelper.getPlayerGO().transform;
+		Vector3 targetP = Camera.main.WorldToScreenPoint(targetR.position);
+
+		Vector2 testTargetPos = new Vector2(targetP.x - 10, WorldObjectsHelper.getPlayerGO().transform.position.y);
+		MoveGameObjectCommand moveGoCommand = new MoveGameObjectCommand(testNPC, testTargetPos, 4);
+		moveGoCommand.Prepare();
+
+
 		this.QueueCutsceneCommand(moveCamera);
 		this.QueueCutsceneCommand(animateCommand);
 		this.QueueCutsceneCommand(dialogueCommand);
 		this.QueueCutsceneCommand(changeSpriteCommand);
 		this.QueueCutsceneCommand(dialogueCommand2);
+		this.QueueCutsceneCommand(moveGoCommand);
 	}
 
 	public void QueueCutsceneCommand(ICommand command) {
