@@ -33,7 +33,7 @@ public class InstantiateDraggableWorldItem : MonoBehaviour, IPointerDownHandler,
 	private void InstantiateItem ()
 	{
 		Vector3 targetPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-		targetPosition.z = -0.1f;
+		targetPosition.z = 1;
 		instanciatedWorldItem = Instantiate (ItemWorldRepTransform, targetPosition, Quaternion.identity) as Transform;
 
 		DraggableWorldItem wItem = instanciatedWorldItem.GetComponent<DraggableWorldItem> ();

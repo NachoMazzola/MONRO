@@ -78,6 +78,11 @@ public class DraggableWorldItem : MonoBehaviour {
 
 	private void HandleDrop() {
 		if (gameobjectItmeIsOver != null) {
+			if (gameobjectItmeIsOver.GetComponent<GameEntity>() == null) {
+				Destroy(this.gameObject);
+				return;
+			}
+			
 			if (gameobjectItmeIsOver.GetComponent<GameEntity>().type == GameEntity.GameEntityType.InventoryItem) {
 				Dictionary<string, string> extraData = new Dictionary<string, string>();
 				extraData.Add("itemId", this.itemModel.ItemId);
