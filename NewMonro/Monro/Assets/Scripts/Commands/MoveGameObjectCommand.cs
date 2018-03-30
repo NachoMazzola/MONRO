@@ -24,6 +24,15 @@ public class MoveGameObjectCommand : ICommand {
 	}
 
 	public override void UpdateCommand() {
+		Debug.Log("PLAYER POS: " + Mathf.RoundToInt(this.targetObject.transform.position.x));
+		Debug.Log("VALKIRIE POS: " + Mathf.RoundToInt(this.targetPosition.x));
+
+
+		if (Mathf.RoundToInt(this.targetObject.transform.position.x) == Mathf.RoundToInt(this.targetPosition.x)) {
+			this.finished = true;
+			return;
+		}
+
 		if (this.willMoveToTheRight) {
 			this.targetObject.transform.position += new Vector3(1 * this.movementSpeed * Time.deltaTime, 0, 0);			
 		}
@@ -35,7 +44,6 @@ public class MoveGameObjectCommand : ICommand {
 	}
 
 	public override bool Finished() {
-
 		return finished;
 	}
 }

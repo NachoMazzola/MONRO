@@ -50,4 +50,8 @@ public static class WorldObjectsHelper {
 
 		return null;
 	}
+
+	public static GameObject getMainCamera() {
+		return GameObject.Find("FollowCamera");
+	}
 }

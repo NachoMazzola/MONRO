@@ -90,6 +90,11 @@ public class Character : MonoBehaviour, IWorldInteractionObserver, IAnimatable {
 		return pCaption.RemoveCaptionAfterSeconds(0.0f, pCaption.gameObject);
 	}
 
+	public void setPosition(Vector2 newPos) {
+		Vector2 theNewPos = new Vector2(Screen.width - newPos.x, Screen.height - newPos.y);
+		this.transform.position = Camera.main.ScreenToWorldPoint(theNewPos);
+	}
+
 	virtual public void ResetState() {
 		
 	}

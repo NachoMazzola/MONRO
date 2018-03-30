@@ -20,7 +20,7 @@ public class MoveCameraCommand : ICommand {
 	}
 
 	public override void Prepare() {
-		this.cameraObj = GameObject.Find("FollowCamera").transform;
+		this.cameraObj = WorldObjectsHelper.getMainCamera().transform;
 		if (this.cameraObj != null) {
 			this.cameraObj.transform.position = new Vector2(this.fromPosition.x, this.cameraObj.transform.position.y);
 		}

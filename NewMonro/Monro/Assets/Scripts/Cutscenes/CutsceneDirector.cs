@@ -11,6 +11,10 @@ public class CutsceneDirector: MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Debug.Log("SCREEN HEIGht: " + Screen.height);
+
+
+
 		this.commandQueue = new List<ICommand>();
 		Transform player = WorldObjectsHelper.getPlayerGO().transform;
 
@@ -38,10 +42,10 @@ public class CutsceneDirector: MonoBehaviour {
 
 		GameObject testNPC = WorldObjectsHelper.getInteractiveObject("VK");
 		Transform targetR = WorldObjectsHelper.getPlayerGO().transform;
-		Vector3 targetP = Camera.main.WorldToScreenPoint(targetR.position);
+		Vector3 targetP = targetR.position;//Camera.main.WorldToScreenPoint(targetR.position);
 
 		Vector2 testTargetPos = new Vector2(targetP.x - 10, WorldObjectsHelper.getPlayerGO().transform.position.y);
-		MoveGameObjectCommand moveGoCommand = new MoveGameObjectCommand(testNPC, testTargetPos, 4);
+		MoveGameObjectCommand moveGoCommand = new MoveGameObjectCommand(WorldObjectsHelper.getPlayerGO(), testTargetPos, 4);
 		moveGoCommand.Prepare();
 
 
