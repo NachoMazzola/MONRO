@@ -11,11 +11,11 @@ public class ItemInventoryCaptionTrigger : MonoBehaviour, IPointerDownHandler, I
 	private RectTransform itemTransform;
 
 	void Start() {
-		itemTransform = (RectTransform)this.gameObject.transform.GetChild (0);
-		string itemId = itemTransform.GetComponent<DBItemLoader> ().itemId;
-
-		DBItem instanciatedItemModel = DBAccess.getComponent ().itemsDataBase.GetItemById (itemId);
-		caption = instanciatedItemModel.Description;
+//		itemTransform = (RectTransform)this.gameObject.transform.GetChild (0);
+//		string itemId = itemTransform.GetComponent<DBItemLoader> ().itemId;
+//
+//		DBItem instanciatedItemModel = DBAccess.getComponent ().itemsDataBase.GetItemById (itemId);
+//		caption = instanciatedItemModel.Description;
 	}
 
 	public void OnPointerDown (PointerEventData eventData) {
@@ -29,8 +29,8 @@ public class ItemInventoryCaptionTrigger : MonoBehaviour, IPointerDownHandler, I
 		}
 
 		if (!isHoldingDown) {
-			Player pl = WorldObjectsHelper.getPlayerGO().GetComponent<Player>();
-			StartCoroutine(pl.ShowCaption(caption));
+			TextboxDisplayer playerTbDisplayer = WorldObjectsHelper.getPlayerGO().GetComponent<TextboxDisplayer>();
+			StartCoroutine(playerTbDisplayer.ShowCaption(caption));
 			Debug.Log("InventoryCaptionTrigger SHOW CAPTION: " + caption);
 		}
 	}

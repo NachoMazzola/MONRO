@@ -46,7 +46,7 @@ public class StatePickUp : State {
 		Debug.Log("STATE PICKUP END");
 
 		GameObject invObj = WorldObjectsHelper.getUIInventoryGO();
-		UIInventory theInv = invObj.GetComponent<UIInventory> ();
+		UIInventory theInv = invObj.GetComponent<UIInventory>();
 		//PlayerInventory pInventory = invObj.GetComponent<PlayerInventory>();
 
 		//pInventory.AddItemById (itemToPickUp.GetComponent<InteractiveObject> ().Item.GetComponent<DBItemLoader> ().itemId);

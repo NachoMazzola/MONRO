@@ -68,28 +68,27 @@ public class Character : MonoBehaviour, IWorldInteractionObserver, IAnimatable {
 	void OnDestroy() {
 	}
 
-	virtual public Transform GetConversationCaptionCanvas() {
-		Transform theCaption = this.transform.Find("TextBox");
-
-		return theCaption;
-	}
-
-	public IEnumerator ShowCaption(string caption, TextBox.DisappearMode removalMode = TextBox.DisappearMode.WaitInput) {
-		Transform theCaption = GetConversationCaptionCanvas();
-		theCaption.gameObject.SetActive(true);
-
-		TextBox pCaption = theCaption.GetComponent<TextBox>();
-		pCaption.TextColor = CharacterTalkColor;
-		return pCaption.ShowCaptionFromGameObject(caption, this.gameObject, true, removalMode);
-	}
-
-	public IEnumerator HideCaption(float afterSeconds) {
-		Transform theCaption = GetConversationCaptionCanvas();
-		TextBox pCaption = theCaption.GetComponent<TextBox>();
-
-		return pCaption.RemoveCaptionAfterSeconds(0.0f, pCaption.gameObject);
-	}
-
+//	virtual public Transform GetConversationCaptionCanvas() {
+//		Transform theCaption = this.transform.Find("TextBox");
+//
+//		return theCaption;
+//	}
+//
+//	public IEnumerator ShowCaption(string caption, Transform textBox, TextBox.DisappearMode removalMode = TextBox.DisappearMode.WaitInput) {
+//		textBox.gameObject.SetActive(true);
+//
+//		TextBox pCaption = textBox.GetComponent<TextBox>();
+//		pCaption.TextColor = CharacterTalkColor;
+//		return pCaption.ShowCaptionFromGameObject(caption, this.gameObject, true, removalMode);
+//	}
+//
+//	public IEnumerator HideCaption(float afterSeconds) {
+//		Transform theCaption = GetConversationCaptionCanvas();
+//		TextBox pCaption = theCaption.GetComponent<TextBox>();
+//
+//		return pCaption.RemoveCaptionAfterSeconds(0.0f, pCaption.gameObject);
+//	}
+//
 	public void setPosition(Vector2 newPos) {
 		Vector2 theNewPos = new Vector2(Screen.width - newPos.x, Screen.height - newPos.y);
 		this.transform.position = Camera.main.ScreenToWorldPoint(theNewPos);

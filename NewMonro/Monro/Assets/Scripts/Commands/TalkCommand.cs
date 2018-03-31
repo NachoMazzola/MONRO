@@ -2,19 +2,18 @@
 using System.Collections;
 using Yarn.Unity;
 
-public class StartDialogueCommand : ICommand {
+public class TalkCommand : ICommand {
 
 	private DialogueRunner dialogueRunner;
 	private DialogueUI dialogueUI;
 
 	private bool isStarted = false;
 
-	private ArrayList conversationParticipants;
-	private string startingNode;
+	public ArrayList conversationParticipants;
+	public string startingNode;
 
-	public StartDialogueCommand(ArrayList conversationParticipants, string startNode) {
-		this.conversationParticipants = conversationParticipants;
-		this.startingNode = startNode;
+	public TalkCommand() {
+		this.conversationParticipants = new ArrayList();
 	}
 
 	public override void Prepare() {
@@ -55,6 +54,10 @@ public class StartDialogueCommand : ICommand {
 		}
 
 		return finished;
+	}
+
+	public override CommandType GetCommandType() { 
+		return CommandType.TalkCommandType; 
 	}
 
 }

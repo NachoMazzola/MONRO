@@ -30,13 +30,17 @@ public class CutsceneDirector: MonoBehaviour {
 
 		ArrayList participants = new ArrayList();
 		participants.Add(WorldObjectsHelper.getPlayerGO().transform);
-		StartDialogueCommand dialogueCommand = new StartDialogueCommand(participants, "Monrjiall.Wakeup");
+		TalkCommand dialogueCommand = new TalkCommand();
+		dialogueCommand.conversationParticipants = participants;
+		dialogueCommand.startingNode = "Monrjiall.Wakeup";
 		dialogueCommand.Prepare();
 
 		ChangeSpriteCommand changeSpriteCommand = new ChangeSpriteCommand(true, WorldObjectsHelper.getPlayerGO().GetComponent<SpriteRenderer>());
 
 
-		StartDialogueCommand dialogueCommand2 = new StartDialogueCommand(participants, "Monrjiall.AfterMovement");
+		TalkCommand dialogueCommand2 = new TalkCommand();
+		dialogueCommand2.conversationParticipants = participants;
+		dialogueCommand2.startingNode = "Monrjiall.AfterMovement";
 		dialogueCommand2.Prepare();
 
 

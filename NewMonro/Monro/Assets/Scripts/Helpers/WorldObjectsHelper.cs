@@ -54,4 +54,8 @@ public static class WorldObjectsHelper {
 	public static GameObject getMainCamera() {
 		return GameObject.Find("FollowCamera");
 	}
+
+	public static GameObject VerbsPanelUIGO() {
+		return GameObject.Find("VerbsPanel");
+	}
 }

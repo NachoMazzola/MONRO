@@ -24,8 +24,8 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 	private int inactiveButtons;
 	private Transform conversationOptionsPanel;
 
-	private Character lastOneWhoTalked;
-	private Character whoIsTalking;
+	private Talkable lastOneWhoTalked;
+	private Talkable whoIsTalking;
 
 
 
@@ -46,13 +46,13 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 		
 	}
 
-	private Character GetParticipant (string participant)
+	private Talkable GetParticipant (string participant)
 	{
 		int dotIdx = participant.IndexOf (".");
 		string participantCorrectName = participant.Substring (0, dotIdx);
 
 		foreach (Transform t in dialogRunner.conversationParticipants) {
-			Character conversationInterface = t.GetComponent<Character> ();
+			Talkable conversationInterface = t.GetComponent<Talkable> ();
 			if (conversationInterface.ConversationName == participantCorrectName) {
 				return conversationInterface;
 			}
@@ -78,13 +78,14 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 			}
 
 			if (whoIsTalking.GetComponent<GameEntity>().type != lastOneWhoTalked.GetComponent<GameEntity>().type) {
-
-				yield return lastOneWhoTalked.HideCaption (0.0f);
+				TextboxDisplayer lastTbDisplayer = lastOneWhoTalked.GetComponent<TextboxDisplayer>();
+				yield return lastTbDisplayer.HideCaption (0.0f);
 
 				lastOneWhoTalked = whoIsTalking;
 			}
 				
-			yield return StartCoroutine (whoIsTalking.ShowCaption (line.text, TextBox.DisappearMode.WaitInput));
+			TextboxDisplayer tbDisplayer = whoIsTalking.GetComponent<TextboxDisplayer>();
+			yield return StartCoroutine (tbDisplayer.ShowCaption (line.text, TextBox.DisappearMode.WaitInput));
 
 			yield break;
 		}
@@ -162,11 +163,15 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 		Debug.Log ("Dialogue starting!");
 
-		UIInventory inv = WorldObjectsHelper.getUIInventoryGO().GetComponent<UIInventory>();
-		inv.CloseInventory();
+		GameObject inventoryGO = WorldObjectsHelper.getUIInventoryGO();
+		if (inventoryGO != null) {
+			UIInventory inv = inventoryGO.GetComponent<UIInventory>();
+			inv.CloseInventory();
+		}
+
 		WorldInteractionController wic = WorldInteractionController.getComponent();
 		wic.enableInteractions = false;
-		wic.InterruptInteractions();
+		wic.InterruptInteractions();	
 
 		// Enable the dialogue controls.
 
@@ -182,7 +187,8 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 		lastOneWhoTalked = null;
 
-		yield return whoIsTalking.HideCaption(0.0f);
+		TextboxDisplayer lastTbDisplayer = whoIsTalking.GetComponent<TextboxDisplayer>();
+		yield return lastTbDisplayer.HideCaption(0.0f);
 		whoIsTalking = null;
 	
 		WorldInteractionController.getComponent().enableInteractions = true;
@@ -192,7 +198,6 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 	void resetDialogueOptionsButtons ()
 	{
-
 		//set the buttons as they were before displacing them!
 		if (inactiveButtons > 0) {
 			float bHeight = optionButtons [0].GetComponent<RectTransform> ().rect.height;

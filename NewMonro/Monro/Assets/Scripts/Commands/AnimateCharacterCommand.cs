@@ -45,4 +45,7 @@ public class AnimateCharacterCommand : ICommand {
 		return finished;
 	}
 
+	public override CommandType GetCommandType() { 
+		return CommandType.AnimateCharacterCommandType; 
+	}
 }

@@ -25,7 +25,7 @@ public class ItemAction: MonoBehaviour {
 	private void TriggerCaption(Character onCharacter) {
 		if (onCharacter.GetComponent<GameEntity>().type == GameEntity.GameEntityType.Player) {
 			Player p = onCharacter.GetComponent<Player>();
-			p.ShowCaption(IncorrectItemCaption);
+			//p.ShowCaption(IncorrectItemCaption);
 		}
 	}
 

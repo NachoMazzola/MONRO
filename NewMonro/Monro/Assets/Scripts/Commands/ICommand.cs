@@ -2,7 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CommandType {
+	AnimateCharacterCommandType,
+	ChangeSpriteCommandType, 
+	LookAtCommandType,
+	MoveCameraCommandType,
+	MoveGameObjectCommandType,
+	PickUpItemCommandType,
+	TalkCommandType,
+	unknown
+}
+
 public abstract class ICommand {
+
 	protected bool finished;
 
 	public virtual void Prepare() {}
@@ -10,4 +22,5 @@ public abstract class ICommand {
 	public virtual void UpdateCommand() {}
 	public virtual bool Finished() { return false; }
 
+	public virtual CommandType GetCommandType() { return CommandType.unknown; }
 }

@@ -54,4 +54,8 @@ public class MoveCameraCommand : ICommand {
 		CameraFollow cf = Camera.main.GetComponent<CameraFollow>();
 		cf.enabled = activate;
 	}
+
+	public override CommandType GetCommandType() { 
+		return CommandType.MoveCameraCommandType; 
+	}
 }

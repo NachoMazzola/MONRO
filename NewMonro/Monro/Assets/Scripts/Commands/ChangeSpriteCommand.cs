@@ -40,4 +40,8 @@ public class ChangeSpriteCommand : ICommand {
 	public override bool Finished() {
 		return finished;
 	}
+
+	public override CommandType GetCommandType() { 
+		return CommandType.ChangeSpriteCommandType; 
+	}
 }
