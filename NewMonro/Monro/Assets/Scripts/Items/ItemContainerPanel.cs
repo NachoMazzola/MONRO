@@ -3,6 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemContainerPanel : MonoBehaviour {
-
 	public DBItem itemModel;
+	public bool isOccupied = false;
 }

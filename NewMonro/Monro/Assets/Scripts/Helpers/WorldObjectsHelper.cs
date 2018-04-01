@@ -55,7 +55,18 @@ public static class WorldObjectsHelper {
 		return GameObject.Find("FollowCamera");
 	}
 
+	/**
+	 * NEW SHIT
+	**/
 	public static GameObject VerbsPanelUIGO() {
 		return GameObject.Find("VerbsPanel");
+	}
+
+	public static GameObject getUIInventoryPanelContentGO() {
+		return GameObject.Find("InventoryContent");
+	}
+
+	public static GameObject GetUIInventoryContentScrollViewGrid() {
+		return GameObject.Find("InventoryContentScrollViewGrid");
 	}
 }

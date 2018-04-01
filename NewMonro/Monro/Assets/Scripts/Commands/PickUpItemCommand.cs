@@ -14,12 +14,13 @@ public class PickUpItemCommand : ICommand {
 	}
 
 	public override void WillStart() {
-		GameObject invObj = WorldObjectsHelper.getUIInventoryGO();
-		UIInventory theInv = invObj.GetComponent<UIInventory>();
+		GameObject invObj = WorldObjectsHelper.getUIInventoryPanelContentGO();
+		InventoryPanelHandler theInv = invObj.GetComponent<InventoryPanelHandler>();
 		//PlayerInventory pInventory = invObj.GetComponent<PlayerInventory>();
 
 		//pInventory.AddItemById (itemToPickUp.GetComponent<InteractiveObject> ().Item.GetComponent<DBItemLoader> ().itemId);
-		theInv.AddItemToInventory (this.itemDroppable.InventroyItem);
+		Transform instanciatedItem = GameObject.Instantiate(this.itemDroppable.InventroyItem);
+		theInv.AddItem (instanciatedItem);
 
 		GameObject.Destroy(this.itemDroppable.gameObject);
 

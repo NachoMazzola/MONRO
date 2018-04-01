@@ -7,7 +7,8 @@ public class DraggableWorldItem : MonoBehaviour {
 
 	private DragHandler theDragging;
 	private Transform gameobjectItmeIsOver;
-	private UIInventory inventory;
+
+	private InventoryPanelHandler inventoryPanel;
 
 	public bool IsBeingDragged;
 	public bool IsBeingDraggedOverInventory;
@@ -16,9 +17,7 @@ public class DraggableWorldItem : MonoBehaviour {
 	public DBItem itemModel;
 
 	void Awake() {
-		GameObject inv = WorldObjectsHelper.getUIInventoryGO();
-		inventory =  inv.GetComponent<UIInventory>();
-
+		this.inventoryPanel = WorldObjectsHelper.getUIInventoryPanelContentGO().GetComponentInChildren<InventoryPanelHandler>();
 		IsBeingDraggedOverInventory = true; //always is instanciated being dragged from inventory
 	}
 
@@ -39,7 +38,7 @@ public class DraggableWorldItem : MonoBehaviour {
 			theDragging.draggingMode = false;
 		}
 
-		inventory.EnableScrolling(true);
+		this.inventoryPanel.EnableScrolling(true);
 
 		HandleDrop();
 	}
@@ -51,7 +50,7 @@ public class DraggableWorldItem : MonoBehaviour {
 
 		IsBeingDragged = true;
 
-		inventory.EnableScrolling(false);
+		this.inventoryPanel.EnableScrolling(false);
 	}
 
 	public virtual void ItemIsOverObject(Transform other) {
