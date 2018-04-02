@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class AnimateCharacterCommand : ICommand {
 
-	Transform targetTransform;
-	string trigger;
-	private Animator theAnimator;
+	public string Trigger;
+	public Animator TheAnimator;
+
+	public AnimateCharacterCommand() {
+		
+	}
 
 	public AnimateCharacterCommand(IAnimatable target, string triggerParamName) {
-		this.targetTransform = target.GetTransform();
-		this.trigger = triggerParamName;
+		this.Trigger = triggerParamName;
+		this.TheAnimator = target.GetAnimator();
 
-		this.theAnimator = target.GetAnimator();
 		finished = false;
 	}
 
 	public override void Prepare() {
-		this.theAnimator.speed = 0;
-		this.theAnimator.SetBool(this.trigger, true);
+		this.TheAnimator.speed = 0;
+		this.TheAnimator.SetBool(this.Trigger, true);
 	}
 
 	public override void WillStart() {
@@ -26,20 +28,20 @@ public class AnimateCharacterCommand : ICommand {
 	}
 
 	public override void UpdateCommand() {
-		if (this.theAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !this.theAnimator.IsInTransition(0)) {
+		if (this.TheAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !this.TheAnimator.IsInTransition(0)) {
 			finished = true;
 			//this.theAnimator.SetBool(this.trigger, false);
 			Debug.Log("FINITO ***************************************");
 		}
 		else {
-			this.theAnimator.speed = 1;
+			this.TheAnimator.speed = 1;
 		}
 
 	}
 
 	public override bool Finished() {
 		if (finished == true) {
-			this.theAnimator.SetBool(this.trigger, false);
+			this.TheAnimator.SetBool(this.Trigger, false);
 		}
 
 		return finished;

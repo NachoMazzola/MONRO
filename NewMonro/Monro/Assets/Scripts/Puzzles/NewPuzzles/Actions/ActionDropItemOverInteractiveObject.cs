@@ -18,10 +18,10 @@ public class ActionDropItemOverInteractiveObject : PAction {
 				if (ExecuteAllReactions(actionReceiver)) {
 					if (RemovesItemFromInv) {
 						//remove item from inventory!!!!
-						UIInventory theInventory = WorldObjectsHelper.getUIInventoryGO().GetComponent<UIInventory>();
 						List<string> toRemove = new List<string>();
 						toRemove.Add(ItemId);
-						theInventory.RemoveItems(toRemove);
+						RemoveItemFromInventoryCommand removeItem = new RemoveItemFromInventoryCommand(toRemove);
+						removeItem.WillStart();
 					}
 					ActionFinished();
 				}	

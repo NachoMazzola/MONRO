@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class MoveCameraCommand : ICommand {
 
-	Transform cameraObj;
 	public Vector3 moveToTarget = new Vector3();
 	public Vector3 fromPosition;
+	public float movementSpeed;
 
-	float movementSpeed;
-	Bounds screenBounds;
+
+	private Transform cameraObj;
+	private Bounds screenBounds;
+
+	public MoveCameraCommand() {
+		
+	}
 
 	public MoveCameraCommand(Vector2 to, Vector2 from, float atSpeed) {
 		this.moveToTarget = to;

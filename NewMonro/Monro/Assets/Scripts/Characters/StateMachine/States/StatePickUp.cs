@@ -42,19 +42,6 @@ public class StatePickUp : State {
 	}
 
 	public override void StateEnd() {
-
-		Debug.Log("STATE PICKUP END");
-
-		GameObject invObj = WorldObjectsHelper.getUIInventoryGO();
-		UIInventory theInv = invObj.GetComponent<UIInventory>();
-		//PlayerInventory pInventory = invObj.GetComponent<PlayerInventory>();
-
-		//pInventory.AddItemById (itemToPickUp.GetComponent<InteractiveObject> ().Item.GetComponent<DBItemLoader> ().itemId);
-		theInv.AddItemToInventory (itemToPickUp.GetComponent<InteractiveObject> ().Item);
-
-		GameObject.Destroy(itemToPickUp.gameObject);
-		itemToPickUp = null;
-
 		base.StateEnd();
 	}
 }

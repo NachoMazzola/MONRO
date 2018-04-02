@@ -4,13 +4,15 @@ using Yarn.Unity;
 
 public class TalkCommand : ICommand {
 
+	public ArrayList conversationParticipants;
+	public string startingNode;
+
 	private DialogueRunner dialogueRunner;
 	private DialogueUI dialogueUI;
 
 	private bool isStarted = false;
 
-	public ArrayList conversationParticipants;
-	public string startingNode;
+	private MoveGameObjectCommand moveToCommand;
 
 	public TalkCommand() {
 		this.conversationParticipants = new ArrayList();

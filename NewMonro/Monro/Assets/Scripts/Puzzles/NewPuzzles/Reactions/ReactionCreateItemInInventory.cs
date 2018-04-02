@@ -7,19 +7,9 @@ public class ReactionCreateItemInInventory : IPReaction {
 	public string ItemIdToCreate;
 
 	override public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
-		GameObject inv = WorldObjectsHelper.getUIInventoryGO();
-		UIInventory uiInventory = inv.gameObject.GetComponent<UIInventory>();
-		PlayerInventory inventory = inv.gameObject.GetComponent<PlayerInventory>();
+		PutItemInInventoryCommand putInInventory = new PutItemInInventoryCommand(ItemIdToCreate);
+		putInInventory.WillStart();
 
-		DBItem combined = DBAccess.getComponent().itemsDataBase.GetItemById(ItemIdToCreate);
-		if (combined != null) {
-			inventory.AddItem(combined);
-
-			GameObject pPrefab = Resources.Load(combined.ItemInventoryPrefab) as GameObject;
-			uiInventory.AddItemToInventory(pPrefab.transform);
-
-			return true;
-		}
-		return false;
+		return putInInventory.Finished();
 	}
 }

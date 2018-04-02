@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class ChangeSpriteCommand : ICommand {
 
-	private SpriteRenderer target;
-	private Sprite replacement;
-	private bool onlyFlip;
+	public SpriteRenderer target;
+	public Sprite replacement;
+	public bool onlyFlip;
+
+	public ChangeSpriteCommand() {
+		
+	}
 
 	public ChangeSpriteCommand(bool onlyFlip, SpriteRenderer target, Sprite replacement = null) {
 		this.target = target;

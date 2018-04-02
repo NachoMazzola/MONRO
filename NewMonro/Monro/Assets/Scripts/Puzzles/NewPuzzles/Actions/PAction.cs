@@ -30,7 +30,9 @@ public abstract class PAction: MonoBehaviour {
 		reactions = new List<IPReaction>();
 		IPReaction[] comps = this.transform.GetComponentsInChildren<IPReaction>();
 		foreach (IPReaction p in comps) {
-			reactions.Add(p);
+			if (p.enabled) {
+				reactions.Add(p);	
+			}
 		}
 	}
 

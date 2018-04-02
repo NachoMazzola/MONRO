@@ -24,6 +24,8 @@ public class PlayerInventory : MonoBehaviour {
 	}
 
 	private void LoadUpItemsFromDataBase() {
+		//TODO: UPDATE THIS TO USE ADD ITEM TO INVENTORY COMMAND
+
 		GameObject inv = WorldObjectsHelper.getUIInventoryGO();
 		UIInventory uiInventory = inv.gameObject.GetComponent<UIInventory>();
 

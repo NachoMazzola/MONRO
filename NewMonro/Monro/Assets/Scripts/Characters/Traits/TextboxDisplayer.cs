@@ -39,6 +39,9 @@ public class TextboxDisplayer : MonoBehaviour {
 	}
 
 	public void ShowCaption() {
+		if (this.lookable == null) {
+			return;
+		}
 		this.hasFinishedCaptionDisplay = false;
 		StartCoroutine(AddActionOnFinishAfterCoroutine(this.ShowCaption(this.lookable.Caption)));
 	}

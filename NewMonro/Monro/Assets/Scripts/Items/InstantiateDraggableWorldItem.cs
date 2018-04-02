@@ -4,26 +4,29 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/**
+ * Handles instanciating a Draggable World Item
+*/
 public class InstantiateDraggableWorldItem : MonoBehaviour, IPointerDownHandler, IPointerClickHandler
 {
-
+	[HideInInspector]
 	public Transform ItemWorldRepTransform;
-	private Transform instanciatedWorldItem;
-
-	private DBItem instanciatedItemModel;
-
-	private float holdDelta;
-	private const float maxTimeToHoldToInstantiate = 0.5f;
-
 	[HideInInspector]
 	public bool holdDown = false;
+
+	public float TimeToHoldToInstantiate = 0.5f;
+
+	private Transform instanciatedWorldItem;
+	private DBItem instanciatedItemModel;
+	private float holdDelta;
+
 
 	void Update() {
 		if (holdDown) {
 			holdDelta += Time.deltaTime;
 		}
 
-		if (holdDown && holdDelta >= maxTimeToHoldToInstantiate) {
+		if (holdDown && holdDelta >= TimeToHoldToInstantiate) {
 			InstantiateDraggable();
 			holdDown = false;
 			holdDelta = 0;
@@ -35,6 +38,7 @@ public class InstantiateDraggableWorldItem : MonoBehaviour, IPointerDownHandler,
 		Vector3 targetPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 		targetPosition.z = 1;
 		instanciatedWorldItem = Instantiate (ItemWorldRepTransform, targetPosition, Quaternion.identity) as Transform;
+
 
 		DraggableWorldItem wItem = instanciatedWorldItem.GetComponent<DraggableWorldItem> ();
 		wItem.StartDragging ();

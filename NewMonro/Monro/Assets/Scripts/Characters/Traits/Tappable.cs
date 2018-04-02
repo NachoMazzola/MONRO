@@ -9,6 +9,7 @@ using UnityEngine;
 
 //[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(BoxCollider2DSizeFitter))]
 public class Tappable : MonoBehaviour {
 
 //	[HideInInspector]

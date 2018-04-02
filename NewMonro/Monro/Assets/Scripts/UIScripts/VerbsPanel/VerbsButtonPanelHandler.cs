@@ -34,7 +34,9 @@ public class VerbsButtonPanelHandler : MonoBehaviour {
 		}
 
 		this.SetButtonAsSelected(this.lookAtButton, true);
-		WorldInteractionController.getComponent().currentCommandType = CommandType.LookAtCommandType;
+		List<CommandType> commands = new List<CommandType>();
+		commands.Add(CommandType.LookAtCommandType);
+		WorldInteractionController.getComponent().commandQueue = commands;
 	}
 
 	public void CreateTalkToCommand() {
@@ -44,7 +46,11 @@ public class VerbsButtonPanelHandler : MonoBehaviour {
 		}
 
 		this.SetButtonAsSelected(this.talkToButton, true);
-		WorldInteractionController.getComponent().currentCommandType = CommandType.TalkCommandType;
+
+		List<CommandType> commands = new List<CommandType>();
+		commands.Add(CommandType.MoveGameObjectCommandType);
+		commands.Add(CommandType.TalkCommandType);
+		WorldInteractionController.getComponent().commandQueue = commands;
 	}
 
 	public void CreatePickUpCommand() {
@@ -54,15 +60,19 @@ public class VerbsButtonPanelHandler : MonoBehaviour {
 		}
 
 		this.SetButtonAsSelected(this.pickUpButton, true);
-		WorldInteractionController.getComponent().currentCommandType = CommandType.PickUpItemCommandType;
+
+		List<CommandType> commands = new List<CommandType>();
+		commands.Add(CommandType.MoveGameObjectCommandType);
+		commands.Add(CommandType.PutItemInInventoryCommandType);
+		WorldInteractionController.getComponent().commandQueue = commands;
 	}
 
 	public void CreateUseCommand() {
-		
+		//????
 	}
 
 	public void ResetButtons() {
-		WorldInteractionController.getComponent().currentCommandType = CommandType.unknown;
+		WorldInteractionController.getComponent().commandQueue = new List<CommandType>();
 		this.currentSelected = null;
 
 		for (int i = 0; i <  this.gameObject.transform.childCount; i++) {

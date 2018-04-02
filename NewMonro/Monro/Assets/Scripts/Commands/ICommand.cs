@@ -8,8 +8,9 @@ public enum CommandType {
 	LookAtCommandType,
 	MoveCameraCommandType,
 	MoveGameObjectCommandType,
-	PickUpItemCommandType,
 	TalkCommandType,
+	PutItemInInventoryCommandType,
+	RemoveItemFromInventoryCommandType,
 	unknown
 }
 

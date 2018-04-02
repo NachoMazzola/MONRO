@@ -69,4 +69,12 @@ public static class WorldObjectsHelper {
 	public static GameObject GetUIInventoryContentScrollViewGrid() {
 		return GameObject.Find("InventoryContentScrollViewGrid");
 	}
+
+	public static GameObject GetBottomPanelUIGO() {
+		return GameObject.Find("UIPanels");
+	}
+
+	public static GameObject GetCommandManagerGO() {
+		return GameObject.Find("CommandManager");
+	}
 }

@@ -19,6 +19,10 @@ public class ItemInventoryCaptionTrigger : MonoBehaviour, IPointerDownHandler, I
 	}
 
 	public void OnPointerClick(PointerEventData eventData) {
+		if (this.gameObject.transform.childCount == 0) {
+			return;
+		}
+
 		itemTransform = (RectTransform)this.gameObject.transform.GetChild (0);
 		string itemId = itemTransform.GetComponent<DBItemLoader> ().itemId;
 

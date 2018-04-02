@@ -17,6 +17,10 @@ public abstract class IPReaction: MonoBehaviour {
 	}
 
 	public bool AllConditionsApply(Puzzle inPuzzle) {
+		if (conditions == null) {
+			return true;
+		}
+
 		int acceptedConditions = 0;
 		foreach (IPCondition c in conditions) {
 			if (c.ConditionApplies(inPuzzle)) {

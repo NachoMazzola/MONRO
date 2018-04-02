@@ -22,16 +22,12 @@ public class ActionCombineItems : PAction {
 						ActionFinished();
 
 						if (RemoveItemsAfterCombination) {
-							GameObject inv = WorldObjectsHelper.getUIInventoryGO();
-							UIInventory uiInventory = inv.gameObject.GetComponent<UIInventory>();
-
 							List<string> toRemoveList = new List<string>();
 							toRemoveList.Add(ItemId1);
 							toRemoveList.Add(ItemId2);
 
-							uiInventory.RemoveItems(toRemoveList);
-
-							uiInventory.GetComponent<PlayerInventory>().MarkItemsAsUsed(toRemoveList);
+							RemoveItemFromInventoryCommand removeCommand = new RemoveItemFromInventoryCommand(toRemoveList);
+							removeCommand.WillStart();
 						}
 					}
 				}

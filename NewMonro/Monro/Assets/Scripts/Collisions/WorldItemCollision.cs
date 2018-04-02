@@ -7,7 +7,7 @@ public class WorldItemCollision : MonoBehaviour
 	private DraggableWorldItem draggableItem;
 
 	void Awake() {
-		draggableItem = this.transform.parent.gameObject.GetComponent<DraggableWorldItem> ();	
+		draggableItem = this.transform.parent.GetComponent<DraggableWorldItem> ();	
 	}
 
 	void OnTriggerEnter2D (Collider2D other)
@@ -16,10 +16,11 @@ public class WorldItemCollision : MonoBehaviour
 			return;
 		}
 
-		UIInventory theInventory = other.gameObject.GetComponent<UIInventory>();
-		if (theInventory != null) {
-			draggableItem.IsBeingDraggedOverInventory = true;
-		}
+			
+//		UIInventory theInventory = other.gameObject.GetComponent<UIInventory>();
+//		if (theInventory != null) {
+//			draggableItem.IsBeingDraggedOverInventory = true;
+//		}
 			
 		draggableItem.ItemIsOverObject (other.transform);
 	}
@@ -30,10 +31,10 @@ public class WorldItemCollision : MonoBehaviour
 			return;
 		}
 
-		UIInventory theInventory = other.gameObject.GetComponent<UIInventory>();
-		if (theInventory != null && draggableItem.IsBeingDragged) {
-			draggableItem.IsBeingDraggedOverInventory = false;
-		}
+//		UIInventory theInventory = other.gameObject.GetComponent<UIInventory>();
+//		if (theInventory != null && draggableItem.IsBeingDragged) {
+//			draggableItem.IsBeingDraggedOverInventory = false;
+//		}
 			
 		draggableItem.ItemIsNotOverObjectAnyMore(other.transform);
 	}

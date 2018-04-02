@@ -163,10 +163,9 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 		Debug.Log ("Dialogue starting!");
 
-		GameObject inventoryGO = WorldObjectsHelper.getUIInventoryGO();
+		GameObject inventoryGO = WorldObjectsHelper.GetBottomPanelUIGO();
 		if (inventoryGO != null) {
-			UIInventory inv = inventoryGO.GetComponent<UIInventory>();
-			inv.CloseInventory();
+			inventoryGO.SetActive(false);
 		}
 
 		WorldInteractionController wic = WorldInteractionController.getComponent();
@@ -192,6 +191,11 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 		whoIsTalking = null;
 	
 		WorldInteractionController.getComponent().enableInteractions = true;
+
+		GameObject inventoryGO = WorldObjectsHelper.GetBottomPanelUIGO();
+		if (inventoryGO != null) {
+			inventoryGO.SetActive(true);
+		}
 
 		yield break;
 	}

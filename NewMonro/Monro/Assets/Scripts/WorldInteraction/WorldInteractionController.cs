@@ -22,8 +22,9 @@ public class WorldInteractionController: MonoBehaviour
 	[HideInInspector]
 	public bool enableInteractions = true;
 
-	private ICommand currentCommand;
-	public CommandType currentCommandType = CommandType.unknown;
+
+
+	public List<CommandType> commandQueue;
 
 	static public WorldInteractionController getComponent ()
 	{
@@ -37,7 +38,7 @@ public class WorldInteractionController: MonoBehaviour
 	void Awake ()
 	{
 		this.worldObservers = new List<IWorldInteractionObserver> ();
-		this.currentCommandType = CommandType.unknown;
+		this.commandQueue = new List<CommandType>();
 	}
 
 	void OnDestroy ()
@@ -78,15 +79,6 @@ public class WorldInteractionController: MonoBehaviour
 			mouseIsPressed = true;
 			return;
 		}
-
-		if (this.currentCommand != null) {
-			this.currentCommand.UpdateCommand ();
-
-			if (this.currentCommand.Finished()) {
-				this.currentCommand = null;
-				WorldObjectsHelper.VerbsPanelUIGO().GetComponent<VerbsButtonPanelHandler>().ResetButtons();
-			}
-		}
 	}
 
 	private void ExecuteCurrentCommand()
@@ -97,19 +89,21 @@ public class WorldInteractionController: MonoBehaviour
 			foreach (BoxCollider2D collider in hitColliders) {
 				Tappable tappable = collider.gameObject.GetComponent<Tappable> ();
 				if (tappable != null && tappable.boxCollider == collider) {
-					//podriamos por default siempre hacer un look at si no se eligio ningun
-					//comando del menu de comandos. Esto es, instanciar aca un LookAtCommand 
-					//y ejecutarlo pasandole como recibidor el collider.gameObject.
-
-					//En caso de que se haya elegido un comando en particular, se deberia
-					//ejecutar pasandole el collider.gameObject como recibidor del comando
-
-					if (this.currentCommandType == CommandType.unknown) {
-						this.currentCommand = CommandFactory.CreateCommand(CommandType.LookAtCommandType, collider.gameObject);
-						return;
+					
+					ICommand currentCommand = null;
+					if (this.commandQueue.Count == 0) {
+						currentCommand  = CommandFactory.CreateCommand(CommandType.LookAtCommandType, collider.gameObject);
+						CommandManager.getComponent().QueueCommand(currentCommand, true);
 					}
-
-					this.currentCommand = CommandFactory.CreateCommand(this.currentCommandType, collider.gameObject);
+					else {
+						foreach (CommandType cType in this.commandQueue) {
+							ICommand comm = CommandFactory.CreateCommand(cType, collider.gameObject);
+							CommandManager.getComponent().QueueCommand(comm);
+						}
+						//start executing command queue
+						CommandManager.getComponent().ExecuteCurrentCommand();
+					}
+					WorldObjectsHelper.VerbsPanelUIGO().GetComponent<VerbsButtonPanelHandler>().ResetButtons();
 				}
 			}
 		}
@@ -118,22 +112,20 @@ public class WorldInteractionController: MonoBehaviour
 		}
 	}
 
-	private void ExecuteCurrentCommandForTarget (GameObject target)
-	{
-		/** By default always create a look at command */
-		if (currentCommand == null) {
-			Lookable tappedLookable = target.GetComponent<Lookable> ();
-			if (tappedLookable != null) {
-				LookAtCommand lookAtCommand = new LookAtCommand ();
-				lookAtCommand.lookable = target.GetComponent<Lookable>();
-				lookAtCommand.whoLooks = WorldObjectsHelper.getPlayerGO ().GetComponent<TextboxDisplayer> ();
-				lookAtCommand.WillStart ();	
-			}
-			return;
-		}
 
 
-	}
+
+
+
+
+
+
+
+
+
+	/// <summary>
+	/// Old SHIT
+	/// </summary>
 
 	private GameObject GetTappedGameObject ()
 	{

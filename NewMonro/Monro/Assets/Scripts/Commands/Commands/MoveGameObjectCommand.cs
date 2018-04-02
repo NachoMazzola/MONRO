@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class MoveGameObjectCommand : ICommand {
 
-	private GameObject targetObject;
-	private Vector2 targetPosition;
-	private float movementSpeed;
+	public GameObject targetObject;
+	public Vector2 targetPosition;
+	public float movementSpeed;
 	private bool willMoveToTheRight = false;
+
+	public MoveGameObjectCommand() {
+		
+	}
 
 	public MoveGameObjectCommand(GameObject target, Vector2 toPosition, float speed) {
 		this.targetObject = target;
