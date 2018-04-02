@@ -2,15 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct MoveGameObjectCommandParameters: ICommandParamters {
+	public GameObject targetObject;
+	public Vector2 targetPosition;
+	public float movementSpeed;
+
+	public CommandType GetCommandType() {
+		return CommandType.MoveGameObjectCommandType;
+	}
+}
+
+
 public class MoveGameObjectCommand : ICommand {
 
 	public GameObject targetObject;
 	public Vector2 targetPosition;
 	public float movementSpeed;
+
 	private bool willMoveToTheRight = false;
 
 	public MoveGameObjectCommand() {
 		
+	}
+
+	public MoveGameObjectCommand(ICommandParamters parameters) {
+		MoveGameObjectCommand mgo = (MoveGameObjectCommand)parameters;
+		this.targetObject = mgo.targetObject;
+		this.targetPosition = mgo.targetPosition;
+		this.movementSpeed = mgo.movementSpeed;
 	}
 
 	public MoveGameObjectCommand(GameObject target, Vector2 toPosition, float speed) {

@@ -2,12 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct RemoveItemFromInventoryCommandParameters: ICommandParamters {
+	public List<string> ItemsIdsToRemove;
+
+	public int itemCount;
+
+	public CommandType GetCommandType() {
+		return CommandType.RemoveItemFromInventoryCommandType;
+	}
+}
+
+
 public class RemoveItemFromInventoryCommand : ICommand {
 
 	public List<string> ItemsIdsToRemove;
 
 	public RemoveItemFromInventoryCommand() {
 		
+	}
+
+	public RemoveItemFromInventoryCommand(ICommandParamters parameters) {
+		RemoveItemFromInventoryCommandParameters p = (RemoveItemFromInventoryCommandParameters)parameters;
+		this.ItemsIdsToRemove = p.ItemsIdsToRemove;
 	}
 
 	public RemoveItemFromInventoryCommand(List<string> itemsIdsToRemove) {

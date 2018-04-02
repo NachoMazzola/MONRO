@@ -2,23 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public struct PutItemInInventoryCommandParameters: ICommandParamters {
+	public string itemId;
+	public GameObject itemTransform;
+
+	public CommandType GetCommandType() {
+		return CommandType.PutItemInInventoryCommandType;
+	}
+}
+
 public class PutItemInInventoryCommand : ICommand {
 
 	public string itemId;
-	public ItemDroppable itemTransform;
+	public GameObject itemTransform;
+
+	private ItemDroppable iDroppable;
 
 	public PutItemInInventoryCommand() {
 		
+	}
+
+	public PutItemInInventoryCommand(ICommandParamters parameters) {
+		PutItemInInventoryCommandParameters p = (PutItemInInventoryCommandParameters)parameters;
+		this.itemId = p.itemId;
+		this.itemTransform = p.itemTransform;
+
+		this.iDroppable = this.itemTransform.GetComponent<ItemDroppable>();
 	}
 
 	public PutItemInInventoryCommand(string itemId) {
 		this.itemId = itemId;
 	}
 
-	public PutItemInInventoryCommand(ItemDroppable itemTransform) {
+	public PutItemInInventoryCommand(GameObject itemTransform) {
 		this.itemTransform = itemTransform;
+		this.iDroppable = this.itemTransform.GetComponent<ItemDroppable>();
 	}
-
 
 	public override void Prepare() {
 
@@ -45,7 +65,8 @@ public class PutItemInInventoryCommand : ICommand {
 			GameObject invObj = WorldObjectsHelper.getUIInventoryPanelContentGO();
 			InventoryPanelHandler theInv = invObj.GetComponent<InventoryPanelHandler>();
 
-			Transform instanciatedItem = GameObject.Instantiate(this.itemTransform.InventroyItem);
+			ItemDroppable iDp = this.itemTransform.GetComponent<ItemDroppable>();
+			Transform instanciatedItem = GameObject.Instantiate(iDp.InventroyItem);
 			theInv.AddItem (instanciatedItem);
 
 			GameObject.Destroy(this.itemTransform.gameObject);

@@ -14,6 +14,10 @@ public enum CommandType {
 	unknown
 }
 
+public interface ICommandParamters {
+	CommandType GetCommandType();
+}
+
 public abstract class ICommand {
 
 	protected bool finished;

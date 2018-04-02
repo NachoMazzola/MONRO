@@ -28,14 +28,14 @@ public class CutsceneDirector: MonoBehaviour {
 		AnimateCharacterCommand animateCommand = new AnimateCharacterCommand(player.GetComponent<Player>(), "isWakingUp");
 		animateCommand.Prepare();
 
-		ArrayList participants = new ArrayList();
-		participants.Add(WorldObjectsHelper.getPlayerGO().transform);
+		List<GameObject> participants = new List<GameObject>();
+		participants.Add(WorldObjectsHelper.getPlayerGO());
 		TalkCommand dialogueCommand = new TalkCommand();
 		dialogueCommand.conversationParticipants = participants;
 		dialogueCommand.startingNode = "Monrjiall.Wakeup";
 		dialogueCommand.Prepare();
 
-		ChangeSpriteCommand changeSpriteCommand = new ChangeSpriteCommand(true, WorldObjectsHelper.getPlayerGO().GetComponent<SpriteRenderer>());
+		ChangeSpriteCommand changeSpriteCommand = new ChangeSpriteCommand(true, WorldObjectsHelper.getPlayerGO());
 
 
 		TalkCommand dialogueCommand2 = new TalkCommand();

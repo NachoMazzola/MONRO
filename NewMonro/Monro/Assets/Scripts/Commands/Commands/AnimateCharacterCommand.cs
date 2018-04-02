@@ -2,6 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public struct AnimateCharacterCommandParameters: ICommandParamters {
+	public string Trigger;
+	public Animator TheAnimator;
+
+	public CommandType GetCommandType() {
+		return CommandType.AnimateCharacterCommandType;
+	}
+}
+
+
 public class AnimateCharacterCommand : ICommand {
 
 	public string Trigger;
@@ -9,6 +20,12 @@ public class AnimateCharacterCommand : ICommand {
 
 	public AnimateCharacterCommand() {
 		
+	}
+
+	public AnimateCharacterCommand(ICommandParamters parameters) {
+		AnimateCharacterCommandParameters animParams = (AnimateCharacterCommandParameters)parameters;
+		this.Trigger = animParams.Trigger;
+		this.TheAnimator = animParams.TheAnimator;
 	}
 
 	public AnimateCharacterCommand(IAnimatable target, string triggerParamName) {

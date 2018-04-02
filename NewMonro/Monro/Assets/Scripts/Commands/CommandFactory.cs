@@ -6,14 +6,17 @@ public class CommandFactory {
 
 	public static bool SetDefaultValues = true;
 
-	public static ICommand CreateCommand(CommandType type, GameObject target, bool setDefaultValues = true) {
+	public static ICommand CreateCommand(CommandType type, GameObject target, bool setDefaultValues = true, ICommandParamters parameters = null) {
 		CommandType currentCommandType = type;
 		switch (currentCommandType) {
 		case CommandType.LookAtCommandType: {
 				LookAtCommand lookAtCommand = new LookAtCommand();
 				if (setDefaultValues) {
-					lookAtCommand.lookable = target.GetComponent<Lookable>();
-					lookAtCommand.whoLooks = WorldObjectsHelper.getPlayerGO ().GetComponent<TextboxDisplayer> ();		
+					lookAtCommand.lookable = target;
+					lookAtCommand.whoLooks = WorldObjectsHelper.getPlayerGO ();
+				}
+				else if (parameters != null) {
+					return new LookAtCommand(parameters);
 				}
 				return lookAtCommand;
 			}
@@ -21,9 +24,12 @@ public class CommandFactory {
 		case CommandType.TalkCommandType: {
 				TalkCommand talkCommand = new TalkCommand();
 				if (setDefaultValues) {
-					talkCommand.conversationParticipants.Add(target.transform);
-					talkCommand.conversationParticipants.Add(WorldObjectsHelper.getPlayerGO().transform);
+					talkCommand.conversationParticipants.Add(target);
+					talkCommand.conversationParticipants.Add(WorldObjectsHelper.getPlayerGO());
 					talkCommand.startingNode = target.GetComponent<Talkable>().StartingNode;
+				}
+				else if (parameters != null) {
+					return new TalkCommand(parameters);
 				}
 				return talkCommand;
 			}
@@ -35,25 +41,43 @@ public class CommandFactory {
 				moveGOCommand.targetPosition = target.transform.position;
 				moveGOCommand.movementSpeed = 4;
 			}
+			else if (parameters != null) {
+				return new MoveGameObjectCommand(parameters);
+			}
 			return moveGOCommand;
 
 		case CommandType.PutItemInInventoryCommandType:
 			PutItemInInventoryCommand pInvCommand = new PutItemInInventoryCommand();
 			if (setDefaultValues) {
-				pInvCommand.itemTransform = target.GetComponent<ItemDroppable>();
+				pInvCommand.itemTransform = target;
+			}
+			else if (parameters != null) {
+				return new PutItemInInventoryCommand(parameters);
 			}
 			return pInvCommand;
 
 		case CommandType.AnimateCharacterCommandType:
+			if (parameters != null) {
+				return new AnimateCharacterCommand(parameters);
+			}
 			return new AnimateCharacterCommand();
 
 		case CommandType.ChangeSpriteCommandType:
+			if (parameters != null) {
+				return new ChangeSpriteCommand(parameters);
+			}
 			return new ChangeSpriteCommand();
 
 		case CommandType.MoveCameraCommandType:
+			if (parameters != null) {
+				return new MoveCameraCommand(parameters);
+			}
 			return new MoveCameraCommand();
 
 		case CommandType.RemoveItemFromInventoryCommandType:
+			if (parameters != null) {
+				return new RemoveItemFromInventoryCommand(parameters);
+			}
 			return new RemoveItemFromInventoryCommand();
 
 		case CommandType.unknown:

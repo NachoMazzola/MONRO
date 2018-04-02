@@ -2,9 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct ChangeSpriteCommandParamters: ICommandParamters {
+	public GameObject target;
+	public Sprite replacement;
+	public bool onlyFlip;
+
+	public CommandType GetCommandType() {
+		return CommandType.ChangeSpriteCommandType;
+	}
+}
+
+/**
+ * Changes the sprite of the target
+*/
 public class ChangeSpriteCommand : ICommand {
 
-	public SpriteRenderer target;
+	public GameObject target;
 	public Sprite replacement;
 	public bool onlyFlip;
 
@@ -12,7 +25,14 @@ public class ChangeSpriteCommand : ICommand {
 		
 	}
 
-	public ChangeSpriteCommand(bool onlyFlip, SpriteRenderer target, Sprite replacement = null) {
+	public ChangeSpriteCommand(ICommandParamters parameters) {
+		ChangeSpriteCommandParamters p = (ChangeSpriteCommandParamters)parameters;
+		this.target = p.target;
+		this.replacement = p.replacement;
+		this.onlyFlip = p.onlyFlip;
+	}
+
+	public ChangeSpriteCommand(bool onlyFlip, GameObject target, Sprite replacement = null) {
 		this.target = target;
 		this.replacement = replacement;
 		this.onlyFlip = onlyFlip;
@@ -24,9 +44,9 @@ public class ChangeSpriteCommand : ICommand {
 
 	public override void WillStart() {
 		if (this.onlyFlip) {
-			if (target.gameObject.GetComponent<GameEntity>().type == GameEntity.GameEntityType.Player 
-				|| target.gameObject.GetComponent<GameEntity>().type == GameEntity.GameEntityType.NPC) {
-				Character pl = target.gameObject.GetComponent<Character>();
+			if (target.GetComponent<GameEntity>().type == GameEntity.GameEntityType.Player 
+				|| target.GetComponent<GameEntity>().type == GameEntity.GameEntityType.NPC) {
+				Character pl = target.GetComponent<Character>();
 				pl.SwapFacingDirectionTo(pl.lastFacingDirection);
 
 				finished = true;
@@ -34,7 +54,8 @@ public class ChangeSpriteCommand : ICommand {
 			return;
 		}
 
-		this.target.sprite = this.replacement;
+		SpriteRenderer spRdr = this.target.GetComponent<SpriteRenderer>();
+		spRdr.sprite = this.replacement;
 	}
 
 	public override void UpdateCommand () {
