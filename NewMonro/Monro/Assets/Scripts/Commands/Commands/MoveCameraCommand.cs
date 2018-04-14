@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public struct MoveCameraCommandParameters: ICommandParamters {
 	public Vector3 moveToTarget;
 	public Vector3 fromPosition;
@@ -28,7 +29,7 @@ public class MoveCameraCommand : ICommand {
 	}
 
 	public MoveCameraCommand(ICommandParamters parameters) {
-		MoveCameraCommand m = (MoveCameraCommand)parameters;
+		MoveCameraCommandParameters m = (MoveCameraCommandParameters)parameters;
 		this.moveToTarget = m.moveToTarget;
 		this.fromPosition = m.fromPosition;
 		this.movementSpeed = m.movementSpeed;

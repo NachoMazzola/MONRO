@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct MoveGameObjectCommandParameters: ICommandParamters {
+[System.Serializable]
+public class MoveGameObjectCommandParameters: ICommandParamters {
 	public GameObject targetObject;
 	public Vector2 targetPosition;
 	public float movementSpeed;
+
+
+	SerializeField slz_targetObject;
 
 	public CommandType GetCommandType() {
 		return CommandType.MoveGameObjectCommandType;
@@ -26,7 +30,7 @@ public class MoveGameObjectCommand : ICommand {
 	}
 
 	public MoveGameObjectCommand(ICommandParamters parameters) {
-		MoveGameObjectCommand mgo = (MoveGameObjectCommand)parameters;
+		MoveGameObjectCommandParameters mgo = (MoveGameObjectCommandParameters)parameters;
 		this.targetObject = mgo.targetObject;
 		this.targetPosition = mgo.targetPosition;
 		this.movementSpeed = mgo.movementSpeed;

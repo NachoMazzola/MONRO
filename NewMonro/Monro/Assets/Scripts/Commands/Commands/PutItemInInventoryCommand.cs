@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[System.Serializable]
 public struct PutItemInInventoryCommandParameters: ICommandParamters {
 	public string itemId;
 	public GameObject itemTransform;
@@ -27,8 +27,9 @@ public class PutItemInInventoryCommand : ICommand {
 		PutItemInInventoryCommandParameters p = (PutItemInInventoryCommandParameters)parameters;
 		this.itemId = p.itemId;
 		this.itemTransform = p.itemTransform;
-
-		this.iDroppable = this.itemTransform.GetComponent<ItemDroppable>();
+		if (this.itemTransform != null) {
+			this.iDroppable = this.itemTransform.GetComponent<ItemDroppable>();	
+		}
 	}
 
 	public PutItemInInventoryCommand(string itemId) {
@@ -66,10 +67,17 @@ public class PutItemInInventoryCommand : ICommand {
 			InventoryPanelHandler theInv = invObj.GetComponent<InventoryPanelHandler>();
 
 			ItemDroppable iDp = this.itemTransform.GetComponent<ItemDroppable>();
-			Transform instanciatedItem = GameObject.Instantiate(iDp.InventroyItem);
-			theInv.AddItem (instanciatedItem);
+			if (iDp != null) {
+				Transform instanciatedItem = GameObject.Instantiate(iDp.InventroyItem);
+				theInv.AddItem (instanciatedItem);
 
-			GameObject.Destroy(this.itemTransform.gameObject);
+				GameObject.Destroy(this.itemTransform.gameObject);	
+			}
+			else {
+				Transform instanciatedItem = GameObject.Instantiate(this.itemTransform).transform;
+				theInv.AddItem (instanciatedItem);
+			}
+
 
 			finished = true;
 		}

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Yarn.Unity;
 
+[System.Serializable]
 public struct TalkCommandParameters: ICommandParamters {
 	public List<GameObject> conversationParticipants;
 	public string startingNode;

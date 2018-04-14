@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[System.Serializable]
 public struct AnimateCharacterCommandParameters: ICommandParamters {
 	public string Trigger;
-	public Animator TheAnimator;
+	public Transform Target;
 
 	public CommandType GetCommandType() {
 		return CommandType.AnimateCharacterCommandType;
@@ -16,7 +16,9 @@ public struct AnimateCharacterCommandParameters: ICommandParamters {
 public class AnimateCharacterCommand : ICommand {
 
 	public string Trigger;
-	public Animator TheAnimator;
+	public Transform Target;
+
+	private Animator TheAnimator;
 
 	public AnimateCharacterCommand() {
 		
@@ -25,12 +27,18 @@ public class AnimateCharacterCommand : ICommand {
 	public AnimateCharacterCommand(ICommandParamters parameters) {
 		AnimateCharacterCommandParameters animParams = (AnimateCharacterCommandParameters)parameters;
 		this.Trigger = animParams.Trigger;
-		this.TheAnimator = animParams.TheAnimator;
+		this.Target = animParams.Target;
+		this.TheAnimator = this.Target.GetComponent<Animator>();
+
+		Debug.Assert(this.TheAnimator != null, "AnimateCharacterCommand: Target does not have an Animator component!!");
 	}
 
-	public AnimateCharacterCommand(IAnimatable target, string triggerParamName) {
+	public AnimateCharacterCommand(Transform target, string triggerParamName) {
 		this.Trigger = triggerParamName;
-		this.TheAnimator = target.GetAnimator();
+		this.Target = target;
+		this.TheAnimator = this.Target.GetComponent<Animator>();
+
+		Debug.Assert(this.TheAnimator != null, "AnimateCharacterCommand: Target does not have an Animator component!!");
 
 		finished = false;
 	}

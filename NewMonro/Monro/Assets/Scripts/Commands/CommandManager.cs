@@ -13,6 +13,13 @@ public class CommandManager : MonoBehaviour {
 	private bool shouldAskForNextCommand = false;
 	private int currentPlayingCommand = 0;
 
+	/**
+	 * This property is only when commands are executed with a specific target, like
+	 * for example commands that are triggered with the verbs panel
+	*/
+	[HideInInspector]
+	public GameObject target;
+
 	static public CommandManager getComponent ()
 	{
 		GameObject controller = WorldObjectsHelper.GetCommandManagerGO();
@@ -63,6 +70,8 @@ public class CommandManager : MonoBehaviour {
 		if (this.shouldAskForNextCommand) {
 			Debug.Log("COMMAND FINISHED: " + this.currentCommand);
 
+			this.SetPuzzleAction(this.target);
+
 			this.currentCommand = this.GetNextCommand();
 			if (this.currentCommand != null) {
 				this.currentCommand.WillStart();	
@@ -84,4 +93,21 @@ public class CommandManager : MonoBehaviour {
 		}
 	}
 
+	private void SetPuzzleAction(GameObject target) {
+		if (target == null) {
+			return;
+		}
+
+		if (this.currentCommand.GetCommandType() == CommandType.LookAtCommandType) {
+			PuzzleManager.UpdatePuzzleWithAction(PuzzleActionType.LookAt, target.transform);
+		}
+		else if (this.currentCommand.GetCommandType() == CommandType.TalkCommandType) {
+			PuzzleManager.UpdatePuzzleWithAction(PuzzleActionType.Talk, target.transform);
+		}
+		else if (this.currentCommand.GetCommandType() == CommandType.PutItemInInventoryCommandType) {
+			PuzzleManager.UpdatePuzzleWithAction(PuzzleActionType.PickUp, target.transform);
+		}
+		//TODO: USE COMMAND!
+
+	}
 }

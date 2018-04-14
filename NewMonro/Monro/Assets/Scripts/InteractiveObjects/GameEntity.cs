@@ -14,4 +14,6 @@ public class GameEntity : MonoBehaviour {
 	}
 
 	public GameEntityType type;
+
+	public string ID;
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public struct ChangeSpriteCommandParamters: ICommandParamters {
 	public GameObject target;
 	public Sprite replacement;

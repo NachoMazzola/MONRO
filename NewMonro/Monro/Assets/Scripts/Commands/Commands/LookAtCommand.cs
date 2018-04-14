@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public struct LookAtCommandParameters: ICommandParamters {
 	public GameObject lookable;
 	public GameObject whoLooks;

@@ -72,7 +72,6 @@ public class VerbsButtonPanelHandler : MonoBehaviour {
 	}
 
 	public void ResetButtons() {
-		WorldInteractionController.getComponent().commandQueue = new List<CommandType>();
 		this.currentSelected = null;
 
 		for (int i = 0; i <  this.gameObject.transform.childCount; i++) {

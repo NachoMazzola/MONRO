@@ -13,7 +13,7 @@ public enum CommandType {
 	RemoveItemFromInventoryCommandType,
 	unknown
 }
-
+	
 public interface ICommandParamters {
 	CommandType GetCommandType();
 }

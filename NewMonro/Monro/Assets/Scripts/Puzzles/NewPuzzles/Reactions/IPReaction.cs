@@ -32,9 +32,9 @@ public abstract class IPReaction: MonoBehaviour {
 	}
 
 	protected Transform GetTransformFromId(string id) {
-		InteractiveObject[] intsObjs = GameObject.FindObjectsOfType<InteractiveObject>();
-		foreach (InteractiveObject iObj in intsObjs) {
-			if (iObj.Id == id) {
+		GameEntity[] intsObjs = GameObject.FindObjectsOfType<GameEntity>();
+		foreach (GameEntity iObj in intsObjs) {
+			if (iObj.ID == id) {
 				return iObj.transform;
 			}
 		}

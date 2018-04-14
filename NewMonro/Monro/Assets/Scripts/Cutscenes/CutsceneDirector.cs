@@ -25,7 +25,7 @@ public class CutsceneDirector: MonoBehaviour {
 		this.currentCutscene = moveCamera;
 
 
-		AnimateCharacterCommand animateCommand = new AnimateCharacterCommand(player.GetComponent<Player>(), "isWakingUp");
+		AnimateCharacterCommand animateCommand = new AnimateCharacterCommand(player, "isWakingUp");
 		animateCommand.Prepare();
 
 		List<GameObject> participants = new List<GameObject>();
