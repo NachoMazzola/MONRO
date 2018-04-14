@@ -64,7 +64,7 @@ public class ReactionAddInteractiveAction : IPReaction {
 
 				if (actionBtn != null && actionBtnTransform != null) {
 					actionBtn.ButtonPrefab = actionBtnTransform;
-					menu.AddButton(actionBtn);
+					//menu.AddButton(actionBtn);
 				}
 				else {
 					actionOk = false;

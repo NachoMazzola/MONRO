@@ -89,6 +89,14 @@ public class WorldInteractionController: MonoBehaviour
 			foreach (BoxCollider2D collider in hitColliders) {
 				Tappable tappable = collider.gameObject.GetComponent<Tappable> ();
 				if (tappable != null && tappable.boxCollider == collider) {
+					RadialMenuDisplayer radialMenu = collider.gameObject.GetComponent<RadialMenuDisplayer>();
+					if (radialMenu != null) {
+						radialMenu.ShowMenu();
+						return;
+						
+					}
+
+
 
 					CommandManager.getComponent ().target = collider.gameObject;
 

@@ -18,7 +18,12 @@ public class VerbsButtonPanelHandler : MonoBehaviour {
 
 	private Button currentSelected;
 
+	private PlayerCommandBuilder uiCommandBuilder;
+
 	void Awake() {
+		this.uiCommandBuilder = new PlayerCommandBuilder();
+		this.uiCommandBuilder.uiType = UIType.VerbsPanel;
+
 		this.ResetButtons();
 
 		this.lookAtButton = this.transform.Find("Look At").GetComponent<Button>();
@@ -34,9 +39,7 @@ public class VerbsButtonPanelHandler : MonoBehaviour {
 		}
 
 		this.SetButtonAsSelected(this.lookAtButton, true);
-		List<CommandType> commands = new List<CommandType>();
-		commands.Add(CommandType.LookAtCommandType);
-		WorldInteractionController.getComponent().commandQueue = commands;
+		this.uiCommandBuilder.CreateLookAtCommand();
 	}
 
 	public void CreateTalkToCommand() {
@@ -46,11 +49,7 @@ public class VerbsButtonPanelHandler : MonoBehaviour {
 		}
 
 		this.SetButtonAsSelected(this.talkToButton, true);
-
-		List<CommandType> commands = new List<CommandType>();
-		commands.Add(CommandType.MoveGameObjectCommandType);
-		commands.Add(CommandType.TalkCommandType);
-		WorldInteractionController.getComponent().commandQueue = commands;
+		this.uiCommandBuilder.CreateTalkToCommand();
 	}
 
 	public void CreatePickUpCommand() {
@@ -60,11 +59,7 @@ public class VerbsButtonPanelHandler : MonoBehaviour {
 		}
 
 		this.SetButtonAsSelected(this.pickUpButton, true);
-
-		List<CommandType> commands = new List<CommandType>();
-		commands.Add(CommandType.MoveGameObjectCommandType);
-		commands.Add(CommandType.PutItemInInventoryCommandType);
-		WorldInteractionController.getComponent().commandQueue = commands;
+		this.uiCommandBuilder.CreatePickUpCommand();
 	}
 
 	public void CreateUseCommand() {

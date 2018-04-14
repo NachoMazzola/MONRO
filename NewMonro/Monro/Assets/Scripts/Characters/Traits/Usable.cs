@@ -2,15 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Usable : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
+public class Usable : IMenuRenderableTrait {
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

@@ -11,6 +11,7 @@ public enum CommandType {
 	TalkCommandType,
 	PutItemInInventoryCommandType,
 	RemoveItemFromInventoryCommandType,
+	DestroyGameObjectCommandType,
 	unknown
 }
 	

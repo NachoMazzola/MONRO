@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lookable : MonoBehaviour {
+public class Lookable : IMenuRenderableTrait {
 	public string Caption;
+
+	void Awake() {
+		this.AssociatedMenuCommandType = CommandType.LookAtCommandType;
+	}
 }

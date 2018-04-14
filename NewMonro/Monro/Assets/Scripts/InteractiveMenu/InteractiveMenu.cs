@@ -13,11 +13,17 @@ public class InteractiveMenu : MonoBehaviour {
 	private List<RectTransform> instantiatedButtons;
 	private bool menuOn = false;
 	private int maxButtons = 4;
-	private List<IMActionButton> buttons;
+	private List<IMenuRenderableTrait> buttons;
 	private int lastAddedButtonIdx = 0;
+
+	private PlayerCommandBuilder uiCommandBuilder;
 
 
 	void Awake() {
+		this.uiCommandBuilder = new PlayerCommandBuilder();
+		this.uiCommandBuilder.uiType = UIType.RadialMenu;
+		this.uiCommandBuilder.target = this.gameObject;
+
 		//theBoxCollider = this.GetComponent<BoxCollider2D>();
 	}
 
@@ -28,17 +34,17 @@ public class InteractiveMenu : MonoBehaviour {
 		menu.anchoredPosition = Vector3.zero;
 
 
-		buttons = GetComponents<IMActionButton>().ToList();
+		buttons = GetComponents<IMenuRenderableTrait>().ToList();
 		if (buttons == null) {
 			instantiatedButtons = new List<RectTransform>();//  new RectTransform[buttons.Count];	
-			buttons = new List<IMActionButton>();
+			buttons = new List<IMenuRenderableTrait>();
 		}
 		else {
 			instantiatedButtons = new List<RectTransform>(buttons.Count);//  new RectTransform[buttons.Count];
 		}
 
 		int iter = 0;
-		foreach (IMActionButton comp in buttons) {
+		foreach (IMenuRenderableTrait comp in buttons) {
 			if (comp.enabled == false) {
 				continue;
 			}
@@ -46,8 +52,6 @@ public class InteractiveMenu : MonoBehaviour {
 			if (iter == maxButtons) {
 				break;
 			}
-
-			comp.menu = this;
 
 			AddButtonToMenu(comp, iter);
 
@@ -58,13 +62,13 @@ public class InteractiveMenu : MonoBehaviour {
 		menu.gameObject.SetActive(menuOn);
 	}
 		
-	private void AddButtonToMenu(IMActionButton button, int btnIndex) {
-		RectTransform theButton = Instantiate(button.ButtonPrefab, this.transform.position, Quaternion.identity) as RectTransform;
+	private void AddButtonToMenu(IMenuRenderableTrait button, int btnIndex) {
+		RectTransform theButton = Instantiate(button.prefab, this.transform.position, Quaternion.identity) as RectTransform;
 		theButton.SetParent(menu);
 
 		Button buttonComp = theButton.GetComponent<Button>();
 		buttonComp.onClick.RemoveAllListeners();
-		buttonComp.onClick.AddListener(button.ExecuteAction);
+		buttonComp.onClick.AddListener(delegate { RunCommandForButton(button); } );
 
 		instantiatedButtons.Add(theButton);
 		//instantiatedButtons[btnIndex] =  theButton;
@@ -100,25 +104,21 @@ public class InteractiveMenu : MonoBehaviour {
 		return menuOn;
 	}
 
-	public void AddButton(IMActionButton newButton) {
-		if (lastAddedButtonIdx == maxButtons) {
-			Debug.Log("WARNING: NO SE PUEDEN AGREGAR MAS BOTONES!");
-			return;
-		}
+	private void RunCommandForButton(IMenuRenderableTrait trait) {
+		GameObject menuOwner = trait.gameObject;
+		switch(trait.AssociatedMenuCommandType) {
+		case CommandType.LookAtCommandType:
+			this.uiCommandBuilder.CreateLookAtCommand();
+			break;
 
-		bool alreadyContainsButton = false;
-		foreach (IMActionButton b in buttons) {
-			if (b.buttonType == newButton.buttonType) {
-				alreadyContainsButton = true;
-				break;
-			}
-		}
+		case CommandType.TalkCommandType:
+			this.uiCommandBuilder.CreateTalkToCommand();
+			break;
 
-		if (alreadyContainsButton == false) {
-			buttons.Add(newButton);
-			AddButtonToMenu(newButton, lastAddedButtonIdx);	
+		case CommandType.PutItemInInventoryCommandType:
+			this.uiCommandBuilder.CreatePickUpCommand();
+			break;
 		}
-
 	}
 
 }

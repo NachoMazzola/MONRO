@@ -49,7 +49,7 @@ public class CommandFactory {
 		case CommandType.PutItemInInventoryCommandType:
 			PutItemInInventoryCommand pInvCommand = new PutItemInInventoryCommand();
 			if (setDefaultValues) {
-				pInvCommand.itemTransform = target;
+				pInvCommand.itemTransform = target.GetComponent<ItemDroppable>().InventroyItem.gameObject;
 			}
 			else if (parameters != null) {
 				return new PutItemInInventoryCommand(parameters);
@@ -79,6 +79,12 @@ public class CommandFactory {
 				return new RemoveItemFromInventoryCommand(parameters);
 			}
 			return new RemoveItemFromInventoryCommand();
+
+		case CommandType.DestroyGameObjectCommandType:
+			if (parameters != null) {
+				return new DestroyGameObjectCommand(parameters);
+			}
+			return new DestroyGameObjectCommand(target);
 
 		case CommandType.unknown:
 			return null;
