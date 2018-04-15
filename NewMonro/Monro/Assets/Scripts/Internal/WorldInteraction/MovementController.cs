@@ -4,17 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MovementController : MonoBehaviour {
+
+	public GameObject ControlledGameObject;
+
 	[HideInInspector]
 	public bool movingRight;
 	[HideInInspector]
 	public bool movingLeft;
 	[HideInInspector]
 	public bool MovePlayer = true; 
-
+	[HideInInspector]
 	public float movementLimitRight;
+	[HideInInspector]
 	public float movementLimitLeft;
 
-	private Player thePlayer;
+	private Moveable moveableGameObject;
+	private SpriteRenderer moveableSpriteRenderer;
 
 	private WorldInteractionController worldInteractionCtr;
 
@@ -23,19 +28,20 @@ public class MovementController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-		worldInteractionCtr = WorldInteractionController.getComponent();
-
-		GameObject playerObj = WorldObjectsHelper.getPlayerGO();
-		if (playerObj) {
-			thePlayer = playerObj.GetComponent<Player>();
+		this.worldInteractionCtr = WorldInteractionController.getComponent();
+	
+		if (this.ControlledGameObject != null) {
+			this.moveableGameObject = ControlledGameObject.GetComponent<Moveable>();
+			this.moveableSpriteRenderer = ControlledGameObject.GetComponent<SpriteRenderer>();
 		}
 
 		if (MovePlayer) {
-			if (thePlayer == null) {
-				Debug.LogError("WARNING: CONTROLLER CAND FIND PLAYER TO CONTROL!");
+			if (ControlledGameObject == null) {
+				Debug.LogError("WARNING: CONTROLLER CAND FIND GAME OBJECT TO CONTROL!");
 			}
 		}
+
+		this.StopMoving();
 	}
 	
 	// Update is called once per frame
@@ -45,25 +51,25 @@ public class MovementController : MonoBehaviour {
 
 	public void UpdateMovement() {
 		if (movingRight) {
-			thePlayer.SwapFacingDirectionTo(Character.MovingDirection.MovingRight);
+			moveableGameObject.SwapFacingDirectionTo(Moveable.MovingDirection.MovingRight);
 			if (MovePlayer) {
-				if (thePlayer.transform.position.x + thePlayer.characterSprite.bounds.size.x/2 >= movementLimitRight) {
+				if (moveableGameObject.transform.position.x + this.moveableSpriteRenderer.bounds.size.x/2 >= movementLimitRight) {
 					StopMoving();
 				}
 				else {
-					thePlayer.transform.position += new Vector3(1 * thePlayer.MovementSpeed * Time.deltaTime, 0, 0);		
+					moveableGameObject.transform.position += new Vector3(1 * moveableGameObject.MovementSpeed * Time.deltaTime, 0, 0);		
 				}
 
 			}
 		}
 		else if (movingLeft) {
-			thePlayer.SwapFacingDirectionTo(Character.MovingDirection.MovingLeft);
+			moveableGameObject.SwapFacingDirectionTo(Moveable.MovingDirection.MovingLeft);
 			if (MovePlayer) {
-				if (thePlayer.transform.position.x - thePlayer.characterSprite.bounds.size.x/2 <= movementLimitLeft) {
+				if (moveableGameObject.transform.position.x - this.moveableSpriteRenderer.bounds.size.x/2 <= movementLimitLeft) {
 					StopMoving();
 				}
 				else {
-					thePlayer.transform.position -= new Vector3(1 * thePlayer.MovementSpeed * Time.deltaTime, 0, 0);		
+					moveableGameObject.transform.position -= new Vector3(1 * moveableGameObject.MovementSpeed * Time.deltaTime, 0, 0);		
 				}
 			}
 		}
@@ -77,7 +83,7 @@ public class MovementController : MonoBehaviour {
 		movingRight = true;
 		movingLeft = false;
 
-		thePlayer.StartMoving(Character.MovingDirection.MovingRight);
+		//thePlayer.StartMoving(Character.MovingDirection.MovingRight);
 	}
 
 	public void StartMovingLeft() {
@@ -88,29 +94,29 @@ public class MovementController : MonoBehaviour {
 		movingRight = false;
 		movingLeft = true;
 
-		thePlayer.StartMoving(Character.MovingDirection.MovingLeft);
+		//thePlayer.StartMoving(Character.MovingDirection.MovingLeft);
 	}
 
 	public void StopMoving() {
 		movingLeft = false;
 		movingRight = false;
 
-		thePlayer.StopMoving();
+		//thePlayer.StopMoving();
 	}
 
 	public bool IsMoving() {
 		return movingLeft || movingRight;
 	}
 
-	public Character.MovingDirection GetMovingDirection() {
-		return thePlayer.currentFacingDirection;
+	public Moveable.MovingDirection GetMovingDirection() {
+		return moveableGameObject.currentFacingDirection;
 	}
 
 	public float GetPlayerPosition() {
-		return thePlayer.transform.position.x;
+		return moveableGameObject.transform.position.x;
 	}
 
 	public float GetMovementSpeed() {
-		return thePlayer.MovementSpeed;
+		return moveableGameObject.MovementSpeed;
 	}
 }

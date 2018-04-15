@@ -15,11 +15,14 @@ public class CameraFollow : MonoBehaviour
 	public float maxPosition = 5.3f;
 		
 	private float moveSpeed;
-	private Player player;
+	private Moveable moveable;
+	private SpriteRenderer moveableSpriteRenderer;
 
 	void Start() {
-		player = WorldObjectsHelper.getPlayerGO().GetComponent<Player>();
-		moveSpeed = player.MovementSpeed;
+		this.moveable = target.GetComponent<Moveable>();
+		moveSpeed = this.moveable.MovementSpeed;
+
+		this.moveableSpriteRenderer = moveable.gameObject.GetComponent<SpriteRenderer>();
 
 		SetupMaxAndMinLimits();
 	}
@@ -40,20 +43,20 @@ public class CameraFollow : MonoBehaviour
 	}
 
 	private void SetupMaxAndMinLimits() {
-//		Transform floor = WorldObjectsHelper.getFloorGO().transform;
-//
-//		Transform lastSection = floor.GetChild(floor.childCount-1);
-//		Transform firstSection = floor.GetChild(0);
-//
-//		this.maxPosition = lastSection.position.x;
-//		this.minPosition = firstSection.position.x;
-//
-//		float lastSectionSpriteWidth = lastSection.GetComponent<SpriteRenderer>().bounds.size.x;
-//		float firstSectionSpriteWidth = firstSection.GetComponent<SpriteRenderer>().bounds.size.x;
-//
-//		MovementController movCtr = WorldObjectsHelper.getMovementControllerGO().GetComponent<MovementController>();
-//		movCtr.movementLimitLeft = this.minPosition - firstSectionSpriteWidth/2 + player.characterSprite.bounds.size.x/2;
-//		movCtr.movementLimitRight = this.maxPosition + lastSectionSpriteWidth/2 - player.characterSprite.bounds.size.x/2;
+		Transform floor = WorldObjectsHelper.getFloorGO().transform;
+
+		Transform lastSection = floor.GetChild(floor.childCount-1);
+		Transform firstSection = floor.GetChild(0);
+
+		this.maxPosition = lastSection.position.x;
+		this.minPosition = firstSection.position.x;
+
+		float lastSectionSpriteWidth = lastSection.GetComponent<SpriteRenderer>().bounds.size.x;
+		float firstSectionSpriteWidth = firstSection.GetComponent<SpriteRenderer>().bounds.size.x;
+
+		MovementController movCtr = WorldObjectsHelper.getMovementControllerGO().GetComponent<MovementController>();
+		movCtr.movementLimitLeft = this.minPosition - firstSectionSpriteWidth/2 + this.moveableSpriteRenderer.bounds.size.x/2;
+		movCtr.movementLimitRight = this.maxPosition + lastSectionSpriteWidth/2 - this.moveableSpriteRenderer.bounds.size.x/2;
 	}
 
 	public bool ReachedLimitPosition() {

@@ -60,7 +60,7 @@ public class ParallaxScrolling : MonoBehaviour
 
 	private void MoveLayer (Transform layer, float speed)
 	{
-		if (movementController.GetMovingDirection () == Character.MovingDirection.MovingRight) {
+		if (movementController.GetMovingDirection () == Moveable.MovingDirection.MovingRight) {
 			layer.position -= new Vector3 (1 * speed * Time.deltaTime, 0, 0);	
 		} else {
 			layer.position += new Vector3 (1 * speed * Time.deltaTime, 0, 0);
@@ -76,7 +76,7 @@ public class ParallaxScrolling : MonoBehaviour
 	private void CheckIfLayerIsWithinViewport (Transform layer)
 	{
 		//This is the background moving direction. If the player moves ->, the background should move <-
-		Character.MovingDirection movDir = movementController.GetMovingDirection () == Character.MovingDirection.MovingLeft ? Character.MovingDirection.MovingRight : Character.MovingDirection.MovingLeft;
+		Moveable.MovingDirection movDir = movementController.GetMovingDirection () == Moveable.MovingDirection.MovingLeft ? Moveable.MovingDirection.MovingRight : Moveable.MovingDirection.MovingLeft;
 		SpriteRenderer spRenderer = layer.GetComponent<SpriteRenderer> ();
 
 		float dist = (transform.position - Camera.main.transform.position).z;
@@ -86,12 +86,12 @@ public class ParallaxScrolling : MonoBehaviour
 
 		if (layer != null) {
 
-			if ((movDir == Character.MovingDirection.MovingLeft && (layer.position.x + spRenderer.bounds.size.x / 2 < cameraLeftBorder))) {
+			if ((movDir == Moveable.MovingDirection.MovingLeft && (layer.position.x + spRenderer.bounds.size.x / 2 < cameraLeftBorder))) {
 				float diff = cameraLeftBorder - (layer.position.x + spRenderer.bounds.size.x / 2);
 				layer.position = new Vector2 (cameraRightBorder - diff + spRenderer.bounds.size.x / 2, layer.position.y);
 			}
 
-			if ((movDir == Character.MovingDirection.MovingRight && (layer.position.x - spRenderer.bounds.size.x / 2 > cameraRightBorder))) {
+			if ((movDir == Moveable.MovingDirection.MovingRight && (layer.position.x - spRenderer.bounds.size.x / 2 > cameraRightBorder))) {
 				float diff = (layer.position.x - spRenderer.bounds.size.x / 2) - cameraRightBorder;
 				layer.position = new Vector2 (cameraLeftBorder + diff - spRenderer.bounds.size.x / 2, layer.position.y);
 			}	

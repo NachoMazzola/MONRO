@@ -63,7 +63,7 @@ public class InteractiveMenu : MonoBehaviour {
 	}
 		
 	private void AddButtonToMenu(IMenuRenderableTrait button, int btnIndex) {
-		RectTransform theButton = Instantiate(button.prefab, this.transform.position, Quaternion.identity) as RectTransform;
+		RectTransform theButton = Instantiate(button.MenuIconPrefab, this.transform.position, Quaternion.identity) as RectTransform;
 		theButton.SetParent(menu);
 
 		Button buttonComp = theButton.GetComponent<Button>();
