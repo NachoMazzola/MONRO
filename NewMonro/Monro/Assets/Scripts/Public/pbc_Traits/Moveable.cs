@@ -19,8 +19,13 @@ public class Moveable : MonoBehaviour {
 
 
 	private MovementController movementController;
+	private GameEntity gameEntity;
+	private AnimationCoordinator animCoordinator;
 
 	void Awake() {
+		this.gameEntity = this.GetComponent<GameEntity>();
+		this.animCoordinator = this.GetComponent<AnimationCoordinator>();
+
 		this.movementController = WorldObjectsHelper.getMovementControllerGO().GetComponent<MovementController>();
 		this.movementController.targetTransform = this.transform;
 		this.movementController.movingLeft = this.StartFacingDirection == MovingDirection.MovingLeft;
@@ -53,5 +58,25 @@ public class Moveable : MonoBehaviour {
 
 		lastFacingDirection = currentFacingDirection;
 		currentFacingDirection = newFacingDir;
+	}
+
+	public void HandleMovingAnimation() {
+		if (this.gameEntity == null || this.animCoordinator == null) {
+			Debug.LogError("You are trying to animate a Movable GameObject that does not have an animator nor a GameEntity component!! Check if any of those is missing");
+			return;
+		}
+
+		if (this.gameEntity.type == GameEntity.GameEntityType.Player) {
+			this.animCoordinator.PlayAnimation(Animations.PlayerWalk, PlayerAnimations.animParamIsWalking);
+		}
+	}
+
+	public void StopMovingAnimation() {
+		if (this.gameEntity == null || this.animCoordinator == null) {
+			Debug.LogError("You are trying to animate a Movable GameObject that does not have an animator nor a GameEntity component!! Check if any of those is missing");
+			return;
+		}
+
+		this.animCoordinator.StopCurrentAnimation();
 	}
 }

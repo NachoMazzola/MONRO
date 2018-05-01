@@ -50,15 +50,7 @@ public class TalkCommand : ICommand {
 		}
 	}
 
-	public override void WillStart() {
-		foreach (GameObject t in this.conversationParticipants) {
-			if (t.GetComponent<GameEntity>().type == GameEntity.GameEntityType.Player) { 
-				//|| t.gameObject.GetComponent<GameEntity>().type == GameEntity.GameEntityType.NPC) {
-				Player pl = t.GetComponent<Player>();
-				pl.animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayerTalk);
-			}
-		}
-	}
+	public override void WillStart() {}
 
 	public override void UpdateCommand () {
 		if (!this.isStarted) {
@@ -72,10 +64,9 @@ public class TalkCommand : ICommand {
 	public override bool Finished() {
 		if (finished) {
 			foreach (GameObject t in this.conversationParticipants) {
-				if (t.GetComponent<GameEntity>().type == GameEntity.GameEntityType.Player) { 
-					//|| t.gameObject.GetComponent<GameEntity>().type == GameEntity.GameEntityType.NPC) {
-					Player pl = t.GetComponent<Player>();
-					pl.animStateMachine.SetState (PlayerStateMachine.PlayerStates.PlayerIdle);
+				Talkable talkable = t.GetComponent<Talkable>();
+				if (talkable != null) {
+					talkable.StopTalkingAnimation();	
 				}
 			}
 		}

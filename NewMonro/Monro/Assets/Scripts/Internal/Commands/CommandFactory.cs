@@ -39,7 +39,7 @@ public class CommandFactory {
 			if (setDefaultValues) {
 				moveGOCommand.targetObject = WorldObjectsHelper.getPlayerGO();
 				moveGOCommand.targetPosition = target.transform.position;
-				moveGOCommand.movementSpeed = target.GetComponent<Moveable>().MovementSpeed;
+				moveGOCommand.movementSpeed = WorldObjectsHelper.getPlayerGO().GetComponent<Moveable>().MovementSpeed;
 			}
 			else if (parameters != null) {
 				return new MoveGameObjectCommand(parameters);

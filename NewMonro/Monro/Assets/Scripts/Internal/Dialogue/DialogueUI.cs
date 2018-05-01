@@ -46,7 +46,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 		
 	}
 
-	private Talkable GetParticipant (string participant)
+	public Talkable GetParticipant (string participant)
 	{
 		int dotIdx = participant.IndexOf (".");
 		string participantCorrectName = participant.Substring (0, dotIdx);
@@ -69,7 +69,6 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 	public override IEnumerator RunLine (Yarn.Line line)
 	{
 		whoIsTalking = GetParticipant (dialogRunner.dialogue.currentNode);
-
 		//volver a pedir el conv canvas solo cuando el que habla cambio
 
 		if (whoIsTalking != null) {
@@ -80,13 +79,13 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 			if (whoIsTalking.GetComponent<GameEntity>().type != lastOneWhoTalked.GetComponent<GameEntity>().type) {
 				TextboxDisplayer lastTbDisplayer = lastOneWhoTalked.GetComponent<TextboxDisplayer>();
 				yield return lastTbDisplayer.HideCaption (0.0f);
-
 				lastOneWhoTalked = whoIsTalking;
 			}
-				
-			TextboxDisplayer tbDisplayer = whoIsTalking.GetComponent<TextboxDisplayer>();
-			yield return StartCoroutine (tbDisplayer.ShowCaption (line.text, TextBox.DisappearMode.WaitInput));
 
+
+			TextboxDisplayer tbDisplayer = whoIsTalking.GetComponent<TextboxDisplayer>();
+			yield return tbDisplayer.ShowCaption (line.text, TextBox.DisappearMode.WaitInput);
+		
 			yield break;
 		}
 	}
@@ -102,7 +101,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 			"buttons to present them in. This will cause problems.");
 		}
 
-		conversationOptionsPanel.gameObject.SetActive (true);
+		conversationOptionsPanel.gameObject.SetActive(true);
 
 		// Display each option in a button, and make it visible
 		int i = 0;
@@ -171,6 +170,8 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 		WorldInteractionController wic = WorldInteractionController.getComponent();
 		wic.enableInteractions = false;
 		wic.InterruptInteractions();	
+
+
 
 		// Enable the dialogue controls.
 

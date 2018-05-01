@@ -83,6 +83,7 @@ public class MovementController : MonoBehaviour {
 		movingRight = true;
 		movingLeft = false;
 
+		this.moveableGameObject.HandleMovingAnimation();
 		//thePlayer.StartMoving(Character.MovingDirection.MovingRight);
 	}
 
@@ -94,6 +95,7 @@ public class MovementController : MonoBehaviour {
 		movingRight = false;
 		movingLeft = true;
 
+		this.moveableGameObject.HandleMovingAnimation();
 		//thePlayer.StartMoving(Character.MovingDirection.MovingLeft);
 	}
 
@@ -101,6 +103,7 @@ public class MovementController : MonoBehaviour {
 		movingLeft = false;
 		movingRight = false;
 
+		this.moveableGameObject.StopMovingAnimation();
 		//thePlayer.StopMoving();
 	}
 

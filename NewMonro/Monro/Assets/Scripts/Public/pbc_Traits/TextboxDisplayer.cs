@@ -54,6 +54,9 @@ public class TextboxDisplayer : MonoBehaviour {
 	public IEnumerator ShowCaption(string caption, TextBox.DisappearMode removalMode = TextBox.DisappearMode.WaitInput) {
 		this.instanciatedTextbox.gameObject.SetActive(true);
 
+		Talkable t = this.GetComponent<Talkable>();
+		t.HandleTalkingAnimation();
+
 		TextBox pCaption = this.instanciatedTextbox.GetComponent<TextBox>();
 		pCaption.TextColor = this.TextColor;
 		return pCaption.ShowCaptionFromGameObject(caption, this.gameObject, true, removalMode);
@@ -62,6 +65,9 @@ public class TextboxDisplayer : MonoBehaviour {
 	public IEnumerator HideCaption(float afterSeconds) {
 		Transform theCaption = this.instanciatedTextbox;
 		TextBox pCaption = theCaption.GetComponent<TextBox>();
+
+		Talkable t = this.GetComponent<Talkable>();
+		t.StopTalkingAnimation();
 
 		return pCaption.RemoveCaptionAfterSeconds(afterSeconds, pCaption.gameObject);
 	}
