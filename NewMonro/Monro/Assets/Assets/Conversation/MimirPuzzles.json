@@ -62,7 +62,7 @@
 	{
 		"title": "Monrjiall.Puzzles.trials",
 		"tags": "",
-		"body": "<<DialogueAction PuzzleManager startMimirPuzzles>>\n<<if not visited (\"Mimir.Puzzles.trial1\")>>\n[[How can I prove my knowledge wothy...er...est..ness? |Mimir.Puzzles.trial1]]\n<<elseif visited (\"Mimir.Puzzles.trial1\") and $HoenirKnown is false>>\n[[Can you repeat the knowledge question? |Mimir.Puzzles.trial1repeat]]\n<<elseif visited (\"Mimir.Puzzles.trial1\") and $HoenirKnown is true and not visited (\"Mimir.Puzzles.trial1complete\")>>\n[[Hello, Mimir… or should I say HOENIR! |Mimir.Puzzles.trial1complete]]\n<<endif>>\n\n<<if not visited (\"Mimir.Logic.trial2\")>>\n[[How can I prove my logic thinking? |Mimir.Logic.trial2]]\n<<endif>>\n\n<<if not visited (\"Mimir.Puzzles.trial3\")>>\n[[My sight is impeccable, what is it you want me to observe? |Mimir.Puzzles.trial3]]\n<<elseif visited (\"Mimir.Puzzles.trial3\") and $sawItem is false>>\n[[What is it I’m looking for? |Mimir.Puzzles.trial3repeat]]\n<<elseif visited (\"Mimir.Puzzles.trial3\") and $sawItem is true and not visited (\"Mimir.Puzzles.trial3complete\")>>\n[[Did you see that [ITEM]? That’s not something you see everyday on a battlefield, is it? |Mimir.Puzzles.trial3complete]]\n<<endif>>\n\n<<if visited (\"Mimir.Puzzles.trial3\") and visited (\"Mimir.Logic.trial2\") and visited (\"Mimir.Puzzles.trial1\") and $allPzComplete is false>>\n[[I'll be right back|Mimir.Puzzles.Exit]]\n<<endif>>\n\n<<if $allPzComplete is true>>\n[[Mimir.Ending.potential]]\n<<endif>>",
+		"body": "<<DialogueAction PuzzleManager startMimirPuzzles>>\n<<if not visited (\"Mimir.Puzzles.trial1\")>>\n[[How can I prove my knowledge wothy...er...est..ness? |Mimir.Puzzles.trial1]]\n<<elseif visited (\"Mimir.Puzzles.trial1\") and $HoenirKnown is false>>\n[[Can you repeat the knowledge question? |Mimir.Puzzles.trial1repeat]]\n<<elseif visited (\"Mimir.Puzzles.trial1\") and $HoenirKnown is true and not visited (\"Mimir.Puzzles.trial1complete\")>>\n[[Hello, Mimir… or should I say HOENIR! |Mimir.Puzzles.trial1complete]]\n<<endif>>\n\n<<if not visited (\"Mimir.Logic.trial2\")>>\n[[How can I prove my logic thinking? |Mimir.Logic.trial2]]\n<<endif>>\n\n<<if not visited (\"Mimir.Puzzles.trial3\")>>\n[[My sight is impeccable, what is it you want me to observe? |Mimir.Puzzles.trial3]]\n<<elseif visited (\"Mimir.Puzzles.trial3\") and $sawItem is false>>\n[[What are these things I’m looking for? |Mimir.Puzzles.trial3repeat]]\n<<elseif visited (\"Mimir.Puzzles.trial3\") and $sawItem is true and not visited (\"Mimir.Puzzles.trial3complete\")>>\n[[Did you see that [ITEM]? That’s not something you see everyday on a battlefield, is it? |Mimir.Puzzles.trial3complete]]\n<<endif>>\n\n<<if visited (\"Mimir.Puzzles.trial3\") and visited (\"Mimir.Logic.trial2\") and visited (\"Mimir.Puzzles.trial1\") and $allPzComplete is false>>\n[[I'll be right back|Mimir.Puzzles.Exit]]\n<<endif>>\n\n<<if $allPzComplete is true>>\n[[Mimir.Ending.potential]]\n<<endif>>",
 		"position": {
 			"x": -1808,
 			"y": 1045
@@ -82,7 +82,7 @@
 	{
 		"title": "Mimir.Puzzles.trial3",
 		"tags": "",
-		"body": "Something in this field clearly doesn’t belong... \nand was probably introduced by Odin, they same way I arrived.\n\n[[Monrjiall.Puzzles.finger]]",
+		"body": "The same way I did, sometimes less godly figures make their way to other realms. \nThis battlefield contains two common items... \nthat have clearly arrived from another place... \nmost likely at the same time...\nand are related to each other. \nYou need to find these two and tell me what they are.\n\n[[Monrjiall.Puzzles.natural]]",
 		"position": {
 			"x": -1807,
 			"y": 1281
@@ -190,9 +190,9 @@
 		"colorID": 0
 	},
 	{
-		"title": "Monrjiall.Puzzles.finger",
+		"title": "Monrjiall.Puzzles.natural",
 		"tags": "",
-		"body": "That’s easy. \r\nThe giant finger that keeps appearing near me every few seconds.\r\n\r\n[[Mimir.Puzzles.What?]]",
+		"body": "This will be easy. \r\nLooking at things comes naturally to warriors like me. \r\nI’ll find this thing as quickly as the sun crosses the sky.\r\n\r\n[[Mimir.Puzzles.actuallyLong]]",
 		"position": {
 			"x": -1804,
 			"y": 1528
@@ -200,91 +200,21 @@
 		"colorID": 0
 	},
 	{
-		"title": "Mimir.Puzzles.What?",
+		"title": "Mimir.Puzzles.actuallyLong",
 		"tags": "",
-		"body": "What?\n\n[[Monrjiall.Puzzles.What?]]",
-		"position": {
-			"x": -1811,
-			"y": 1784
-		},
-		"colorID": 0
-	},
-	{
-		"title": "Monrjiall.Puzzles.What?",
-		"tags": "",
-		"body": "What?\n\n[[Mimir.Puzzles.WhatFinger]]",
-		"position": {
-			"x": -1510,
-			"y": 1786
-		},
-		"colorID": 0
-	},
-	{
-		"title": "Mimir.Puzzles.WhatFinger",
-		"tags": "",
-		"body": "What giant finger?\n\n[[Monrjiall.Puzzles.Where?]]",
-		"position": {
-			"x": -1270,
-			"y": 1799
-		},
-		"colorID": 0
-	},
-	{
-		"title": "Monrjiall.Puzzles.Where?",
-		"tags": "",
-		"body": "A giant finger? Where?\n\n[[Mimir.Puzzles.YouGiantFinger]]",
-		"position": {
-			"x": -982,
-			"y": 1787
-		},
-		"colorID": 0
-	},
-	{
-		"title": "Mimir.Puzzles.YouGiantFinger",
-		"tags": "",
-		"body": "You just said there was a giant finger!\n\n[[Monrjiall.Puzzles.Nonsense]]",
-		"position": {
-			"x": -988,
-			"y": 1540
-		},
-		"colorID": 0
-	},
-	{
-		"title": "Monrjiall.Puzzles.Nonsense",
-		"tags": "",
-		"body": "I said no such thing! That’s nonsense!\r\n\r\n[[Mimir.Puzzles.Nevermind]]",
-		"position": {
-			"x": -1258,
-			"y": 1542
-		},
-		"colorID": 0
-	},
-	{
-		"title": "Mimir.Puzzles.Nevermind",
-		"tags": "",
-		"body": "But… nevermind, search for something that does not belong and tell me what it is.\r\n\r\n[[Monrjiall.Puzzles.OtherFinger]]",
+		"body": "That’s actually a long ti--\n\n[[Monrjiall.Puzzles.talkingTime]]",
 		"position": {
 			"x": -1531,
-			"y": 1540
+			"y": 1519
 		},
 		"colorID": 0
 	},
 	{
-		"title": "Monrjiall.Puzzles.OtherFinger",
+		"title": "Monrjiall.Puzzles.talkingTime",
 		"tags": "",
-		"body": "Other than the giant finger then, got it!\r\n\r\n[[Mimir.Puzzles.sigh]]\r\n",
+		"body": "Talking time is over, head! Looking time is upon us!\n\n[[Monrjiall.Puzzles.trials]]",
 		"position": {
-			"x": -1214,
-			"y": 1268
-		},
-		"colorID": 0
-	},
-	{
-		"title": "Mimir.Puzzles.sigh",
-		"tags": "",
-		"body": "*sigh*\n\n[[Monrjiall.Puzzles.trials]]",
-		"position": {
-			"x": -1511,
+			"x": -1529,
 			"y": 1266
 		},
 		"colorID": 0
@@ -292,20 +222,20 @@
 	{
 		"title": "Mimir.Puzzles.trial3repeat",
 		"tags": "",
-		"body": "Something that clearly does not belong in this world, the same as me.\n\n[[Monrjiall.Puzzles.SawSomething]]",
+		"body": "Two things that came from the same place, probably at the same time.\n\n[[Monrjiall.Puzzles.exactly]]",
 		"position": {
-			"x": -1198,
-			"y": 1053
+			"x": -1228,
+			"y": 1289
 		},
 		"colorID": 0
 	},
 	{
-		"title": "Monrjiall.Puzzles.SawSomething",
+		"title": "Monrjiall.Puzzles.exactly",
 		"tags": "",
-		"body": "Yes, I think I saw something.\n\n[[Monrjiall.Puzzles.trials]]",
+		"body": "Yes, but what are these things exactly?\n\n[[Mimir.Puzzles.What?]]",
 		"position": {
-			"x": -1490,
-			"y": 973
+			"x": -1241,
+			"y": 1029
 		},
 		"colorID": 0
 	},
@@ -326,6 +256,76 @@
 		"position": {
 			"x": -952,
 			"y": 1024
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.What?",
+		"tags": "",
+		"body": "What?\n\n[[Monrjiall.Puzzles.whatFind]]",
+		"position": {
+			"x": -1238,
+			"y": 758
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.whatFind",
+		"tags": "",
+		"body": "These things that I have to find… what are they?\n\n[[Mimir.Puzzles.findOut]]",
+		"position": {
+			"x": -969,
+			"y": 754
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.findOut",
+		"tags": "",
+		"body": "Well, that’s what you have to find out.\n\n[[Monrjiall.Puzzles.where]]",
+		"position": {
+			"x": -971,
+			"y": 514
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.where",
+		"tags": "",
+		"body": "Right…. But what are they? \nAnd where are they?\n\n[[Mimir.Puzzles.yourTask]]\n\n",
+		"position": {
+			"x": -1247,
+			"y": 519
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.yourTask",
+		"tags": "",
+		"body": "No, you see, that is your task, to find that out.\n\n[[Monrjiall.Puzzles.whereHow]]",
+		"position": {
+			"x": -1518,
+			"y": 291
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.whereHow",
+		"tags": "",
+		"body": "I see. \nBut how?\n\n[[Mimir.Puzzles.Hint3]]",
+		"position": {
+			"x": -1505,
+			"y": 527
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.Hint3",
+		"tags": "",
+		"body": "It’s not that… \nI mean… \n*sigh* \nJust look around and tell me what you see.\n\n[[Monrjiall.Puzzles.trials]]",
+		"position": {
+			"x": -1521,
+			"y": 1023
 		},
 		"colorID": 0
 	}
