@@ -8,7 +8,9 @@ public enum Animations {
 	PlayerIdle,
 	PlayerWalk,
 	PlayePickUp,
-	PlayerTalk
+	PlayerTalk,
+
+	UnknownAnim
 
 
 	//TODO: Define all other animation names here!

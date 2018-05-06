@@ -50,10 +50,7 @@ public class PlayerCommandBuilder {
 	public void CreatePickUpCommand() {
 		if (this.uiType == UIType.VerbsPanel) {
 			List<CommandType> commands = new List<CommandType>();
-			commands.Add(CommandType.MoveGameObjectCommandType);
-			commands.Add(CommandType.PutItemInInventoryCommandType);
-			commands.Add(CommandType.DestroyGameObjectCommandType);
-
+			commands.Add(CommandType.PlayerMoveAndPickUpCommandType);
 			WorldInteractionController.getComponent().commandQueue = commands;	
 		}
 		else {
