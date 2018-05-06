@@ -86,6 +86,11 @@ public class CommandFactory {
 			}
 			return new DestroyGameObjectCommand(target);
 
+
+		case CommandType.PlayerMoveAndPickUpCommandType:
+			return new PlayerMoveAndPickUpCommand(target);
+
+		
 		case CommandType.unknown:
 			return null;
 		}
