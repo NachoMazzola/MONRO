@@ -12,7 +12,7 @@
 	{
 		"title": "Monrjiall.response",
 		"tags": "",
-		"body": "<<if not visited (\"Hildr.trust\")>>\n[[I will not tell you anything, you foul witch! I do not know you, therefore I cannot trust you!|Hildr.Start22]]\n<<endif>>\n<<if not visited (\"Hildr.confused\")>>\n[[Who has been cheated? And what does my name have to do with the poor fellow?|Hildr.confused]]\n<<endif>>\n[[The name’s Monrjiall, son of M’gsroell. Now, what’s this about somebody being cheated?|Hildr.explains]]",
+		"body": "<<if not visited (\"Hildr.trust\")>>\n[[I will not tell you anything, you foul witch! I do not know you, therefore I cannot trust you!|Hildr.trust]]\n<<endif>>\n<<if not visited (\"Hildr.confused\")>>\n[[Who has been cheated? And what does my name have to do with the poor fellow?|Hildr.confused]]\n<<endif>>\n[[The name’s Monrjiall, son of M’gsroell. Now, what’s this about somebody being cheated?|Hildr.explains]]",
 		"position": {
 			"x": 640,
 			"y": 303
