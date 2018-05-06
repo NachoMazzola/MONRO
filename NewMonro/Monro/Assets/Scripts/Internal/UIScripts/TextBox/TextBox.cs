@@ -3,6 +3,11 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Text;
 
+public interface TextBoxDelegate {
+	void startLine();
+	void finishedLine();
+}
+
 public class TextBox : MonoBehaviour {
 
 	public enum DisappearMode {
@@ -21,6 +26,8 @@ public class TextBox : MonoBehaviour {
 	private bool shouldAttachToCaller;
 	private Transform followTransform;
 
+	public TextBoxDelegate tbDelegate;
+
 	// Update is called once per frame
 	void Update () {
 
@@ -34,6 +41,10 @@ public class TextBox : MonoBehaviour {
 		if (showingCaption == true) {
 			yield return null;
 		}
+		if (this.tbDelegate != null) {
+			tbDelegate.startLine();
+		}
+
 		shouldAttachToCaller = followCaller;
 		if (shouldAttachToCaller) {
 			followTransform = fromGO.transform;
@@ -56,6 +67,10 @@ public class TextBox : MonoBehaviour {
 				stringBuilder.Append (c);
 				theText.text = stringBuilder.ToString ();
 				yield return new WaitForSeconds (TextSpeed);
+			}
+
+			if (this.tbDelegate != null) {
+				tbDelegate.finishedLine();
 			}
 		} else {
 			// Display the line immediately if textSpeed == 0

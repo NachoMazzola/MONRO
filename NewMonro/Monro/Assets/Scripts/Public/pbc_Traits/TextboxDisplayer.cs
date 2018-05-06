@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
 
-public class TextboxDisplayer : MonoBehaviour {
+public class TextboxDisplayer : MonoBehaviour, TextBoxDelegate {
 
 	public Transform Textbox;
 	public Color TextColor = Color.black;
@@ -54,10 +54,8 @@ public class TextboxDisplayer : MonoBehaviour {
 	public IEnumerator ShowCaption(string caption, TextBox.DisappearMode removalMode = TextBox.DisappearMode.WaitInput) {
 		this.instanciatedTextbox.gameObject.SetActive(true);
 
-		Talkable t = this.GetComponent<Talkable>();
-		t.HandleTalkingAnimation();
-
 		TextBox pCaption = this.instanciatedTextbox.GetComponent<TextBox>();
+		pCaption.tbDelegate = this;
 		pCaption.TextColor = this.TextColor;
 		return pCaption.ShowCaptionFromGameObject(caption, this.gameObject, true, removalMode);
 	}
@@ -66,9 +64,16 @@ public class TextboxDisplayer : MonoBehaviour {
 		Transform theCaption = this.instanciatedTextbox;
 		TextBox pCaption = theCaption.GetComponent<TextBox>();
 
+		return pCaption.RemoveCaptionAfterSeconds(afterSeconds, pCaption.gameObject);
+	}
+
+	public void startLine() {
+		Talkable t = this.GetComponent<Talkable>();
+		t.HandleTalkingAnimation();
+	}
+
+	public void finishedLine() {
 		Talkable t = this.GetComponent<Talkable>();
 		t.StopTalkingAnimation();
-
-		return pCaption.RemoveCaptionAfterSeconds(afterSeconds, pCaption.gameObject);
 	}
 }
