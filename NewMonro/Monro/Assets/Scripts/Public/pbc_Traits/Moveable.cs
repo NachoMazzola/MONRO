@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Moveable : MonoBehaviour {
+public class Moveable : MonoBehaviour, IAnimatable {
 	public float MovementSpeed;
 
 	public enum MovingDirection {
@@ -20,11 +20,11 @@ public class Moveable : MonoBehaviour {
 
 	private MovementController movementController;
 	private GameEntity gameEntity;
-	private AnimationCoordinator animCoordinator;
+	private AnimationsCoordinatorHub animCoordinator;
 
 	void Awake() {
 		this.gameEntity = this.GetComponent<GameEntity>();
-		this.animCoordinator = this.GetComponent<AnimationCoordinator>();
+		this.animCoordinator = this.GetComponent<AnimationsCoordinatorHub>();
 
 		this.movementController = WorldObjectsHelper.getMovementControllerGO().GetComponent<MovementController>();
 		this.movementController.targetTransform = this.transform;
@@ -60,23 +60,20 @@ public class Moveable : MonoBehaviour {
 		currentFacingDirection = newFacingDir;
 	}
 
-	public void HandleMovingAnimation() {
+	public void PlayAnimation() {
 		if (this.gameEntity == null || this.animCoordinator == null) {
 			Debug.LogError("You are trying to animate a Movable GameObject that does not have an animator nor a GameEntity component!! Check if any of those is missing");
 			return;
 		}
-
-		if (this.gameEntity.type == GameEntity.GameEntityType.Player) {
-			this.animCoordinator.PlayAnimation(Animations.PlayerWalk, PlayerAnimations.animParamIsWalking);
-		}
+		this.animCoordinator.PlayAnimation(Animations.Walk, this.gameEntity);
 	}
 
-	public void StopMovingAnimation() {
+	public void StopAnimation() {
 		if (this.gameEntity == null || this.animCoordinator == null) {
 			Debug.LogError("You are trying to animate a Movable GameObject that does not have an animator nor a GameEntity component!! Check if any of those is missing");
 			return;
 		}
 
-		this.animCoordinator.StopCurrentAnimation();
+		this.animCoordinator.StopAnimations();
 	}
 }

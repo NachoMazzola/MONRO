@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerMoveAndPickUpCommand: ICommand {
 
 	private ICommand moveGOCommand;
 	private ICommand putItemInInventoryCommand;
 	private ICommand destroyGOCommand;
-
-	private AnimationCoordinator playerAnimCoordinator;
 
 	private Dictionary<CommandType, bool> commandSteps;
 
@@ -22,7 +21,11 @@ public class PlayerMoveAndPickUpCommand: ICommand {
 
 
 		this.Target = target;
-		this.moveGOCommand = CommandFactory.CreateCommand(CommandType.MoveGameObjectCommandType, this.Target, true);
+		this.moveGOCommand = CommandFactory.CreateCommand(CommandType.MoveGameObjectCommandType, null, false);
+		((MoveGameObjectCommand)this.moveGOCommand).targetObject = WorldObjectsHelper.getPlayerGO();
+		((MoveGameObjectCommand)this.moveGOCommand).targetPosition = this.Target.transform.position;
+		((MoveGameObjectCommand)this.moveGOCommand).movementSpeed = WorldObjectsHelper.getPlayerGO().GetComponent<Moveable>().MovementSpeed;
+
 		this.putItemInInventoryCommand = CommandFactory.CreateCommand(CommandType.PutItemInInventoryCommandType, this.Target, true);
 		this.destroyGOCommand = CommandFactory.CreateCommand(CommandType.DestroyGameObjectCommandType, this.Target, true);
 	}
@@ -38,9 +41,6 @@ public class PlayerMoveAndPickUpCommand: ICommand {
 	}
 
 	public override void Prepare() {
-		this.playerAnimCoordinator = WorldObjectsHelper.getPlayerGO().GetComponent<AnimationCoordinator>();
-		this.playerAnimCoordinator.PlayAnimation(Animations.PlayerWalk, PlayerAnimations.animParamIsWalking);
-
 		this.moveGOCommand.Prepare();
 	}
 
@@ -87,7 +87,9 @@ public class PlayerMoveAndPickUpCommand: ICommand {
 			this.putItemInInventoryCommand.WillStart();
 			this.putItemInInventoryCommand.UpdateCommand();
 
-			this.playerAnimCoordinator.PlayAnimation(Animations.PlayePickUp, PlayerAnimations.animParamIsPickingUp);
+			GameEntity ge = this.Target.GetComponent<GameEntity>();
+			GameObject playerGO = WorldObjectsHelper.getPlayerGO();
+			playerGO.GetComponent<AnimationsCoordinatorHub>().PlayAnimation(Animations.PickUp, ge);
 		}
 
 		if (putItemInInventoryStepFinished && moveGoStepFinished && !destroyGOStepFinished) {

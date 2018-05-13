@@ -3,6 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IAnimatable {
-	Animator GetAnimator();
-	Transform GetTransform();
+	void PlayAnimation();
+	void StopAnimation();
 }

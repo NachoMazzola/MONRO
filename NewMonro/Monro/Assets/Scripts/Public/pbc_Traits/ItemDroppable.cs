@@ -8,4 +8,6 @@ public class ItemDroppable : IMenuRenderableTrait {
 	void Awake() {
 		this.AssociatedMenuCommandType = CommandType.PutItemInInventoryCommandType;
 	}
+
+
 }

@@ -69,11 +69,11 @@ public class TextboxDisplayer : MonoBehaviour, TextBoxDelegate {
 
 	public void startLine() {
 		Talkable t = this.GetComponent<Talkable>();
-		t.HandleTalkingAnimation();
+		t.PlayAnimation();
 	}
 
 	public void finishedLine() {
 		Talkable t = this.GetComponent<Talkable>();
-		t.StopTalkingAnimation();
+		t.StopAnimation();
 	}
 }
