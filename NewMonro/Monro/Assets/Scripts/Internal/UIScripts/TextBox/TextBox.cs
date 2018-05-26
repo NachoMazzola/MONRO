@@ -17,8 +17,10 @@ public class TextBox : MonoBehaviour {
 
 	public float CaptionDurationUntilFade = 3.0f;
 	public float CaptionFadeDuration = 1.5f;
-	public float TextSpeed = 0.025f;
+	public float TextSpeed = 0.0001f;
 	public Color TextColor = Color.black;
+	public int TextSize = 30;
+	public Font Font;
 
 	private bool showingCaption;
 	private IEnumerator hideUICoroutine;
@@ -57,7 +59,9 @@ public class TextBox : MonoBehaviour {
 		PositionateCaptionOverGameObject(fromGO.transform);
 
 		Text theText = this.transform.GetComponentInChildren<Text>();
-		theText.color = TextColor;
+		theText.font = this.Font;
+		theText.color = this.TextColor;
+		theText.fontSize = this.TextSize;
 
 		if (TextSpeed > 0.0f) {
 			// Display the line one character at a time

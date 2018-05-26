@@ -15,7 +15,7 @@ public enum CommandType {
 
 	//Player commands
 	PlayerMoveAndPickUpCommandType,
-	PLayerMoveAndTalkCommand,
+	PLayerMoveAndTalkCommandType,
 
 	unknown
 }
