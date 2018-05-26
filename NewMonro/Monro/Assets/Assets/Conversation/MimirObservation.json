@@ -2,7 +2,7 @@
 	{
 		"title": "Monrjiall.Observation.found",
 		"tags": "",
-		"body": "<<DialogueAction PuzzleManager sawHelmet>>\n[[I found this helmet over by that tree... |Mimir.Observation.helmetAnd]]\n<<DialogueAction PuzzleManager sawShield>>\n[[There is a shield laying over there... |Mimir.Observation.shieldAnd]]\n<<DialogueAction PuzzleManager sawGoblet>>\n[[That goblet there is rather particular .|Mimir.Observation.gobletAnd]]\n<<DialogueAction PuzzleManager sawBranch>>\n[[That branch has caught my attention. |Mimir.Observation.shouldnt]]\n<<DialogueAction PuzzleManager sawBench>>\n[[That bench looks rather odd... |Mimir.Observation.benchAnd]]",
+		"body": "<<DialogueAction PuzzleManager sawHelmet>>\n[[I found this helmet over by that tree... |Mimir.Observation.helmetAnd]]\n<<DialogueAction PuzzleManager sawShield>>\n[[There is a shield laying over there... |Mimir.Observation.shieldAnd]]\n<<DialogueAction PuzzleManager sawGoblet>>\n[[That goblet there is rather particular .|Mimir.Observation.gobletAnd]]\n<<DialogueAction PuzzleManager sawBranch>>\n[[That branch has caught my attention. |Mimir.Observation.shouldnt]]\n<<DialogueAction PuzzleManager sawBench>>\n[[That bench looks rather odd... |Mimir.Observation.benchAnd]]\n[[On second thought, let me look around a bit more. |Monrjiall.Puzzles.trials]]",
 		"position": {
 			"x": 470,
 			"y": 210
@@ -14,8 +14,8 @@
 		"tags": "",
 		"body": "It should not.\n\n[[Monrjiall.Observation.maybe]]",
 		"position": {
-			"x": 214,
-			"y": 464
+			"x": -92,
+			"y": 205
 		},
 		"colorID": 0
 	},
@@ -24,8 +24,8 @@
 		"tags": "",
 		"body": "But maybe it came from a faraway land... \nin an epic journey too big for its little being to comprehend.\n\n[[Mimir.Observation.didNot]]",
 		"position": {
-			"x": 204,
-			"y": 733
+			"x": -363,
+			"y": -41
 		},
 		"colorID": 0
 	},
@@ -34,8 +34,8 @@
 		"tags": "",
 		"body": "It did not.\n\n[[Monrjiall.Observation.travelling]]",
 		"position": {
-			"x": 205,
-			"y": 977
+			"x": -626,
+			"y": -44
 		},
 		"colorID": 0
 	},
@@ -44,8 +44,8 @@
 		"tags": "",
 		"body": "I can see it now, travelling with its partner...\n\n[[Mimir.Observation.stop]]",
 		"position": {
-			"x": 209,
-			"y": 1252
+			"x": -905,
+			"y": 200
 		},
 		"colorID": 0
 	},
@@ -54,18 +54,18 @@
 		"tags": "",
 		"body": "Let me stop you before you go any further. \nThe branch is not from any other realm...\nit will not relate to anything here... \nand it is not what you are looking for.\n\n[[Monrjiall.Observation.believe]]",
 		"position": {
-			"x": 216,
-			"y": 1515
+			"x": -624,
+			"y": 202
 		},
 		"colorID": 0
 	},
 	{
 		"title": "Monrjiall.Observation.believe",
 		"tags": "",
-		"body": "Don’t listen to him little branch! I believe in you!\r\n\r\n[[Monrjiall.Observation.found]]\r\n",
+		"body": "Don’t listen to him, little branch! I believe in you!\r\n\r\n[[Monrjiall.Observation.found]]\r\n",
 		"position": {
-			"x": 477,
-			"y": 1511
+			"x": -359,
+			"y": 206
 		},
 		"colorID": 0
 	},
@@ -112,7 +112,7 @@
 	{
 		"title": "Mimir.Observation.hsrealm",
 		"tags": "",
-		"body": "Unfortunately, those don’t seem to have come from a different realm. \nThey are very logical items to find in a battlefield. \nKeep looking, you were very close this time.\n\n[[Monrjiall.Observation.close]]",
+		"body": "Unfortunately, those don’t seem to have come from any other place. \nThey are very logical items to find in a battlefield.\nKeep looking, you were very close this time.\n\n[[Monrjiall.Observation.close]]",
 		"position": {
 			"x": 210,
 			"y": -300
@@ -144,8 +144,8 @@
 		"tags": "",
 		"body": "That’s easy. \nThat branch was clearly broken by that helmet... \nas the warrior wearing it fell from the top of the tree.\n\n[[Mimir.Observation.climb]]",
 		"position": {
-			"x": 220,
-			"y": -829
+			"x": 209,
+			"y": -821
 		},
 		"colorID": 0
 	},
@@ -154,8 +154,8 @@
 		"tags": "",
 		"body": "Why would the warrior be up there? Vikings don’t climb.\n\n[[Monrjiall.Observation.climber]]",
 		"position": {
-			"x": -107,
-			"y": -559
+			"x": -99,
+			"y": -551
 		},
 		"colorID": 0
 	},
@@ -172,7 +172,7 @@
 	{
 		"title": "Mimir.Observation.notItems",
 		"tags": "",
-		"body": "I have so many questions right now. \r\nRegardless, those are not the items I was referring to. \r\nLet’s suppose they are related somehow... \r\nthey do not belong to any other realms but this one.\r\n\r\n[[Monrjiall.Observation.tie]]",
+		"body": "I have so many questions right now. \r\nRegardless, those are not the items I was referring to. \r\nLet’s suppose they are related somehow... \r\nthey do not belong to any other place but here.\r\n\r\n[[Monrjiall.Observation.tie]]",
 		"position": {
 			"x": -95,
 			"y": -36
@@ -185,7 +185,7 @@
 		"body": "Alright, we’ll call this one a stalemate.\n\n[[Monrjiall.Observation.found]]",
 		"position": {
 			"x": 214,
-			"y": 212
+			"y": 205
 		},
 		"colorID": 0
 	},
@@ -216,6 +216,466 @@
 		"position": {
 			"x": 719,
 			"y": -28
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.shrelated",
+		"tags": "",
+		"body": "Ah, yes, partially, a warrior’s equipment. \nMost likely related to each other.\n\n[[Monrjiall.Observation.impressive]]",
+		"position": {
+			"x": 718,
+			"y": -299
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.impressive",
+		"tags": "",
+		"body": "That’s some impressive observation, right?\n\n[[Mimir.Observation.mostly]]",
+		"position": {
+			"x": 972,
+			"y": -554
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.mostly",
+		"tags": "",
+		"body": "Mostly, but in this case, not enough. \nThose two may be related, but they also belong to this realm...\nAnd even to this particular battlefield. \nYou should keep looking.\n\n[[Monrjiall.Observation.notOver]]",
+		"position": {
+			"x": 729,
+			"y": -823
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.notOver",
+		"tags": "",
+		"body": "This is not over, head.\n\n[[Monrjiall.Observation.found]]",
+		"position": {
+			"x": 480,
+			"y": -1065
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.accurate",
+		"tags": "",
+		"body": "I suppose that’s accurate, but..\r\n\r\n[[Monrjiall.Observation.tired]]",
+		"position": {
+			"x": 961,
+			"y": -33
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.tired",
+		"tags": "",
+		"body": "And people sit when they are tired.\n\n[[Mimir.Observation.yesBut]]",
+		"position": {
+			"x": 963,
+			"y": -302
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.yesBut",
+		"tags": "",
+		"body": "Yes, but...\n\n[[Monrjiall.Observation.youAsk]]",
+		"position": {
+			"x": 1207,
+			"y": -303
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.youAsk",
+		"tags": "",
+		"body": "And what makes people tired, you ask?\n\n[[Mimir.Observation.IDoNot]]",
+		"position": {
+			"x": 1209,
+			"y": -556
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.IDoNot",
+		"tags": "",
+		"body": "No, I do not, in fact...\n\n[[Monrjiall.Observation.precisely]]",
+		"position": {
+			"x": 1211,
+			"y": -826
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.precisely",
+		"tags": "",
+		"body": "Precisely, lifting heavy objects. Such as?\n\n[[Mimir.Observation.resignation]]",
+		"position": {
+			"x": 975,
+			"y": -825
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.resignation",
+		"tags": "",
+		"body": "*sigh* A shield?\n\n[[Monrjiall.Observation.shieldIndeed]]",
+		"position": {
+			"x": 977,
+			"y": -1059
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.shieldIndeed",
+		"tags": "",
+		"body": "A SHIELD INDEED!\n\n[[Mimir.Observation.silence]]",
+		"position": {
+			"x": 725,
+			"y": -1061
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.silence",
+		"tags": "",
+		"body": "...\n\n[[Monrjiall.Observation.silence]]",
+		"position": {
+			"x": 977,
+			"y": -1287
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.silence",
+		"tags": "",
+		"body": "...\n\n[[Mimir.Observation.yourLogic]]",
+		"position": {
+			"x": 727,
+			"y": -1287
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.yourLogic",
+		"tags": "",
+		"body": "Well, although your logic is not technically flawed... \nThe shield is not from any other realm but this. \nTry to find something else.\n\n[[Monrjiall.Observation.impeccable]]",
+		"position": {
+			"x": 725,
+			"y": -1537
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.impeccable",
+		"tags": "",
+		"body": "All I heard was that I have impeccable logic.\n\n[[Mimir.Observation.notEven]]",
+		"position": {
+			"x": 481,
+			"y": -1536
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.notEven",
+		"tags": "",
+		"body": "That’s not even... *sigh*\n\n[[Monrjiall.Observation.found]]",
+		"position": {
+			"x": 481,
+			"y": -1290
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.twoItems",
+		"tags": "",
+		"body": "Yes, but you need to find two items related to each other, remember? \nItems that do not belong here.\n\n[[Monrjiall.Observation.distracted]]\n\n",
+		"position": {
+			"x": 1208,
+			"y": -35
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.distracted",
+		"tags": "",
+		"body": "...\n\n[[Mimir.Observation.attention]]",
+		"position": {
+			"x": 1454,
+			"y": -303
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.attention",
+		"tags": "",
+		"body": "Monrjiall?\n\n[[Monrjiall.Observation.thinking]]",
+		"position": {
+			"x": 1691,
+			"y": -37
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.thinking",
+		"tags": "",
+		"body": "Sorry, I was thinking of the shield. \nWhat was it you were saying?\n\n[[Mimir.Observation.nothing]]",
+		"position": {
+			"x": 1449,
+			"y": -34
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.nothing",
+		"tags": "",
+		"body": "Nevermind, just keep looking.\n\n[[Monrjiall.Observation.found]]",
+		"position": {
+			"x": 1206,
+			"y": 208
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.gobletAnd",
+		"tags": "",
+		"body": "It rather is. \nDid you find anything else?\n\n[[Monrjiall.Observation.gobletOptions]]",
+		"position": {
+			"x": 719,
+			"y": 207
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.gobletOptions",
+		"tags": "",
+		"body": "<<DialogueAction PuzzleManager $sawBench>>\n[[I’m still looking for ale to fill it with, so I can sit on that bench to enjoy it. |Mimir.Observation.benchPrecisely]]\n<<DialogueAction PuzzleManager $sawShield>>\n[[I think that shield is connected to the goblet somehow. |Mimir.Observation.howShield]]\n[[Yes, a sudden craving for a good cup of mead. |Mimir.Observation.material]]",
+		"position": {
+			"x": 963,
+			"y": 206
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.benchPrecisely",
+		"tags": "",
+		"body": "The bench! Precisely! \r\nThose two clearly come from some sort of feast... \r\nAnd do not belong in this battlefield. \r\nCongratulations, Monrjiall! \r\nI believe you have proven your observation skills to be more than decent.\r\n\r\n[[Monrjiall.Observation.notAccept]]\r\n",
+		"position": {
+			"x": 1207,
+			"y": 435
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.notAccept",
+		"tags": "",
+		"body": "<<set $puzzle3complete to true>>\r\nI will accept no congratulations until I find that ale.\r\n\r\n[[Monrjiall.Puzzles.trials]]\r\n\r\n",
+		"position": {
+			"x": 1446,
+			"y": 205
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.howShield",
+		"tags": "",
+		"body": "How do you mean?\n\n[[Monrjiall.Observation.defend]]",
+		"position": {
+			"x": 963,
+			"y": 436
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.defend",
+		"tags": "",
+		"body": "Well, I have used a shield to defend my ale more than once. \nIt is a logical consequence to think that is what happened here.\n\n[[Mimir.Observation.drinkShield]]",
+		"position": {
+			"x": 1209,
+			"y": 666
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.drinkShield",
+		"tags": "",
+		"body": "Even if bringing your drinks to a battlefield were something people did...\r\nI believe that shield is right where it belongs. \r\nIt did not come from any other realm.\r\n\r\n[[Monrjiall.Observation.feelBad]]\r\n",
+		"position": {
+			"x": 1442,
+			"y": 432
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.feelBad",
+		"tags": "",
+		"body": "I still feel bad for the poor fellow who must have dropped his drink... \r\nWithout a shield to protect it.\r\n\r\n[[Monrjiall.Observation.found]]",
+		"position": {
+			"x": 1692,
+			"y": 208
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.material",
+		"tags": "",
+		"body": "I meant something material. \r\nAnother item related to the goblet.\r\n\r\n[[Monrjiall.Observation.nothingNo]]",
+		"position": {
+			"x": 959,
+			"y": 669
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.nothingNo",
+		"tags": "",
+		"body": "Oh, no, nothing of the sort. \nI’ll keep looking.\n\n[[Monrjiall.Observation.found]]",
+		"position": {
+			"x": 959,
+			"y": 924
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.material",
+		"tags": "",
+		"body": "I meant something material. \nAnother item related to the goblet.\n\n[[Monrjiall.Observation.nothingKeep]]",
+		"position": {
+			"x": 720,
+			"y": 435
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.nothingKeep",
+		"tags": "",
+		"body": "Oh, no, nothing of the sort. \nI’ll keep looking.\n\n[[Monrjiall.Observation.found]]",
+		"position": {
+			"x": 720,
+			"y": 665
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.benchOptions",
+		"tags": "",
+		"body": "<<DialogueAction PuzzleManager $sawHelmet>>\n[[Well, if benches are falling out of the sky... |Monrjiall.Observation.goodThing]]\n<<DialogueAction PuzzleManager $sawGoblet>>\n[[Well, it would be a nice place to enjoy a drink in that goblet over there. |Mimir.Observation.gobletPrecisely]]\n[[Yes, the dust sitting on top of it. Clearly not mountain dust. |Mimir.Observation.prettyClean]]",
+		"position": {
+			"x": -92,
+			"y": 441
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.benchAnd",
+		"tags": "",
+		"body": "It does indeed, anything else?\n\n[[Monrjiall.Observation.benchOptions]]\n\n",
+		"position": {
+			"x": 202,
+			"y": 435
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.goodThing",
+		"tags": "",
+		"body": "...it’s a good thing I have a... \n...helmet.. \nTHAT’S IT!\n\n[[Mimir.Observation.noItsNot]]",
+		"position": {
+			"x": -356,
+			"y": 437
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.noItsNot",
+		"tags": "",
+		"body": "No, it's not.\n\n[[Monrjiall.Observation.rainingBenches]]",
+		"position": {
+			"x": -624,
+			"y": 437
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.rainingBenches",
+		"tags": "",
+		"body": "This bench comes from a realm where people use helmets against raining benches!\n\n[[Mimir.Observation.disappointing]]",
+		"position": {
+			"x": -908,
+			"y": 440
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.disappointing",
+		"tags": "",
+		"body": "Sorry for disappointing you... \n...but even though the bench most certainly came from a different realm... \n...the helmet did not, and they are most definitely not related at all.\n\n[[Monrjiall.Observation.stillGlad]]",
+		"position": {
+			"x": -1180,
+			"y": 448
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.stillGlad",
+		"tags": "",
+		"body": "I’m still glad I have my helmet on.\n\n[[Monrjiall.Observation.found]]",
+		"position": {
+			"x": -1180,
+			"y": 197
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.gobletPrecisely",
+		"tags": "",
+		"body": "Precisely. Those two are clearly the items I mentioned earlier! \nCongratulations, Monrjiall, you have noteworthy observation skills, indeed.\n\n[[Monrjiall.Observation.whyThanks]]",
+		"position": {
+			"x": -367,
+			"y": 669
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.whyThanks",
+		"tags": "",
+		"body": "<<set $puzzle3complete to true>>\n\nWhy, thank you! \nWhat items?\n\n[[Monrjiall.Puzzles.trials]]",
+		"position": {
+			"x": -626,
+			"y": 672
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Observation.thenNo",
+		"tags": "",
+		"body": "Ok, then no, nothing else.\n\n[[Mimir.Observation.gettingClose]]",
+		"position": {
+			"x": 201,
+			"y": 677
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.prettyClean",
+		"tags": "",
+		"body": "There’s no such thing as mountain dust. \nAnd I can see from here that, aside from leaves and muddy snow on its legs... \n...the bench is pretty clean.\n\n[[Monrjiall.Observation.thenNo]]\n",
+		"position": {
+			"x": -94,
+			"y": 675
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.gettingClose",
+		"tags": "",
+		"body": "Well, keep looking, you are getting close.\n\n[[Monrjiall.Observation.found]]",
+		"position": {
+			"x": 462,
+			"y": 673
 		},
 		"colorID": 0
 	}
