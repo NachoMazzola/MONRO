@@ -11,12 +11,12 @@ public class VerbsButtonPanelHandler : MonoBehaviour {
 	public Color SelectedColor;
 	public Color UnselectedColor;
 
-	private Button lookAtButton;
-	private Button talkToButton;
-	private Button pickUpButton;
+	private Transform lookAtButtonPanel;
+	private Transform talkToButtonPanel;
+	private Transform pickUpButtonPanel;
 	private Button useButton;
 
-	private Button currentSelected;
+	private Transform currentSelected;
 
 	private PlayerCommandBuilder uiCommandBuilder;
 
@@ -26,39 +26,42 @@ public class VerbsButtonPanelHandler : MonoBehaviour {
 
 		this.ResetButtons();
 
-		this.lookAtButton = this.transform.Find("Look At").GetComponent<Button>();
-		this.talkToButton = this.transform.Find("Talk To").GetComponent<Button>();
-		this.pickUpButton = this.transform.Find("Pick Up").GetComponent<Button>();
-		this.useButton = this.transform.Find("Use").GetComponent<Button>();
+		this.lookAtButtonPanel = this.transform.Find("Look At");
+		this.talkToButtonPanel = this.transform.Find("Talk To");
+		this.pickUpButtonPanel = this.transform.Find("Pick Up");
+		this.useButton = this.transform.Find("Use").GetComponentInChildren<Button>();
 	}
 
 	public void CreateLookAtCommand() {
-		if (this.currentSelected == this.lookAtButton) {
+		Button lookAtButton = this.lookAtButtonPanel.GetComponentInChildren<Button>();
+		if (this.currentSelected == lookAtButton) {
 			this.ResetButtons();
 			return;
 		}
 
-		this.SetButtonAsSelected(this.lookAtButton, true);
+		this.SetButtonAsSelected(this.lookAtButtonPanel, true);
 		this.uiCommandBuilder.CreateLookAtCommand();
 	}
 
 	public void CreateTalkToCommand() {
-		if (this.currentSelected == this.talkToButton) {
+		Button talkToButton = this.talkToButtonPanel.GetComponentInChildren<Button>();
+		if (this.currentSelected == talkToButton) {
 			this.ResetButtons();
 			return;
 		}
 
-		this.SetButtonAsSelected(this.talkToButton, true);
+		this.SetButtonAsSelected(this.talkToButtonPanel, true);
 		this.uiCommandBuilder.CreateTalkToCommand();
 	}
 
 	public void CreatePickUpCommand() {
-		if (this.currentSelected == this.pickUpButton) {
+		Button pickUp = this.pickUpButtonPanel.GetComponentInChildren<Button>();
+		if (this.currentSelected == pickUp) {
 			this.ResetButtons();
 			return;
 		}
 
-		this.SetButtonAsSelected(this.pickUpButton, true);
+		this.SetButtonAsSelected(this.pickUpButtonPanel, true);
 		this.uiCommandBuilder.CreatePickUpCommand();
 	}
 
@@ -71,20 +74,20 @@ public class VerbsButtonPanelHandler : MonoBehaviour {
 
 		for (int i = 0; i <  this.gameObject.transform.childCount; i++) {
 			Transform childTransform = this.gameObject.transform.GetChild(i);
-			Button button = childTransform.GetComponent<Button>();
-			Text buttonText = button.transform.GetChild(0).GetComponent<Text>();
+			//Button button = childTransform.GetComponentInChildren<Button>();
+			Text buttonText = childTransform.GetComponentInChildren<Text>();
 			buttonText.color = this.UnselectedColor;
 			buttonText.fontStyle = FontStyle.Normal;
 		}
 	}
 
-	private void SetButtonAsSelected(Button button, bool selected) {
+	private void SetButtonAsSelected(Transform buttonPanel, bool selected) {
 		this.ResetButtons();
 
-		Text buttonText = button.transform.GetChild(0).GetComponent<Text>();
+		Text buttonText = buttonPanel.GetComponentInChildren<Text>();
 		buttonText.color = selected ? this.SelectedColor : this.UnselectedColor;
 		buttonText.fontStyle = selected ? FontStyle.Italic : FontStyle.Normal;
 
-		this.currentSelected = button;
+		this.currentSelected = buttonPanel;
 	}
 }
