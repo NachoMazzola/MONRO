@@ -10,10 +10,18 @@ public class GameEntity : MonoBehaviour {
 		NPC,
 		InteractiveObject,
 		InventoryItem,
-		WorldItem
+		WorldItem,
+		unknown
 	}
 
-	public GameEntityType type;
+	public enum SubGameEntityType {
+		NPC_Hildr,
+		NPC_Mimir,
+		unknown
+	}
+
+	public GameEntityType type = GameEntityType.unknown;
+	public SubGameEntityType subType = SubGameEntityType.unknown;
 
 	public string ID;
 }

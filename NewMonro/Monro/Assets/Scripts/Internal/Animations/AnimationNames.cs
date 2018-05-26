@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum Animations {
-	PlayerNone,
-	PlayerWakeUp, //this is just the beginning state of the intro cutscene
-	PlayerIdle,
-	PlayerWalk,
-	PlayePickUp,
-	PlayerTalk,
+	WakeUp, //this is just the beginning state of the intro cutscene
+	Idle,
+	Walk,
+	PickUp,
+	Talk,
 
 	UnknownAnim
 

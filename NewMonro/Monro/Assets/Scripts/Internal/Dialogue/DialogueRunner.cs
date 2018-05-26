@@ -83,11 +83,6 @@ namespace Yarn.Unity
 		}
 
 		public void DialogueComplete() {
-			foreach (Transform t in conversationParticipants) {
-				Character conversationInterface = t.GetComponent<Character>();
-				conversationInterface.ResetState();
-			}
-
 			conversationParticipants.RemoveRange(0, conversationParticipants.Count-1);
 		}
 		/*

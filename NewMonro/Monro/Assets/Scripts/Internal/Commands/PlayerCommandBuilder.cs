@@ -34,9 +34,7 @@ public class PlayerCommandBuilder {
 		
 		if (this.uiType == UIType.VerbsPanel) {
 			List<CommandType> commands = new List<CommandType>();
-			commands.Add(CommandType.MoveGameObjectCommandType);
-			commands.Add(CommandType.TalkCommandType);
-
+			commands.Add(CommandType.PLayerMoveAndTalkCommand);
 			WorldInteractionController.getComponent().commandQueue = commands;	
 		}
 		else {

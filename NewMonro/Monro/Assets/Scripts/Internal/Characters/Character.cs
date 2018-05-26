@@ -3,7 +3,7 @@ using System.Collections;
 using System.Text;
 using UnityEngine.UI;
 
-public class Character : MonoBehaviour, IWorldInteractionObserver, IAnimatable {
+public class Character : MonoBehaviour, IWorldInteractionObserver {
 
 	public enum MovingDirection
 	{
