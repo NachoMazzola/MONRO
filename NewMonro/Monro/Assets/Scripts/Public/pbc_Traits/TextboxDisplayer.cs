@@ -38,12 +38,14 @@ public class TextboxDisplayer : MonoBehaviour, TextBoxDelegate {
 	void Update () {
 	}
 
-	public void ShowCaption() {
+	public bool ShowCaption() {
 		if (this.lookable == null) {
-			return;
+			return false;
 		}
 		this.hasFinishedCaptionDisplay = false;
 		StartCoroutine(AddActionOnFinishAfterCoroutine(this.ShowCaption(this.lookable.Caption)));
+
+		return true;
 	}
 
 	public IEnumerator AddActionOnFinishAfterCoroutine(IEnumerator coroutineToWait) {

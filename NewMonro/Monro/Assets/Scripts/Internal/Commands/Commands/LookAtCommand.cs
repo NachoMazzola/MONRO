@@ -46,7 +46,10 @@ public class LookAtCommand : ICommand {
 
 	public override void WillStart() {
 		this.textBoxDisplayerComponent.lookable = this.lookableComponent;
-		this.textBoxDisplayerComponent.ShowCaption();
+		if (!this.textBoxDisplayerComponent.ShowCaption()) {
+			Debug.Log("WARNING! LOOK AT ABORTED, " + this.whoLooks + " IS NOT LOOkABLE");
+			this.finished = true;
+		}
 	}
 
 	public override void UpdateCommand () {

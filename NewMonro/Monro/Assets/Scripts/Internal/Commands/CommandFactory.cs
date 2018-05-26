@@ -90,7 +90,7 @@ public class CommandFactory {
 		case CommandType.PlayerMoveAndPickUpCommandType:
 			return new PlayerMoveAndPickUpCommand(target);
 
-		case CommandType.PLayerMoveAndTalkCommand:
+		case CommandType.PLayerMoveAndTalkCommandType:
 			return new PlayerMoveAndTalkCommand(target);
 
 		case CommandType.unknown:
