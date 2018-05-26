@@ -522,30 +522,10 @@
 	{
 		"title": "Mimir.Observation.material",
 		"tags": "",
-		"body": "I meant something material. \r\nAnother item related to the goblet.\r\n\r\n[[Monrjiall.Observation.nothingNo]]",
-		"position": {
-			"x": 959,
-			"y": 669
-		},
-		"colorID": 0
-	},
-	{
-		"title": "Monrjiall.Observation.nothingNo",
-		"tags": "",
-		"body": "Oh, no, nothing of the sort. \nI’ll keep looking.\n\n[[Monrjiall.Observation.found]]",
-		"position": {
-			"x": 959,
-			"y": 924
-		},
-		"colorID": 0
-	},
-	{
-		"title": "Mimir.Observation.material",
-		"tags": "",
 		"body": "I meant something material. \nAnother item related to the goblet.\n\n[[Monrjiall.Observation.nothingKeep]]",
 		"position": {
-			"x": 720,
-			"y": 435
+			"x": 961,
+			"y": 665
 		},
 		"colorID": 0
 	},
@@ -554,8 +534,8 @@
 		"tags": "",
 		"body": "Oh, no, nothing of the sort. \nI’ll keep looking.\n\n[[Monrjiall.Observation.found]]",
 		"position": {
-			"x": 720,
-			"y": 665
+			"x": 728,
+			"y": 435
 		},
 		"colorID": 0
 	},
@@ -674,8 +654,8 @@
 		"tags": "",
 		"body": "Well, keep looking, you are getting close.\n\n[[Monrjiall.Observation.found]]",
 		"position": {
-			"x": 462,
-			"y": 673
+			"x": 476,
+			"y": 446
 		},
 		"colorID": 0
 	}
