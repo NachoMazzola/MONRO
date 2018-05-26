@@ -50,7 +50,10 @@ public class PlayerMoveAndTalkCommand : ICommand {
 	}
 
 	public override void UpdateCommand () {
-		this.moveGOCommand.UpdateCommand();
+		if (!this.moveGOCommand.Finished()) {
+			this.moveGOCommand.UpdateCommand();	
+		}
+
 		this.CheckForCommandStepsStates();
 		this.UpdateCommands();
 	}

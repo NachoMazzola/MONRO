@@ -66,7 +66,7 @@ public class TalkCommand : ICommand {
 			foreach (GameObject t in this.conversationParticipants) {
 				Talkable talkable = t.GetComponent<Talkable>();
 				if (talkable != null) {
-					talkable.StopAnimation();	
+					talkable.StopAnimation();
 				}
 			}
 		}

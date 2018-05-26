@@ -12,8 +12,11 @@ public class PlayerMoveAndPickUpCommand: ICommand {
 	private Dictionary<CommandType, bool> commandSteps;
 
 	public GameObject Target;
+	private GameObject playerGO;
 
 	public PlayerMoveAndPickUpCommand(GameObject target) {
+		this.playerGO = WorldObjectsHelper.getPlayerGO();
+
 		this.commandSteps = new Dictionary<CommandType, bool>();
 		this.commandSteps.Add(CommandType.MoveGameObjectCommandType, false);
 		this.commandSteps.Add(CommandType.PutItemInInventoryCommandType, false);
@@ -22,9 +25,9 @@ public class PlayerMoveAndPickUpCommand: ICommand {
 
 		this.Target = target;
 		this.moveGOCommand = CommandFactory.CreateCommand(CommandType.MoveGameObjectCommandType, null, false);
-		((MoveGameObjectCommand)this.moveGOCommand).targetObject = WorldObjectsHelper.getPlayerGO();
+		((MoveGameObjectCommand)this.moveGOCommand).targetObject = this.playerGO;
 		((MoveGameObjectCommand)this.moveGOCommand).targetPosition = this.Target.transform.position;
-		((MoveGameObjectCommand)this.moveGOCommand).movementSpeed = WorldObjectsHelper.getPlayerGO().GetComponent<Moveable>().MovementSpeed;
+		((MoveGameObjectCommand)this.moveGOCommand).movementSpeed = this.playerGO.GetComponent<Moveable>().MovementSpeed;
 
 		this.putItemInInventoryCommand = CommandFactory.CreateCommand(CommandType.PutItemInInventoryCommandType, this.Target, true);
 		this.destroyGOCommand = CommandFactory.CreateCommand(CommandType.DestroyGameObjectCommandType, this.Target, true);
@@ -87,9 +90,8 @@ public class PlayerMoveAndPickUpCommand: ICommand {
 			this.putItemInInventoryCommand.WillStart();
 			this.putItemInInventoryCommand.UpdateCommand();
 
-			GameEntity ge = this.Target.GetComponent<GameEntity>();
-			GameObject playerGO = WorldObjectsHelper.getPlayerGO();
-			playerGO.GetComponent<AnimationsCoordinatorHub>().PlayAnimation(Animations.PickUp, ge);
+			GameEntity ge = playerGO.GetComponent<GameEntity>();
+			this.playerGO.GetComponent<AnimationsCoordinatorHub>().PlayAnimation(Animations.PickUp, ge);
 		}
 
 		if (putItemInInventoryStepFinished && moveGoStepFinished && !destroyGOStepFinished) {
