@@ -105,29 +105,13 @@ public class TextBox : MonoBehaviour {
 	public void PositionateCaptionOverGameObject(Transform overGameObject) {
 		SpriteRenderer spRenderer = overGameObject.GetComponent<SpriteRenderer>();
 		Sprite theSprite = spRenderer.sprite;
-		Bounds spBounds = theSprite.bounds;
-
 		Vector2 sprite_size = theSprite.rect.size;
-		Vector2 local_sprite_size = sprite_size / theSprite.pixelsPerUnit;
 
-		Vector3 transformPos = overGameObject.transform.localPosition;
 		Vector3 gameObjectPosToScreen = Camera.main.WorldToScreenPoint(overGameObject.position);
-		Vector3 pos = new Vector3(gameObjectPosToScreen.x, gameObjectPosToScreen.y + local_sprite_size.y*overGameObject.transform.localScale.y, gameObjectPosToScreen.z);
+		Vector3 pos = new Vector3(gameObjectPosToScreen.x, gameObjectPosToScreen.y + (sprite_size.y/2)*overGameObject.transform.localScale.y, gameObjectPosToScreen.z);
 
 		Transform panelTransform = (RectTransform)this.gameObject.transform.GetChild (0);
 		panelTransform.position = pos;
-
-//		Transform textBoxPosition = overGameObject.transform.Find("TextBoxPosition");
-//		Transform panelTransform = (RectTransform)this.gameObject.transform.GetChild (0);
-//		if (textBoxPosition) {
-//			Vector2 gameObjectPosToScreen = Camera.main.WorldToScreenPoint(textBoxPosition.position);
-//			panelTransform.position = gameObjectPosToScreen;
-//		}
-//		else {
-//			Debug.Log("WARNING: Caption Caller does not have sprite! - Positioning textbox at 0,0");
-//			Vector2 gameObjectPosToScreen = Camera.main.WorldToScreenPoint(overGameObject.position);
-//			panelTransform.position = gameObjectPosToScreen;
-//		}
 	}
 
 	public IEnumerator HideTalkUI (GameObject guiParentCanvas, float secondsToWait, Text textToFade)

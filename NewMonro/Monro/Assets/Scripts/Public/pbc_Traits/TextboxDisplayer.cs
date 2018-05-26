@@ -8,6 +8,11 @@ public class TextboxDisplayer : MonoBehaviour, TextBoxDelegate {
 
 	public Transform Textbox;
 	public Color TextColor = Color.black;
+	public float TextSpeed = 0.0001f;
+	public int TextSize = 30;
+	public Font Font;
+
+
 
 	[HideInInspector]
 	public Transform instanciatedTextbox;
@@ -59,6 +64,8 @@ public class TextboxDisplayer : MonoBehaviour, TextBoxDelegate {
 		TextBox pCaption = this.instanciatedTextbox.GetComponent<TextBox>();
 		pCaption.tbDelegate = this;
 		pCaption.TextColor = this.TextColor;
+		pCaption.Font = this.Font;
+		pCaption.TextSize = this.TextSize;
 		return pCaption.ShowCaptionFromGameObject(caption, this.gameObject, true, removalMode);
 	}
 
