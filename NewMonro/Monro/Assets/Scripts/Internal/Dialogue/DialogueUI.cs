@@ -22,7 +22,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 	private float optionButtonYDisplacement;
 	private int inactiveButtons;
-	private GameObject conversationOptionsPanel;
+	private Transform conversationOptionsPanel;
 
 	private Talkable lastOneWhoTalked;
 	private Talkable whoIsTalking;
@@ -33,8 +33,8 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 	{
 
 		dialogRunner = FindObjectOfType<DialogueRunner> ();
-		conversationOptionsPanel = WorldObjectsHelper.getUIGO();
-		conversationOptionsPanel.SetActive (false);
+		conversationOptionsPanel = WorldObjectsHelper.getUIGO().transform.Find("ConversationOptionsPanel").transform;
+		conversationOptionsPanel.gameObject.SetActive (false);
 
 
 		foreach (Button optionButton in optionButtons) {
@@ -196,10 +196,8 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 		GameObject inventoryGO = WorldObjectsHelper.GetBottomPanelUIGO();
 		if (inventoryGO != null) {
 			inventoryGO.SetActive(true);
+			WorldObjectsHelper.VerbsPanelUIGO().GetComponent<VerbsButtonPanelHandler> ().ResetButtons ();	
 		}
-
-		conversationOptionsPanel.gameObject.SetActive (true);
-		WorldObjectsHelper.VerbsPanelUIGO().GetComponent<VerbsButtonPanelHandler> ().ResetButtons ();	
 
 		yield break;
 	}

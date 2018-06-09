@@ -126,8 +126,8 @@ public class WorldInteractionController: MonoBehaviour
 				}
 			}
 		} else {
-			GameObject ui = WorldObjectsHelper.getUIGO();
-			if (ui.activeInHierarchy) {
+			GameObject inventoryGO = WorldObjectsHelper.GetBottomPanelUIGO();
+			if (inventoryGO.activeInHierarchy) {
 				WorldObjectsHelper.VerbsPanelUIGO().GetComponent<VerbsButtonPanelHandler> ().ResetButtons ();	
 			}
 		}
