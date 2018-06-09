@@ -96,8 +96,6 @@ public class WorldInteractionController: MonoBehaviour
 						
 					}
 
-
-
 					CommandManager.getComponent ().target = collider.gameObject;
 
 					ICommand currentCommand = null;
@@ -128,7 +126,10 @@ public class WorldInteractionController: MonoBehaviour
 				}
 			}
 		} else {
-			WorldObjectsHelper.VerbsPanelUIGO ().GetComponent<VerbsButtonPanelHandler> ().ResetButtons ();
+			GameObject ui = WorldObjectsHelper.getUIGO();
+			if (ui.activeInHierarchy) {
+				WorldObjectsHelper.VerbsPanelUIGO().GetComponent<VerbsButtonPanelHandler> ().ResetButtons ();	
+			}
 		}
 	}
 
