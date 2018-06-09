@@ -136,13 +136,6 @@ public class WorldInteractionController: MonoBehaviour
 
 
 
-
-
-
-
-
-
-
 	/// <summary>
 	/// Old SHIT
 	/// </summary>

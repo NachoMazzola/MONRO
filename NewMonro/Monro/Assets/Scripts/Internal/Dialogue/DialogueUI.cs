@@ -199,6 +199,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 			WorldObjectsHelper.VerbsPanelUIGO().GetComponent<VerbsButtonPanelHandler> ().ResetButtons ();	
 		}
 
+
 		yield break;
 	}
 
