@@ -2,9 +2,9 @@
 	{
 		"title": "Hildr.Intro.Start1",
 		"tags": "",
-		"body": "<<if $introFinished is false>>\nValiant warrior! \nI ask you your name...\n...so that I may know who it is that has been so wrongfully cheated.\n\n[[Monrjiall.Intro.response]]\n\n<<else>>\n[[Hildr.Answer.Second]]\n<<endif>>\n\n",
+		"body": "<<if $introFinished is false>>\nValiant warrior! \nI ask you your name...\n...so that I may know who it is that has been so wrongfully cheated.\n\n[[Hildr.Quest.LookAround]]\n\n<<else>>\n[[Hildr.Answer.Second]]\n<<endif>>\n\n",
 		"position": {
-			"x": 633,
+			"x": 634,
 			"y": 632
 		},
 		"colorID": 0
