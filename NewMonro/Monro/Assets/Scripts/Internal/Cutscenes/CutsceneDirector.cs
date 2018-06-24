@@ -44,21 +44,21 @@ public class CutsceneDirector: MonoBehaviour {
 		dialogueCommand2.Prepare();
 
 
-		GameObject testNPC = WorldObjectsHelper.getInteractiveObject("VK");
-		Transform targetR = WorldObjectsHelper.getPlayerGO().transform;
-		Vector3 targetP = targetR.position;//Camera.main.WorldToScreenPoint(targetR.position);
-
-		Vector2 testTargetPos = new Vector2(targetP.x - 10, WorldObjectsHelper.getPlayerGO().transform.position.y);
-		MoveGameObjectCommand moveGoCommand = new MoveGameObjectCommand(WorldObjectsHelper.getPlayerGO(), testTargetPos, 4);
-		moveGoCommand.Prepare();
-
+//		GameObject testNPC = WorldObjectsHelper.getInteractiveObject("VK");
+//		Transform targetR = WorldObjectsHelper.getPlayerGO().transform;
+//		Vector3 targetP = targetR.position;//Camera.main.WorldToScreenPoint(targetR.position);
+//
+//		Vector2 testTargetPos = new Vector2(targetP.x - 10, WorldObjectsHelper.getPlayerGO().transform.position.y);
+//		MoveGameObjectCommand moveGoCommand = new MoveGameObjectCommand(WorldObjectsHelper.getPlayerGO(), testTargetPos, 4);
+//		moveGoCommand.Prepare();
+//
 
 		this.QueueCutsceneCommand(moveCamera);
 		this.QueueCutsceneCommand(animateCommand);
 		this.QueueCutsceneCommand(dialogueCommand);
 		this.QueueCutsceneCommand(changeSpriteCommand);
 		this.QueueCutsceneCommand(dialogueCommand2);
-		this.QueueCutsceneCommand(moveGoCommand);
+		//this.QueueCutsceneCommand(moveGoCommand);
 	}
 
 	public void QueueCutsceneCommand(ICommand command) {

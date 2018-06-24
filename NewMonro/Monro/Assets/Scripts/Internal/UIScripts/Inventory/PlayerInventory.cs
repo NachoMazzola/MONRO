@@ -27,7 +27,7 @@ public class PlayerInventory : MonoBehaviour {
 		//TODO: UPDATE THIS TO USE ADD ITEM TO INVENTORY COMMAND
 
 		GameObject inv = WorldObjectsHelper.getUIInventoryGO();
-		UIInventory uiInventory = inv.gameObject.GetComponent<UIInventory>();
+		//UIInventory uiInventory = inv.gameObject.GetComponent<UIInventory>();
 
 		DBAccess dataBase = DBAccess.getComponent();
 		if (dataBase) {
@@ -36,7 +36,7 @@ public class PlayerInventory : MonoBehaviour {
 				if (d.Used == false) {
 					DBItem it = dataBase.itemsDataBase.GetItemById(d.ItemId);
 					GameObject pPrefab = Resources.Load(it.ItemInventoryPrefab) as GameObject;
-					uiInventory.AddItemToInventory(pPrefab.transform);
+		//			uiInventory.AddItemToInventory(pPrefab.transform);
 				}
 			}
 		}

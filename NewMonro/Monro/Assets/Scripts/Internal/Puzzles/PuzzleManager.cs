@@ -28,15 +28,15 @@ public class PuzzleManager : MonoBehaviour {
 		}
 	}
 
-	public static PuzzleActionType TransformActionButtonTypeToPuzzleActionType(IMActionButtonType buttonType) {
+	public static PuzzleActionType TransformActionButtonTypeToPuzzleActionType(TraitType buttonType) {
 		switch(buttonType) {
-		case IMActionButtonType.LookAt:
+		case TraitType.LookAt:
 			return PuzzleActionType.LookAt;
-		case IMActionButtonType.Pickup:
+		case TraitType.Pickup:
 			return PuzzleActionType.PickUp;
-		case IMActionButtonType.Talk:
+		case TraitType.Talk:
 			return PuzzleActionType.Talk;
-		case IMActionButtonType.Use:
+		case TraitType.Use:
 			return PuzzleActionType.Use;
 			default:
 			return PuzzleActionType.None;

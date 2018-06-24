@@ -40,16 +40,6 @@ public static class WorldObjectsHelper {
 		return GameObject.Find("Floor");
 	}
 
-	public static GameObject getInteractiveObject(string withId) {
-		InteractiveObject[] intsObjs = GameObject.FindObjectsOfType<InteractiveObject>();
-		foreach (InteractiveObject iObj in intsObjs) {
-			if (iObj.gameObject.GetComponent<GameEntity>().ID == withId) {
-				return iObj.gameObject;
-			}
-		}
-
-		return null;
-	}
 
 	public static GameObject getMainCamera() {
 		return GameObject.Find("FollowCamera");
@@ -71,7 +61,7 @@ public static class WorldObjectsHelper {
 	}
 
 	public static GameObject GetBottomPanelUIGO() {
-		return GameObject.Find("UIPanels");
+		return GameObject.Find("UI").transform.Find("UIPanels").gameObject;
 	}
 
 	public static GameObject GetCommandManagerGO() {

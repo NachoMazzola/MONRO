@@ -169,8 +169,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 		WorldInteractionController wic = WorldInteractionController.getComponent();
 		wic.enableInteractions = false;
-		wic.InterruptInteractions();	
-
+		wic.InterruptInteractions();
 
 
 		// Enable the dialogue controls.

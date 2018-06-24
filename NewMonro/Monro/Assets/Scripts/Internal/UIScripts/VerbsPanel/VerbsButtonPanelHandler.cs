@@ -10,11 +10,16 @@ public class VerbsButtonPanelHandler : MonoBehaviour {
 
 	public Color SelectedColor;
 	public Color UnselectedColor;
+	public string LookAtLabel = "Look At";
+	public string TalkToLabel = "Talk To";
+	public string PickUpLabel = "Pick Up";
+	public string UseLabel = "Use";
+
 
 	private Transform lookAtButtonPanel;
 	private Transform talkToButtonPanel;
 	private Transform pickUpButtonPanel;
-	private Button useButton;
+	private Transform useButtonPanel;
 
 	private Transform currentSelected;
 
@@ -29,7 +34,9 @@ public class VerbsButtonPanelHandler : MonoBehaviour {
 		this.lookAtButtonPanel = this.transform.Find("Look At");
 		this.talkToButtonPanel = this.transform.Find("Talk To");
 		this.pickUpButtonPanel = this.transform.Find("Pick Up");
-		this.useButton = this.transform.Find("Use").GetComponentInChildren<Button>();
+		this.useButtonPanel = this.transform.Find("Use");
+
+		this.SetLabels();
 	}
 
 	public void CreateLookAtCommand() {
@@ -79,6 +86,36 @@ public class VerbsButtonPanelHandler : MonoBehaviour {
 			buttonText.color = this.UnselectedColor;
 			buttonText.fontStyle = FontStyle.Normal;
 		}
+	}
+
+
+	public void HighlightVerb(TraitType type, bool highlight) {
+		Transform theTransform = null;
+		switch (type) {
+		case TraitType.LookAt:
+			theTransform = this.lookAtButtonPanel;
+			break;
+		case TraitType.Talk:
+			theTransform = this.talkToButtonPanel;
+			break;
+		case TraitType.Pickup:
+			theTransform = this.pickUpButtonPanel;
+			break;
+		case TraitType.Use:
+			theTransform = this.useButtonPanel;
+			break;
+		default:
+			break;
+		}
+
+		theTransform.GetComponentInChildren<Text>().color = highlight ? Color.yellow : Color.black;
+	}
+
+	private void SetLabels() {
+		this.lookAtButtonPanel.GetComponentInChildren<Text>().text = this.LookAtLabel;
+		this.talkToButtonPanel.GetComponentInChildren<Text>().text = this.TalkToLabel;
+		this.pickUpButtonPanel.GetComponentInChildren<Text>().text = this.PickUpLabel;
+		this.useButtonPanel.GetComponentInChildren<Text>().text = this.UseLabel;
 	}
 
 	private void SetButtonAsSelected(Transform buttonPanel, bool selected) {
