@@ -11,6 +11,7 @@ public class Talkable : IMenuRenderableTrait, IAnimatable {
 	private AnimationsCoordinatorHub animCoordinator;
 
 	void Awake() {
+		this.associatedTraitAction = TraitType.Talk;
 		this.gameEntity = this.GetComponent<GameEntity>();
 		this.animCoordinator = this.GetComponent<AnimationsCoordinatorHub>();
 		this.AssociatedMenuCommandType = CommandType.TalkCommandType;
