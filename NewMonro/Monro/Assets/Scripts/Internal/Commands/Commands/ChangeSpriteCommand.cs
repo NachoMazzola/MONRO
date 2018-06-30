@@ -44,19 +44,19 @@ public class ChangeSpriteCommand : ICommand {
 	}
 
 	public override void WillStart() {
-//		if (this.onlyFlip) {
-//			if (target.GetComponent<GameEntity>().type == GameEntity.GameEntityType.Player 
-//				|| target.GetComponent<GameEntity>().type == GameEntity.GameEntityType.NPC) {
-//				Character pl = target.GetComponent<Character>();
-//				pl.SwapFacingDirectionTo(pl.lastFacingDirection);
-//
-//				finished = true;
-//			}
-//			return;
-//		}
-//
-//		SpriteRenderer spRdr = this.target.GetComponent<SpriteRenderer>();
-//		spRdr.sprite = this.replacement;
+		if (this.onlyFlip) {
+			if (target.GetComponent<GameEntity>().type == GameEntity.GameEntityType.Player 
+				|| target.GetComponent<GameEntity>().type == GameEntity.GameEntityType.NPC) {
+				Moveable pl = target.GetComponent<Moveable>();
+				pl.SwapFacingDirectionTo(pl.lastFacingDirection);
+
+				finished = true;
+			}
+			return;
+		}
+
+		SpriteRenderer spRdr = this.target.GetComponent<SpriteRenderer>();
+		spRdr.sprite = this.replacement;
 	}
 
 	public override void UpdateCommand () {

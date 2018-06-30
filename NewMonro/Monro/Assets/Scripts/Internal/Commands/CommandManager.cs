@@ -7,7 +7,7 @@ using UnityEngine;
 */
 public class CommandManager : MonoBehaviour {
 
-	private List<ICommand> commandQueue;
+	private List<ICommand> commandQueue = new List<ICommand>();
 
 	private ICommand currentCommand;
 	private bool shouldAskForNextCommand = false;
@@ -32,7 +32,7 @@ public class CommandManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.commandQueue = new List<ICommand>();
+		
 	}
 
 	public void QueueCommand(ICommand command, bool executeInmediately = false) {

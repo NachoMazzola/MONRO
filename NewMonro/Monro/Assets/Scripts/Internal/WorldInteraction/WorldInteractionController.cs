@@ -96,7 +96,7 @@ public class WorldInteractionController: MonoBehaviour
 						
 					}
 
-					CommandManager.getComponent ().target = collider.gameObject;
+					CommandManager.getComponent().target = collider.gameObject;
 
 					ICommand currentCommand = null;
 //					if (this.commandQueue.Count == 0) {

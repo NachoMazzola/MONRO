@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExecuteCommandReaction : IPReaction {
 
-	protected ICommand theCommand;
+	public ICommand theCommand;
 
 	override public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
 		CommandManager.getComponent().QueueCommand(theCommand, false);

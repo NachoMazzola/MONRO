@@ -9,6 +9,8 @@ public class ReactionAddItemDroppableTrait : IPReaction {
 
 	override public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
 		target.AddComponent<ItemDroppable>();
+		target.AddComponent<VerbPanelHighlighter>();
+
 		ItemDroppable droppable =  target.GetComponent<ItemDroppable>();
 		droppable.InventroyItem = this.InventroyItem;
 

@@ -9,6 +9,8 @@ public class ReactionAddLookaleTrait : IPReaction {
 
 	override public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
 		target.AddComponent<Lookable>();
+		target.AddComponent<VerbPanelHighlighter>();
+
 		Lookable lookableComponent =  target.GetComponent<Lookable>();
 		lookableComponent.Caption = this.Caption;
 

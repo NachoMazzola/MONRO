@@ -8,6 +8,8 @@ public class ReactionAddUsableTrait : IPReaction {
 
 	override public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
 		target.AddComponent<Usable>();
+		target.AddComponent<VerbPanelHighlighter>();
+
 		return true;
 	}
 }

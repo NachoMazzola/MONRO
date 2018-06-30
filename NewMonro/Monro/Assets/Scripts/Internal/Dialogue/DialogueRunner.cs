@@ -55,7 +55,7 @@ namespace Yarn.Unity
 
 		public bool automaticCommands = true;
 
-		public ArrayList conversationParticipants;
+		public ArrayList conversationParticipants = new ArrayList();
 
 		// Our conversation engine
 		// Automatically created on first access
@@ -92,7 +92,7 @@ namespace Yarn.Unity
 
 		void Start ()
 		{
-			conversationParticipants = new ArrayList();
+			//conversationParticipants
 
 			// Ensure that we have our Implementation object
 			if (dialogueUI == null) {

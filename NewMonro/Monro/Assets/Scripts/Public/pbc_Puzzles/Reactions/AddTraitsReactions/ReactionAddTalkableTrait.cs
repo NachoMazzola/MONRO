@@ -13,6 +13,8 @@ public class ReactionAddTalkableTrait: IPReaction {
 
 	override public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
 		target.AddComponent<Talkable>();
+		target.AddComponent<VerbPanelHighlighter>();
+
 		Talkable trait =  target.GetComponent<Talkable>();
 		trait.ConversationName = this.ConversationName;
 		trait.StartingNode = this.StartingNode;

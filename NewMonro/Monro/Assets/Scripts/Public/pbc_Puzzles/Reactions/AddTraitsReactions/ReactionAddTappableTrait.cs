@@ -8,7 +8,7 @@ public class ReactionAddTappableTrait : IPReaction {
 
 	override public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
 		target.AddComponent<Tappable>();
-
+	
 		return true;
 	}
 }

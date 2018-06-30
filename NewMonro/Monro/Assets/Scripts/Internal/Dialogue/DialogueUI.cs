@@ -27,22 +27,26 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 	private Talkable lastOneWhoTalked;
 	private Talkable whoIsTalking;
 
-
+	DialogueOptionsDisplayer buttonsPositionHandler;
 
 	void Awake ()
 	{
 
 		dialogRunner = FindObjectOfType<DialogueRunner> ();
-		conversationOptionsPanel = WorldObjectsHelper.getUIGO().transform.Find("ConversationOptionsPanel").transform;
+		conversationOptionsPanel = WorldObjectsHelper.getUIGO ().transform.Find ("ConversationOptionsPanel").transform;
 		conversationOptionsPanel.gameObject.SetActive (false);
 
 
 		foreach (Button optionButton in optionButtons) {
 			optionButton.gameObject.SetActive (false);
 		}
+
+		this.buttonsPositionHandler = new DialogueOptionsDisplayer (this.optionButtons);
+		this.buttonsPositionHandler.SetOriginPositions();
 	}
-		
-	void Start() {
+
+	void Start ()
+	{
 		
 	}
 
@@ -76,14 +80,14 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 				lastOneWhoTalked = whoIsTalking;
 			}
 
-			if (whoIsTalking.GetComponent<GameEntity>().type != lastOneWhoTalked.GetComponent<GameEntity>().type) {
-				TextboxDisplayer lastTbDisplayer = lastOneWhoTalked.GetComponent<TextboxDisplayer>();
+			if (whoIsTalking.GetComponent<GameEntity> ().type != lastOneWhoTalked.GetComponent<GameEntity> ().type) {
+				TextboxDisplayer lastTbDisplayer = lastOneWhoTalked.GetComponent<TextboxDisplayer> ();
 				yield return lastTbDisplayer.HideCaption (0.0f);
 				lastOneWhoTalked = whoIsTalking;
 			}
 
 
-			TextboxDisplayer tbDisplayer = whoIsTalking.GetComponent<TextboxDisplayer>();
+			TextboxDisplayer tbDisplayer = whoIsTalking.GetComponent<TextboxDisplayer> ();
 			yield return tbDisplayer.ShowCaption (line.text, TextBox.DisappearMode.WaitInput);
 		
 			yield break;
@@ -101,28 +105,31 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 			"buttons to present them in. This will cause problems.");
 		}
 
-		conversationOptionsPanel.gameObject.SetActive(true);
+		conversationOptionsPanel.gameObject.SetActive (true);
 
-		// Display each option in a button, and make it visible
-		int i = 0;
-		foreach (var optionString in optionsCollection.options) {
-			optionButtons [i].gameObject.SetActive (true);
-			optionButtons [i].GetComponentInChildren<Text> ().text = optionString;
-			i++;
-		}
+		this.buttonsPositionHandler.PositionateButtons (optionsCollection);
 
-		inactiveButtons = optionButtons.Count - optionsCollection.options.Count;
-
-		if (inactiveButtons > 0) {
-			float bHeight = optionButtons [0].GetComponent<RectTransform> ().rect.height;
-			optionButtonYDisplacement = bHeight * inactiveButtons;
-			for (int j = 0; j < optionButtons.Count; j++) {
-				Button currentButton = optionButtons [j];
-				RectTransform buttonRect = currentButton.GetComponent<RectTransform> ();
-
-				buttonRect.anchoredPosition = new Vector2 (buttonRect.anchoredPosition.x, buttonRect.anchoredPosition.y - optionButtonYDisplacement);
-			}
-		}
+//
+//		// Display each option in a button, and make it visible
+//		int i = 0;
+//		foreach (var optionString in optionsCollection.options) {
+//			optionButtons [i].gameObject.SetActive (true);
+//			optionButtons [i].GetComponentInChildren<Text> ().text = optionString;
+//			i++;
+//		}
+//
+//		inactiveButtons = optionButtons.Count - optionsCollection.options.Count;
+//
+//		if (inactiveButtons > 0) {
+//			float bHeight = optionButtons [0].GetComponent<RectTransform> ().rect.height;
+//			optionButtonYDisplacement = bHeight * inactiveButtons;
+//			for (int j = 0; j < optionButtons.Count; j++) {
+//				Button currentButton = optionButtons [j];
+//				RectTransform buttonRect = currentButton.GetComponent<RectTransform> ();
+//
+//				buttonRect.anchoredPosition = new Vector2 (buttonRect.anchoredPosition.x, buttonRect.anchoredPosition.y - optionButtonYDisplacement);
+//			}
+//		}
 
 		// Record that we're using it
 		SetSelectedOption = optionChooser;
@@ -162,14 +169,14 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 		Debug.Log ("Dialogue starting!");
 
-		GameObject inventoryGO = WorldObjectsHelper.GetBottomPanelUIGO();
+		GameObject inventoryGO = WorldObjectsHelper.GetBottomPanelUIGO ();
 		if (inventoryGO != null) {
-			inventoryGO.SetActive(false);
+			inventoryGO.SetActive (false);
 		}
 
-		WorldInteractionController wic = WorldInteractionController.getComponent();
+		WorldInteractionController wic = WorldInteractionController.getComponent ();
 		wic.enableInteractions = false;
-		wic.InterruptInteractions();
+		wic.InterruptInteractions ();
 
 
 		// Enable the dialogue controls.
@@ -186,16 +193,16 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 		lastOneWhoTalked = null;
 
-		TextboxDisplayer lastTbDisplayer = whoIsTalking.GetComponent<TextboxDisplayer>();
-		yield return lastTbDisplayer.HideCaption(0.0f);
+		TextboxDisplayer lastTbDisplayer = whoIsTalking.GetComponent<TextboxDisplayer> ();
+		yield return lastTbDisplayer.HideCaption (0.0f);
 		whoIsTalking = null;
 	
-		WorldInteractionController.getComponent().enableInteractions = true;
+		WorldInteractionController.getComponent ().enableInteractions = true;
 
-		GameObject inventoryGO = WorldObjectsHelper.GetBottomPanelUIGO();
+		GameObject inventoryGO = WorldObjectsHelper.GetBottomPanelUIGO ();
 		if (inventoryGO != null) {
-			inventoryGO.SetActive(true);
-			WorldObjectsHelper.VerbsPanelUIGO().GetComponent<VerbsButtonPanelHandler> ().ResetButtons ();	
+			inventoryGO.SetActive (true);
+			WorldObjectsHelper.VerbsPanelUIGO ().GetComponent<VerbsButtonPanelHandler> ().ResetButtons ();	
 		}
 
 
