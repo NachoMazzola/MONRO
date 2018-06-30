@@ -6,8 +6,7 @@ public class ItemDroppable : IMenuRenderableTrait {
 	public Transform InventroyItem;
 
 	void Awake() {
+		this.associatedTraitAction = TraitType.Pickup;
 		this.AssociatedMenuCommandType = CommandType.PutItemInInventoryCommandType;
 	}
-
-
 }

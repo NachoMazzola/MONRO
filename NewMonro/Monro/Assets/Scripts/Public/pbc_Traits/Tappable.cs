@@ -20,7 +20,6 @@ public class Tappable : MonoBehaviour {
 	void Awake() {
 	//	this.rigidBody = GetComponent<Rigidbody>();
 	//	this.rigidBody.mass = 0.0f;
-
 		this.boxCollider = GetComponent<BoxCollider2D>();
 		this.boxCollider.isTrigger = true;
 
