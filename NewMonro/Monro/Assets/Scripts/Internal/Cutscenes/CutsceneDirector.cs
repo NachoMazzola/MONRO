@@ -33,7 +33,7 @@ public class CutsceneDirector: MonoBehaviour {
 		List<GameObject> participants = new List<GameObject>();
 		participants.Add(WorldObjectsHelper.getPlayerGO());
 		TalkCommand dialogueCommand = new TalkCommand();
-		dialogueCommand.conversationParticipants = participants;
+		//dialogueCommand.conversationParticipants = participants;
 		dialogueCommand.startingNode = "Monrjiall.Wakeup";
 
 
@@ -41,7 +41,6 @@ public class CutsceneDirector: MonoBehaviour {
 
 
 		TalkCommand dialogueCommand2 = new TalkCommand();
-		dialogueCommand2.conversationParticipants = participants;
 		dialogueCommand2.startingNode = "Monrjiall.AfterMovement";
 		//	dialogueCommand2.Prepare();
 

@@ -55,10 +55,9 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 		int dotIdx = participant.IndexOf (".");
 		string participantCorrectName = participant.Substring (0, dotIdx);
 
-		foreach (Transform t in dialogRunner.conversationParticipants) {
-			Talkable conversationInterface = t.GetComponent<Talkable> ();
-			if (conversationInterface.ConversationName == participantCorrectName) {
-				return conversationInterface;
+		foreach (Talkable t in dialogRunner.conversationParticipants) {
+			if (t.ConversationName == participantCorrectName) {
+				return t;
 			}
 		}	
 
@@ -108,28 +107,6 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 		conversationOptionsPanel.gameObject.SetActive (true);
 
 		this.buttonsPositionHandler.PositionateButtons (optionsCollection);
-
-//
-//		// Display each option in a button, and make it visible
-//		int i = 0;
-//		foreach (var optionString in optionsCollection.options) {
-//			optionButtons [i].gameObject.SetActive (true);
-//			optionButtons [i].GetComponentInChildren<Text> ().text = optionString;
-//			i++;
-//		}
-//
-//		inactiveButtons = optionButtons.Count - optionsCollection.options.Count;
-//
-//		if (inactiveButtons > 0) {
-//			float bHeight = optionButtons [0].GetComponent<RectTransform> ().rect.height;
-//			optionButtonYDisplacement = bHeight * inactiveButtons;
-//			for (int j = 0; j < optionButtons.Count; j++) {
-//				Button currentButton = optionButtons [j];
-//				RectTransform buttonRect = currentButton.GetComponent<RectTransform> ();
-//
-//				buttonRect.anchoredPosition = new Vector2 (buttonRect.anchoredPosition.x, buttonRect.anchoredPosition.y - optionButtonYDisplacement);
-//			}
-//		}
 
 		// Record that we're using it
 		SetSelectedOption = optionChooser;

@@ -24,8 +24,6 @@ public class CommandFactory {
 		case CommandType.TalkCommandType: {
 				TalkCommand talkCommand = new TalkCommand();
 				if (setDefaultValues) {
-					talkCommand.conversationParticipants.Add(target);
-					talkCommand.conversationParticipants.Add(WorldObjectsHelper.getPlayerGO());
 					talkCommand.startingNode = target.GetComponent<Talkable>().StartingNode;
 				}
 				else if (parameters != null) {

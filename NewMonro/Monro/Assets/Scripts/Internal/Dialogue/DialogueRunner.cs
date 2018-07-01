@@ -55,7 +55,7 @@ namespace Yarn.Unity
 
 		public bool automaticCommands = true;
 
-		public ArrayList conversationParticipants = new ArrayList();
+		public List<Talkable> conversationParticipants = new List<Talkable>();
 
 		// Our conversation engine
 		// Automatically created on first access
@@ -78,7 +78,7 @@ namespace Yarn.Unity
 		 * CUSTOM SHIT!
 		*/
 
-		public void AddParticipant(Transform participant) {
+		public void AddParticipant(Talkable participant) {
 			conversationParticipants.Add(participant);
 		}
 

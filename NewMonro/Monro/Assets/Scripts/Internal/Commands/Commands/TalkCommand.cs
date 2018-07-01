@@ -5,7 +5,7 @@ using Yarn.Unity;
 
 [System.Serializable]
 public struct TalkCommandParameters: ICommandParamters {
-	public List<GameObject> conversationParticipants;
+	//public List<GameObject> conversationParticipants;
 	public string startingNode;
 
 	public int participantsCount;
@@ -18,9 +18,9 @@ public struct TalkCommandParameters: ICommandParamters {
 
 public class TalkCommand : ICommand {
 
-	public List<GameObject> conversationParticipants;
 	public string startingNode;
 
+	private List<GameObject> conversationParticipants;
 	private DialogueRunner dialogueRunner;
 	private DialogueUI dialogueUI;
 
@@ -34,7 +34,7 @@ public class TalkCommand : ICommand {
 
 	public TalkCommand(ICommandParamters parameters) {
 		TalkCommandParameters t = (TalkCommandParameters)parameters;
-		this.conversationParticipants = t.conversationParticipants;
+		this.conversationParticipants = new List<GameObject>();
 		this.startingNode = t.startingNode;
 	}
 
@@ -45,8 +45,11 @@ public class TalkCommand : ICommand {
 
 	public override void Prepare() {
 		dialogueRunner = WorldObjectsHelper.getDialogueRunnerGO().GetComponent<DialogueRunner>();
-		foreach (GameObject t in this.conversationParticipants) {
-			this.dialogueRunner.AddParticipant(t.transform);	
+		Talkable[] participants = GameObject.FindObjectsOfType<Talkable>();
+		if (participants != null && participants.Length > 0) {
+			foreach (Talkable t in participants) {
+				this.dialogueRunner.AddParticipant(t);	
+			}	
 		}
 	}
 
