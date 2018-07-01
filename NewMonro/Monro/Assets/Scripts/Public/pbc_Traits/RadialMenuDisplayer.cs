@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Tappable))]
-public class RadialMenuDisplayer : MonoBehaviour {
+public class RadialMenuDisplayer : Trait {
 
 	public Transform MenuCanvasPrefab;
 	private InteractiveMenu theMenu;
 
-	void Awake() {
+	public override void OnAwake () {
+		base.OnAwake();
 		this.gameObject.AddComponent<InteractiveMenu>();
 		this.theMenu = this.gameObject.GetComponent<InteractiveMenu>();
 		this.theMenu.interactiveMenuCanvas = this.MenuCanvasPrefab;

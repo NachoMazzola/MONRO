@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
 
-public class TextboxDisplayer : MonoBehaviour, TextBoxDelegate {
+public class TextboxDisplayer : Trait, TextBoxDelegate {
 
 	public Transform Textbox;
 	public Color TextColor = Color.black;
@@ -43,15 +43,15 @@ public class TextboxDisplayer : MonoBehaviour, TextBoxDelegate {
 	void Update () {
 	}
 
-	public bool ShowCaption() {
-		if (this.lookable == null) {
-			return false;
-		}
-		this.hasFinishedCaptionDisplay = false;
-		StartCoroutine(AddActionOnFinishAfterCoroutine(this.ShowCaption(this.lookable.Caption)));
-
-		return true;
-	}
+//	public bool ShowCaption() {
+//		if (this.lookable == null) {
+//			return false;
+//		}
+//		this.hasFinishedCaptionDisplay = false;
+//		StartCoroutine(AddActionOnFinishAfterCoroutine(this.ShowCaption(this.lookable.Caption)));
+//
+//		return true;
+//	}
 
 	public IEnumerator AddActionOnFinishAfterCoroutine(IEnumerator coroutineToWait) {
 		yield return StartCoroutine(coroutineToWait);

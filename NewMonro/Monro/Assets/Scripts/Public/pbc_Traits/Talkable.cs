@@ -4,15 +4,13 @@ using UnityEngine;
 
 [RequireComponent(typeof(TextboxDisplayer))]
 public class Talkable : IMenuRenderableTrait, IAnimatable {
-	public string ConversationName;
 	public string StartingNode;
 
-	private GameEntity gameEntity;
 	private AnimationsCoordinatorHub animCoordinator;
 
-	void Awake() {
+	public override void OnAwake () {
+		base.OnAwake();
 		this.associatedTraitAction = TraitType.Talk;
-		this.gameEntity = this.GetComponent<GameEntity>();
 		this.animCoordinator = this.GetComponent<AnimationsCoordinatorHub>();
 		this.AssociatedMenuCommandType = CommandType.TalkCommandType;
 	}

@@ -13,15 +13,15 @@ public enum TraitType {
 
 public class Trait : MonoBehaviour {
 	[HideInInspector]
-	public TraitType traitType;
+	public TraitType associatedTraitAction;
+	[HideInInspector]
+	public GameEntity gameEntity;
 
-	// Use this for initialization
-	void Start () {
-		
+	void Awake() {
+		this.OnAwake();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public virtual void OnAwake() {
+		this.gameEntity = this.GetComponent<GameEntity>();
 	}
 }

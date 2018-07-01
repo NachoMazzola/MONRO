@@ -4,9 +4,9 @@ using UnityEngine;
 
 
 public class Lookable : IMenuRenderableTrait {
-	public string Caption;
-
-	void Awake() {
+	
+	public override void OnAwake () {
+		base.OnAwake();
 		this.associatedTraitAction = TraitType.LookAt;
 		this.AssociatedMenuCommandType = CommandType.LookAtCommandType;
 	}

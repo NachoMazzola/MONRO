@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Moveable : MonoBehaviour, IAnimatable {
+public class Moveable : Trait, IAnimatable {
 	public float MovementSpeed;
 
 	public enum MovingDirection {
@@ -19,11 +19,10 @@ public class Moveable : MonoBehaviour, IAnimatable {
 
 
 	private MovementController movementController;
-	private GameEntity gameEntity;
 	private AnimationsCoordinatorHub animCoordinator;
 
-	void Awake() {
-		this.gameEntity = this.GetComponent<GameEntity>();
+	public override void OnAwake () {
+		base.OnAwake();
 		this.animCoordinator = this.GetComponent<AnimationsCoordinatorHub>();
 
 		this.movementController = WorldObjectsHelper.getMovementControllerGO().GetComponent<MovementController>();

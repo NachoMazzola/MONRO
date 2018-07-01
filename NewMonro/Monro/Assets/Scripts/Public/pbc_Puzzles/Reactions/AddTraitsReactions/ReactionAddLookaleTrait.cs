@@ -11,9 +11,6 @@ public class ReactionAddLookaleTrait : IPReaction {
 		target.AddComponent<Lookable>();
 		target.AddComponent<VerbPanelHighlighter>();
 
-		Lookable lookableComponent =  target.GetComponent<Lookable>();
-		lookableComponent.Caption = this.Caption;
-
 		return true;
 	}
 }

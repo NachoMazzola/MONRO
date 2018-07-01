@@ -38,9 +38,9 @@ public class TalkCommand : ICommand {
 		this.startingNode = t.startingNode;
 	}
 
-	public TalkCommand(List<GameObject> conversationParticipants, string startingNode) {
-		this.conversationParticipants = conversationParticipants;
+	public TalkCommand(string startingNode) {
 		this.startingNode = startingNode;
+		this.conversationParticipants = new List<GameObject>();
 	}
 
 	public override void Prepare() {

@@ -5,7 +5,6 @@ using UnityEngine;
 public class ReactionAddTalkableTrait: IPReaction {
 
 	public GameObject target;
-	public string ConversationName;
 	public string StartingNode;
 
 	public Transform Textbox;
@@ -16,7 +15,6 @@ public class ReactionAddTalkableTrait: IPReaction {
 		target.AddComponent<VerbPanelHighlighter>();
 
 		Talkable trait =  target.GetComponent<Talkable>();
-		trait.ConversationName = this.ConversationName;
 		trait.StartingNode = this.StartingNode;
 
 		TextboxDisplayer tbDisplayer = target.GetComponent<TextboxDisplayer>();

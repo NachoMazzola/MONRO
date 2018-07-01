@@ -24,6 +24,10 @@ public class LookAtCommand : ICommand {
 	private Lookable lookableComponent;
 	private TextboxDisplayer textBoxDisplayerComponent;
 
+
+	private TalkCommand talkCommand;
+
+
 	public LookAtCommand() {
 		
 	}
@@ -41,19 +45,25 @@ public class LookAtCommand : ICommand {
 
 	public override void Prepare() {
 		this.lookableComponent = this.lookable.GetComponent<Lookable>();
-		this.textBoxDisplayerComponent = this.whoLooks.GetComponent<TextboxDisplayer>();
+		//this.textBoxDisplayerComponent = this.whoLooks.GetComponent<TextboxDisplayer>();
+
+		this.talkCommand = new TalkCommand("lookAt_"+this.lookableComponent.gameEntity.ID);
+		this.talkCommand.Prepare();
 	}
 
 	public override void WillStart() {
-		this.textBoxDisplayerComponent.lookable = this.lookableComponent;
-		if (!this.textBoxDisplayerComponent.ShowCaption()) {
-			Debug.Log("WARNING! LOOK AT ABORTED, " + this.whoLooks + " IS NOT LOOkABLE");
-			this.finished = true;
-		}
+		this.talkCommand.WillStart();
+//		this.textBoxDisplayerComponent.lookable = this.lookableComponent;
+//		if (!this.textBoxDisplayerComponent.ShowCaption()) {
+//			Debug.Log("WARNING! LOOK AT ABORTED, " + this.whoLooks + " IS NOT LOOkABLE");
+//			this.finished = true;
+//		}
 	}
 
 	public override void UpdateCommand () {
-		this.finished = this.textBoxDisplayerComponent.hasFinishedCaptionDisplay;
+		this.talkCommand.UpdateCommand();
+		this.finished = this.talkCommand.Finished();
+		//this.finished = this.textBoxDisplayerComponent.hasFinishedCaptionDisplay;
 	}
 
 	public override bool Finished() {

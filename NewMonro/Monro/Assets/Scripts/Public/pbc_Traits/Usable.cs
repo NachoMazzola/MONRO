@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Usable : IMenuRenderableTrait {
-	void Awake() {
+	public override void OnAwake () {
+		base.OnAwake();
 		this.associatedTraitAction = TraitType.Use;
 	}
 }

@@ -53,10 +53,27 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 	public Talkable GetParticipant (string participant)
 	{
 		int dotIdx = participant.IndexOf (".");
-		string participantCorrectName = participant.Substring (0, dotIdx);
+		string participantCorrectName;
+
+		//check if we are doing a Look At instead of a normal conversation
+		if (dotIdx == -1) {
+			dotIdx = participant.IndexOf("_");
+			participantCorrectName = participant.Substring(dotIdx+1);
+			/**
+			 * OJO, CUANDO ES UN LOOK AT, EL NOMBRE DEL PARTICIPANTE DEBERIA SER MORNJIALL.
+			 * PORQUE SINO, VA A HABLAR EL QUE SEA EL CONVERSATION NAME, Y SI POR EJEMPLO EN EL JSON
+			 * DICE LOOKAT_HILDR, EL DIALOGO LO VA A DECIR HILDR.. TENEMOS QUE PENSAR UNA MANERA
+			 * DE INDICAR EN EL JSON QUE ES UN LOOKAT A HILDR, PERO EL QUE HABLA ES MORNJIALL!!
+			*/
+
+			participantCorrectName = "Mornjiall";
+		}
+		else {
+			participantCorrectName = participant.Substring (0, dotIdx);
+		}
 
 		foreach (Talkable t in dialogRunner.conversationParticipants) {
-			if (t.ConversationName == participantCorrectName) {
+			if (t.gameEntity.ID == participantCorrectName) {
 				return t;
 			}
 		}	

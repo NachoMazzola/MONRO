@@ -10,14 +10,15 @@ using UnityEngine;
 //[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(BoxCollider2DSizeFitter))]
-public class Tappable : MonoBehaviour {
+public class Tappable : Trait {
 
 //	[HideInInspector]
 //	public Rigidbody rigidBody;
 	[HideInInspector]
 	public BoxCollider2D boxCollider;
 
-	void Awake() {
+	public override void OnAwake () {
+		base.OnAwake();
 	//	this.rigidBody = GetComponent<Rigidbody>();
 	//	this.rigidBody.mass = 0.0f;
 		this.boxCollider = GetComponent<BoxCollider2D>();
