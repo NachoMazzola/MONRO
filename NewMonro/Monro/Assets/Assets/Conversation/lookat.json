@@ -1,0 +1,22 @@
+[
+	{
+		"title": "lookAt_Hildr",
+		"tags": "",
+		"body": "Puto el que Nacho",
+		"position": {
+			"x": 540,
+			"y": 244
+		},
+		"colorID": 0
+	},
+	{
+		"title": "lookAt_Mimir",
+		"tags": "",
+		"body": "Nacho el que lee",
+		"position": {
+			"x": 341,
+			"y": 228
+		},
+		"colorID": 0
+	}
+]
