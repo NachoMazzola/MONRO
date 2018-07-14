@@ -64,9 +64,13 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 			 * PORQUE SINO, VA A HABLAR EL QUE SEA EL CONVERSATION NAME, Y SI POR EJEMPLO EN EL JSON
 			 * DICE LOOKAT_HILDR, EL DIALOGO LO VA A DECIR HILDR.. TENEMOS QUE PENSAR UNA MANERA
 			 * DE INDICAR EN EL JSON QUE ES UN LOOKAT A HILDR, PERO EL QUE HABLA ES MORNJIALL!!
+			 * 
+			 * POR AHORA HARDCODEAMOS QUE HABLE SIEMPRE MORNJIALL
 			*/
 
-			participantCorrectName = "Mornjiall";
+			GameEntity mainPlayer = WorldObjectsHelper.getPlayerGO().GetComponent<GameEntity>();
+
+			participantCorrectName = mainPlayer.ID;
 		}
 		else {
 			participantCorrectName = participant.Substring (0, dotIdx);

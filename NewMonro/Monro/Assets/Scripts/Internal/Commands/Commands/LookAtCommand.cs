@@ -45,7 +45,9 @@ public class LookAtCommand : ICommand {
 
 	public override void Prepare() {
 		this.lookableComponent = this.lookable.GetComponent<Lookable>();
-		//this.textBoxDisplayerComponent = this.whoLooks.GetComponent<TextboxDisplayer>();
+		if (this.lookableComponent == null) {
+			return;
+		}
 
 		this.talkCommand = new TalkCommand("lookAt_"+this.lookableComponent.gameEntity.ID);
 		this.talkCommand.Prepare();
@@ -53,17 +55,11 @@ public class LookAtCommand : ICommand {
 
 	public override void WillStart() {
 		this.talkCommand.WillStart();
-//		this.textBoxDisplayerComponent.lookable = this.lookableComponent;
-//		if (!this.textBoxDisplayerComponent.ShowCaption()) {
-//			Debug.Log("WARNING! LOOK AT ABORTED, " + this.whoLooks + " IS NOT LOOkABLE");
-//			this.finished = true;
-//		}
 	}
 
 	public override void UpdateCommand () {
 		this.talkCommand.UpdateCommand();
 		this.finished = this.talkCommand.Finished();
-		//this.finished = this.textBoxDisplayerComponent.hasFinishedCaptionDisplay;
 	}
 
 	public override bool Finished() {
