@@ -24,4 +24,19 @@ public class Trait : MonoBehaviour {
 	public virtual void OnAwake() {
 		this.gameEntity = this.GetComponent<GameEntity>();
 	}
+
+	public static string toString(TraitType tType) {
+		switch (tType) {
+		case TraitType.LookAt:
+			return "lookAt";
+		case TraitType.Pickup:
+			return "pickUp";
+		case TraitType.Talk:
+			return "talkTo";
+		case TraitType.Use:
+			return "use";
+		}
+
+		return "";
+	}
 }

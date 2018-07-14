@@ -12,6 +12,7 @@ public enum CommandType {
 	PutItemInInventoryCommandType,
 	RemoveItemFromInventoryCommandType,
 	DestroyGameObjectCommandType,
+	CannotApplyTraitCommandCommandType,
 
 	//Player commands
 	PlayerMoveAndPickUpCommandType,

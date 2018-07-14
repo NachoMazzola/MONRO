@@ -8,6 +8,12 @@ public class CommandFactory {
 
 	public static ICommand CreateCommand(CommandType type, GameObject target, bool setDefaultValues = true, ICommandParamters parameters = null) {
 		CommandType currentCommandType = type;
+
+		ICommand cantApplyCommand = CommandFactory.TargetAcceptsCommand(target, type);
+		if (cantApplyCommand != null) {
+			return cantApplyCommand;
+		}
+
 		switch (currentCommandType) {
 		case CommandType.LookAtCommandType: {
 				LookAtCommand lookAtCommand = new LookAtCommand();
@@ -94,6 +100,31 @@ public class CommandFactory {
 		case CommandType.unknown:
 			return null;
 		}
+
+		return null;
+	}
+
+
+	public static ICommand TargetAcceptsCommand(GameObject target, CommandType command) {
+		if (command == CommandType.LookAtCommandType) {
+			if (target.GetComponent<Lookable>() == null) {
+				return new CannotApplyTraitCommandCommand(target, TraitType.LookAt);
+			}
+		}
+			
+		if (command == CommandType.PLayerMoveAndTalkCommandType || command == CommandType.TalkCommandType) {
+			if (target.GetComponent<Talkable>() == null) {
+				return new CannotApplyTraitCommandCommand(target, TraitType.Talk);
+			}
+		}
+//
+		if (command == CommandType.PlayerMoveAndPickUpCommandType || command == CommandType.PutItemInInventoryCommandType) {
+			if (target.GetComponent<ItemDroppable>() == null) {
+				return new CannotApplyTraitCommandCommand(target, TraitType.Pickup);
+			}
+		}
+
+		//USE ???
 
 		return null;
 	}

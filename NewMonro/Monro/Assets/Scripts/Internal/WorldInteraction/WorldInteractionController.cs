@@ -22,8 +22,6 @@ public class WorldInteractionController: MonoBehaviour
 	[HideInInspector]
 	public bool enableInteractions = true;
 
-
-
 	public List<CommandType> commandQueue;
 
 	static public WorldInteractionController getComponent ()
@@ -65,8 +63,18 @@ public class WorldInteractionController: MonoBehaviour
 		}
 
 		if (Input.GetMouseButtonDown (0) && !mouseIsPressed) {
-
-			this.ExecuteCurrentCommand ();
+			Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+			Collider2D hitCollider = Physics2D.OverlapPoint(pos);
+			if (hitCollider != null) {
+				ExecuteCurrentCommand(hitCollider);
+			}
+			else {
+				GameObject inventoryGO = WorldObjectsHelper.GetBottomPanelUIGO();
+				if (inventoryGO.activeInHierarchy) {
+					WorldObjectsHelper.VerbsPanelUIGO().GetComponent<VerbsButtonPanelHandler> ().ResetButtons ();	
+				}
+			}
+				
 			//Tap (GetTappedGameObject ());
 			mouseIsPressed = true;
 			return;
@@ -81,59 +89,26 @@ public class WorldInteractionController: MonoBehaviour
 		}
 	}
 
-	private void ExecuteCurrentCommand ()
-	{
-		Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-		Collider2D[] hitColliders = Physics2D.OverlapPointAll (pos); 
-		if (hitColliders != null && hitColliders.Length > 0) {
-			foreach (BoxCollider2D collider in hitColliders) {
-				Tappable tappable = collider.gameObject.GetComponent<Tappable> ();
-				if (tappable != null && tappable.boxCollider == collider) {
-					RadialMenuDisplayer radialMenu = collider.gameObject.GetComponent<RadialMenuDisplayer>();
-					if (radialMenu != null) {
-						radialMenu.ShowMenu();
-						return;
-						
+	private void ExecuteCurrentCommand (Collider2D collider) {
+		Tappable tappable = collider.gameObject.GetComponent<Tappable> ();
+		if (tappable != null && tappable.boxCollider == collider) {
+			CommandManager.getComponent().target = collider.gameObject;
+			if (this.commandQueue.Count > 0) {
+				foreach (CommandType cType in this.commandQueue) {
+					ICommand comm = CommandFactory.CreateCommand (cType, collider.gameObject);
+					if (comm == null) {
+						continue;
 					}
-
-					CommandManager.getComponent().target = collider.gameObject;
-
-					ICommand currentCommand = null;
-//					if (this.commandQueue.Count == 0) {
-//						currentCommand  = CommandFactory.CreateCommand(CommandType.LookAtCommandType, collider.gameObject);
-//						CommandManager.getComponent().QueueCommand(currentCommand, true);
-//					}
-//					else {
-//						foreach (CommandType cType in this.commandQueue) {
-//							ICommand comm = CommandFactory.CreateCommand(cType, collider.gameObject);
-//							CommandManager.getComponent().QueueCommand(comm);
-//						}
-//						//start executing command queue
-//						CommandManager.getComponent().ExecuteCurrentCommand();
-//					}
-
-					if (this.commandQueue.Count > 0) {
-						foreach (CommandType cType in this.commandQueue) {
-							ICommand comm = CommandFactory.CreateCommand (cType, collider.gameObject);
-							CommandManager.getComponent ().QueueCommand (comm);
-						}
-						//start executing command queue
-						CommandManager.getComponent ().ExecuteCurrentCommand ();
-
-						this.commandQueue = new List<CommandType> ();
-						WorldObjectsHelper.VerbsPanelUIGO ().GetComponent<VerbsButtonPanelHandler> ().ResetButtons ();	
-					}
+					CommandManager.getComponent ().QueueCommand (comm);
 				}
-			}
-		} else {
-			GameObject inventoryGO = WorldObjectsHelper.GetBottomPanelUIGO();
-			if (inventoryGO.activeInHierarchy) {
-				WorldObjectsHelper.VerbsPanelUIGO().GetComponent<VerbsButtonPanelHandler> ().ResetButtons ();	
+				//start executing command queue
+				CommandManager.getComponent ().ExecuteCurrentCommand ();
+
+				this.commandQueue = new List<CommandType> ();
+				WorldObjectsHelper.VerbsPanelUIGO ().GetComponent<VerbsButtonPanelHandler> ().ResetButtons ();	
 			}
 		}
 	}
-
-
 
 
 	/// <summary>
