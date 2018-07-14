@@ -2,7 +2,7 @@
 	{
 		"title": "lookAt_Hildr",
 		"tags": "",
-		"body": "Puto el que Nacho",
+		"body": "That's Hildr.\nShe seems nice.",
 		"position": {
 			"x": 540,
 			"y": 244
@@ -12,10 +12,10 @@
 	{
 		"title": "lookAt_Mimir",
 		"tags": "",
-		"body": "Nacho el que lee",
+		"body": "Is that head...\nlooking at me?",
 		"position": {
-			"x": 341,
-			"y": 228
+			"x": 142,
+			"y": 184
 		},
 		"colorID": 0
 	}
