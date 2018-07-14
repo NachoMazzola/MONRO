@@ -26,6 +26,11 @@ public class MoveGameObjectCommand : ICommand {
 	private bool willMoveToTheRight = false;
 	private Moveable movedGameObj;
 
+	public int optionalDistanceFromTarget = 0;
+
+	private MovementController movementController;
+
+
 	public MoveGameObjectCommand() {
 		
 	}
@@ -44,31 +49,24 @@ public class MoveGameObjectCommand : ICommand {
 	}
 
 	public override void Prepare() {
-		this.movedGameObj = this.targetObject.GetComponent<Moveable>();
-		Debug.Assert(this.movedGameObj != null, this.targetObject + ": You are trying to move an object that does not have Moveable trait. Add Moveable component trait to it.");
-
-		this.willMoveToTheRight = this.targetPosition.x > this.targetObject.transform.position.x;
+		GameObject inst = WorldObjectsHelper.InstantiatePrefabFromResources("MovementController", null);
+		movementController = inst.GetComponent<MovementController>();
+		movementController.SetMovementOptions(controlledGameObject: this.targetObject, targetDestination: this.targetPosition);
 	}
 
-	public override void WillStart() {
-		this.movedGameObj.PlayAnimation();
-	}
+	public override void WillStart() {}
 
 	public override void UpdateCommand() {
-		if (Mathf.RoundToInt(this.targetObject.transform.position.x) == Mathf.RoundToInt(this.targetPosition.x)) {
-			this.finished = true;
-			this.movedGameObj.StopAnimation();
+		if (this.movementController == null) {
 			return;
 		}
+		this.movementController.UpdateMovement();
+		this.finished = this.movementController.reachedDestination;
+	}
 
-		if (this.willMoveToTheRight) {
-			this.movedGameObj.SwapFacingDirectionTo(Moveable.MovingDirection.MovingRight);
-			this.targetObject.transform.position += new Vector3(1 * this.movementSpeed * Time.deltaTime, 0, 0);			
-		}
-		else {
-			this.movedGameObj.SwapFacingDirectionTo(Moveable.MovingDirection.MovingLeft);
-			this.targetObject.transform.position -= new Vector3(1 * this.movementSpeed * Time.deltaTime, 0, 0);		
-		}
+	public override void Stop() {
+		this.movementController.SetMovementOptions(null, Vector2.zero);
+		this.movementController = null;
 	}
 
 	public override bool Finished() {

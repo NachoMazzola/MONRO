@@ -72,6 +72,7 @@ public class CommandManager : MonoBehaviour {
 
 			this.SetPuzzleAction(this.target);
 
+			this.currentCommand.Stop();
 			this.currentCommand = this.GetNextCommand();
 			if (this.currentCommand != null) {
 				this.currentCommand.WillStart();	
@@ -91,6 +92,14 @@ public class CommandManager : MonoBehaviour {
 			//current frame
 			this.shouldAskForNextCommand = this.currentCommand.Finished();
 		}
+	}
+
+	public void AbortCurrentCommand() {
+		if (this.currentCommand == null) {
+			return;
+		}
+		this.currentCommand.Stop();
+		this.currentCommand = null;
 	}
 
 	private void SetPuzzleAction(GameObject target) {
