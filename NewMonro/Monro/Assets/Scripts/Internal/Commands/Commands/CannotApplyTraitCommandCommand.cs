@@ -21,7 +21,7 @@ public class CannotApplyTraitCommandCommand : ICommand {
 		string traitString = Trait.toString(this.traitType);
 		string fullNode = traitString + "_" + targetId;
 		if (dialogueRunner.NodeExists(fullNode) == false) {
-			fullNode = traitString + "_default_" + targetId;
+			fullNode = traitString + "_default";
 		}
 		this.talkCommand = new TalkCommand(fullNode);
 		this.talkCommand.Prepare();

@@ -1,0 +1,32 @@
+[
+	{
+		"title": "pickUp_Mimir",
+		"tags": "",
+		"body": "Not until he agrees to come with me.",
+		"position": {
+			"x": 540,
+			"y": 244
+		},
+		"colorID": 0
+	},
+	{
+		"title": "pickUp_Hildr",
+		"tags": "",
+		"body": "I can't pick her up.\nNot that there's anything wrong with that.",
+		"position": {
+			"x": 274,
+			"y": 243
+		},
+		"colorID": 0
+	},
+	{
+		"title": "pickUp_default",
+		"tags": "",
+		"body": "I can't pick that up.",
+		"position": {
+			"x": 809,
+			"y": 247
+		},
+		"colorID": 0
+	}
+]

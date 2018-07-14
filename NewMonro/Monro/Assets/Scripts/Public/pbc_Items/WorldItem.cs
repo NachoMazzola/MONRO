@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(DragHandler))]
 [RequireComponent(typeof(DraggableWorldItem))]
 [RequireComponent(typeof(HighlightableObject))]
+[RequireComponent(typeof(ItemDroppable))]
 public class WorldItem : MonoBehaviour {
 
 	// Use this for initialization
