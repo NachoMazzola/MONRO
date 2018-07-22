@@ -1,0 +1,102 @@
+[
+	{
+		"title": "Mimir.Strength.trial2",
+		"tags": "",
+		"body": "Well, let’s see... \nAh! There! \nSee that fallen tree there? \nI want you to go over there and lift it over your head. \nOnly someone bestowed with the will and fortitude to overcome such arbitrary obstacles...\n...is worthy of carrying the head of a god.\n\n[[Monrjiall.Strength.myKind]]",
+		"position": {
+			"x": 509,
+			"y": 241
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Strength.myKind",
+		"tags": "",
+		"body": "Now THIS is my can of test. \nI will lift that tree so high it will become a new star in the sky.\n\n[[Mimir.Strength.specialKind]]",
+		"position": {
+			"x": 790,
+			"y": 242
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Strength.specialKind",
+		"tags": "",
+		"body": "Be careful, that is a very special kind of tree. \nIt’s wood is heavier than any other and harder than most axes can pierce.\n\n[[Monrjiall.Strength.convinced]]",
+		"position": {
+			"x": 791,
+			"y": 516
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Strength.convinced",
+		"tags": "",
+		"body": "I already said I’d do it! \nStop trying to convince me!\n\n[[Monrjiall.Puzzles.trials]]",
+		"position": {
+			"x": 508,
+			"y": 517
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Strength.fallenTree",
+		"tags": "",
+		"body": "You have to lift that fallen tree over your head.\n\n[[Monrjiall.Strength.solid]]",
+		"position": {
+			"x": 235,
+			"y": 242
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Node42",
+		"tags": "",
+		"body": "Empty Text",
+		"position": {
+			"x": 233,
+			"y": 506
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Strength.solid",
+		"tags": "",
+		"body": "You mean that solid fallen tree over there?\n\n[[Mimir.Strength.heavyLooking]]",
+		"position": {
+			"x": 233,
+			"y": 506
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Strength.heavyLooking",
+		"tags": "",
+		"body": "Yes, that solid, heavy looking fallen tree over there.\n\n[[Monrjiall.Strength.thick]]",
+		"position": {
+			"x": -11,
+			"y": 503
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Strength.thick",
+		"tags": "",
+		"body": "Good, I’ll go lift that solid, heavy looking... \n...impossibly thick log of a fallen tree over there.\n\n[[Mimir.Strength.goDoThat]]",
+		"position": {
+			"x": -14,
+			"y": 237
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Strength.goDoThat",
+		"tags": "",
+		"body": "You go do that.\n\n[[Monrjiall.Puzzles.trials]]",
+		"position": {
+			"x": -24,
+			"y": -47
+		},
+		"colorID": 0
+	}
+]
