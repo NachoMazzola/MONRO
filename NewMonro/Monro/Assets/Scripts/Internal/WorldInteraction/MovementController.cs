@@ -4,13 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-/**
- * FIJATE QUE CUANDO TIRAS UN COMANDO TIPO MOVEGAMEOBJECT, CUANDO TAPPEAS ALGUNO DE LOS
- * BOTONES DE MOVIMIENTO, DEBERIAS ABORTAR EL COMANDO. ESO YA ESTA. EL TEMA ES QUE
- * EL PJ SE SIGUE MOVIENDO PARA DONDE SE ESTABA MOVIENDO!! FIJATE DONDE ESTA LA CAGADA!
-*/
-
-
 public class MovementController : MonoBehaviour
 {
 
@@ -36,6 +29,7 @@ public class MovementController : MonoBehaviour
 
 	private WorldInteractionController worldInteractionCtr;
 
+	private int optionalDistanceFromTarget = 2;
 
 	// Use this for initialization
 	void Start ()
@@ -52,9 +46,10 @@ public class MovementController : MonoBehaviour
 
 	public void UpdateMovement ()
 	{
-		//		int limitPosition = Mathf.RoundToInt(this.targetPosition.x) - this.optionalDistanceFromTarget;
+		int directionModifier = movingLeft ? -1 : 1;
+		int limitPosition = Mathf.RoundToInt(this.targetDestination.x) - this.optionalDistanceFromTarget * directionModifier;
 		if (this.targetDestination != Vector2.zero) {
-			if (Mathf.RoundToInt(this.moveableGameObject.transform.position.x) == Mathf.RoundToInt(this.targetDestination.x)) {
+			if (Mathf.RoundToInt(this.moveableGameObject.transform.position.x) == Mathf.RoundToInt(limitPosition)) {
 				this.StopMoving();
 				this.reachedDestination = true;
 				return;

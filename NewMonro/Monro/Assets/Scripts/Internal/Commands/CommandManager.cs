@@ -98,8 +98,10 @@ public class CommandManager : MonoBehaviour {
 		if (this.currentCommand == null) {
 			return;
 		}
-		this.currentCommand.Stop();
-		this.currentCommand = null;
+		if (this.currentCommand.isInterrutable) {
+			this.currentCommand.Stop();
+			this.currentCommand = null;	
+		}
 	}
 
 	private void SetPuzzleAction(GameObject target) {

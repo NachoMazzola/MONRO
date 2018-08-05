@@ -40,7 +40,6 @@ public class PlayerMoveAndTalkCommand : ICommand {
 	}
 
 	public override void Prepare() {
-		((MoveGameObjectCommand)this.moveGOCommand).optionalDistanceFromTarget = 29;
 		this.moveGOCommand.Prepare();
 		this.talkCommand.Prepare();
 	}
@@ -86,6 +85,11 @@ public class PlayerMoveAndTalkCommand : ICommand {
 			this.talkCommand.UpdateCommand();
 		}
 			
-		this.finished = talkCommand.Finished();
+		this.finished = this.talkCommand.Finished();
+	}
+
+	public override void Stop() {
+		this.moveGOCommand.Stop();
+		this.talkCommand.Stop();
 	}
 }

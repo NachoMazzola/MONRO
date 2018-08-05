@@ -44,6 +44,7 @@ public class TalkCommand : ICommand {
 	}
 
 	public override void Prepare() {
+		this.isInterrutable = false;
 		dialogueRunner = WorldObjectsHelper.getDialogueRunnerGO().GetComponent<DialogueRunner>();
 		Talkable[] participants = GameObject.FindObjectsOfType<Talkable>();
 		if (participants != null && participants.Length > 0) {

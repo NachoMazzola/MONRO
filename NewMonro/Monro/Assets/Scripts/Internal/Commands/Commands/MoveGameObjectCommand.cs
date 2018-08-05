@@ -23,10 +23,7 @@ public class MoveGameObjectCommand : ICommand {
 	public Vector2 targetPosition;
 	public float movementSpeed;
 
-	private bool willMoveToTheRight = false;
 	private Moveable movedGameObj;
-
-	public int optionalDistanceFromTarget = 0;
 
 	private MovementController movementController;
 
@@ -49,12 +46,17 @@ public class MoveGameObjectCommand : ICommand {
 	}
 
 	public override void Prepare() {
-		GameObject inst = WorldObjectsHelper.InstantiatePrefabFromResources("MovementController", null);
+		this.movedGameObj = this.targetObject.GetComponent<Moveable>();
+		Debug.Assert(this.movedGameObj != null, "MoveGameObjectCommand target should be Moveable");
+
+		GameObject inst = WorldObjectsHelper.InstantiatePrefabFromResources("MovementController", this.targetObject.transform);
 		movementController = inst.GetComponent<MovementController>();
 		movementController.SetMovementOptions(controlledGameObject: this.targetObject, targetDestination: this.targetPosition);
 	}
 
-	public override void WillStart() {}
+	public override void WillStart() {
+		this.movedGameObj.PlayAnimation();
+	}
 
 	public override void UpdateCommand() {
 		if (this.movementController == null) {
@@ -66,6 +68,9 @@ public class MoveGameObjectCommand : ICommand {
 
 	public override void Stop() {
 		this.movementController.SetMovementOptions(null, Vector2.zero);
+		this.movementController.transform.SetParent(null);
+		this.movedGameObj.StopAnimation();
+		GameObject.Destroy(this.movementController);
 		this.movementController = null;
 	}
 

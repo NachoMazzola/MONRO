@@ -28,6 +28,7 @@ public interface ICommandParamters {
 public abstract class ICommand {
 
 	protected bool finished;
+	public bool isInterrutable = true;
 
 	public virtual void Prepare() {}
 	public virtual void WillStart() {}
