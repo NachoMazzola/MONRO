@@ -85,6 +85,11 @@ public class PlayerMoveAndTalkCommand : ICommand {
 			this.talkCommand.UpdateCommand();
 		}
 			
-		this.finished = talkCommand.Finished();
+		this.finished = this.talkCommand.Finished();
+	}
+
+	public override void Stop() {
+		this.moveGOCommand.Stop();
+		this.talkCommand.Stop();
 	}
 }

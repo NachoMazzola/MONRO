@@ -54,7 +54,7 @@ public class CameraFollow : MonoBehaviour
 		float lastSectionSpriteWidth = lastSection.GetComponent<SpriteRenderer>().bounds.size.x;
 		float firstSectionSpriteWidth = firstSection.GetComponent<SpriteRenderer>().bounds.size.x;
 
-		MovementController movCtr = WorldObjectsHelper.getMovementControllerGO().GetComponent<MovementController>();
+		MovementController movCtr = WorldObjectsHelper.getUIGO().GetComponent<MovementController>();
 		movCtr.movementLimitLeft = this.minPosition - firstSectionSpriteWidth/2 + this.moveableSpriteRenderer.bounds.size.x/2;
 		movCtr.movementLimitRight = this.maxPosition + lastSectionSpriteWidth/2 - this.moveableSpriteRenderer.bounds.size.x/2;
 	}

@@ -8,6 +8,16 @@ using Yarn.Unity;
 */
 public static class WorldObjectsHelper {
 
+	public static GameObject InstantiatePrefabFromResources(string prefabName, Transform parent) {
+		GameObject pPrefab = Resources.Load(prefabName) as GameObject;
+		GameObject inst = GameObject.Instantiate(pPrefab);
+		if (parent != null) {
+			inst.transform.SetParent(parent);	
+		}
+
+		return inst;
+	}
+
 	public static GameObject getPlayerGO() {
 		return GameObject.Find("PlayerViking");
 	}

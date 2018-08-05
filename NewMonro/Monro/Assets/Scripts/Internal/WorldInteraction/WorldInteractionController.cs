@@ -23,6 +23,7 @@ public class WorldInteractionController: MonoBehaviour
 	public bool enableInteractions = true;
 
 	public List<CommandType> commandQueue;
+	public List<ICommand> commands;
 
 	static public WorldInteractionController getComponent ()
 	{
@@ -37,6 +38,7 @@ public class WorldInteractionController: MonoBehaviour
 	{
 		this.worldObservers = new List<IWorldInteractionObserver> ();
 		this.commandQueue = new List<CommandType> ();
+		this.commands = new List<ICommand>();
 	}
 
 	void OnDestroy ()
