@@ -72,6 +72,7 @@ public class CommandManager : MonoBehaviour {
 
 			this.SetPuzzleAction(this.target);
 
+			this.currentCommand.Stop();
 			this.currentCommand = this.GetNextCommand();
 			if (this.currentCommand != null) {
 				this.currentCommand.WillStart();	
@@ -90,6 +91,16 @@ public class CommandManager : MonoBehaviour {
 			//We do it in the next frame so to let the current command finish in the
 			//current frame
 			this.shouldAskForNextCommand = this.currentCommand.Finished();
+		}
+	}
+
+	public void AbortCurrentCommand() {
+		if (this.currentCommand == null) {
+			return;
+		}
+		if (this.currentCommand.isInterrutable) {
+			this.currentCommand.Stop();
+			this.currentCommand = null;	
 		}
 	}
 

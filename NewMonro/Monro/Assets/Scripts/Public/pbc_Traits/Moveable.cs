@@ -25,11 +25,11 @@ public class Moveable : Trait, IAnimatable {
 		base.OnAwake();
 		this.animCoordinator = this.GetComponent<AnimationsCoordinatorHub>();
 
-		this.movementController = WorldObjectsHelper.getMovementControllerGO().GetComponent<MovementController>();
-		this.movementController.targetTransform = this.transform;
-		this.movementController.movingLeft = this.StartFacingDirection == MovingDirection.MovingLeft;
-		this.movementController.movingRight = this.StartFacingDirection == MovingDirection.MovingRight;
-
+//		this.movementController = WorldObjectsHelper.getMovementControllerGO().GetComponent<MovementController>();
+//		this.movementController.targetTransform = this.transform;
+//		this.movementController.movingLeft = this.StartFacingDirection == MovingDirection.MovingLeft;
+//		this.movementController.movingRight = this.StartFacingDirection == MovingDirection.MovingRight;
+//
 		this.currentFacingDirection = this.StartFacingDirection;
 	}
 
@@ -40,7 +40,7 @@ public class Moveable : Trait, IAnimatable {
 	
 	// Update is called once per frame
 	void Update () {
-		this.movementController.UpdateMovement();
+		//this.movementController.UpdateMovement();
 	}
 
 	public void SwapFacingDirectionTo(MovingDirection newFacingDir) {

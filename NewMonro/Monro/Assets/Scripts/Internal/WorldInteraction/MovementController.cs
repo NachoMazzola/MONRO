@@ -3,120 +3,175 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MovementController : MonoBehaviour {
+
+public class MovementController : MonoBehaviour
+{
 
 	public GameObject ControlledGameObject;
 
 	[HideInInspector]
-	public bool movingRight;
+	public bool movingRight = false;
 	[HideInInspector]
-	public bool movingLeft;
-	[HideInInspector]
-	public bool MovePlayer = true; 
+	public bool movingLeft = false;
+
 	[HideInInspector]
 	public float movementLimitRight;
 	[HideInInspector]
 	public float movementLimitLeft;
+	[HideInInspector]
+	public Vector2 targetDestination = Vector2.zero;
+	[HideInInspector]
+	public bool reachedDestination = false;
+
 
 	private Moveable moveableGameObject;
 	private SpriteRenderer moveableSpriteRenderer;
 
 	private WorldInteractionController worldInteractionCtr;
 
-	[HideInInspector]
-	public Transform targetTransform;
+	private int optionalDistanceFromTarget = 2;
 
 	// Use this for initialization
-	void Start () {
-		this.worldInteractionCtr = WorldInteractionController.getComponent();
-	
-		if (this.ControlledGameObject != null) {
-			this.moveableGameObject = ControlledGameObject.GetComponent<Moveable>();
-			this.moveableSpriteRenderer = ControlledGameObject.GetComponent<SpriteRenderer>();
-		}
-
-		if (MovePlayer) {
-			if (ControlledGameObject == null) {
-				Debug.LogError("WARNING: CONTROLLER CAND FIND GAME OBJECT TO CONTROL!");
-			}
-		}
-
-		this.StopMoving();
+	void Start ()
+	{
+		this.SetMovingProperties();
+	//	this.StopMoving ();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		UpdateMovement();
+	void Update ()
+	{
+		UpdateMovement ();
 	}
 
-	public void UpdateMovement() {
+	public void UpdateMovement ()
+	{
+		int directionModifier = movingLeft ? -1 : 1;
+		int limitPosition = Mathf.RoundToInt(this.targetDestination.x) - this.optionalDistanceFromTarget * directionModifier;
+		if (this.targetDestination != Vector2.zero) {
+			if (Mathf.RoundToInt(this.moveableGameObject.transform.position.x) == Mathf.RoundToInt(limitPosition)) {
+				this.StopMoving();
+				this.reachedDestination = true;
+				return;
+			}	
+		}
+
 		if (movingRight) {
-			moveableGameObject.SwapFacingDirectionTo(Moveable.MovingDirection.MovingRight);
-			if (MovePlayer) {
-				if (moveableGameObject.transform.position.x + this.moveableSpriteRenderer.bounds.size.x/2 >= movementLimitRight) {
-					StopMoving();
-				}
-				else {
-					moveableGameObject.transform.position += new Vector3(1 * moveableGameObject.MovementSpeed * Time.deltaTime, 0, 0);		
-				}
-
+			moveableGameObject.SwapFacingDirectionTo (Moveable.MovingDirection.MovingRight);
+			if (moveableGameObject.transform.position.x + this.moveableSpriteRenderer.bounds.size.x / 2 >= movementLimitRight) {
+				StopMoving ();
+			} else {
+				moveableGameObject.transform.position += new Vector3 (1 * moveableGameObject.MovementSpeed * Time.deltaTime, 0, 0);		
 			}
-		}
-		else if (movingLeft) {
-			moveableGameObject.SwapFacingDirectionTo(Moveable.MovingDirection.MovingLeft);
-			if (MovePlayer) {
-				if (moveableGameObject.transform.position.x - this.moveableSpriteRenderer.bounds.size.x/2 <= movementLimitLeft) {
-					StopMoving();
-				}
-				else {
-					moveableGameObject.transform.position -= new Vector3(1 * moveableGameObject.MovementSpeed * Time.deltaTime, 0, 0);		
-				}
+		} else if (movingLeft) {
+			moveableGameObject.SwapFacingDirectionTo (Moveable.MovingDirection.MovingLeft);
+			if (moveableGameObject.transform.position.x - this.moveableSpriteRenderer.bounds.size.x / 2 <= movementLimitLeft) {
+				StopMoving ();
+			} else {
+				moveableGameObject.transform.position -= new Vector3 (1 * moveableGameObject.MovementSpeed * Time.deltaTime, 0, 0);		
 			}
 		}
 	}
 
-	public void StartMovingRight() {
+	public void StartMovingRight ()
+	{
+		CommandManager mgr = CommandManager.getComponent();
+		mgr.AbortCurrentCommand();
+
 		if (worldInteractionCtr.enableInteractions == false) {
 			return;
 		}
 			
 		movingRight = true;
 		movingLeft = false;
+		this.reachedDestination = false;
 
-		this.moveableGameObject.PlayAnimation();
+		this.moveableGameObject.PlayAnimation ();
 	}
 
-	public void StartMovingLeft() {
+	public void StartMovingLeft ()
+	{
+		CommandManager mgr = CommandManager.getComponent();
+		mgr.AbortCurrentCommand();
+
 		if (worldInteractionCtr.enableInteractions == false) {
 			return;
 		}
 			
 		movingRight = false;
 		movingLeft = true;
+		this.reachedDestination = false;
 
-		this.moveableGameObject.PlayAnimation();
+		this.moveableGameObject.PlayAnimation ();
 	}
 
-	public void StopMoving() {
+	public void StopMoving ()
+	{
 		movingLeft = false;
 		movingRight = false;
 
-		this.moveableGameObject.StopAnimation();
+		if (this.moveableGameObject != null) {
+			this.moveableGameObject.StopAnimation ();	
+		}
 	}
 
-	public bool IsMoving() {
+	public bool IsMoving ()
+	{
 		return movingLeft || movingRight;
 	}
 
-	public Moveable.MovingDirection GetMovingDirection() {
+	public Moveable.MovingDirection GetMovingDirection ()
+	{
 		return moveableGameObject.currentFacingDirection;
 	}
 
-	public float GetPlayerPosition() {
+	public float GetPlayerPosition ()
+	{
 		return moveableGameObject.transform.position.x;
 	}
 
-	public float GetMovementSpeed() {
+	public float GetMovementSpeed ()
+	{
 		return moveableGameObject.MovementSpeed;
 	}
+
+	public void SetMovementOptions(GameObject controlledGameObject, Vector2 targetDestination) {
+		if (controlledGameObject == null) {
+			this.ControlledGameObject = null;
+			this.targetDestination = Vector2.zero;
+			this.StopMoving();
+			return;
+		}
+
+		this.ControlledGameObject = controlledGameObject;
+		this.targetDestination = targetDestination;
+
+		this.SetMovingProperties();
+
+		this.movingLeft = this.targetDestination.x < moveableGameObject.transform.position.x;
+		this.movingRight = !this.movingLeft;
+
+		if (this.targetDestination != Vector2.zero) {
+			this.movementLimitLeft = -99999;
+			this.movementLimitRight = 99999;
+		}
+	}
+
+	private void SetMovingProperties() {
+		if (this.moveableGameObject == null) {
+			if (this.ControlledGameObject != null) {
+				this.moveableGameObject = ControlledGameObject.GetComponent<Moveable> ();
+				this.moveableSpriteRenderer = ControlledGameObject.GetComponent<SpriteRenderer> ();
+			} else {
+				Debug.LogError ("WARNING: CONTROLLER CAND FIND GAME OBJECT TO CONTROL!");
+			}
+		}
+
+		if (this.worldInteractionCtr == null) {
+			this.worldInteractionCtr = WorldInteractionController.getComponent ();	
+		}
+	}
+
+
+
 }
