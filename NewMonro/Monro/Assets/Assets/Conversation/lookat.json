@@ -4,8 +4,8 @@
 		"tags": "",
 		"body": "That's Hildr.\nShe seems nice.",
 		"position": {
-			"x": 540,
-			"y": 244
+			"x": 378,
+			"y": 185
 		},
 		"colorID": 0
 	},
@@ -16,6 +16,186 @@
 		"position": {
 			"x": 142,
 			"y": 184
+		},
+		"colorID": 0
+	},
+	{
+		"title": "lookAt_bench",
+		"tags": "",
+		"body": "Such a nice bench.\nAlmost like it doesn't belong here.\nMust be my imagination.",
+		"position": {
+			"x": -121,
+			"y": 183
+		},
+		"colorID": 0
+	},
+	{
+		"title": "lookAt_branch",
+		"tags": "",
+		"body": "<<set $sawBranch to true>>\n\nJust a little branch.\nWe may never know where it came from...\n\n[[Mimir.lookAt.cameFrom]]",
+		"position": {
+			"x": 611,
+			"y": 184
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.lookAt.cameFrom",
+		"tags": "",
+		"body": "Probably from one of these trees...\n\n[[Monrjiall.lookAt.going]]",
+		"position": {
+			"x": 609,
+			"y": 421
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.lookAt.going",
+		"tags": "",
+		"body": "Or where it is headed...\n\n[[Mimir.lookAt.nowhere]]",
+		"position": {
+			"x": 610,
+			"y": 651
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.lookAt.nowhere",
+		"tags": "",
+		"body": "Nowhere, most likely...\n\n[[Monrjiall.lookAt.remember]]",
+		"position": {
+			"x": 611,
+			"y": 889
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.lookAt.remember",
+		"tags": "",
+		"body": "...but we'll always remember it as the little branch that held on...\n\n[[Mimir.lookAt.holdOn]]",
+		"position": {
+			"x": 608,
+			"y": 1124
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.lookAt.holdOn",
+		"tags": "",
+		"body": "That's exactly what it DIDN'T do.",
+		"position": {
+			"x": 604,
+			"y": 1375
+		},
+		"colorID": 0
+	},
+	{
+		"title": "lookAt_helmet",
+		"tags": "",
+		"body": "<<set $sawHelmet to true>>\n\nA great helmet from a fallen warrior.\nHe's probably in Valhalla already.\nWait for me brother, I'll be there soon.",
+		"position": {
+			"x": 845,
+			"y": 187
+		},
+		"colorID": 0
+	},
+	{
+		"title": "lookAt_shield",
+		"tags": "",
+		"body": "<<set $sawShield to true>>\n\nA shield. I'm thinking of getting one.\nIt will be useful in Valhalla, where all I will do is fight and drink.\nCan't wait!\n",
+		"position": {
+			"x": -354,
+			"y": 180
+		},
+		"colorID": 0
+	},
+	{
+		"title": "lookAt_goblet",
+		"tags": "",
+		"body": "I could really use a drink right now.\nToo bad this goblet is empty.\nAnd there's no ale to be found.\nIn miles around.",
+		"position": {
+			"x": 388,
+			"y": 420
+		},
+		"colorID": 0
+	},
+	{
+		"title": "lookAt_mound",
+		"tags": "",
+		"body": "These mound is filled with termites.\nThese little bastards ate a whole in my uncle's boat once.\nWe didn't realize until we were out of view of the beach...\n...and the surface.",
+		"position": {
+			"x": 136,
+			"y": 417
+		},
+		"colorID": 0
+	},
+	{
+		"title": "lookAt_fallenTree",
+		"tags": "",
+		"body": "I have to lift this up to prove my strength to that head.\nIf only it wasn't so heavy, I could really show him how strong I am.",
+		"position": {
+			"x": -120,
+			"y": 415
+		},
+		"colorID": 0
+	},
+	{
+		"title": "lookAt_axeHandle",
+		"tags": "",
+		"body": "That's a firm looking wooden handle.",
+		"position": {
+			"x": -352,
+			"y": 419
+		},
+		"colorID": 0
+	},
+	{
+		"title": "lookAt_axeHead",
+		"tags": "",
+		"body": "That's axe head without a handle.\nSuch a sad thing to look upon.",
+		"position": {
+			"x": 383,
+			"y": 635
+		},
+		"colorID": 0
+	},
+	{
+		"title": "lookAt_river",
+		"tags": "",
+		"body": "This blasted river.\nThere has to be a way to cross it.",
+		"position": {
+			"x": 132,
+			"y": 649
+		},
+		"colorID": 0
+	},
+	{
+		"title": "lookAt_tree",
+		"tags": "",
+		"body": "It's a tree.\nConveniently close to that river that's getting in the way of adventure.",
+		"position": {
+			"x": -113,
+			"y": 646
+		},
+		"colorID": 0
+	},
+	{
+		"title": "lookAt_treeBridge",
+		"tags": "",
+		"body": "The newest improvement on Midgard.\nThe Mornjiall Bridge.",
+		"position": {
+			"x": -354,
+			"y": 644
+		},
+		"colorID": 0
+	},
+	{
+		"title": "lookAt_axe",
+		"tags": "",
+		"body": "My axe.\nI like to keep it next to where my old axe used to be.",
+		"position": {
+			"x": 839,
+			"y": 420
 		},
 		"colorID": 0
 	}

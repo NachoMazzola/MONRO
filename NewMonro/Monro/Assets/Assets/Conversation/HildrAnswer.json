@@ -72,7 +72,7 @@
 	{
 		"title": "Hildr.Answer.NotSure",
 		"tags": "",
-		"body": "I’m not so sure you do...",
+		"body": "<<set $HoenirKnown to true>>\nI’m not so sure you do...",
 		"position": {
 			"x": -41,
 			"y": 353

@@ -2,10 +2,10 @@
 	{
 		"title": "Monrjiall.Observation.found",
 		"tags": "",
-		"body": "<<DialogueAction PuzzleManager sawHelmet>>\n[[I found this helmet over by that tree... |Mimir.Observation.helmetAnd]]\n<<DialogueAction PuzzleManager sawShield>>\n[[There is a shield laying over there... |Mimir.Observation.shieldAnd]]\n<<DialogueAction PuzzleManager sawGoblet>>\n[[That goblet there is rather particular .|Mimir.Observation.gobletAnd]]\n<<DialogueAction PuzzleManager sawBranch>>\n[[That branch has caught my attention. |Mimir.Observation.shouldnt]]\n<<DialogueAction PuzzleManager sawBench>>\n[[That bench looks rather odd... |Mimir.Observation.benchAnd]]\n[[On second thought, let me look around a bit more. |Monrjiall.Puzzles.trials]]",
+		"body": "<<if $sawHelmet is true>>\n[[I found this helmet over by that tree... |Mimir.Observation.helmetAnd]]\n<<endif>>\n\n<<if $sawShield is true>>\n[[There is a shield laying over there... |Mimir.Observation.shieldAnd]]\n<<endif>>\n\n<<if $sawGoblet is true>>\n[[That goblet there is rather particular .|Mimir.Observation.gobletAnd]]\n<<endif>>\n\n<<if $sawBranch is true>>\n[[That branch has caught my attention. |Mimir.Observation.shouldnt]]\n<<endif>>\n\n<<if $sawBench is true>>\n[[That bench looks rather odd... |Mimir.Observation.benchAnd]]\n<<endif>>\n\n[[On second thought, let me look around a bit more. |Monrjiall.Puzzles.trials]]",
 		"position": {
-			"x": 470,
-			"y": 210
+			"x": 478,
+			"y": 202
 		},
 		"colorID": 0
 	},
@@ -82,7 +82,7 @@
 	{
 		"title": "Monrjiall.Observation.helmetOptions",
 		"tags": "",
-		"body": "<<DialogueAction PuzzleManager $sawShield>>\n[[This shield is also very similar and laying on the floor nearby. |Mimir.Observation.hsrelated]]\n<<DialogueAction PuzzleManager $sawBranch>>\n[[That branch over there! Ha! Once again, I prove myself in excellence of skill. |Mimir.Observation.hbrelated]]\n[[I don’t anything else is relevant to this helmet. |Mimir.Observation.notCare]]\n",
+		"body": "<<if $sawShield is true>>\n[[This shield is also very similar and laying on the floor nearby. |Mimir.Observation.hsrelated]]\n<<if $sawBranch is true>>\n[[That branch over there! Ha! Once again, I prove myself in excellence of skill. |Mimir.Observation.hbrelated]]\n[[I don’t anything else is relevant to this helmet. |Mimir.Observation.notCare]]\n",
 		"position": {
 			"x": 472,
 			"y": -302
@@ -210,9 +210,9 @@
 		"colorID": 0
 	},
 	{
-		"title": "Mimir.Observation.shieldAnd",
+		"title": "Monrjiall.Observation.shieldOptions",
 		"tags": "",
-		"body": "Yes, something else?\n\n<<DialogueAction PuzzleManager $sawHelmet>>\n[[There’s also a helmet by a nearby tree. |Mimir.Observation.shrelated]]\n<<DialogueAction PuzzleManager $sawBench>>\n[[That bench has clearly been used to sit upon. |Mimir.Observation.accurate]]\n[[What do you need something else for? That shield is magnificent! |Mimir.Observation.twoItems]]",
+		"body": "<<if $sawHelmet is true>>\n[[There’s also a helmet by a nearby tree. |Mimir.Observation.shrelated]]\n<<if $sawBench is true>>\n[[That bench has clearly been used to sit upon. |Mimir.Observation.accurate]]\n[[What do you need something else for? That shield is magnificent! |Mimir.Observation.twoItems]]",
 		"position": {
 			"x": 719,
 			"y": -28
@@ -452,7 +452,7 @@
 	{
 		"title": "Monrjiall.Observation.gobletOptions",
 		"tags": "",
-		"body": "<<DialogueAction PuzzleManager $sawBench>>\n[[I’m still looking for ale to fill it with, so I can sit on that bench to enjoy it. |Mimir.Observation.benchPrecisely]]\n<<DialogueAction PuzzleManager $sawShield>>\n[[I think that shield is connected to the goblet somehow. |Mimir.Observation.howShield]]\n[[Yes, a sudden craving for a good cup of mead. |Mimir.Observation.material]]",
+		"body": "<<if $sawBench is true>>\n[[I’m still looking for ale to fill it with, so I can sit on that bench to enjoy it. |Mimir.Observation.benchPrecisely]]\n<<if $sawShield is true>>\n[[I think that shield is connected to the goblet somehow. |Mimir.Observation.howShield]]\n[[Yes, a sudden craving for a good cup of mead. |Mimir.Observation.material]]",
 		"position": {
 			"x": 963,
 			"y": 206
@@ -542,7 +542,7 @@
 	{
 		"title": "Monrjiall.Observation.benchOptions",
 		"tags": "",
-		"body": "<<DialogueAction PuzzleManager $sawHelmet>>\n[[Well, if benches are falling out of the sky... |Monrjiall.Observation.goodThing]]\n<<DialogueAction PuzzleManager $sawGoblet>>\n[[Well, it would be a nice place to enjoy a drink in that goblet over there. |Mimir.Observation.gobletPrecisely]]\n[[Yes, the dust sitting on top of it. Clearly not mountain dust. |Mimir.Observation.prettyClean]]",
+		"body": "<<if $sawHelmet is true>>\n[[Well, if benches are falling out of the sky... |Monrjiall.Observation.goodThing]]\n<<if $sawGoblet is true>>\n[[Well, it would be a nice place to enjoy a drink in that goblet over there. |Mimir.Observation.gobletPrecisely]]\n[[Yes, the dust sitting on top of it. Clearly not mountain dust. |Mimir.Observation.prettyClean]]",
 		"position": {
 			"x": -92,
 			"y": 441
@@ -656,6 +656,16 @@
 		"position": {
 			"x": 476,
 			"y": 446
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.shieldAnd",
+		"tags": "",
+		"body": "Yes, something else?\n\n[[Monrjiall.Observation.shieldOptions]]",
+		"position": {
+			"x": 725,
+			"y": 676
 		},
 		"colorID": 0
 	}
