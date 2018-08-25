@@ -46,6 +46,11 @@ public class MovementController : MonoBehaviour
 
 	public void UpdateMovement ()
 	{
+		bool isStopped = movingLeft == false && movingRight == false;
+		Vector3 move = isStopped ? new Vector2(0, 0) : new Vector2(movingLeft ? -1 : 1, 0);
+		moveableGameObject.transform.position += move * moveableGameObject.MovementSpeed * Time.deltaTime;
+
+
 		int directionModifier = movingLeft ? -1 : 1;
 		int limitPosition = Mathf.RoundToInt(this.targetDestination.x) - this.optionalDistanceFromTarget * directionModifier;
 		if (this.targetDestination != Vector2.zero) {
@@ -60,15 +65,11 @@ public class MovementController : MonoBehaviour
 			moveableGameObject.SwapFacingDirectionTo (Moveable.MovingDirection.MovingRight);
 			if (moveableGameObject.transform.position.x + this.moveableSpriteRenderer.bounds.size.x / 2 >= movementLimitRight) {
 				StopMoving ();
-			} else {
-				moveableGameObject.transform.position += new Vector3 (1 * moveableGameObject.MovementSpeed * Time.deltaTime, 0, 0);		
 			}
 		} else if (movingLeft) {
 			moveableGameObject.SwapFacingDirectionTo (Moveable.MovingDirection.MovingLeft);
 			if (moveableGameObject.transform.position.x - this.moveableSpriteRenderer.bounds.size.x / 2 <= movementLimitLeft) {
 				StopMoving ();
-			} else {
-				moveableGameObject.transform.position -= new Vector3 (1 * moveableGameObject.MovementSpeed * Time.deltaTime, 0, 0);		
 			}
 		}
 	}

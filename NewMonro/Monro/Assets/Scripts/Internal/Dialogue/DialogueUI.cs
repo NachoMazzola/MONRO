@@ -26,12 +26,13 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 	private Talkable lastOneWhoTalked;
 	private Talkable whoIsTalking;
+	private DialogueBottomPanel dialoguePanel;
 
 	DialogueOptionsDisplayer buttonsPositionHandler;
 
 	void Awake ()
 	{
-
+		this.dialoguePanel = WorldObjectsHelper.GetDialoguePannel().GetComponent<DialogueBottomPanel>();
 		dialogRunner = FindObjectOfType<DialogueRunner> ();
 		conversationOptionsPanel = WorldObjectsHelper.getUIGO ().transform.Find ("ConversationOptionsPanel").transform;
 		conversationOptionsPanel.gameObject.SetActive (false);
@@ -77,7 +78,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 		}
 
 		foreach (Talkable t in dialogRunner.conversationParticipants) {
-			if (t.gameEntity.ID == participantCorrectName) {
+			if (t.gameEntity.ID.ToLower() == participantCorrectName.ToLower()) {
 				return t;
 			}
 		}	
@@ -93,7 +94,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 	public override IEnumerator RunLine (Yarn.Line line)
 	{
 		whoIsTalking = GetParticipant (dialogRunner.dialogue.currentNode);
-		//volver a pedir el conv canvas solo cuando el que habla cambio
+		dialoguePanel.whoIsTalking = whoIsTalking;
 
 		if (whoIsTalking != null) {
 			if (lastOneWhoTalked == null) {
@@ -101,14 +102,12 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 			}
 
 			if (whoIsTalking.GetComponent<GameEntity> ().type != lastOneWhoTalked.GetComponent<GameEntity> ().type) {
-				TextboxDisplayer lastTbDisplayer = lastOneWhoTalked.GetComponent<TextboxDisplayer> ();
-				yield return lastTbDisplayer.HideCaption (0.0f);
+				yield return dialoguePanel.RemoveCaptionAfterSeconds(0.0f);
 				lastOneWhoTalked = whoIsTalking;
 			}
 
 
-			TextboxDisplayer tbDisplayer = whoIsTalking.GetComponent<TextboxDisplayer> ();
-			yield return tbDisplayer.ShowCaption (line.text, TextBox.DisappearMode.WaitInput);
+			yield return dialoguePanel.ShowText(line.text);
 		
 			yield break;
 		}
@@ -118,6 +117,8 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 	public override IEnumerator RunOptions (Yarn.Options optionsCollection, 
 	                                        Yarn.OptionChooser optionChooser)
 	{
+
+		this.dialoguePanel.gameObject.SetActive(false);
 
 		// Do a little bit of safety checking
 		if (optionsCollection.options.Count > optionButtons.Count) {
@@ -153,6 +154,8 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 		// selected an option.
 		SetSelectedOption (selectedOption);
 
+		this.dialoguePanel.gameObject.SetActive(true);
+
 		// Now remove the delegate so that the loop in RunOptions will exit
 		SetSelectedOption = null; 
 	}
@@ -171,6 +174,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 		if (inventoryGO != null) {
 			inventoryGO.SetActive (false);
 		}
+		this.dialoguePanel.gameObject.SetActive(true);
 
 		WorldInteractionController wic = WorldInteractionController.getComponent ();
 		wic.enableInteractions = false;
@@ -184,15 +188,16 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 	public override IEnumerator DialogueComplete ()
 	{
-
+		this.dialoguePanel.gameObject.SetActive(false);
 		conversationOptionsPanel.gameObject.SetActive (false);
 		dialogRunner.DialogueComplete ();
 		resetDialogueOptionsButtons ();
 
 		lastOneWhoTalked = null;
 
-		TextboxDisplayer lastTbDisplayer = whoIsTalking.GetComponent<TextboxDisplayer> ();
-		yield return lastTbDisplayer.HideCaption (0.0f);
+		yield return dialoguePanel.RemoveCaptionAfterSeconds(0.0f);
+		//TextboxDisplayer lastTbDisplayer = whoIsTalking.GetComponent<TextboxDisplayer> ();
+		//yield return lastTbDisplayer.HideCaption (0.0f);
 		whoIsTalking = null;
 	
 		WorldInteractionController.getComponent ().enableInteractions = true;

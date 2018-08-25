@@ -35,6 +35,7 @@ public class ItemInventoryCaptionTrigger : MonoBehaviour, IPointerDownHandler, I
 		}
 
 		if (!isHoldingDown) {
+			DialogueBottomPanel dialoguePanel = WorldObjectsHelper.GetDialoguePannel().GetComponent<DialogueBottomPanel>();
 			TextboxDisplayer playerTbDisplayer = WorldObjectsHelper.getPlayerGO().GetComponent<TextboxDisplayer>();
 			StartCoroutine(playerTbDisplayer.ShowCaption(caption));
 			Debug.Log("InventoryCaptionTrigger SHOW CAPTION: " + caption);

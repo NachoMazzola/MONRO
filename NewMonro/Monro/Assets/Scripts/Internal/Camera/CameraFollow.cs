@@ -6,23 +6,32 @@ using System.Collections.Generic;
 	
 public class CameraFollow : MonoBehaviour
 {
-
 	public Transform target;
+
 
 	[HideInInspector]
 	public float minPosition = -5.3f;
 	[HideInInspector]
 	public float maxPosition = 5.3f;
-		
+	[HideInInspector]
+	public bool stopFollowing = false;
+
+
 	private float moveSpeed;
 	private Moveable moveable;
 	private SpriteRenderer moveableSpriteRenderer;
+	private Vector2 fixedMoveToPosition = Vector2.zero;
+
+	private Zoom zoomComponent;
+
 
 	void Start() {
 		this.moveable = target.GetComponent<Moveable>();
-		moveSpeed = this.moveable.MovementSpeed;
+		this.moveSpeed = this.moveable.MovementSpeed;
 
 		this.moveableSpriteRenderer = moveable.gameObject.GetComponent<SpriteRenderer>();
+
+		this.zoomComponent = this.GetComponent<Zoom>();
 
 		SetupMaxAndMinLimits();
 	}
@@ -33,7 +42,12 @@ public class CameraFollow : MonoBehaviour
 		if (target == null) {
 			return;
 		}
-		var newPosition = Vector3.Lerp (transform.position, target.position, moveSpeed * Time.deltaTime);
+
+		Vector2 pos = target.position;
+		if (this.fixedMoveToPosition != Vector2.zero) {
+			pos = this.fixedMoveToPosition;
+		}
+		var newPosition = Vector3.Lerp (transform.position, pos, moveSpeed * Time.deltaTime);
 
 		newPosition.x = Mathf.Clamp (newPosition.x, minPosition, maxPosition);
 		newPosition.y = transform.position.y;
@@ -55,12 +69,20 @@ public class CameraFollow : MonoBehaviour
 		float firstSectionSpriteWidth = firstSection.GetComponent<SpriteRenderer>().bounds.size.x;
 
 		MovementController movCtr = WorldObjectsHelper.getUIGO().GetComponent<MovementController>();
+//		float rightThreshold = this.moveableSpriteRenderer.bounds.size.x/4;
+//		float leftThreshold = this.moveableSpriteRenderer.bounds.size.x/4;
+//			
 		movCtr.movementLimitLeft = this.minPosition - firstSectionSpriteWidth/2 + this.moveableSpriteRenderer.bounds.size.x/2;
 		movCtr.movementLimitRight = this.maxPosition + lastSectionSpriteWidth/2 - this.moveableSpriteRenderer.bounds.size.x/2;
 	}
 
 	public bool ReachedLimitPosition() {
 		return this.transform.position.x == maxPosition || this.transform.position.x == minPosition;
+	}
+
+	public void ZoomToPosition(Vector2 position, float zoomSpeed) {
+		//this.fixedMoveToPosition = new Vector2(position.x + 2, position.y);// position;
+		this.zoomComponent.startZoom = true;
 	}
 }
 

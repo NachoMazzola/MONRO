@@ -14,7 +14,7 @@ public struct LookAtCommandParameters: ICommandParamters {
 
 /**
  * Look At basic command.
- * Triggers a caption within the TextboxDisplayer panel.
+ * Triggers a caption
 */
 public class LookAtCommand : ICommand {
 
@@ -22,9 +22,6 @@ public class LookAtCommand : ICommand {
 	public GameObject whoLooks;
 
 	private Lookable lookableComponent;
-	private TextboxDisplayer textBoxDisplayerComponent;
-
-
 	private TalkCommand talkCommand;
 
 

@@ -77,4 +77,9 @@ public static class WorldObjectsHelper {
 	public static GameObject GetCommandManagerGO() {
 		return GameObject.Find("CommandManager");
 	}
+
+	public static GameObject GetDialoguePannel() {
+		GameObject bottomPanel = WorldObjectsHelper.getUIGO();
+		return bottomPanel.transform.Find("DialoguePanel").gameObject;
+	}
 }
