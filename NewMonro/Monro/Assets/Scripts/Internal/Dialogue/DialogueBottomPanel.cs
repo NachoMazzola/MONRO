@@ -15,15 +15,12 @@ public class DialogueBottomPanel : MonoBehaviour
 	public float CaptionDurationUntilFade = 3.0f;
 	public float CaptionFadeDuration = 1.5f;
 	public float TextSpeed = 0.0001f;
-	public Color TextColor = Color.green;
-	public int TextSize = 30;
-	public Font Font;
 
+	private Image talkingImage;
 
 	// Use this for initialization
-	void Start ()
-	{
-		
+	void Start () {
+		this.talkingImage = this.transform.Find("TalkablePortrait").GetComponent<Image>();
 	}
 
 	public IEnumerator AddActionOnFinishAfterCoroutine (IEnumerator coroutineToWait)
@@ -32,13 +29,14 @@ public class DialogueBottomPanel : MonoBehaviour
 		this.hasFinishedCaptionDisplay = true;
 	}
 
-	public IEnumerator ShowText (string caption)
+	public IEnumerator ShowText (string caption, Color textColor, Font textFont, int textSize, Sprite talkableImage)
 	{
+		this.talkingImage.sprite = talkableImage;
 
 		Text theText = this.transform.GetComponentInChildren<Text> ();
-		theText.font = this.Font;
-		theText.color = this.TextColor;
-		theText.fontSize = this.TextSize;
+		theText.font = textFont;
+		theText.color = textColor;
+		theText.fontSize = textSize;
 
 		if (TextSpeed > 0.0f) {
 			// Display the line one character at a time

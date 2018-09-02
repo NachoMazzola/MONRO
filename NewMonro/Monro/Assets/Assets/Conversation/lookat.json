@@ -198,5 +198,15 @@
 			"y": 420
 		},
 		"colorID": 0
+	},
+	{
+		"title": "lookAt_default",
+		"tags": "",
+		"body": "This is a default text..\nYou should provide some lookAt text for this!.",
+		"position": {
+			"x": 839,
+			"y": 420
+		},
+		"colorID": 0
 	}
 ]

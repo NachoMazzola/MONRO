@@ -1,10 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-[RequireComponent(typeof(TextboxDisplayer))]
 public class Talkable : IMenuRenderableTrait, IAnimatable {
 	public string StartingNode;
+
+	/** Text Configuration */
+	public Color TextColor = Color.green;
+	public int TextSize = 30;
+	public Font textFont;
+	public Sprite talkableImage;
+
 
 	private AnimationsCoordinatorHub animCoordinator;
 
