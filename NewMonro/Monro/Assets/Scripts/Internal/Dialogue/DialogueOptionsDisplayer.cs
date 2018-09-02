@@ -15,6 +15,7 @@ public class DialogueOptionsDisplayer {
 	}
 
 	public void SetOriginPositions() {
+		return;
 		float bHeight = this.optionButtons [0].GetComponent<RectTransform> ().rect.height;
 		this.optionButtonYDisplacement = bHeight;
 		for (int j = 0; j < optionButtons.Count; j++) {
@@ -56,4 +57,6 @@ public class DialogueOptionsDisplayer {
 			}
 		}
 	}
+
+
 }

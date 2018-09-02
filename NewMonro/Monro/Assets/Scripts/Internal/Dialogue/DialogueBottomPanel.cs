@@ -3,24 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
+using Yarn.Unity;
 
 
 public class DialogueBottomPanel : MonoBehaviour
 {
+	public float TextSpeed = 0.0001f;
 
-	public Talkable whoIsTalking;
 	[HideInInspector]
 	public bool hasFinishedCaptionDisplay;
 
-	public float CaptionDurationUntilFade = 3.0f;
-	public float CaptionFadeDuration = 1.5f;
-	public float TextSpeed = 0.0001f;
+	private Text displayedText;
+
+	private DialogueOptionsDisplayer buttonsPositionHandler;
+	private List<Button> optionButtons;
 
 	private Image talkingImage;
+	private Talkable whoIsTalking;
+	private Transform conversationOptionsPanel;
+
+
 
 	// Use this for initialization
 	void Start () {
+		this.displayedText = this.transform.GetComponentInChildren<Text> ();
 		this.talkingImage = this.transform.Find("TalkablePortrait").GetComponent<Image>();
+		this.conversationOptionsPanel = this.transform.Find("ConversationOptionsPanel");
+		this.MustShowDialogueOptions(false);
 	}
 
 	public IEnumerator AddActionOnFinishAfterCoroutine (IEnumerator coroutineToWait)
@@ -29,14 +38,14 @@ public class DialogueBottomPanel : MonoBehaviour
 		this.hasFinishedCaptionDisplay = true;
 	}
 
-	public IEnumerator ShowText (string caption, Color textColor, Font textFont, int textSize, Sprite talkableImage)
+	public IEnumerator ShowText (string caption, Talkable whoIsTalking)
 	{
-		this.talkingImage.sprite = talkableImage;
+		this.whoIsTalking = whoIsTalking;
+		this.talkingImage.sprite = this.whoIsTalking.talkableImage;
 
-		Text theText = this.transform.GetComponentInChildren<Text> ();
-		theText.font = textFont;
-		theText.color = textColor;
-		theText.fontSize = textSize;
+		this.displayedText.font = this.whoIsTalking.textFont;
+		this.displayedText.color = this.whoIsTalking.TextColor;
+		this.displayedText.fontSize = this.whoIsTalking.TextSize;
 
 		if (TextSpeed > 0.0f) {
 			// Display the line one character at a time
@@ -44,12 +53,12 @@ public class DialogueBottomPanel : MonoBehaviour
 
 			foreach (char c in caption) {
 				stringBuilder.Append (c);
-				theText.text = stringBuilder.ToString ();
+				this.displayedText.text = stringBuilder.ToString ();
 				yield return new WaitForSeconds (TextSpeed);
 			}
 		} else {
 			// Display the line immediately if textSpeed == 0
-			theText.text = caption;
+			this.displayedText.text = caption;
 		}
 			
 		// Wait for any user input
@@ -73,5 +82,30 @@ public class DialogueBottomPanel : MonoBehaviour
 	public void finishedLine ()
 	{
 		whoIsTalking.StopAnimation ();
+	}
+
+	public void MustShowDialogueOptions(bool show) {
+		this.displayedText.gameObject.SetActive(!show);
+		this.conversationOptionsPanel.gameObject.SetActive (show);
+	}
+
+	public void SetupOptionButtons(List<Button> optionButtons) {
+		this.optionButtons = optionButtons;
+
+		foreach (Button optionButton in this.optionButtons) {
+			optionButton.gameObject.SetActive (false);
+		}
+
+		this.buttonsPositionHandler = new DialogueOptionsDisplayer (this.optionButtons);
+		this.buttonsPositionHandler.SetOriginPositions();
+	}
+
+	public void CreateButtonForOptions(Yarn.Options optionsCollection) {
+		this.conversationOptionsPanel.gameObject.SetActive (true);
+		this.buttonsPositionHandler.PositionateButtons (optionsCollection);
+	}
+
+	public void ResetDialogueOptionsButtons () {
+		this.buttonsPositionHandler.SetOriginPositions();
 	}
 }

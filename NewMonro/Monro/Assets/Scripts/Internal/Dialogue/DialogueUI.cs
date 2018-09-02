@@ -22,28 +22,19 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 	private float optionButtonYDisplacement;
 	private int inactiveButtons;
-	private Transform conversationOptionsPanel;
 
 	private Talkable lastOneWhoTalked;
 	private Talkable whoIsTalking;
 	private DialogueBottomPanel dialoguePanel;
 
-	DialogueOptionsDisplayer buttonsPositionHandler;
+
 
 	void Awake ()
 	{
 		this.dialoguePanel = WorldObjectsHelper.GetDialoguePannel().GetComponent<DialogueBottomPanel>();
+		this.dialoguePanel.SetupOptionButtons(this.optionButtons);
 		dialogRunner = FindObjectOfType<DialogueRunner> ();
-		conversationOptionsPanel = WorldObjectsHelper.getUIGO ().transform.Find ("ConversationOptionsPanel").transform;
-		conversationOptionsPanel.gameObject.SetActive (false);
 
-
-		foreach (Button optionButton in optionButtons) {
-			optionButton.gameObject.SetActive (false);
-		}
-
-		this.buttonsPositionHandler = new DialogueOptionsDisplayer (this.optionButtons);
-		this.buttonsPositionHandler.SetOriginPositions();
 	}
 
 	void Start ()
@@ -94,7 +85,6 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 	public override IEnumerator RunLine (Yarn.Line line)
 	{
 		whoIsTalking = GetParticipant (dialogRunner.dialogue.currentNode);
-		dialoguePanel.whoIsTalking = whoIsTalking;
 
 		if (whoIsTalking != null) {
 			if (lastOneWhoTalked == null) {
@@ -107,7 +97,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 			}
 
 
-			yield return dialoguePanel.ShowText(line.text, whoIsTalking.TextColor, whoIsTalking.textFont, whoIsTalking.TextSize, whoIsTalking.talkableImage);
+			yield return dialoguePanel.ShowText(line.text, whoIsTalking);
 		
 			yield break;
 		}
@@ -118,17 +108,13 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 	                                        Yarn.OptionChooser optionChooser)
 	{
 
-		this.dialoguePanel.gameObject.SetActive(false);
-
 		// Do a little bit of safety checking
 		if (optionsCollection.options.Count > optionButtons.Count) {
 			Debug.LogWarning ("There are more options to present than there are" +
 			"buttons to present them in. This will cause problems.");
 		}
 
-		conversationOptionsPanel.gameObject.SetActive (true);
-
-		this.buttonsPositionHandler.PositionateButtons (optionsCollection);
+		this.dialoguePanel.CreateButtonForOptions(optionsCollection);
 
 		// Record that we're using it
 		SetSelectedOption = optionChooser;
@@ -143,21 +129,23 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 			button.gameObject.SetActive (false);
 		}
 
-		resetDialogueOptionsButtons ();
+		this.dialoguePanel.ResetDialogueOptionsButtons();
 		yield break;
 	}
 
 	// Called by buttons to make a selection.
 	public void SetOption (int selectedOption)
 	{
+		this.dialoguePanel.MustShowDialogueOptions(false);
+
 		// Call the delegate to tell the dialogue system that we've
 		// selected an option.
 		SetSelectedOption (selectedOption);
 
-		this.dialoguePanel.gameObject.SetActive(true);
+		//this.dialoguePanel.gameObject.SetActive(true);
 
 		// Now remove the delegate so that the loop in RunOptions will exit
-		SetSelectedOption = null; 
+		SetSelectedOption = null;
 	}
 
 	public override IEnumerator RunCommand (Yarn.Command command)
@@ -180,18 +168,15 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 		wic.enableInteractions = false;
 		wic.InterruptInteractions ();
 
-
-		// Enable the dialogue controls.
-
 		yield break;
 	}
 
 	public override IEnumerator DialogueComplete ()
 	{
 		this.dialoguePanel.gameObject.SetActive(false);
-		conversationOptionsPanel.gameObject.SetActive (false);
+
 		dialogRunner.DialogueComplete ();
-		resetDialogueOptionsButtons ();
+		this.dialoguePanel.ResetDialogueOptionsButtons();
 
 		lastOneWhoTalked = null;
 
@@ -209,20 +194,4 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 		yield break;
 	}
-
-	void resetDialogueOptionsButtons ()
-	{
-		//set the buttons as they were before displacing them!
-		if (inactiveButtons > 0) {
-			float bHeight = optionButtons [0].GetComponent<RectTransform> ().rect.height;
-			optionButtonYDisplacement = bHeight * inactiveButtons;
-			for (int j = 0; j < optionButtons.Count; j++) {
-				Button currentButton = optionButtons [j];
-				RectTransform buttonRect = currentButton.GetComponent<RectTransform> ();
-
-				buttonRect.anchoredPosition = new Vector2 (buttonRect.anchoredPosition.x, buttonRect.anchoredPosition.y + optionButtonYDisplacement);
-			}
-		}
-	}
-
 }
