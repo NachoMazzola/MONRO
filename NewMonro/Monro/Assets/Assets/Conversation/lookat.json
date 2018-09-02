@@ -22,7 +22,7 @@
 	{
 		"title": "lookAt_bench",
 		"tags": "",
-		"body": "Such a nice bench.\nAlmost like it doesn't belong here.\nMust be my imagination.",
+		"body": "<<set $sawBench to true>>\n\nSuch a nice bench.\nAlmost like it doesn't belong here.\nMust be my imagination.",
 		"position": {
 			"x": -121,
 			"y": 183

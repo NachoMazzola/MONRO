@@ -1,8 +1,8 @@
 [
 	{
-		"title": "Monrjiall.Intro.Hello",
+		"title": "Monrjiall.Intro.Hello1",
 		"tags": "",
-		"body": "<<if $mimirMet is false>>\nHello?\n<<set $mimirMet to true>>\n[[Mimir.Intro.Hello]]\n\n<<endif>>\n\n<<if $mimirMet is true>>\n[[Monrjiall.Puzzles.trials]]\n<<endif>>",
+		"body": "<<set $mimirMet to true>>\nHello?\n\n[[Mimir.Intro.Hello]]\n",
 		"position": {
 			"x": 21,
 			"y": 243
@@ -12,7 +12,7 @@
 	{
 		"title": "Mimir.Intro.Hello",
 		"tags": "",
-		"body": "Hello\n\n[[Monrjiall.Intro.Head]]",
+		"body": "Hello\n\n[[Monrjiall.Puzzles.trials]]",
 		"position": {
 			"x": 376,
 			"y": 258
@@ -166,6 +166,16 @@
 		"position": {
 			"x": 414,
 			"y": 1016
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Intro.Hello",
+		"tags": "",
+		"body": "<<if $mimirMet is false>>\n[[Monrjiall.Intro.Hello1]]\n<<endif>>\n\n<<if $mimirMet is true>>\n[[Monrjiall.Puzzles.trials]]\n<<endif>>",
+		"position": {
+			"x": 17,
+			"y": -57
 		},
 		"colorID": 0
 	}
