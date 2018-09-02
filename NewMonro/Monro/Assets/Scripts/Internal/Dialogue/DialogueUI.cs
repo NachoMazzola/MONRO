@@ -107,7 +107,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 			}
 
 
-			yield return dialoguePanel.ShowText(line.text);
+			yield return dialoguePanel.ShowText(line.text, whoIsTalking.TextColor, whoIsTalking.textFont, whoIsTalking.TextSize, whoIsTalking.talkableImage);
 		
 			yield break;
 		}
@@ -196,8 +196,6 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 		lastOneWhoTalked = null;
 
 		yield return dialoguePanel.RemoveCaptionAfterSeconds(0.0f);
-		//TextboxDisplayer lastTbDisplayer = whoIsTalking.GetComponent<TextboxDisplayer> ();
-		//yield return lastTbDisplayer.HideCaption (0.0f);
 		whoIsTalking = null;
 	
 		WorldInteractionController.getComponent ().enableInteractions = true;
