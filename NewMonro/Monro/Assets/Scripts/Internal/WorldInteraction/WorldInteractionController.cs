@@ -94,7 +94,7 @@ public class WorldInteractionController: MonoBehaviour
 		}
 			
 		Tappable tappable = collider.gameObject.GetComponent<Tappable> ();
-		if (tappable != null && tappable.boxCollider == collider) {
+		if (tappable != null && tappable.colliderList.Contains(collider)) {
 			CommandManager.getComponent().target = collider.gameObject;
 			if (this.commandQueue.Count > 0) {
 				foreach (CommandType cType in this.commandQueue) {
