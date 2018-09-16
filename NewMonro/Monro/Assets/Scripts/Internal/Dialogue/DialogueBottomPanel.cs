@@ -101,6 +101,8 @@ public class DialogueBottomPanel : MonoBehaviour
 	}
 
 	public void CreateButtonForOptions(Yarn.Options optionsCollection) {
+		this.displayedText.text = "";
+
 		this.conversationOptionsPanel.gameObject.SetActive (true);
 		this.buttonsPositionHandler.PositionateButtons (optionsCollection);
 	}
