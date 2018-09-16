@@ -13,6 +13,10 @@ public class ReactionAddTalkableTrait: IPReaction {
 	public Sprite talkableImage;
 
 	override public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
+		if (target.GetComponent<Talkable>() != null && target.GetComponent<VerbPanelHighlighter>() != null) {
+			return false;
+		}
+			
 		target.AddComponent<Talkable>();
 		target.AddComponent<VerbPanelHighlighter>();
 

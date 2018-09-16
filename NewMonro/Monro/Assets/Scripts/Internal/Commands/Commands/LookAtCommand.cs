@@ -46,7 +46,7 @@ public class LookAtCommand : ICommand {
 			return;
 		}
 
-		this.talkCommand = new TalkCommand("lookAt_"+this.lookableComponent.gameEntity.ID);
+		this.talkCommand = new TalkCommand("lookAt_" + this.lookableComponent.gameEntity.ID);
 		this.talkCommand.Prepare();
 	}
 
