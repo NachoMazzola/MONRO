@@ -67,15 +67,8 @@ public class WorldInteractionController: MonoBehaviour
 		if (Input.GetMouseButtonDown (0) && !mouseIsPressed) {
 			Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Collider2D hitCollider = Physics2D.OverlapPoint(pos);
-			if (hitCollider != null) {
-				ExecuteCurrentCommand(hitCollider);
-			}
-			else {
-				GameObject inventoryGO = WorldObjectsHelper.GetBottomPanelUIGO();
-				if (inventoryGO.activeInHierarchy) {
-					WorldObjectsHelper.VerbsPanelUIGO().GetComponent<VerbsButtonPanelHandler> ().ResetButtons ();	
-				}
-			}
+			this.ExecuteCurrentCommand(hitCollider);
+
 				
 			//Tap (GetTappedGameObject ());
 			mouseIsPressed = true;
@@ -92,6 +85,14 @@ public class WorldInteractionController: MonoBehaviour
 	}
 
 	private void ExecuteCurrentCommand (Collider2D collider) {
+		if (collider == null) {
+			if (this.commandQueue.Count > 0) {
+				WorldObjectsHelper.VerbsPanelUIGO().GetComponent<VerbsButtonPanelHandler> ().ResetButtons ();	
+			}
+			this.commandQueue.RemoveRange(0, this.commandQueue.Count);
+			return;
+		}
+			
 		Tappable tappable = collider.gameObject.GetComponent<Tappable> ();
 		if (tappable != null && tappable.boxCollider == collider) {
 			CommandManager.getComponent().target = collider.gameObject;
