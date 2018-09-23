@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(BoxCollider2D))]
-[RequireComponent(typeof(BoxCollider2DSizeFitter))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class VerbPanelHighlighter : MonoBehaviour {
 

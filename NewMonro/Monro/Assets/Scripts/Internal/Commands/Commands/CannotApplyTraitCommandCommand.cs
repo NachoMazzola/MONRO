@@ -19,10 +19,10 @@ public class CannotApplyTraitCommandCommand : ICommand {
 		DialogueRunner dialogueRunner = WorldObjectsHelper.getDialogueRunnerGO().GetComponent<DialogueRunner>();
 		string targetId = this.target.GetComponent<GameEntity>().ID;
 		string traitString = Trait.toString(this.traitType);
-		string fullNode = traitString + "_" + targetId;
-		if (dialogueRunner.NodeExists(fullNode) == false) {
-			fullNode = traitString + "_default";
-		}
+		string fullNode = traitString + "_default";
+//		if (dialogueRunner.NodeExists(fullNode) == false) {
+//			fullNode = traitString + "_default";
+//		}
 		this.talkCommand = new TalkCommand(fullNode);
 		this.talkCommand.Prepare();
 	}

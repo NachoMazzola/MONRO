@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Tappable))]
 public class Talkable : IMenuRenderableTrait, IAnimatable {
 	public string StartingNode;
 

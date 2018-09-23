@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Tappable))]
 public class ItemDroppable : IMenuRenderableTrait {
 	public Transform InventroyItem;
 

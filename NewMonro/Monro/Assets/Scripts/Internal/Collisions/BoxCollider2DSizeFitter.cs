@@ -6,6 +6,10 @@ using UnityEngine;
 public class BoxCollider2DSizeFitter : MonoBehaviour {
 
 	void Awake() {
+		
+	}
+
+	void Start() {
 		SpriteRenderer itemSpriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
 		if (itemSpriteRenderer != null) {
 			Sprite itemSprite = itemSpriteRenderer.sprite; 
