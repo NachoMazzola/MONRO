@@ -22,7 +22,7 @@
 	{
 		"title": "lookAt_bench",
 		"tags": "",
-		"body": "<<set $sawBench to true>>\n\nSuch a nice bench.\nAlmost like it doesn't belong here.\nMust be my imagination.",
+		"body": "<<set $sawBench to true>>\n<<set $sawItem to true>>\n\nSuch a nice bench.\nAlmost like it doesn't belong here.\nMust be my imagination.",
 		"position": {
 			"x": -121,
 			"y": 183
@@ -32,7 +32,7 @@
 	{
 		"title": "lookAt_branch",
 		"tags": "",
-		"body": "<<set $sawBranch to true>>\n\nJust a little branch.\nWe may never know where it came from...\n\n[[Mimir.lookAt.cameFrom]]",
+		"body": "<<set $sawBranch to true>>\n<<set $sawItem to true>>\n\nJust a little branch.\nWe may never know where it came from...\n\n[[Mimir.lookAt.cameFrom]]",
 		"position": {
 			"x": 611,
 			"y": 184
@@ -92,7 +92,7 @@
 	{
 		"title": "lookAt_helmet",
 		"tags": "",
-		"body": "<<set $sawHelmet to true>>\n\nA great helmet from a fallen warrior.\nHe's probably in Valhalla already.\nWait for me brother, I'll be there soon.",
+		"body": "<<set $sawHelmet to true>>\n<<set $sawItem to true>>\n\nA great helmet from a fallen warrior.\nHe's probably in Valhalla already.\nWait for me brother, I'll be there soon.",
 		"position": {
 			"x": 845,
 			"y": 187
@@ -102,7 +102,7 @@
 	{
 		"title": "lookAt_shield",
 		"tags": "",
-		"body": "<<set $sawShield to true>>\n\nA shield. I'm thinking of getting one.\nIt will be useful in Valhalla, where all I will do is fight and drink.\nCan't wait!\n",
+		"body": "<<set $sawShield to true>>\n<<set $sawItem to true>>\n\nA shield. I'm thinking of getting one.\nIt will be useful in Valhalla, where all I will do is fight and drink.\nCan't wait!\n",
 		"position": {
 			"x": -354,
 			"y": 180
@@ -112,7 +112,7 @@
 	{
 		"title": "lookAt_goblet",
 		"tags": "",
-		"body": "I could really use a drink right now.\nToo bad this goblet is empty.\nAnd there's no ale to be found.\nIn miles around.",
+		"body": "<<set $sawGoblet to true>>\n<<set $sawItem to true>>\n\nI could really use a drink right now.\nToo bad this goblet is empty.\nAnd there's no ale to be found.\nIn miles around.",
 		"position": {
 			"x": 388,
 			"y": 420
