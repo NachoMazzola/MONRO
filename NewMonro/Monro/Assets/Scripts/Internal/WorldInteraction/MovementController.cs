@@ -53,19 +53,19 @@ public class MovementController : MonoBehaviour
 
 		moveableGameObject.transform.position = posToMove;
 
-		float minDistanceThreshold = Mathf.Abs(targetDestination.x) - 0.05f;
-		float maxDistanceThreshold = Mathf.Abs(targetDestination.x) + 0.05f;
-		float pos = Mathf.Abs(moveableGameObject.transform.position.x);
+		float minDistanceThreshold = Mathf.Abs(targetDestination.x) - 0.02f;
+		float maxDistanceThreshold = Mathf.Abs(targetDestination.x) + 0.02f;
+		float pos = moveableGameObject.transform.position.x;
 
 		if (this.targetDestination != Vector2.zero) {
-			Debug.Log ("Target POS : " + targetDestination.x + " Monro Pos T: " + pos + " Min T: " + minDistanceThreshold + " Max T: " + maxDistanceThreshold);
+			//Debug.Log ("Target POS : " + targetDestination.x + " Monro Pos T: " + pos + " Min T: " + minDistanceThreshold + " Max T: " + maxDistanceThreshold);
 
 			bool isInStopPositionThreshold = false;
 			if (this.movingLeft) {
-				isInStopPositionThreshold = pos < maxDistanceThreshold && pos > minDistanceThreshold;
+				isInStopPositionThreshold = pos < maxDistanceThreshold && pos > minDistanceThreshold || (pos < maxDistanceThreshold && pos < minDistanceThreshold);;
 			}
 			else {
-				isInStopPositionThreshold = pos > minDistanceThreshold && pos < maxDistanceThreshold;
+				isInStopPositionThreshold = pos > minDistanceThreshold && pos < maxDistanceThreshold || (pos > maxDistanceThreshold && pos > minDistanceThreshold);
 			}
 
 			//Debug.Log ("POS : " + pos + " Min T: " + minDistanceThreshold + " Max T: " + maxDistanceThreshold);
@@ -130,8 +130,10 @@ public class MovementController : MonoBehaviour
 			this.moveableGameObject.StopAnimation ();	
 		}
 
-//		Moveable.MovingDirection directionToFace = this.movingLeft 
-//		this.moveableGameObject.SwapFacingDirectionTo(Moveable.MovingDirection.MovingLeft)
+		if (this.targetDestination != Vector2.zero) {
+			Moveable.MovingDirection directionToFace = this.movingLeft ? Moveable.MovingDirection.MovingRight : Moveable.MovingDirection.MovingLeft;
+			this.moveableGameObject.SwapFacingDirectionTo(directionToFace);
+		}
 	}
 
 	public bool IsMoving ()
