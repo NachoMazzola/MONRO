@@ -19,7 +19,7 @@ public class MovementController : MonoBehaviour
 	[HideInInspector]
 	public float movementLimitLeft;
 	[HideInInspector]
-	public Vector2 targetDestination = Vector2.zero;
+	private Vector2 targetDestination = Vector2.zero;
 	[HideInInspector]
 	public bool reachedDestination = false;
 
@@ -29,13 +29,11 @@ public class MovementController : MonoBehaviour
 
 	private WorldInteractionController worldInteractionCtr;
 
-	private int optionalDistanceFromTarget = 2;
-
 	// Use this for initialization
 	void Start ()
 	{
-		this.SetMovingProperties();
-	//	this.StopMoving ();
+		this.SetMovingProperties ();
+		//	this.StopMoving ();
 	}
 	
 	// Update is called once per frame
@@ -47,19 +45,36 @@ public class MovementController : MonoBehaviour
 	public void UpdateMovement ()
 	{
 		bool isStopped = movingLeft == false && movingRight == false;
-		Vector3 move = isStopped ? new Vector2(0, 0) : new Vector2(movingLeft ? -1 : 1, 0);
-		moveableGameObject.transform.position += move * moveableGameObject.MovementSpeed * Time.deltaTime;
-
-
-		int directionModifier = movingLeft ? -1 : 1;
-		int limitPosition = Mathf.RoundToInt(this.targetDestination.x) - this.optionalDistanceFromTarget * directionModifier;
-		if (this.targetDestination != Vector2.zero) {
-			if (Mathf.RoundToInt(this.moveableGameObject.transform.position.x) == Mathf.RoundToInt(limitPosition)) {
-				this.StopMoving();
-				this.reachedDestination = true;
-				return;
-			}	
+		if (isStopped) {
+			return;
 		}
+		Vector3 move = isStopped ? new Vector2 (0, 0) : new Vector2 (movingLeft ? -1 : 1, 0);
+		Vector3 posToMove = moveableGameObject.transform.position + move * moveableGameObject.MovementSpeed * Time.deltaTime;
+
+		moveableGameObject.transform.position = posToMove;
+
+		float minDistanceThreshold = Mathf.Abs(targetDestination.x) - 0.05f;
+		float maxDistanceThreshold = Mathf.Abs(targetDestination.x) + 0.05f;
+		float pos = Mathf.Abs(moveableGameObject.transform.position.x);
+
+		if (this.targetDestination != Vector2.zero) {
+			Debug.Log ("Target POS : " + targetDestination.x + " Monro Pos T: " + pos + " Min T: " + minDistanceThreshold + " Max T: " + maxDistanceThreshold);
+
+			bool isInStopPositionThreshold = false;
+			if (this.movingLeft) {
+				isInStopPositionThreshold = pos < maxDistanceThreshold && pos > minDistanceThreshold;
+			}
+			else {
+				isInStopPositionThreshold = pos > minDistanceThreshold && pos < maxDistanceThreshold;
+			}
+
+			//Debug.Log ("POS : " + pos + " Min T: " + minDistanceThreshold + " Max T: " + maxDistanceThreshold);
+			if (this.reachedDestination == false && isInStopPositionThreshold) {
+				this.reachedDestination = true;
+				StopMoving ();
+				return;	 
+			}	
+		}			
 
 		if (movingRight) {
 			moveableGameObject.SwapFacingDirectionTo (Moveable.MovingDirection.MovingRight);
@@ -76,8 +91,8 @@ public class MovementController : MonoBehaviour
 
 	public void StartMovingRight ()
 	{
-		CommandManager mgr = CommandManager.getComponent();
-		mgr.AbortCurrentCommand();
+		CommandManager mgr = CommandManager.getComponent ();
+		mgr.AbortCurrentCommand ();
 
 		if (worldInteractionCtr.enableInteractions == false) {
 			return;
@@ -92,8 +107,8 @@ public class MovementController : MonoBehaviour
 
 	public void StartMovingLeft ()
 	{
-		CommandManager mgr = CommandManager.getComponent();
-		mgr.AbortCurrentCommand();
+		CommandManager mgr = CommandManager.getComponent ();
+		mgr.AbortCurrentCommand ();
 
 		if (worldInteractionCtr.enableInteractions == false) {
 			return;
@@ -114,6 +129,9 @@ public class MovementController : MonoBehaviour
 		if (this.moveableGameObject != null) {
 			this.moveableGameObject.StopAnimation ();	
 		}
+
+//		Moveable.MovingDirection directionToFace = this.movingLeft 
+//		this.moveableGameObject.SwapFacingDirectionTo(Moveable.MovingDirection.MovingLeft)
 	}
 
 	public bool IsMoving ()
@@ -136,20 +154,20 @@ public class MovementController : MonoBehaviour
 		return moveableGameObject.MovementSpeed;
 	}
 
-	public void SetMovementOptions(GameObject controlledGameObject, Vector2 targetDestination) {
+	public void SetMovementOptions (GameObject controlledGameObject, Vector2 targetDestination)
+	{
 		if (controlledGameObject == null) {
 			this.ControlledGameObject = null;
 			this.targetDestination = Vector2.zero;
-			this.StopMoving();
+			this.StopMoving ();
 			return;
 		}
 
 		this.ControlledGameObject = controlledGameObject;
+		this.SetMovingProperties ();
 		this.targetDestination = targetDestination;
 
-		this.SetMovingProperties();
-
-		this.movingLeft = this.targetDestination.x < moveableGameObject.transform.position.x;
+		this.movingLeft = targetDestination.x < moveableGameObject.transform.position.x;
 		this.movingRight = !this.movingLeft;
 
 		if (this.targetDestination != Vector2.zero) {
@@ -158,7 +176,8 @@ public class MovementController : MonoBehaviour
 		}
 	}
 
-	private void SetMovingProperties() {
+	private void SetMovingProperties ()
+	{
 		if (this.moveableGameObject == null) {
 			if (this.ControlledGameObject != null) {
 				this.moveableGameObject = ControlledGameObject.GetComponent<Moveable> ();
@@ -172,7 +191,4 @@ public class MovementController : MonoBehaviour
 			this.worldInteractionCtr = WorldInteractionController.getComponent ();	
 		}
 	}
-
-
-
 }

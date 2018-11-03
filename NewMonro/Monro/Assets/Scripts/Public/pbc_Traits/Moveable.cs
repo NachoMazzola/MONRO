@@ -75,4 +75,6 @@ public class Moveable : Trait, IAnimatable {
 
 		this.animCoordinator.StopAnimations();
 	}
+
+
 }
