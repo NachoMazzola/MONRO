@@ -16,14 +16,18 @@ public class DialogueOptionsDisplayer {
 
 	public void SetOriginPositions() {
 		return;
-		float bHeight = this.optionButtons [0].GetComponent<RectTransform> ().rect.height;
-		this.optionButtonYDisplacement = bHeight;
-		for (int j = 0; j < optionButtons.Count; j++) {
-			Button currentButton = optionButtons [j];
-			RectTransform buttonRect = currentButton.GetComponent<RectTransform> ();
-
-			buttonRect.anchoredPosition = new Vector2 (buttonRect.anchoredPosition.x, buttonRect.anchoredPosition.y - optionButtonYDisplacement*j);
-		}
+//		float bHeight = this.optionButtons [0].GetComponent<RectTransform> ().rect.height;
+//		this.optionButtonYDisplacement = bHeight;
+//		for (int j = 0; j < optionButtons.Count; j++) {
+////			int index = j - 1;
+////			if (index < 0) {
+////				continue;
+////			}
+//			Button currentButton = optionButtons [0];
+//			RectTransform buttonRect = currentButton.GetComponent<RectTransform> ();
+//
+//			buttonRect.anchoredPosition = new Vector2 (buttonRect.anchoredPosition.x, buttonRect.anchoredPosition.y - optionButtonYDisplacement*j);
+//		}
 	}
 
 	public void PositionateButtons(Yarn.Options optionsCollection) {
