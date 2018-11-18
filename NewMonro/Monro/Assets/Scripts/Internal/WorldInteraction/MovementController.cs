@@ -29,6 +29,8 @@ public class MovementController : MonoBehaviour
 
 	private WorldInteractionController worldInteractionCtr;
 
+	private float distanceThresholdAdjustment = 0.02f;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -53,8 +55,8 @@ public class MovementController : MonoBehaviour
 
 		moveableGameObject.transform.position = posToMove;
 
-		float minDistanceThreshold = Mathf.Abs(targetDestination.x) - 0.02f;
-		float maxDistanceThreshold = Mathf.Abs(targetDestination.x) + 0.02f;
+		float minDistanceThreshold = Mathf.Abs(targetDestination.x) - this.distanceThresholdAdjustment;
+		float maxDistanceThreshold = Mathf.Abs(targetDestination.x) + this.distanceThresholdAdjustment;
 		float pos = moveableGameObject.transform.position.x;
 
 		if (this.targetDestination != Vector2.zero) {
@@ -131,7 +133,9 @@ public class MovementController : MonoBehaviour
 		}
 
 		if (this.targetDestination != Vector2.zero) {
-			Moveable.MovingDirection directionToFace = this.movingLeft ? Moveable.MovingDirection.MovingRight : Moveable.MovingDirection.MovingLeft;
+			float movablePos = Mathf.Abs(this.moveableGameObject.transform.position.x);
+			float destinyPos = Mathf.Abs(this.targetDestination.x);
+			Moveable.MovingDirection directionToFace = destinyPos < movablePos ? Moveable.MovingDirection.MovingLeft : Moveable.MovingDirection.MovingRight;
 			this.moveableGameObject.SwapFacingDirectionTo(directionToFace);
 		}
 	}
