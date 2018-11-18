@@ -13,7 +13,6 @@ public class Talkable : IMenuRenderableTrait, IAnimatable
 	public int TextSize = 30;
 	public Font textFont;
 	public Sprite talkableImage;
-	public Vector2 talkPosition;
 
 	public bool allowDefaoultTalkPosition = true;
 
@@ -67,16 +66,20 @@ public class Talkable : IMenuRenderableTrait, IAnimatable
 		return this.talkPositionGO.position;
 	}
 
+	public void updateTalkPositionGOPosition(Vector2 newPos) {
+		if (this.talkPositionGO == null) {
+			return;
+		}
+
+		this.talkPositionGO.transform.localPosition = newPos;
+	}
+
 	private void SetTalkPositionGameObject ()
 	{
 		this.talkPositionGO = this.transform.Find ("TalkPosition");
 		if (this.talkPositionGO == null) {
 			this.talkPositionGO = new GameObject ("TalkPosition").transform;	
 		}
-
 		this.talkPositionGO.SetParent (this.transform);
-		if (this.talkPosition != Vector2.zero) {
-			this.talkPositionGO.position = this.talkPosition;
-		}
 	}
 }

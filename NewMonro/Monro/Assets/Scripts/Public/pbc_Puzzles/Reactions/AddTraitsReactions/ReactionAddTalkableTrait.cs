@@ -27,8 +27,8 @@ public class ReactionAddTalkableTrait: IPReaction {
 		trait.TextSize = this.TextSize;
 		trait.textFont = this.textFont;
 		trait.talkableImage = this.talkableImage;
-		trait.talkPosition = this.talkPosition;
 
+		trait.updateTalkPositionGOPosition(this.talkPosition);
 
 		return true;
 	}
