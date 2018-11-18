@@ -21,7 +21,8 @@ public class PlayerMoveAndTalkCommand : ICommand {
 		this.playerGO = WorldObjectsHelper.getPlayerGO();
 		this.moveGOCommand = CommandFactory.CreateCommand(CommandType.MoveGameObjectCommandType, null, false);
 		((MoveGameObjectCommand)this.moveGOCommand).targetObject = WorldObjectsHelper.getPlayerGO();
-		((MoveGameObjectCommand)this.moveGOCommand).targetPosition = this.Target.transform.position;
+		Talkable talkable = this.Target.GetComponent<Talkable>();
+		((MoveGameObjectCommand)this.moveGOCommand).targetPosition = talkable.GetTalkPosition();
 		((MoveGameObjectCommand)this.moveGOCommand).movementSpeed = WorldObjectsHelper.getPlayerGO().GetComponent<Moveable>().MovementSpeed;
 
 		this.talkCommand = CommandFactory.CreateCommand(CommandType.TalkCommandType, this.Target, true);

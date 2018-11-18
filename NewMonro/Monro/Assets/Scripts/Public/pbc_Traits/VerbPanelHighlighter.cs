@@ -24,7 +24,10 @@ public class VerbPanelHighlighter : MonoBehaviour {
 		if (other == null) {
 			return;
 		}
-		if (WorldObjectsHelper.VerbsPanelUIGO() == null){return;}
+
+		if (WorldObjectsHelper.VerbsPanelUIGO() == null) {
+			return;
+		}
 		VerbsButtonPanelHandler verbsPanel = WorldObjectsHelper.VerbsPanelUIGO().GetComponent<VerbsButtonPanelHandler>();
 		foreach (IMenuRenderableTrait trait in this.aTraits) {
 			verbsPanel.HighlightVerb(trait.associatedTraitAction, true);	
@@ -37,6 +40,9 @@ public class VerbPanelHighlighter : MonoBehaviour {
 			return;
 		}
 
+		if (WorldObjectsHelper.VerbsPanelUIGO() == null) {
+			return;
+		}
 		VerbsButtonPanelHandler verbsPanel = WorldObjectsHelper.VerbsPanelUIGO().GetComponent<VerbsButtonPanelHandler>();
 		foreach (IMenuRenderableTrait trait in this.aTraits) {
 			verbsPanel.HighlightVerb(trait.associatedTraitAction, false);	
