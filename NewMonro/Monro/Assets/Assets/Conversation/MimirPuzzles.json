@@ -172,10 +172,10 @@
 	{
 		"title": "Monrjiall.Puzzles.OtherGod",
 		"tags": "",
-		"body": "<<DialogueAction PuzzleManager pz2complete>>\n\nWhat other God?\n\n<<set $pz2complete to true>>\n\n<<if $pz2complete is true and $pz3complete is true and $pz4complete is true>>\n<<set $allPzComplete to true>>\n<<endif>>\n\n[[Monrjiall.Puzzles.trials]]",
+		"body": "<<DialogueAction PuzzleManager pz2complete>>\n\nWhat other God?\n\n\n\n[[Mimir.Puzzles.asked]]",
 		"position": {
-			"x": -2381,
-			"y": 1263
+			"x": -2091,
+			"y": 1527
 		},
 		"colorID": 0
 	},
@@ -326,6 +326,26 @@
 		"position": {
 			"x": -1521,
 			"y": 1023
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Puzzles.asked",
+		"tags": "",
+		"body": "The one I asked you about earlier. \nThat you went and asked Hildr about. \nAnd even though you did not come up with the answer yourself, you showed resourcefulness when it came to obtain what you didn’t have... \n...which is as valuable as knowledge itself. \nI believe you have passed this test.\n\n[[Monrjiall.Puzzles.Test]]",
+		"position": {
+			"x": -2341,
+			"y": 1530
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Puzzles.test",
+		"tags": "",
+		"body": "What test??\n\n<<set $pz2complete to true>>\n\n<<if $pz2complete is true and $pz3complete is true and $pz4complete is true>>\n<<set $allPzComplete to true>>\n<<endif>>\n\n[[Monrjiall.Puzzles.trials]]",
+		"position": {
+			"x": -2343,
+			"y": 1281
 		},
 		"colorID": 0
 	}

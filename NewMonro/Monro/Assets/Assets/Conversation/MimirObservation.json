@@ -5,9 +5,9 @@
 		"body": "<<if $sawHelmet is true>>\n[[I found this helmet over by that tree... |Mimir.Observation.helmetAnd]]\n<<endif>>\n\n<<if $sawShield is true>>\n[[There is a shield laying over there... |Mimir.Observation.shieldAnd]]\n<<endif>>\n\n<<if $sawGoblet is true>>\n[[That goblet there is rather particular .|Mimir.Observation.gobletAnd]]\n<<endif>>\n\n<<if $sawBranch is true>>\n[[That branch has caught my attention. |Mimir.Observation.shouldnt]]\n<<endif>>\n\n<<if $sawBench is true>>\n[[That bench looks rather odd... |Mimir.Observation.benchAnd]]\n<<endif>>\n\n[[On second thought, let me look around a bit more. |Monrjiall.Puzzles.trials]]",
 		"position": {
 			"x": 478,
-			"y": 202
+			"y": 201
 		},
-		"colorID": 0
+		"colorID": 1
 	},
 	{
 		"title": "Mimir.Observation.shouldnt",
@@ -87,7 +87,7 @@
 			"x": 472,
 			"y": -302
 		},
-		"colorID": 0
+		"colorID": 2
 	},
 	{
 		"title": "Mimir.Observation.hsrelated",
@@ -215,9 +215,9 @@
 		"body": "<<if $sawHelmet is true>>\n[[There’s also a helmet by a nearby tree. |Mimir.Observation.shrelated]]\n<<endif>>\n\n<<if $sawBench is true>>\n[[That bench has clearly been used to sit upon. |Mimir.Observation.accurate]]\n<<endif>>\n\n[[What do you need something else for? That shield is magnificent! |Mimir.Observation.twoItems]]",
 		"position": {
 			"x": 719,
-			"y": -28
+			"y": -27
 		},
-		"colorID": 0
+		"colorID": 2
 	},
 	{
 		"title": "Mimir.Observation.shrelated",
@@ -454,15 +454,15 @@
 		"tags": "",
 		"body": "<<if $sawBench is true>>\n[[I’m still looking for ale to fill it with, so I can sit on that bench to enjoy it. |Mimir.Observation.benchPrecisely]]\n<<endif>>\n\n<<if $sawShield is true>>\n[[I think that shield is connected to the goblet somehow. |Mimir.Observation.howShield]]\n<<endif>>\n\n[[Yes, a sudden craving for a good cup of mead. |Mimir.Observation.material]]",
 		"position": {
-			"x": 963,
+			"x": 964,
 			"y": 206
 		},
-		"colorID": 0
+		"colorID": 2
 	},
 	{
 		"title": "Mimir.Observation.benchPrecisely",
 		"tags": "",
-		"body": "The bench! Precisely! \r\nThose two clearly come from some sort of feast... \r\nAnd do not belong in this battlefield. \r\nCongratulations, Monrjiall! \r\nI believe you have proven your observation skills to be more than decent.\r\n\r\n[[Monrjiall.Observation.notAccept]]\r\n",
+		"body": "The bench! Precisely! \r\nThose two clearly come from some sort of feast, and do not belong in this battlefield. \r\n[[Mimir.Observation.stumble]]\r\n",
 		"position": {
 			"x": 1207,
 			"y": 435
@@ -470,12 +470,12 @@
 		"colorID": 0
 	},
 	{
-		"title": "Monrjiall.Observation.notAccept",
+		"title": "Monrjiall.Observation.findAle",
 		"tags": "",
-		"body": "<<set $puzzle3complete to true>>\r\nI will accept no congratulations until I find that ale.\r\n\r\n[[Monrjiall.Puzzles.trials]]\r\n\r\n",
+		"body": "<<set $puzzle3complete to true>>\r\nI still think we should find that ale.\r\n\r\n[[Monrjiall.Puzzles.trials]]\r\n\r\n",
 		"position": {
-			"x": 1446,
-			"y": 205
+			"x": 1441,
+			"y": 209
 		},
 		"colorID": 0
 	},
@@ -547,7 +547,7 @@
 			"x": -92,
 			"y": 441
 		},
-		"colorID": 0
+		"colorID": 2
 	},
 	{
 		"title": "Mimir.Observation.benchAnd",
@@ -612,20 +612,20 @@
 	{
 		"title": "Mimir.Observation.gobletPrecisely",
 		"tags": "",
-		"body": "Precisely. Those two are clearly the items I mentioned earlier! \nCongratulations, Monrjiall, you have noteworthy observation skills, indeed.\n\n[[Monrjiall.Observation.whyThanks]]",
+		"body": "Precisely. Those two are clearly the items I mentioned earlier! \nCongratulations, Monrjiall!\n\n[[Monrjiall.Observation.whyThanks]]",
 		"position": {
-			"x": -367,
-			"y": 669
+			"x": -94,
+			"y": 914
 		},
 		"colorID": 0
 	},
 	{
 		"title": "Monrjiall.Observation.whyThanks",
 		"tags": "",
-		"body": "<<set $puzzle3complete to true>>\n\nWhy, thank you! \nWhat items?\n\n[[Monrjiall.Puzzles.trials]]",
+		"body": "Why, thank you! \nWhat items?\n\n[[Mimir.Observation.luckVirtue]]",
 		"position": {
-			"x": -626,
-			"y": 672
+			"x": 201,
+			"y": 912
 		},
 		"colorID": 0
 	},
@@ -635,7 +635,7 @@
 		"body": "Ok, then no, nothing else.\n\n[[Mimir.Observation.gettingClose]]",
 		"position": {
 			"x": 201,
-			"y": 677
+			"y": 673
 		},
 		"colorID": 0
 	},
@@ -654,8 +654,8 @@
 		"tags": "",
 		"body": "Well, keep looking, you are getting close.\n\n[[Monrjiall.Observation.found]]",
 		"position": {
-			"x": 476,
-			"y": 446
+			"x": 474,
+			"y": 436
 		},
 		"colorID": 0
 	},
@@ -664,8 +664,28 @@
 		"tags": "",
 		"body": "Yes, something else?\n\n[[Monrjiall.Observation.shieldOptions]]",
 		"position": {
-			"x": 725,
-			"y": 676
+			"x": 723,
+			"y": 665
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.stumble",
+		"tags": "",
+		"body": "Now, it is obvious that you have stumbled upon the answer rather fortuitously. \nHowever, luck can be a great virtue in some people... \nAnd accompanied by the stubborn perseverance you have just showed me, I can declare myself properly impressed.\n\n[[Monrjiall.Observation.findAle]]",
+		"position": {
+			"x": 1447,
+			"y": 669
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Observation.luckVirtue",
+		"tags": "",
+		"body": "<<set $puzzle3complete to true>>\n\nNow, it is obvious that you have stumbled upon the answer rather fortuitously. \nHowever, luck can be a great virtue in some people, and accompanied by the stubborn perseverance you have just showed me, I can declare myself properly impressed.\n\n[[Monrjiall.Puzzles.trials]]",
+		"position": {
+			"x": 476,
+			"y": 667
 		},
 		"colorID": 0
 	}

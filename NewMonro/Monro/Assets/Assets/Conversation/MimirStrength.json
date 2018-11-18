@@ -7,7 +7,7 @@
 			"x": 509,
 			"y": 241
 		},
-		"colorID": 0
+		"colorID": 1
 	},
 	{
 		"title": "Monrjiall.Strength.myKind",
@@ -47,7 +47,7 @@
 			"x": 235,
 			"y": 242
 		},
-		"colorID": 0
+		"colorID": 1
 	},
 	{
 		"title": "Node42",
@@ -84,8 +84,8 @@
 		"tags": "",
 		"body": "Good, I’ll go lift that solid, heavy looking... \n...impossibly thick log of a fallen tree over there.\n\n[[Mimir.Strength.goDoThat]]",
 		"position": {
-			"x": -14,
-			"y": 237
+			"x": -12,
+			"y": 243
 		},
 		"colorID": 0
 	},
@@ -96,6 +96,76 @@
 		"position": {
 			"x": -24,
 			"y": -47
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Strength.start",
+		"tags": "",
+		"body": "I will now proceed to lift this VERY HEAVY log as it was requested by you, Mimir.\n\n[[Mimir.Strength.good]]",
+		"position": {
+			"x": 1044,
+			"y": 516
+		},
+		"colorID": 1
+	},
+	{
+		"title": "Mimir.Strength.good",
+		"tags": "",
+		"body": "Good, let’s see if you have strength worthy of the admiration of a god.\n\n[[Monrjiall.Strength.lift]]",
+		"position": {
+			"x": 1042,
+			"y": 233
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Strength.lift",
+		"tags": "",
+		"body": "Yes, the strength to lift this solid and heavy log, by no means any lighter than when you requested me to lift it... \nNo matter how easy I make it look.\n\n[[Mimir.Strength.getOn]]",
+		"position": {
+			"x": 1280,
+			"y": 232
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Strength.getOn",
+		"tags": "",
+		"body": "Correct, yes. Now get on with it.\n\n<<DialogueAction PuzzleManager liftTree>>\n\n[[Monrjiall.Strength.pieceOfCake]]",
+		"position": {
+			"x": 1286,
+			"y": 515
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Strength.pieceOfCake",
+		"tags": "",
+		"body": "See? Piece of cake… \n...of wood... \n...pieces... \nPieces of wood...\n\n[[Mimir.Strength.veryWell]]",
+		"position": {
+			"x": 1283,
+			"y": 753
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Mimir.Strength.veryWell",
+		"tags": "",
+		"body": "Why, very well. \nAnd although I saw you put the termites on the log, making it hollow and, in consequence, lighter... \nI consider strength of the mind to be a great gift we gods gave the humans... \nAnd you have displayed a great deal of it right now, Monrjiall.\n\n[[Monrjiall.Strength.splinters]]",
+		"position": {
+			"x": 1526,
+			"y": 753
+		},
+		"colorID": 0
+	},
+	{
+		"title": "Monrjiall.Strength.splinters",
+		"tags": "",
+		"body": "Lots of pieces of wood... \nsplinters everywhere...\n\n[[Monrjiall.Puzzles.trials]]",
+		"position": {
+			"x": 1525,
+			"y": 514
 		},
 		"colorID": 0
 	}
