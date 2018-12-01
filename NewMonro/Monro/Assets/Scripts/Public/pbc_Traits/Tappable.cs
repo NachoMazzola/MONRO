@@ -10,7 +10,6 @@ using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(BoxCollider2DSizeFitter))]
-[RequireComponent(typeof(VerbPanelHighlighter))]
 public class Tappable : Trait {
 
 	[HideInInspector]
