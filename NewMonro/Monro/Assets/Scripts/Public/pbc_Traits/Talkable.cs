@@ -66,20 +66,11 @@ public class Talkable : IMenuRenderableTrait, IAnimatable
 		return this.talkPositionGO.position;
 	}
 
-	public void updateTalkPositionGOPosition(Vector2 newPos) {
-		if (this.talkPositionGO == null) {
-			return;
-		}
-
-		this.talkPositionGO.transform.localPosition = newPos;
-	}
-
 	private void SetTalkPositionGameObject ()
 	{
 		this.talkPositionGO = this.transform.Find ("TalkPosition");
 		if (this.talkPositionGO == null) {
-			this.talkPositionGO = new GameObject ("TalkPosition").transform;	
+			Debug.Log("TALK POSITION MISSIN IN " + this.gameObject);
 		}
-		this.talkPositionGO.SetParent (this.transform);
 	}
 }

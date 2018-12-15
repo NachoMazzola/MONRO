@@ -39,7 +39,7 @@ public class MovementController : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
 	{
 		UpdateMovement ();
 	}
@@ -50,11 +50,11 @@ public class MovementController : MonoBehaviour
 		if (isStopped) {
 			return;
 		}
+
 		Vector3 move = isStopped ? new Vector2 (0, 0) : new Vector2 (movingLeft ? -1 : 1, 0);
-		Vector3 posToMove = moveableGameObject.transform.position + move * moveableGameObject.MovementSpeed * Time.deltaTime;
+		moveableGameObject.Move(move);
 
-		moveableGameObject.transform.position = posToMove;
-
+	
 		float minDistanceThreshold = Mathf.Abs(targetDestination.x) - this.distanceThresholdAdjustment;
 		float maxDistanceThreshold = Mathf.Abs(targetDestination.x) + this.distanceThresholdAdjustment;
 		float pos = moveableGameObject.transform.position.x;
@@ -133,9 +133,15 @@ public class MovementController : MonoBehaviour
 		}
 
 		if (this.targetDestination != Vector2.zero) {
-			float movablePos = Mathf.Abs(this.moveableGameObject.transform.position.x);
-			float destinyPos = Mathf.Abs(this.targetDestination.x);
-			Moveable.MovingDirection directionToFace = destinyPos < movablePos ? Moveable.MovingDirection.MovingLeft : Moveable.MovingDirection.MovingRight;
+//			float movablePos = Mathf.Abs(this.moveableGameObject.transform.position.x);
+//			float destinyPos = Mathf.Abs(this.targetDestination.x);
+
+			Vector3 moveableViewportToScreen = Camera.main.WorldToScreenPoint(this.moveableGameObject.transform.position);
+			Vector3 destinyToScreenCoords = Camera.main.WorldToScreenPoint(this.targetDestination); 
+
+			bool playerIsStadingRightToDestinationObject = Mathf.RoundToInt(moveableViewportToScreen.x) > Mathf.RoundToInt(destinyToScreenCoords.x);
+
+			Moveable.MovingDirection directionToFace = playerIsStadingRightToDestinationObject ? Moveable.MovingDirection.MovingLeft : Moveable.MovingDirection.MovingRight;
 			this.moveableGameObject.SwapFacingDirectionTo(directionToFace);
 		}
 	}
@@ -168,6 +174,11 @@ public class MovementController : MonoBehaviour
 			this.StopMoving ();
 			return;
 		}
+
+		/**
+		 * FIJATTE QUE LA TALK POSITION ESTA EN ESPACIO COORDENADO RELATIVO AL PADRE!!
+		 * HABRIA QUE VER DE CONVERTIRLA PARA HACER LOS CHEQUEOS!!
+		*/
 
 		this.ControlledGameObject = controlledGameObject;
 		this.SetMovingProperties ();

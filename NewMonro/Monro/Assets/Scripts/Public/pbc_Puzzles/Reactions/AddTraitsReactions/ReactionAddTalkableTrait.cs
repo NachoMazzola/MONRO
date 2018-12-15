@@ -11,7 +11,6 @@ public class ReactionAddTalkableTrait: IPReaction {
 	public int TextSize = 30;
 	public Font textFont;
 	public Sprite talkableImage;
-	public Vector2 talkPosition;
 
 	override public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
 		if (target.GetComponent<Talkable>() != null && target.GetComponent<VerbPanelHighlighter>() != null) {
@@ -27,8 +26,6 @@ public class ReactionAddTalkableTrait: IPReaction {
 		trait.TextSize = this.TextSize;
 		trait.textFont = this.textFont;
 		trait.talkableImage = this.talkableImage;
-
-		trait.updateTalkPositionGOPosition(this.talkPosition);
 
 		return true;
 	}

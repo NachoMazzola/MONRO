@@ -35,7 +35,7 @@ public class Moveable : Trait, IAnimatable {
 
 	// Use this for initialization
 	void Start () {
-		
+		//this.transform.position = Camera.main.ScreenToWorldPoint(this.transform.position);
 	}
 	
 	// Update is called once per frame
@@ -76,5 +76,13 @@ public class Moveable : Trait, IAnimatable {
 		this.animCoordinator.StopAnimations();
 	}
 
-
+	/**
+	 * direction == -1 --> Moving left
+	 * direction == 1 --> Moving right
+	*/
+	public void Move(Vector3 direction) {
+		Vector3 normalized = direction.normalized;
+		Vector3 posToMove = this.transform.position + normalized * this.MovementSpeed * Time.deltaTime;
+		this.transform.position = posToMove;
+	}
 }
