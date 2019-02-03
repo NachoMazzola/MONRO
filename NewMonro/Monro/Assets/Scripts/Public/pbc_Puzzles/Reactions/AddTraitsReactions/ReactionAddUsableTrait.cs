@@ -7,7 +7,7 @@ public class ReactionAddUsableTrait : IPReaction {
 	public GameObject target;
 
 	override public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
-		if (target.AddComponent<Usable>() != null) {
+		if (target.GetComponent<Usable>() != null) {
 			return false;
 		}
 
