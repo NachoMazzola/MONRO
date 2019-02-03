@@ -4,8 +4,8 @@
 		"tags": "",
 		"body": "I am a God of Wisdom. \nIt would be unseemly for me to favor a single human from Midgard.\n\n[[Monrjiall.Puzzles.asgard]]",
 		"position": {
-			"x": -161,
-			"y": 1249
+			"x": -433,
+			"y": 1299
 		},
 		"colorID": 0
 	},
@@ -14,8 +14,8 @@
 		"tags": "",
 		"body": "I have matters to attend to with Odin and the rest of the Gods. \r\nMy ultimate goal would take me into Asgard itself.\r\n\r\n[[Mimir.Puzzles.convenient]]",
 		"position": {
-			"x": -167,
-			"y": 1009
+			"x": -432,
+			"y": 1026
 		},
 		"colorID": 0
 	},
@@ -24,8 +24,8 @@
 		"tags": "",
 		"body": "That WOULD seem convenient for my current predicament. \nStill, I should not take part in human affairs without Odin’s consent… \nUnless...\n\n[[Monrjiall.Puzzles.unless]]",
 		"position": {
-			"x": -418,
-			"y": 1016
+			"x": -698,
+			"y": 1030
 		},
 		"colorID": 0
 	},
@@ -34,8 +34,8 @@
 		"tags": "",
 		"body": "Unless what?\n\n[[Mimir.Puzzles.worthy]]",
 		"position": {
-			"x": -420,
-			"y": 1259
+			"x": -706,
+			"y": 1297
 		},
 		"colorID": 0
 	},
@@ -44,8 +44,8 @@
 		"tags": "",
 		"body": "Unless said human was worthy of my wisdom... \nExcelling in knowledge, physical prowess and observation skills.\n\n[[Monrjiall.Puzzles.five]]",
 		"position": {
-			"x": -693,
-			"y": 1269
+			"x": -969,
+			"y": 1288
 		},
 		"colorID": 0
 	},
@@ -54,8 +54,8 @@
 		"tags": "",
 		"body": "<<DialogueAction PuzzleManager startMimirPuzzles>>\n\nHA! Five of my finest attributes!\n\n[[Monrjiall.Puzzles.trials]]",
 		"position": {
-			"x": -692,
-			"y": 1022
+			"x": -968,
+			"y": 1033
 		},
 		"colorID": 0
 	},
@@ -67,7 +67,7 @@
 			"x": -1808,
 			"y": 1045
 		},
-		"colorID": 0
+		"colorID": 1
 	},
 	{
 		"title": "Mimir.Puzzles.trial1",
@@ -172,7 +172,7 @@
 	{
 		"title": "Monrjiall.Puzzles.OtherGod",
 		"tags": "",
-		"body": "<<DialogueAction PuzzleManager pz2complete>>\n\nWhat other God?\n\n\n\n[[Mimir.Puzzles.asked]]",
+		"body": "<<DialogueAction PuzzleManager puzzle2complete>>\n\nWhat other God?\n\n\n\n[[Mimir.Puzzles.asked]]",
 		"position": {
 			"x": -2091,
 			"y": 1527
@@ -236,26 +236,6 @@
 		"position": {
 			"x": -1241,
 			"y": 1029
-		},
-		"colorID": 0
-	},
-	{
-		"title": "Mimir.Puzzles.trial3complete",
-		"tags": "",
-		"body": "That is it! Very observant of you. Well done!\n\n[[Monrjiall.Puzzles.thanks]]",
-		"position": {
-			"x": -963,
-			"y": 1262
-		},
-		"colorID": 0
-	},
-	{
-		"title": "Monrjiall.Puzzles.thanks",
-		"tags": "",
-		"body": "<<DialogueAction PuzzleManager pz4complete>>\n\nThank you! \nThat is what?\n\n<<set $pz4complete to true>>\n\n<<if $pz2complete is true and $pz3complete is true and $pz4complete is true>>\n<<set $allPzComplete to true>>\n<<endif>>\n\n[[Monrjiall.Puzzles.trials]]",
-		"position": {
-			"x": -952,
-			"y": 1024
 		},
 		"colorID": 0
 	},
