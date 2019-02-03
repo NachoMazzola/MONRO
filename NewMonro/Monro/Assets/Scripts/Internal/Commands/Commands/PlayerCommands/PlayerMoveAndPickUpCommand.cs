@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PlayerMoveAndPickUpCommand: ICommand {
 
-	private ICommand moveGOCommand;
-	private ICommand putItemInInventoryCommand;
-	private ICommand destroyGOCommand;
+	private MoveGameObjectCommand moveGOCommand;
+	private PutItemInInventoryCommand putItemInInventoryCommand;
+	private DestroyGameObjectCommand destroyGOCommand;
 
 	private Dictionary<CommandType, bool> commandSteps;
 
@@ -22,20 +22,20 @@ public class PlayerMoveAndPickUpCommand: ICommand {
 		this.commandSteps.Add(CommandType.PutItemInInventoryCommandType, false);
 		this.commandSteps.Add(CommandType.DestroyGameObjectCommandType, false);
 
-
 		this.Target = target;
-		this.moveGOCommand = CommandFactory.CreateCommand(CommandType.MoveGameObjectCommandType, null, false);
-		((MoveGameObjectCommand)this.moveGOCommand).targetObject = this.playerGO;
-		((MoveGameObjectCommand)this.moveGOCommand).targetPosition = this.Target.transform.position;
-		((MoveGameObjectCommand)this.moveGOCommand).movementSpeed = this.playerGO.GetComponent<Moveable>().MovementSpeed;
+		this.moveGOCommand = (MoveGameObjectCommand)CommandFactory.CreateCommand(CommandType.MoveGameObjectCommandType, null, false);
+		this.moveGOCommand.targetObject = this.playerGO;
+		this.moveGOCommand.targetPosition = this.Target.transform.position;
+		this.moveGOCommand.movementSpeed = this.playerGO.GetComponent<Moveable>().MovementSpeed;
 
-		this.putItemInInventoryCommand = CommandFactory.CreateCommand(CommandType.PutItemInInventoryCommandType, this.Target, true);
-		this.destroyGOCommand = CommandFactory.CreateCommand(CommandType.DestroyGameObjectCommandType, this.Target, true);
+		this.putItemInInventoryCommand = (PutItemInInventoryCommand)CommandFactory.CreateCommand(CommandType.PutItemInInventoryCommandType, this.Target, true);
+		this.putItemInInventoryCommand.itemTransform = target;
+		this.destroyGOCommand = (DestroyGameObjectCommand)CommandFactory.CreateCommand(CommandType.DestroyGameObjectCommandType, this.Target, true);
 	}
 
 	public PlayerMoveAndPickUpCommand(ICommandParamters moveGOCommandParameters, ICommandParamters pickUpItemParameters) {
-		this.moveGOCommand = CommandFactory.CreateCommand(CommandType.MoveGameObjectCommandType, this.Target, true, moveGOCommandParameters);
-		this.putItemInInventoryCommand = CommandFactory.CreateCommand(CommandType.PutItemInInventoryCommandType, this.Target, true, pickUpItemParameters);
+		this.moveGOCommand = (MoveGameObjectCommand)CommandFactory.CreateCommand(CommandType.MoveGameObjectCommandType, this.Target, true, moveGOCommandParameters);
+		this.putItemInInventoryCommand = (PutItemInInventoryCommand)CommandFactory.CreateCommand(CommandType.PutItemInInventoryCommandType, this.Target, true, pickUpItemParameters);
 	}
 
 	public PlayerMoveAndPickUpCommand(MoveGameObjectCommand moveGOCommand, PutItemInInventoryCommand putItemInInvCommand) {

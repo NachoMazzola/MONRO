@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+/**
+ * 
+ * FIJATE QUE EL ITEM NO SE VE EN EL INVENTARIO PORQUE Z DEL SLOT Y DEL ITEM ES -5000 Y PICO.. DEBERIA SER 0
+ * Y FIJATE QUE PASA QUE EL PUZZLE 3 NO FIGURA COMO ENABLED!
+*/
+
 
 /**
  * Handles adding/removing items within ItemContainerPanels in inventory
@@ -31,8 +37,15 @@ public class InventoryPanelHandler : MonoBehaviour {
 			ItemContainerPanel slot = this.transform.GetChild(i).GetComponent<ItemContainerPanel>();
 			if (!slot.isOccupied) {
 				item.SetParent(slot.transform);
-				((RectTransform)item).anchoredPosition = new Vector3();
+
 				((RectTransform)item).localScale = new Vector3(1,1,1);
+				((RectTransform)item).anchoredPosition = new Vector3(0, 0, 0);
+
+				Image itemImg = item.GetComponent<Image>();
+				if (itemImg != null) {
+					((RectTransform)item).sizeDelta = new Vector2(itemImg.rectTransform.rect.width, itemImg.rectTransform.rect.height) ;
+				}
+
 
 				DBItemLoader itemLoader = item.GetComponent<DBItemLoader>();
 				slot.GetComponent<ItemContainerPanel>().itemModel = itemLoader.itemModel;

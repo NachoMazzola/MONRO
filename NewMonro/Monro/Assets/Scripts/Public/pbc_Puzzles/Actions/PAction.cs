@@ -57,6 +57,9 @@ public abstract class PAction: MonoBehaviour {
 				if (r.Execute(actionReceiver, parent, this)) {
 					actionExecutedCount++;
 				}	
+				else {
+					Debug.Log("PUZZLE FAILURE :: FAILED TO EXECUTE REACTION " + r + " FROM PUZZLE " + this.parent.Description);
+				}
 			}
 		}
 		return actionExecutedCount == reactions.Count;
