@@ -87,7 +87,7 @@
 			"x": 472,
 			"y": -302
 		},
-		"colorID": 2
+		"colorID": 3
 	},
 	{
 		"title": "Mimir.Observation.hsrelated",
@@ -217,7 +217,7 @@
 			"x": 719,
 			"y": -27
 		},
-		"colorID": 2
+		"colorID": 3
 	},
 	{
 		"title": "Mimir.Observation.shrelated",
@@ -457,7 +457,7 @@
 			"x": 964,
 			"y": 206
 		},
-		"colorID": 2
+		"colorID": 3
 	},
 	{
 		"title": "Mimir.Observation.benchPrecisely",
@@ -472,12 +472,12 @@
 	{
 		"title": "Monrjiall.Observation.findAle",
 		"tags": "",
-		"body": "<<set $puzzle3complete to true>>\r\nI still think we should find that ale.\r\n\r\n[[Monrjiall.Puzzles.trials]]\r\n\r\n",
+		"body": "<<set $puzzle3complete to true>>\r\n<<DialogueAction PuzzleManager puzzle3complete>>\r\nI still think we should find that ale.\r\n\r\n[[Monrjiall.Puzzles.trials]]\r\n\r\n",
 		"position": {
 			"x": 1441,
 			"y": 209
 		},
-		"colorID": 0
+		"colorID": 2
 	},
 	{
 		"title": "Mimir.Observation.howShield",
@@ -547,7 +547,7 @@
 			"x": -92,
 			"y": 441
 		},
-		"colorID": 2
+		"colorID": 3
 	},
 	{
 		"title": "Mimir.Observation.benchAnd",
