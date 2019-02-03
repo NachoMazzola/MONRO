@@ -8,12 +8,14 @@ public class ReactionAddLookaleTrait : IPReaction {
 	public string Caption;
 
 	override public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
-		if (target.GetComponent<Lookable>() != null && target.GetComponent<VerbPanelHighlighter>() != null) {
+		if (target.GetComponent<Lookable>() != null) {
 			return false;
 		}
 
 		target.AddComponent<Lookable>();
-		target.AddComponent<VerbPanelHighlighter>();
+		if (target.GetComponent<VerbPanelHighlighter>() == null) {
+			target.AddComponent<VerbPanelHighlighter>();	
+		}
 
 		return true;
 	}
