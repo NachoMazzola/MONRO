@@ -34,16 +34,18 @@ public class InventoryPanelHandler : MonoBehaviour {
 	public void AddItem(Transform item) {
 		//find first unnocuppied slot
 		for (int i = 0; i < this.InventorySize; i++) {
+			RectTransform slotTransform = (RectTransform)this.transform.GetChild(i).transform;
 			ItemContainerPanel slot = this.transform.GetChild(i).GetComponent<ItemContainerPanel>();
 			if (!slot.isOccupied) {
 				item.SetParent(slot.transform);
 
 				((RectTransform)item).localScale = new Vector3(1,1,1);
 				((RectTransform)item).anchoredPosition = new Vector3(0, 0, 0);
+				((RectTransform)item).localPosition = new Vector3(0, 0, 0);
 
 				Image itemImg = item.GetComponent<Image>();
 				if (itemImg != null) {
-					((RectTransform)item).sizeDelta = new Vector2(itemImg.rectTransform.rect.width, itemImg.rectTransform.rect.height) ;
+					((RectTransform)item).sizeDelta = slotTransform.sizeDelta;// new Vector2(itemImg.rectTransform.rect.width, itemImg.rectTransform.rect.height) ;
 				}
 
 
@@ -127,6 +129,9 @@ public class InventoryPanelHandler : MonoBehaviour {
 	}
 
 	public void EnableScrolling(bool enable) {
-		WorldObjectsHelper.GetUIInventoryContentScrollViewGrid().GetComponent<ScrollRect>().vertical = enable;
+		ScrollRect scRect = WorldObjectsHelper.GetUIInventoryContentScrollViewGrid().GetComponent<ScrollRect>();
+		if (scRect !=  null) {
+			scRect.vertical = enable;	
+		} 
 	}
 }
