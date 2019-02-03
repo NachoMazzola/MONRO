@@ -59,7 +59,7 @@ public class PuzzleManager : MonoBehaviour {
 		foreach (Puzzle p in puzzleList) {
 			foreach (PAction pa in p.puzzleActions) {
 				if (pa is ActionDialogueAction) {
-					if ((pa as ActionDialogueAction).ActionName == action) {
+					if ((pa as ActionDialogueAction).ActionName.ToLower() == action.ToLower()) {
 						pa.ExecuteAction(PuzzleActionType.Dialogue);
 					}
 				}
