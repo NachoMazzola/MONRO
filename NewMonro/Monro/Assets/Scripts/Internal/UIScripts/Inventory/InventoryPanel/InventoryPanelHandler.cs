@@ -129,7 +129,7 @@ public class InventoryPanelHandler : MonoBehaviour {
 	}
 
 	public void EnableScrolling(bool enable) {
-		if WorldObjectsHelper.GetUIInventoryContentScrollViewGrid() != null {
+		if (WorldObjectsHelper.GetUIInventoryContentScrollViewGrid() != null) {
 			ScrollRect scRect = WorldObjectsHelper.GetUIInventoryContentScrollViewGrid().GetComponent<ScrollRect>();
 			if (scRect !=  null) {
 				scRect.vertical = enable;	
