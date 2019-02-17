@@ -40,14 +40,14 @@ public class InventoryPanelHandler : MonoBehaviour {
 				item.SetParent(slot.transform);
 
 				((RectTransform)item).localScale = new Vector3(1,1,1);
-				((RectTransform)item).anchoredPosition = new Vector3(0, 0, 0);
-				((RectTransform)item).localPosition = new Vector3(0, 0, 0);
+				((RectTransform)item).anchoredPosition = new Vector3(-slotTransform.sizeDelta.x/2, 0, 0);
+				((RectTransform)item).localPosition = new Vector3(-slotTransform.sizeDelta.x/2, 0, 0);
+
 
 				Image itemImg = item.GetComponent<Image>();
 				if (itemImg != null) {
-					((RectTransform)item).sizeDelta = slotTransform.sizeDelta;// new Vector2(itemImg.rectTransform.rect.width, itemImg.rectTransform.rect.height) ;
+					((RectTransform)item).sizeDelta = slotTransform.sizeDelta;// new Vector2(itemImg.rectTransform.rect.width, itemImg.rectTransform.rect.height);
 				}
-
 
 				DBItemLoader itemLoader = item.GetComponent<DBItemLoader>();
 				slot.GetComponent<ItemContainerPanel>().itemModel = itemLoader.itemModel;
@@ -129,9 +129,11 @@ public class InventoryPanelHandler : MonoBehaviour {
 	}
 
 	public void EnableScrolling(bool enable) {
-		ScrollRect scRect = WorldObjectsHelper.GetUIInventoryContentScrollViewGrid().GetComponent<ScrollRect>();
-		if (scRect !=  null) {
-			scRect.vertical = enable;	
-		} 
+		if WorldObjectsHelper.GetUIInventoryContentScrollViewGrid() != null {
+			ScrollRect scRect = WorldObjectsHelper.GetUIInventoryContentScrollViewGrid().GetComponent<ScrollRect>();
+			if (scRect !=  null) {
+				scRect.vertical = enable;	
+			}	
+		}
 	}
 }
