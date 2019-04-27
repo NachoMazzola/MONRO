@@ -76,12 +76,12 @@ public class WorldInteractionController: MonoBehaviour
 		}
 
 
-		if (Input.GetMouseButton (0) && !mouseIsPressed) {
-		
-			HoldTap (GetTappedGameObject ());	
-			mouseIsPressed = true;
-			return;
-		}
+//		if (Input.GetMouseButton (0) && !mouseIsPressed) {
+//		
+//			HoldTap (GetTappedGameObject ());	
+//			mouseIsPressed = true;
+//			return;
+//		}
 	}
 
 	private void ExecuteCurrentCommand (Collider2D collider) {
@@ -113,66 +113,6 @@ public class WorldInteractionController: MonoBehaviour
 		}
 	}
 
-
-	/// <summary>
-	/// Old SHIT
-	/// </summary>
-
-	private GameObject GetTappedGameObject ()
-	{
-		Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-		GameObject tappedGO = ColliderFoundOnTouch (pos);
-		currentInteraction = WorldInteractionType.TapOnGameObject;				
-
-		//handle UI Tap
-		if (tappedGO == null) {
-			EventSystem c = EventSystem.current;
-			if (c.currentSelectedGameObject != null) {
-				if (EventSystem.current.currentSelectedGameObject.tag != "UIElement") {
-					return null;
-				} else {
-					tappedGO = EventSystem.current.currentSelectedGameObject;
-
-				}
-			} 	
-		} else {
-			lastTappedObject = tappedGO.transform;	
-		}
-
-		return tappedGO;
-	}
-
-
-	private void Tap (GameObject goTapped)
-	{
-		Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-		if (goTapped != null) {
-			foreach (IWorldInteractionObserver obs in worldObservers) {
-				//obs.IWOTapped (pos, goTapped);
-			}
-		} else {
-			currentInteraction = WorldInteractionType.Empty;
-			foreach (IWorldInteractionObserver obs in worldObservers) {
-				//obs.IWOTapped (pos, null);
-			}
-		}
-	}
-
-	private void HoldTap (GameObject goTapped)
-	{
-		Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-		if (goTapped != null) {
-			foreach (IWorldInteractionObserver obs in worldObservers) {
-				obs.IWOTapHold (pos, goTapped);
-			}
-		} else {
-			currentInteraction = WorldInteractionType.Empty;
-			foreach (IWorldInteractionObserver obs in worldObservers) {
-				obs.IWOTapHold (pos, null);
-			}
-		}
-	}
-
 	public void InterruptInteractions ()
 	{
 		foreach (IWorldInteractionObserver obs in worldObservers) {
@@ -180,36 +120,5 @@ public class WorldInteractionController: MonoBehaviour
 				obs.IWOInterruptInteractions ();	
 			}
 		}
-	}
-
-	private GameObject ColliderFoundOnTouch (Vector2 targetPosition)
-	{
-		
-		Collider2D[] hitColliders = Physics2D.OverlapPointAll (targetPosition); 
-		if (hitColliders != null && hitColliders.Length > 0) {
-			return hitColliders [0].gameObject;
-		}
-
-		return null;
-	}
-
-	private void NotifyObservers ()
-	{
-		
-	}
-
-	public void AddObserver (IWorldInteractionObserver obs)
-	{
-		worldObservers.Add (obs);
-	}
-
-	public void RemoveObserver (IWorldInteractionObserver obs)
-	{
-		worldObservers.Remove (obs);
-	}
-
-	public void RemoveAll ()
-	{
-		worldObservers.RemoveRange (0, worldObservers.Count);
 	}
 }
