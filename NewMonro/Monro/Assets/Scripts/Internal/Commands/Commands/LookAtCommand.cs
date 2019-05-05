@@ -47,7 +47,10 @@ public class LookAtCommand : ICommand {
 		}
 
 		this.talkCommand = new TalkCommand("lookAt_" + this.lookableComponent.gameEntity.ID);
-		this.talkCommand.Prepare();
+        this.talkCommand.conversationParticipants.Add(this.lookable);
+        this.talkCommand.conversationParticipants.Add(this.whoLooks);
+
+        this.talkCommand.Prepare();
 	}
 
 	public override void WillStart() {
@@ -55,6 +58,7 @@ public class LookAtCommand : ICommand {
 	}
 
 	public override void UpdateCommand () {
+        if (this.talkCommand == null) { return; }
 		this.talkCommand.UpdateCommand();
 		this.finished = this.talkCommand.Finished();
 	}

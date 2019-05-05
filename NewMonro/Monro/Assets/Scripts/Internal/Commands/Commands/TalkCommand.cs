@@ -15,12 +15,20 @@ public struct TalkCommandParameters: ICommandParamters {
 	}
 }
 
+public interface TalkableCommand
+{
+    void SetStartingNode(string startingNode);
+    void SetDialogueParticipants(List<GameObject> conversationParticipants);
+    ICommand GetCommand();
+}
 
-public class TalkCommand : ICommand {
+
+public class TalkCommand : ICommand, TalkableCommand
+{
 
 	public string startingNode;
+	public List<GameObject> conversationParticipants;
 
-	private List<GameObject> conversationParticipants;
 	private DialogueRunner dialogueRunner;
 	private DialogueUI dialogueUI;
 
@@ -43,26 +51,53 @@ public class TalkCommand : ICommand {
 		this.conversationParticipants = new List<GameObject>();
 	}
 
+    public TalkCommand(string startingnode, List<GameObject> participants) {
+        this.startingNode = startingnode;
+        this.conversationParticipants = participants;
+    }
+
 	public override void Prepare() {
 		this.isInterrutable = false;
-		dialogueRunner = WorldObjectsHelper.getDialogueRunnerGO().GetComponent<DialogueRunner>();
-		Talkable[] participants = GameObject.FindObjectsOfType<Talkable>();
-		if (participants != null && participants.Length > 0) {
-			foreach (Talkable t in participants) {
-				this.dialogueRunner.AddParticipant(t);	
-			}	
-		}
+        dialogueRunner = WorldObjectsHelper.getDialogueRunnerGO().GetComponent<DialogueRunner>();
+
+        foreach (GameObject g in this.conversationParticipants)
+        {
+            Talkable t = g.GetComponent<Talkable>();
+            if (t != null)
+            {
+                this.dialogueRunner.AddParticipant(t);
+            }
+            else
+            {
+                Debug.Log("WARNING ::: " + g + " IS NOT TALKABLE!!!");
+            }
+        }
+
+
+
+		
+		//Talkable[] participants = GameObject.FindObjectsOfType<Talkable>();
+		//if (participants != null && participants.Length > 0) {
+		//	foreach (Talkable t in participants) {
+		//		this.dialogueRunner.AddParticipant(t);	
+		//	}	
+		//}
 	}
 
-	public override void WillStart() {}
+	public override void WillStart() {
+        if (!this.isStarted)
+        {
+            this.dialogueRunner.StartDialogue(this.startingNode);
+            this.isStarted = true;
+        }
+    }
 
 	public override void UpdateCommand () {
-		if (!this.isStarted) {
-			this.dialogueRunner.StartDialogue(this.startingNode);
-			this.isStarted = true;
-		}
-
-		this.finished = !this.dialogueRunner.isDialogueRunning;
+        if (this.dialogueRunner != null)
+        {
+            this.finished = !this.dialogueRunner.isDialogueRunning;
+        }
+		
 	}
 
 	public override bool Finished() {
@@ -82,4 +117,18 @@ public class TalkCommand : ICommand {
 		return CommandType.TalkCommandType; 
 	}
 
+    public void SetStartingNode(string startingNode)
+    {
+        this.startingNode = startingNode;
+    }
+
+    public void SetDialogueParticipants(List<GameObject> conversationParticipants)
+    {
+        this.conversationParticipants = conversationParticipants;
+    }
+
+    public ICommand GetCommand()
+    {
+        return this;
+    }
 }

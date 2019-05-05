@@ -21,9 +21,18 @@ public class Trait : MonoBehaviour {
 		this.OnAwake();
 	}
 
-	public virtual void OnAwake() {
+    private void Update() {
+        this.OnUpdate();
+    }
+
+    public virtual void OnAwake() {
 		this.gameEntity = this.GetComponent<GameEntity>();
 	}
+
+    public virtual void OnUpdate()
+    {
+
+    }
 
 	public static string toString(TraitType tType) {
 		switch (tType) {

@@ -4,11 +4,32 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Tappable))]
-public class Lookable : IMenuRenderableTrait {
-	
+public class Lookable : Tappable {
+
+    private LookAtCommand lCommand;
+
 	public override void OnAwake () {
 		base.OnAwake();
 		this.associatedTraitAction = TraitType.LookAt;
-		this.AssociatedMenuCommandType = CommandType.LookAtCommandType;
+
+        lCommand = new LookAtCommand();
+        lCommand.whoLooks = WorldObjectsHelper.getPlayerGO();
+        lCommand.lookable = this.gameObject;
 	}
+
+
+    public override void SingleClick()
+    {
+        base.SingleClick();
+
+        lCommand.Prepare();
+        lCommand.WillStart();
+    }
+
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+        lCommand.UpdateCommand();
+
+    }
 }

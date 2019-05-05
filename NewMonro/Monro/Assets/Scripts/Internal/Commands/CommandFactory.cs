@@ -30,7 +30,7 @@ public class CommandFactory {
 		case CommandType.TalkCommandType: {
 				TalkCommand talkCommand = new TalkCommand();
 				if (setDefaultValues) {
-					talkCommand.startingNode = target.GetComponent<Talkable>().StartingNode;
+					//talkCommand.startingNode = target.GetComponent<Talkable>().StartingNode;
 				}
 				else if (parameters != null) {
 					return new TalkCommand(parameters);

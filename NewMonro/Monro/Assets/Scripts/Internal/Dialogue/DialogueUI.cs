@@ -188,7 +188,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 		GameObject inventoryGO = WorldObjectsHelper.GetBottomPanelUIGO ();
 		if (inventoryGO != null) {
 			inventoryGO.SetActive (true);
-			WorldObjectsHelper.VerbsPanelUIGO ().GetComponent<VerbsButtonPanelHandler> ().ResetButtons ();	
+			//WorldObjectsHelper.VerbsPanelUIGO ().GetComponent<VerbsButtonPanelHandler> ().ResetButtons ();	
 		}
 
 

@@ -2,35 +2,71 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
-[RequireComponent (typeof(Tappable))]
-public class Talkable : IMenuRenderableTrait, IAnimatable
+
+public class Talkable : Tappable, IAnimatable
 {
-	public string StartingNode;
+    public string DialogueStartingNode;
+    public List<GameObject> ConversationParticipants;
 
-	/** Text Configuration */
-	public Color TextColor = Color.green;
+
+    /** Text Configuration */
+    public Color TextColor = Color.green;
 	public int TextSize = 30;
 	public Font textFont;
 	public Sprite talkableImage;
 
-	public bool allowDefaoultTalkPosition = true;
+    public bool allowDefaoultTalkPosition = true;
 
-	private AnimationsCoordinatorHub animCoordinator;
+
+    private AnimationsCoordinatorHub animCoordinator;
 	private Transform talkPositionGO;
 
+    private TalkableCommand talkCommand;
 
 	public override void OnAwake ()
 	{
 		base.OnAwake ();
 		this.associatedTraitAction = TraitType.Talk;
 		this.animCoordinator = this.GetComponent<AnimationsCoordinatorHub> ();
-		this.AssociatedMenuCommandType = CommandType.TalkCommandType;
+		//this.AssociatedMenuCommandType = CommandType.TalkCommandType;
 
 		this.SetTalkPositionGameObject ();
+
+        if (this.ConversationParticipants.Contains(WorldObjectsHelper.getPlayerGO()))
+        {
+            this.talkCommand = new PlayerMoveAndTalkCommand(this.gameObject, "", ConversationParticipants);
+        }
+        else
+        {
+            this.talkCommand = new TalkCommand("", this.ConversationParticipants);
+        }
 	}
 
-	public IEnumerator WaitForAnimation (Animator anim, string name)
+    public override void OnUpdate() {
+        base.OnUpdate();
+        if (talkCommand != null)
+        {
+            talkCommand.GetCommand().UpdateCommand();
+        }
+    }
+
+    public override void DoubleClick()
+    {
+        base.DoubleClick();
+        //if (((ICommand)talkCommand).Finished() == false)
+        //{
+        //    return;
+        //}
+
+        this.talkCommand.SetStartingNode(this.DialogueStartingNode);
+        talkCommand.GetCommand().Prepare();
+        talkCommand.GetCommand().WillStart();
+    }
+
+
+    public IEnumerator WaitForAnimation (Animator anim, string name)
 	{
 		anim.Play (name);
 		yield return new WaitForSeconds (anim.GetCurrentAnimatorStateInfo (0).length + anim.GetCurrentAnimatorStateInfo (0).normalizedTime);
