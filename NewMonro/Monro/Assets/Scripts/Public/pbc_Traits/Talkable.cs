@@ -22,7 +22,6 @@ public class Talkable : Tappable, IAnimatable
 
     private AnimationsCoordinatorHub animCoordinator;
 	private Transform talkPositionGO;
-
     private TalkableCommand talkCommand;
 
 	public override void OnAwake ()
@@ -33,16 +32,12 @@ public class Talkable : Tappable, IAnimatable
 		//this.AssociatedMenuCommandType = CommandType.TalkCommandType;
 
 		this.SetTalkPositionGameObject ();
-
-        if (this.ConversationParticipants.Contains(WorldObjectsHelper.getPlayerGO()))
+        if (this.ConversationParticipants != null)
         {
-            this.talkCommand = new PlayerMoveAndTalkCommand(this.gameObject, "", ConversationParticipants);
-        }
-        else
-        {
-            this.talkCommand = new TalkCommand("", this.ConversationParticipants);
+            this.SetupTalkCommand();
         }
 	}
+
 
     public override void OnUpdate() {
         base.OnUpdate();
@@ -63,6 +58,8 @@ public class Talkable : Tappable, IAnimatable
         this.talkCommand.SetStartingNode(this.DialogueStartingNode);
         talkCommand.GetCommand().Prepare();
         talkCommand.GetCommand().WillStart();
+
+        PuzzleManager.UpdatePuzzleWithAction(PuzzleActionType.Talk, this.gameObject.transform);
     }
 
 
@@ -101,6 +98,18 @@ public class Talkable : Tappable, IAnimatable
 	{
 		return this.talkPositionGO.position;
 	}
+
+    public void SetupTalkCommand()
+    {
+        if (this.ConversationParticipants.Contains(WorldObjectsHelper.getPlayerGO()))
+        {
+            this.talkCommand = new PlayerMoveAndTalkCommand(this.gameObject, "", ConversationParticipants);
+        }
+        else
+        {
+            this.talkCommand = new TalkCommand("", this.ConversationParticipants);
+        }
+    }
 
 	private void SetTalkPositionGameObject ()
 	{

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 
+
+
 public class PuzzleManager : MonoBehaviour {
 
 	private List<Puzzle> puzzleList;

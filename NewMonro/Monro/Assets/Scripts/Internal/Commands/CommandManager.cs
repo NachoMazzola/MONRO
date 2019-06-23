@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * TODO: // USA EL COMMAND MANAGER IGUAL EN LOS TRAITS Q USEN COMMANDOS 
+ ASI QUEDA TAMBIEN MANEJADO LA INTERACCION CON EL PUZZLE MANAGER!!
+*/
+
+
+
+
 /**
  * Handles commands in a queue
 */

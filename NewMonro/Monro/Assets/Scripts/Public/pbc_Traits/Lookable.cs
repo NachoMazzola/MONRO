@@ -22,13 +22,24 @@ public class Lookable : Tappable {
     {
         base.SingleClick();
 
+        if (lCommand.isRunning)
+        {
+            return;
+        }
+
         lCommand.Prepare();
         lCommand.WillStart();
+        
+        PuzzleManager.UpdatePuzzleWithAction(PuzzleActionType.LookAt, this.gameObject.transform);
     }
 
     public override void OnUpdate()
     {
         base.OnUpdate();
+        if (!lCommand.isRunning)
+        {
+            return;
+        }
         lCommand.UpdateCommand();
 
     }

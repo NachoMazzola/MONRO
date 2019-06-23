@@ -13,10 +13,8 @@ public class ReactionAddLookaleTrait : IPReaction {
 		}
 
 		target.AddComponent<Lookable>();
-		if (target.GetComponent<VerbPanelHighlighter>() == null) {
-			target.AddComponent<VerbPanelHighlighter>();	
-		}
 
+		
 		return true;
 	}
 }

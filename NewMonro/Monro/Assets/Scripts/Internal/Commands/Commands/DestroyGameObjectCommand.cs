@@ -31,23 +31,29 @@ public class DestroyGameObjectCommand : ICommand {
 	}
 
 	public override void Prepare() {
+
 	}
 
 	public override void WillStart() {
-		if (this.GameObjectToDestroy != null) {
-			GameObject.Destroy(this.GameObjectToDestroy);
-			this.finished = true;
-		}
+        this.isRunning = true;
 	}
 
-	public override void UpdateCommand () {
-	}
 
-	public override bool Finished() {
-		return finished;
-	}
+    public override void ExecuteOnce()
+    {
+        base.ExecuteOnce();
+        if (this.isRunning)
+        {
+            if (this.GameObjectToDestroy != null)
+            {
+                GameObject.Destroy(this.GameObjectToDestroy);
+                this.isRunning = false;
+            }
+        }
+    }
 
-	public override CommandType GetCommandType() { 
+
+    public override CommandType GetCommandType() { 
 		return CommandType.DestroyGameObjectCommandType; 
 	}
 }

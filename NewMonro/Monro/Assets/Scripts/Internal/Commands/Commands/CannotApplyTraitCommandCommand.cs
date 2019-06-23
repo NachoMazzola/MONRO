@@ -33,11 +33,7 @@ public class CannotApplyTraitCommandCommand : ICommand {
 
 	public override void UpdateCommand () {
 		this.talkCommand.UpdateCommand();
-		this.finished = this.talkCommand.Finished();
-	}
-
-	public override bool Finished() {
-		return finished;
+		this.isRunning = !this.talkCommand.Finished();
 	}
 
 	public override CommandType GetCommandType() { 

@@ -1,11 +1,10 @@
 ﻿<Properties StartupConfiguration="{1BE28F57-BF0E-E7DF-C219-F9C97E5D5732}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Public/pbc_Traits/Tappable.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Internal/Commands/Commands/DestroyGameObjectCommand.cs">
     <Files>
-      <File FileName="Assets/Scripts/Public/pbc_Traits/Lookable.cs" Line="32" Column="34" />
-      <File FileName="Assets/Scripts/Internal/Commands/Commands/LookAtCommand.cs" Line="51" Column="70" />
-      <File FileName="Assets/Scripts/Public/pbc_Traits/Talkable.cs" Line="36" Column="1" />
-      <File FileName="Assets/Scripts/Internal/Commands/Commands/PlayerCommands/PlayerMoveAndTalkCommand.cs" Line="70" Column="9" />
-      <File FileName="Assets/Scripts/Public/pbc_Traits/Tappable.cs" Line="18" Column="16" />
+      <File FileName="Assets/Scripts/Internal/Commands/Commands/PlayerCommands/PlayerMoveAndPickUpCommand.cs" Line="109" Column="1" />
+      <File FileName="Assets/Scripts/Internal/Commands/Commands/PutItemInInventoryCommand.cs" Line="15" Column="45" />
+      <File FileName="Assets/Scripts/Internal/Commands/ICommand.cs" Line="38" Column="42" />
+      <File FileName="Assets/Scripts/Internal/Commands/Commands/DestroyGameObjectCommand.cs" Line="52" Column="21" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,9 +17,11 @@
                   <Node name="Commands" expanded="True">
                     <Node name="Commands" expanded="True">
                       <Node name="PlayerCommands" expanded="True" />
+                      <Node name="DestroyGameObjectCommand.cs" selected="True" />
                     </Node>
                   </Node>
                   <Node name="Dialogue" expanded="True" />
+                  <Node name="Puzzles" expanded="True" />
                   <Node name="Traits" expanded="True">
                     <Node name="MenuRenderable" expanded="True" />
                   </Node>
@@ -31,11 +32,12 @@
                     <Node name="Actions" expanded="True" />
                     <Node name="Reactions" expanded="True">
                       <Node name="AddTraitsReactions" expanded="True" />
+                      <Node name="CommandsReactions" expanded="True">
+                        <Node name="PlayerCommandsReactions" expanded="True" />
+                      </Node>
                     </Node>
                   </Node>
-                  <Node name="pbc_Traits" expanded="True">
-                    <Node name="Tappable.cs" selected="True" />
-                  </Node>
+                  <Node name="pbc_Traits" expanded="True" />
                 </Node>
               </Node>
             </Node>
@@ -46,11 +48,9 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="20e6014f-2569-49cf-a26c-c3b5ff93c063" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0102263c-1188-4881-99c4-5b041719ae05" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/Commands/Commands/PlayerCommands/PlayerMoveAndPickUpCommand.cs" relfile="Assets/Scripts/Internal/Commands/Commands/PlayerCommands/PlayerMoveAndPickUpCommand.cs" line="37" column="1" />
-      <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/Commands/Commands/PlayerCommands/PlayerMoveAndPickUpCommand.cs" relfile="Assets/Scripts/Internal/Commands/Commands/PlayerCommands/PlayerMoveAndPickUpCommand.cs" line="42" column="1" />
       <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/UIScripts/Inventory/InventoryPanel/InventoryPanelHandler.cs" relfile="Assets/Scripts/Internal/UIScripts/Inventory/InventoryPanel/InventoryPanelHandler.cs" line="106" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

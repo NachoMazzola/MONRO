@@ -13,10 +13,7 @@ public class ReactionAddItemDroppableTrait : IPReaction {
 		}
 
 		target.AddComponent<ItemDroppable>();
-		if (target.GetComponent<VerbPanelHighlighter>() == null) {
-			target.AddComponent<VerbPanelHighlighter>();	
-		}
-
+		
 		ItemDroppable droppable =  target.GetComponent<ItemDroppable>();
 		droppable.InventroyItem = this.InventroyItem;
 			

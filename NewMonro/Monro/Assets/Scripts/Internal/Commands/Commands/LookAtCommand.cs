@@ -54,17 +54,14 @@ public class LookAtCommand : ICommand {
 	}
 
 	public override void WillStart() {
+        this.isRunning = true;
 		this.talkCommand.WillStart();
 	}
 
 	public override void UpdateCommand () {
         if (this.talkCommand == null) { return; }
 		this.talkCommand.UpdateCommand();
-		this.finished = this.talkCommand.Finished();
-	}
-
-	public override bool Finished() {
-		return finished;
+		this.isRunning = !this.talkCommand.Finished();
 	}
 
 	public override CommandType GetCommandType() { 

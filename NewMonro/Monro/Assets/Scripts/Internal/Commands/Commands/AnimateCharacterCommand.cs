@@ -40,7 +40,7 @@ public class AnimateCharacterCommand : ICommand {
 
 		Debug.Assert(this.TheAnimator != null, "AnimateCharacterCommand: Target does not have an Animator component!!");
 
-		finished = false;
+		isRunning = false;
 	}
 
 	public override void Prepare() {
@@ -54,22 +54,23 @@ public class AnimateCharacterCommand : ICommand {
 
 	public override void UpdateCommand() {
 		if (this.TheAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !this.TheAnimator.IsInTransition(0)) {
-			finished = true;
+			isRunning = true;
 			//this.theAnimator.SetBool(this.trigger, false);
 			Debug.Log("FINITO ***************************************");
 		}
 		else {
 			this.TheAnimator.speed = 1;
+            this.isRunning = false;
 		}
 
 	}
 
 	public override bool Finished() {
-		if (finished == true) {
+		if (isRunning == false) {
 			this.TheAnimator.SetBool(this.Trigger, false);
 		}
 
-		return finished;
+		return isRunning;
 	}
 
 	public override CommandType GetCommandType() { 

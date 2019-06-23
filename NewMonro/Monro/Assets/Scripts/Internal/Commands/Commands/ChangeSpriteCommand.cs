@@ -44,28 +44,32 @@ public class ChangeSpriteCommand : ICommand {
 	}
 
 	public override void WillStart() {
-		if (this.onlyFlip) {
-			if (target.GetComponent<GameEntity>().type == GameEntity.GameEntityType.Player 
-				|| target.GetComponent<GameEntity>().type == GameEntity.GameEntityType.NPC) {
-				Moveable pl = target.GetComponent<Moveable>();
-				pl.SwapFacingDirectionTo(pl.lastFacingDirection);
+        isRunning = true;
 
-				finished = true;
-			}
-			return;
-		}
 
-		SpriteRenderer spRdr = this.target.GetComponent<SpriteRenderer>();
-		spRdr.sprite = this.replacement;
-	}
+    }
 
-	public override void UpdateCommand () {
-		
-	}
+    public override void UpdateCommand()
+    {
+        if (this.isRunning)
+        {
+            if (this.onlyFlip)
+            {
+                if (target.GetComponent<GameEntity>().type == GameEntity.GameEntityType.Player
+                    || target.GetComponent<GameEntity>().type == GameEntity.GameEntityType.NPC)
+                {
+                    Moveable pl = target.GetComponent<Moveable>();
+                    pl.SwapFacingDirectionTo(pl.lastFacingDirection);
+                }
+                isRunning = false;
+                return;
+            }
 
-	public override bool Finished() {
-		return finished;
-	}
+            SpriteRenderer spRdr = this.target.GetComponent<SpriteRenderer>();
+            spRdr.sprite = this.replacement;
+            isRunning = false;
+        }
+    }
 
 	public override CommandType GetCommandType() { 
 		return CommandType.ChangeSpriteCommandType; 

@@ -55,28 +55,26 @@ public class MoveGameObjectCommand : ICommand {
 	}
 
 	public override void WillStart() {
+        this.isRunning = true;
 		this.movedGameObj.PlayAnimation();
 	}
 
 	public override void UpdateCommand() {
-		if (this.movementController == null) {
+		if (this.movementController == null || !this.isRunning) {
 			return;
 		}
 		this.movementController.UpdateMovement();
-		this.finished = this.movementController.reachedDestination;
+		this.isRunning = !this.movementController.reachedDestination;
 	}
 
-	public override void Stop() {
-		this.movementController.SetMovementOptions(null, Vector2.zero);
-		this.movementController.transform.SetParent(null);
-		this.movedGameObj.StopAnimation();
-		GameObject.Destroy(this.movementController);
-		this.movementController = null;
-	}
-
-	public override bool Finished() {
-		return finished;
-	}
+    public override void Stop()
+    {
+        this.movementController.SetMovementOptions(null, Vector2.zero);
+        this.movementController.transform.SetParent(null);
+        this.movedGameObj.StopAnimation();
+        GameObject.Destroy(this.movementController);
+        this.movementController = null;
+    }
 
 	public override CommandType GetCommandType() { 
 		return CommandType.MoveGameObjectCommandType; 

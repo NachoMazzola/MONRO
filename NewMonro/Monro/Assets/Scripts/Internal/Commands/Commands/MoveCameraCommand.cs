@@ -74,11 +74,16 @@ public class MoveCameraCommand : ICommand {
 	}
 		
 	public override void WillStart() {
-
+        isRunning = true;
 	}
 
 	public override void UpdateCommand ()
 	{
+        if (!isRunning)
+        {
+            return;
+        }
+
 		var newPosition = Vector3.Lerp (this.cameraObj.position, moveToTarget, movementSpeed * Time.deltaTime);
 		if (this.origin != null && this.destiny != null) {
 			newPosition = Vector3.Lerp (this.cameraObj.position, this.destiny.transform.position, movementSpeed * Time.deltaTime);
@@ -93,14 +98,10 @@ public class MoveCameraCommand : ICommand {
 		Vector3 targetPos = this.destiny != null ? this.destiny.position : this.moveToTarget;
 
 		if (Mathf.RoundToInt(this.cameraObj.position.x) == Mathf.RoundToInt(targetPos.x)) {
-			this.finished = true;
+			this.isRunning = false;
 			this.shouldActivateCameraFollow(true);
 		}
-	}
-
-	public override bool Finished() {
-		return finished;
-	}
+    }
 
 	private void shouldActivateCameraFollow(bool activate) {
 		CameraFollow cf = Camera.main.GetComponent<CameraFollow>();

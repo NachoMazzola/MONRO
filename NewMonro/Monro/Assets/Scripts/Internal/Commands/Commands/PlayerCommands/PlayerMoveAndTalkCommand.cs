@@ -63,16 +63,17 @@ public class PlayerMoveAndTalkCommand : ICommand, TalkableCommand
     }
 
     public override void WillStart() {
+        this.isRunning = true;
         this.moveGOCommand.WillStart();
     }
 
     public override void UpdateCommand() {
+        if (!this.isRunning)
+        {
+            return;
+        }
         this.CheckForCommandStepsStates();
         this.UpdateCommands();
-    }
-
-    public override bool Finished() {
-        return this.finished;
     }
 
     public override CommandType GetCommandType() {
@@ -108,7 +109,7 @@ public class PlayerMoveAndTalkCommand : ICommand, TalkableCommand
             this.talkCommand.UpdateCommand();
         }
 
-        this.finished = this.talkCommand.Finished();
+        this.isRunning = this.talkCommand.Finished();
     }
 
     public override void Stop() {
@@ -124,6 +125,11 @@ public class PlayerMoveAndTalkCommand : ICommand, TalkableCommand
     public void SetDialogueParticipants(List<GameObject> conversationParticipants)
     {
         this.talkCommand.SetDialogueParticipants(conversationParticipants);
+    }
+
+    public bool IsRunning()
+    {
+        return this.isRunning;
     }
 
     public ICommand GetCommand()

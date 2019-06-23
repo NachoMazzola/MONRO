@@ -9,6 +9,8 @@ public class PlayerMoveAndPickUpCommand: ICommand {
 	private PutItemInInventoryCommand putItemInInventoryCommand;
 	private DestroyGameObjectCommand destroyGOCommand;
 
+    private ICommand currentCommand;
+
 	private Dictionary<CommandType, bool> commandSteps;
 
 	public GameObject Target;
@@ -23,19 +25,17 @@ public class PlayerMoveAndPickUpCommand: ICommand {
 		this.commandSteps.Add(CommandType.DestroyGameObjectCommandType, false);
 
 		this.Target = target;
-		this.moveGOCommand = (MoveGameObjectCommand)CommandFactory.CreateCommand(CommandType.MoveGameObjectCommandType, null, false);
-		this.moveGOCommand.targetObject = this.playerGO;
-		this.moveGOCommand.targetPosition = this.Target.transform.position;
-		this.moveGOCommand.movementSpeed = this.playerGO.GetComponent<Moveable>().MovementSpeed;
+        this.moveGOCommand = new MoveGameObjectCommand(this.playerGO, this.Target.transform.position, this.playerGO.GetComponent<Moveable>().MovementSpeed);
 
-		this.putItemInInventoryCommand = (PutItemInInventoryCommand)CommandFactory.CreateCommand(CommandType.PutItemInInventoryCommandType, this.Target, true);
-		this.putItemInInventoryCommand.itemTransform = target;
-		this.destroyGOCommand = (DestroyGameObjectCommand)CommandFactory.CreateCommand(CommandType.DestroyGameObjectCommandType, this.Target, true);
-	}
+        this.putItemInInventoryCommand = new PutItemInInventoryCommand(target);
+		this.destroyGOCommand = new DestroyGameObjectCommand(target);
+
+        this.currentCommand = this.moveGOCommand;
+    }
 
 	public PlayerMoveAndPickUpCommand(ICommandParamters moveGOCommandParameters, ICommandParamters pickUpItemParameters) {
-		this.moveGOCommand = (MoveGameObjectCommand)CommandFactory.CreateCommand(CommandType.MoveGameObjectCommandType, this.Target, true, moveGOCommandParameters);
-		this.putItemInInventoryCommand = (PutItemInInventoryCommand)CommandFactory.CreateCommand(CommandType.PutItemInInventoryCommandType, this.Target, true, pickUpItemParameters);
+        this.moveGOCommand = new MoveGameObjectCommand(moveGOCommandParameters);
+        this.putItemInInventoryCommand = new PutItemInInventoryCommand(pickUpItemParameters);
 	}
 
 	public PlayerMoveAndPickUpCommand(MoveGameObjectCommand moveGOCommand, PutItemInInventoryCommand putItemInInvCommand) {
@@ -44,21 +44,24 @@ public class PlayerMoveAndPickUpCommand: ICommand {
 	}
 
 	public override void Prepare() {
-		this.moveGOCommand.Prepare();
-	}
+        this.currentCommand.Prepare();
+
+    }
 
 	public override void WillStart() {
-		this.moveGOCommand.WillStart();
+        this.isRunning = true;
+		this.currentCommand.WillStart();
 	}
 
 	public override void UpdateCommand () {
-		this.moveGOCommand.UpdateCommand();
-		this.CheckForCommandStepsStates();
-		this.UpdateCommands();
-	}
+        if (!isRunning || this.currentCommand == null)
+        {
+            return;
+        }
 
-	public override bool Finished() {
-		return this.finished;
+		this.currentCommand.UpdateCommand();
+		//this.CheckForCommandStepsStates();
+		this.UpdateCommands();
 	}
 
 	public override CommandType GetCommandType() { 
@@ -69,38 +72,25 @@ public class PlayerMoveAndPickUpCommand: ICommand {
 		if (this.moveGOCommand.Finished()) {
 			this.commandSteps[CommandType.MoveGameObjectCommandType] = true;
 		}
-		if (this.putItemInInventoryCommand.Finished()) {
-			this.commandSteps[CommandType.PutItemInInventoryCommandType] = true;
-		}
-		if (this.destroyGOCommand.Finished()) {
-			this.commandSteps[CommandType.DestroyGameObjectCommandType] = true;
-		}
 	}
 
 	private void UpdateCommands() {
-		bool moveGoStepFinished = false;
-		this.commandSteps.TryGetValue(CommandType.MoveGameObjectCommandType, out moveGoStepFinished);
-		bool putItemInInventoryStepFinished = false;
-		this.commandSteps.TryGetValue(CommandType.PutItemInInventoryCommandType, out putItemInInventoryStepFinished);
-		bool destroyGOStepFinished = false;
-		this.commandSteps.TryGetValue(CommandType.DestroyGameObjectCommandType, out destroyGOStepFinished);
-
-		if (moveGoStepFinished && !putItemInInventoryStepFinished && !destroyGOStepFinished) {
+		if (this.moveGOCommand.Finished())
+        {
 			this.putItemInInventoryCommand.Prepare();
 			this.putItemInInventoryCommand.WillStart();
-			this.putItemInInventoryCommand.UpdateCommand();
+            this.putItemInInventoryCommand.ExecuteOnce();
 
-			GameEntity ge = playerGO.GetComponent<GameEntity>();
-			this.playerGO.GetComponent<AnimationsCoordinatorHub>().PlayAnimation(Animations.PickUp, ge);
-		}
+            GameEntity ge = playerGO.GetComponent<GameEntity>();
+            this.playerGO.GetComponent<AnimationsCoordinatorHub>().PlayAnimation(Animations.PickUp, ge);
 
-		if (putItemInInventoryStepFinished && moveGoStepFinished && !destroyGOStepFinished) {
-			this.destroyGOCommand.Prepare();
-			this.destroyGOCommand.WillStart();
-		}
+            this.destroyGOCommand.Prepare();
+            this.destroyGOCommand.WillStart();
+            this.destroyGOCommand.ExecuteOnce();
 
-		if (destroyGOStepFinished) {
-			this.finished = true;
-		}
+
+            this.currentCommand = null;
+            this.isRunning = false;
+        }
 	}
 }

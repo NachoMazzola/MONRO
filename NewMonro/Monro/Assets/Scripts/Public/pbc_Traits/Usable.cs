@@ -6,5 +6,5 @@ public class Usable : IMenuRenderableTrait {
 	public override void OnAwake () {
 		base.OnAwake();
 		this.associatedTraitAction = TraitType.Use;
-	}
+    }
 }
