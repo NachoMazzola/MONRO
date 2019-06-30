@@ -15,7 +15,6 @@ public class Tappable : Trait {
 	public ArrayList colliderList;
 
     private float doubleClickTimeLimit = 0.25f;
-
     
     public override void OnAwake () {
 		base.OnAwake();

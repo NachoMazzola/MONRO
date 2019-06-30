@@ -8,7 +8,9 @@ using Yarn.Unity;
 */
 public static class WorldObjectsHelper {
 
-	public static GameObject InstantiatePrefabFromResources(string prefabName, Transform parent) {
+    private static List<GameObject> allTalkables = new List<GameObject>();
+
+    public static GameObject InstantiatePrefabFromResources(string prefabName, Transform parent) {
 		GameObject pPrefab = Resources.Load(prefabName) as GameObject;
 		GameObject inst = GameObject.Instantiate(pPrefab);
 		if (parent != null) {
@@ -28,9 +30,12 @@ public static class WorldObjectsHelper {
 
     public static List<GameObject> GetTalkables()
     {
+        if (allTalkables.Count > 0)
+        {
+            return allTalkables;
+        }
         
         GameObject[] all = (GameObject[])GameObject.FindObjectsOfType(typeof(GameObject));
-        List<GameObject> allTalkables = new List<GameObject>();
         foreach (GameObject go in all) {
             if (go.GetComponent<Talkable>() != null)
             {
@@ -41,6 +46,10 @@ public static class WorldObjectsHelper {
         return allTalkables;
     }
 
+    public static void AddTalkable(GameObject newTalkable)
+    {
+        allTalkables.Add(newTalkable);
+    }
 
 	public static GameObject getUIGO() {
 		return GameObject.Find("UI");

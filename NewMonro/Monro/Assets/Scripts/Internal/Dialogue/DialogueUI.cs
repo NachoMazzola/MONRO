@@ -74,7 +74,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 			}
 		}	
 
-		Debug.Log ("Careful!!, there is no character named" + participantCorrectName);
+		Debug.Log ("Careful!!, there is no character named " + participantCorrectName);
 
 		return null;
 	}
