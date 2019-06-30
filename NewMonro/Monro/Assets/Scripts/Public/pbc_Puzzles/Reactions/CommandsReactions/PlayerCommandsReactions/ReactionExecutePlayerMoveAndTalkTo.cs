@@ -7,6 +7,6 @@ public class ReactionExecutePlayerMoveAndTalkTo : ExecuteCommandReaction {
 	public GameObject TalkTo;
 
 	void Awake() {
-		this.theCommand = CommandFactory.CreateCommand(CommandType.PLayerMoveAndTalkCommandType, this.TalkTo, false, null);
+        this.theCommand = new PlayerMoveAndPickUpCommand(this.TalkTo);
 	}
 }

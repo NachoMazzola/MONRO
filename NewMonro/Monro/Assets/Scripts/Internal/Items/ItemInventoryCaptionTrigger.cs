@@ -10,6 +10,8 @@ public class ItemInventoryCaptionTrigger : MonoBehaviour, IPointerDownHandler, I
 
 	private RectTransform itemTransform;
 
+    private LookAtCommand captionCommand;
+
 	void Start() {
 		
 	}
@@ -36,11 +38,18 @@ public class ItemInventoryCaptionTrigger : MonoBehaviour, IPointerDownHandler, I
 
 		if (!isHoldingDown) {
 
-			GameObject playerGO = WorldObjectsHelper.getPlayerGO();
-
-			ICommand tCommand = CommandFactory.CreateCommand(CommandType.LookAtCommandType, playerGO, true, null);
-			CommandManager.getComponent().QueueCommand(tCommand, true);
+            captionCommand = new LookAtCommand(this.itemTransform.gameObject, WorldObjectsHelper.getPlayerGO());
+            captionCommand.Prepare();
+            captionCommand.WillStart();
 		}
 	}
+
+    void Update()
+    {
+        if (captionCommand != null)
+        {
+            captionCommand.UpdateCommand();
+        }
+    }
 
 }

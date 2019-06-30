@@ -6,6 +6,6 @@ public class ReactionExecuteTalkCommand : ExecuteCommandReaction {
 	public TalkCommandParameters parameters;
 
 	void Awake() {
-		this.theCommand = CommandFactory.CreateCommand(CommandType.TalkCommandType, null, false, this.parameters);
+        this.theCommand = new TalkCommand(this.parameters);
 	}
 }

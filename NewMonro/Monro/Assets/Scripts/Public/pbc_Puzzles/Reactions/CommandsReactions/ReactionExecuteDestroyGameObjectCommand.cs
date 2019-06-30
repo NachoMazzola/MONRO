@@ -7,6 +7,6 @@ public class ReactionExecuteDestroyGameObjectCommand : ExecuteCommandReaction {
 	public DestroyGameObjectCommandParameters parameters;
 
 	void Awake() {
-		this.theCommand = CommandFactory.CreateCommand(CommandType.DestroyGameObjectCommandType, null, false, this.parameters);
+        this.theCommand = new DestroyGameObjectCommand(this.parameters);
 	}
 }

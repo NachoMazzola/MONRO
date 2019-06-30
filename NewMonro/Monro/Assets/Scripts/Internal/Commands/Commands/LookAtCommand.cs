@@ -41,6 +41,10 @@ public class LookAtCommand : ICommand {
 	}
 
 	public override void Prepare() {
+        if (this.lookable == null)
+        {
+            return;
+        }
 		this.lookableComponent = this.lookable.GetComponent<Lookable>();
 		if (this.lookableComponent == null) {
 			return;

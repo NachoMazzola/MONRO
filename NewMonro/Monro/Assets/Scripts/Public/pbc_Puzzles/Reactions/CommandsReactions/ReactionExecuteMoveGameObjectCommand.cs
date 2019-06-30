@@ -6,6 +6,6 @@ public class ReactionExecuteMoveGameObjectCommand : ExecuteCommandReaction {
 	public MoveGameObjectCommandParameters parameters;
 
 	void Awake() {
-		this.theCommand = CommandFactory.CreateCommand(CommandType.MoveGameObjectCommandType, null, false, this.parameters);
+        this.theCommand = new MoveGameObjectCommand(this.parameters);
 	}
 }

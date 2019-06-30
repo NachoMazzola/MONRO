@@ -183,7 +183,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 		yield return dialoguePanel.RemoveCaptionAfterSeconds(0.0f);
 		whoIsTalking = null;
 	
-		WorldInteractionController.getComponent ().enableInteractions = true;
+		WorldInteractionController.getComponent().enableInteractions = true;
 
 		GameObject inventoryGO = WorldObjectsHelper.GetBottomPanelUIGO ();
 		if (inventoryGO != null) {

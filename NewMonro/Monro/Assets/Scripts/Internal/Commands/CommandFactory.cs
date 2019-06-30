@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/***
+ *
+ *  DEPRECATED!!!!
+ * 
+ */
+
+
 public class CommandFactory {
 
 	public static bool SetDefaultValues = true;
@@ -95,7 +102,7 @@ public class CommandFactory {
 			return new PlayerMoveAndPickUpCommand(target);
 
 		case CommandType.PLayerMoveAndTalkCommandType:
-			return new PlayerMoveAndTalkCommand(target);
+			//return new PlayerMoveAndTalkCommand(target);
 
 		case CommandType.unknown:
 			return null;

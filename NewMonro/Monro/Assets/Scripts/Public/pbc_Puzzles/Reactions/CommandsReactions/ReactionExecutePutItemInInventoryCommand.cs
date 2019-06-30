@@ -16,7 +16,7 @@ public class ReactionExecutePutItemInInventoryCommand : ExecuteCommandReaction {
 			parameters.itemId = null;
 		}
 
-		this.theCommand = CommandFactory.CreateCommand(CommandType.PutItemInInventoryCommandType, null, false, this.parameters);
+        this.theCommand = new PutItemInInventoryCommand(this.parameters);
 	}
 }
 

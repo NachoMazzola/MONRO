@@ -10,11 +10,7 @@ public class Lookable : Tappable {
 
 	public override void OnAwake () {
 		base.OnAwake();
-		this.associatedTraitAction = TraitType.LookAt;
-
-        lCommand = new LookAtCommand();
-        lCommand.whoLooks = WorldObjectsHelper.getPlayerGO();
-        lCommand.lookable = this.gameObject;
+        this.associatedTraitAction = TraitType.LookAt;
 	}
 
 
@@ -22,10 +18,14 @@ public class Lookable : Tappable {
     {
         base.SingleClick();
 
-        if (lCommand.isRunning)
+        if (this.lCommand != null && this.lCommand.isRunning)
         {
             return;
         }
+
+        lCommand = new LookAtCommand();
+        lCommand.whoLooks = WorldObjectsHelper.getPlayerGO();
+        lCommand.lookable = this.gameObject;
 
         lCommand.Prepare();
         lCommand.WillStart();
@@ -36,11 +36,10 @@ public class Lookable : Tappable {
     public override void OnUpdate()
     {
         base.OnUpdate();
-        if (!lCommand.isRunning)
+        if (this.lCommand == null)
         {
             return;
         }
         lCommand.UpdateCommand();
-
     }
 }

@@ -9,17 +9,17 @@ public class ItemDroppable : Tappable
 
 	void Awake() {
 		this.associatedTraitAction = TraitType.Pickup;
-        this.moveAndPickUpCommand = new PlayerMoveAndPickUpCommand(this.gameObject);
     }
 
     public override void DoubleClick()
     {
         base.DoubleClick();
-        //if (((ICommand)talkCommand).Finished() == false)
-        //{
-        //    return;
-        //}
+        if (this.moveAndPickUpCommand != null && this.moveAndPickUpCommand.isRunning)
+        {
+            return;
+        }
 
+        this.moveAndPickUpCommand = new PlayerMoveAndPickUpCommand(this.gameObject);
         this.moveAndPickUpCommand.Prepare();
         this.moveAndPickUpCommand.WillStart();
 

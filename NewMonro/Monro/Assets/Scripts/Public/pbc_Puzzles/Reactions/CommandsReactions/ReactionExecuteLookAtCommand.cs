@@ -7,6 +7,6 @@ public class ReactionExecuteLookAtCommand : ExecuteCommandReaction {
 	public LookAtCommandParameters parameters;
 
 	void Awake() {
-		this.theCommand = CommandFactory.CreateCommand(CommandType.LookAtCommandType, null, false, this.parameters);
+        this.theCommand = new LookAtCommand(this.parameters);
 	}
 }

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class ReactionAddTalkableTrait: IPReaction {
 	public GameObject target;
     public string DialogueStartingNode;
-    public List<GameObject> ConversationParticipants;
     public bool allowDefaoultTalkPosition = true;
 
     public Color TextColor = Color.green;
@@ -23,7 +22,6 @@ public class ReactionAddTalkableTrait: IPReaction {
 		
 		Talkable trait =  target.GetComponent<Talkable>();
         trait.DialogueStartingNode = this.DialogueStartingNode;
-        trait.ConversationParticipants = this.ConversationParticipants;
         trait.allowDefaoultTalkPosition = this.allowDefaoultTalkPosition;
         trait.TextColor = this.TextColor;
 		trait.TextSize = this.TextSize;
