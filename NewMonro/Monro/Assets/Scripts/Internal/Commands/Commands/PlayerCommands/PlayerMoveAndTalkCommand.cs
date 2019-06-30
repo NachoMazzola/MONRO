@@ -12,12 +12,11 @@ public class PlayerMoveAndTalkCommand : ICommand, TalkableCommand
     public GameObject Target;
     private GameObject playerGO;
 
-    public PlayerMoveAndTalkCommand(GameObject target, string startingNode, List<GameObject> participants)
+    public PlayerMoveAndTalkCommand(GameObject target, string startingNode, List<GameObject> participants, Vector2 talkPosition)
     { 
         moveGOCommand = new MoveGameObjectCommand();
         moveGOCommand.targetObject = WorldObjectsHelper.getPlayerGO();
-        Talkable talkable = target.GetComponent<Talkable>();
-        moveGOCommand.targetPosition = talkable.GetTalkPosition();
+        moveGOCommand.targetPosition = talkPosition;
         moveGOCommand.movementSpeed = WorldObjectsHelper.getPlayerGO().GetComponent<Moveable>().MovementSpeed;
 
         talkCommand = new TalkCommand();
@@ -29,7 +28,7 @@ public class PlayerMoveAndTalkCommand : ICommand, TalkableCommand
         this.commandSteps.Add(CommandType.TalkCommandType, false);
     }
 
-    public PlayerMoveAndTalkCommand(GameObject target) {
+    public PlayerMoveAndTalkCommand(GameObject target, Vector2 talkPosition) {
         this.commandSteps = new Dictionary<CommandType, bool>();
         this.commandSteps.Add(CommandType.MoveGameObjectCommandType, false);
         this.commandSteps.Add(CommandType.TalkCommandType, false);
@@ -39,8 +38,7 @@ public class PlayerMoveAndTalkCommand : ICommand, TalkableCommand
         this.playerGO = WorldObjectsHelper.getPlayerGO();
         this.moveGOCommand = (MoveGameObjectCommand)CommandFactory.CreateCommand(CommandType.MoveGameObjectCommandType, null, false);
         this.moveGOCommand.targetObject = WorldObjectsHelper.getPlayerGO();
-        Talkable talkable = this.Target.GetComponent<Talkable>();
-        this.moveGOCommand.targetPosition = talkable.GetTalkPosition();
+        this.moveGOCommand.targetPosition = talkPosition;
         this.moveGOCommand.movementSpeed = WorldObjectsHelper.getPlayerGO().GetComponent<Moveable>().MovementSpeed;
 
         this.talkCommand = (TalkCommand)CommandFactory.CreateCommand(CommandType.TalkCommandType, this.Target, true);
