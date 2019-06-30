@@ -44,8 +44,8 @@
 		"tags": "",
 		"body": "Probably from one of these trees...\n\n[[Monrjiall.lookAt.going]]",
 		"position": {
-			"x": 609,
-			"y": 421
+			"x": 606,
+			"y": 409
 		},
 		"colorID": 0
 	},
@@ -54,8 +54,8 @@
 		"tags": "",
 		"body": "Or where it is headed...\n\n[[Mimir.lookAt.nowhere]]",
 		"position": {
-			"x": 610,
-			"y": 651
+			"x": 608,
+			"y": 638
 		},
 		"colorID": 0
 	},
@@ -114,8 +114,8 @@
 		"tags": "",
 		"body": "<<set $sawGoblet to true>>\n<<set $sawItem to true>>\n\nI could really use a drink right now.\nToo bad this goblet is empty.\nAnd there's no ale to be found.\nIn miles around.",
 		"position": {
-			"x": 388,
-			"y": 420
+			"x": 377,
+			"y": 411
 		},
 		"colorID": 0
 	},
@@ -206,6 +206,26 @@
 		"position": {
 			"x": 839,
 			"y": 420
+		},
+		"colorID": 0
+	},
+	{
+		"title": "lookAt_invTermites",
+		"tags": "",
+		"body": "Hungry looking little buggers...",
+		"position": {
+			"x": 846,
+			"y": 639
+		},
+		"colorID": 0
+	},
+	{
+		"title": "lookAt_axe",
+		"tags": "",
+		"body": "My axe. \nI like to keep it next to where my old axe used to be.",
+		"position": {
+			"x": -578,
+			"y": 186
 		},
 		"colorID": 0
 	}
