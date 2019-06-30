@@ -7,6 +7,6 @@ public class ReactionExecuteMoveCameraCommand : ExecuteCommandReaction {
 	public MoveCameraCommandParameters parameters;
 
 	void Awake() {
-		this.theCommand = CommandFactory.CreateCommand(CommandType.MoveCameraCommandType, null, false, this.parameters);
+        this.theCommand = new MoveCameraCommand(this.parameters);
 	}
 }

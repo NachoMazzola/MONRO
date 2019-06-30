@@ -7,6 +7,6 @@ public class ReactionExecuteAnimateCharacterCommand : ExecuteCommandReaction {
 	public AnimateCharacterCommandParameters parameters;
 
 	void Awake() {
-		this.theCommand = CommandFactory.CreateCommand (CommandType.AnimateCharacterCommandType, null, false, parameters);
+        this.theCommand = new AnimateCharacterCommand(this.parameters);
 	}
 }

@@ -6,6 +6,6 @@ public class ReactionExecuteRemoveItemFromInventoryCommand : ExecuteCommandReact
 	public RemoveItemFromInventoryCommandParameters parameters;
 
 	void Awake() {
-		this.theCommand = CommandFactory.CreateCommand(CommandType.RemoveItemFromInventoryCommandType, null, false, this.parameters);
+        this.theCommand = new RemoveItemFromInventoryCommand(this.parameters);
 	}
 }

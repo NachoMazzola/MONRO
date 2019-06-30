@@ -23,7 +23,6 @@ public class ReactionAddTalkableTrait: IPReaction {
 		
 		Talkable trait =  target.GetComponent<Talkable>();
         trait.DialogueStartingNode = this.DialogueStartingNode;
-        trait.ConversationParticipants = this.ConversationParticipants;
         trait.allowDefaoultTalkPosition = this.allowDefaoultTalkPosition;
         trait.TextColor = this.TextColor;
 		trait.TextSize = this.TextSize;

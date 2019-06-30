@@ -8,9 +8,7 @@ using System;
 public class Talkable : Tappable, IAnimatable
 {
     public string DialogueStartingNode;
-    public List<GameObject> ConversationParticipants;
-
-
+    
     /** Text Configuration */
     public Color TextColor = Color.green;
 	public int TextSize = 30;
@@ -23,13 +21,13 @@ public class Talkable : Tappable, IAnimatable
     private AnimationsCoordinatorHub animCoordinator;
 	private Transform talkPositionGO;
     private TalkableCommand talkCommand;
-
-	public override void OnAwake ()
+    private List<GameObject> ConversationParticipants;
+    public override void OnAwake ()
 	{
 		base.OnAwake ();
 		this.associatedTraitAction = TraitType.Talk;
 		this.animCoordinator = this.GetComponent<AnimationsCoordinatorHub> ();
-		//this.AssociatedMenuCommandType = CommandType.TalkCommandType;
+        this.ConversationParticipants = WorldObjectsHelper.GetTalkables();
 
 		//this.SetTalkPositionGameObject ();
   //      if (this.ConversationParticipants != null)

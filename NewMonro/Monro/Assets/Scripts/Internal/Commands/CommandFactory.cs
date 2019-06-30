@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/***
+ *
+ *  DEPRECATED!!!!
+ * 
+ */
+
+
 public class CommandFactory {
 
 	public static bool SetDefaultValues = true;

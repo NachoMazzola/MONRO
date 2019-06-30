@@ -1,16 +1,12 @@
 ﻿<Properties StartupConfiguration="{1BE28F57-BF0E-E7DF-C219-F9C97E5D5732}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Public/pbc_Puzzles/Reactions/AddTraitsReactions/ReactionAddTalkableTrait.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Internal/Dialogue/DialogueUI.cs">
     <Files>
-      <File FileName="Assets/Scripts/Public/pbc_Traits/Talkable.cs" Line="108" Column="1" />
-      <File FileName="Assets/Scripts/Public/pbc_Traits/ItemDroppable.cs" Line="32" Column="9" />
-      <File FileName="Assets/Scripts/Public/pbc_Traits/Lookable.cs" Line="39" Column="13" />
-      <File FileName="Assets/Scripts/Internal/Commands/Commands/PlayerCommands/PlayerMoveAndPickUpCommand.cs" Line="63" Column="39" />
-      <File FileName="Assets/Scripts/Internal/Commands/ICommand.cs" Line="28" Column="23" />
-      <File FileName="Assets/Scripts/Internal/Commands/Commands/TalkCommand.cs" Line="24" Column="10" />
-      <File FileName="Assets/Scripts/Internal/Commands/Commands/PlayerCommands/PlayerMoveAndTalkCommand.cs" Line="41" Column="9" />
-      <File FileName="Assets/Scripts/Public/pbc_Traits/Tappable.cs" Line="88" Column="1" />
-      <File FileName="Assets/Scripts/Internal/Commands/CommandFactory.cs" Line="98" Column="6" />
-      <File FileName="Assets/Scripts/Public/pbc_Puzzles/Reactions/AddTraitsReactions/ReactionAddTalkableTrait.cs" Line="31" Column="44" />
+      <File FileName="Assets/Scripts/Internal/Commands/CommandManager.cs" Line="10" Column="1" />
+      <File FileName="Assets/Scripts/Internal/Helpers/WorldObjectsHelper.cs" Line="29" Column="49" />
+      <File FileName="Assets/Scripts/Public/pbc_Traits/Talkable.cs" Line="8" Column="27" />
+      <File FileName="Assets/Scripts/Public/pbc_Puzzles/Reactions/AddTraitsReactions/ReactionAddTalkableTrait.cs" Line="31" Column="1" />
+      <File FileName="Assets/Scripts/Public/pbc_Traits/Tappable.cs" Line="40" Column="87" />
+      <File FileName="Assets/Scripts/Internal/Dialogue/DialogueUI.cs" Line="166" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,7 +21,11 @@
                       <Node name="PlayerCommands" expanded="True" />
                     </Node>
                   </Node>
-                  <Node name="Dialogue" expanded="True" />
+                  <Node name="Dialogue" expanded="True">
+                    <Node name="DialogueUI.cs" selected="True" />
+                  </Node>
+                  <Node name="Helpers" expanded="True" />
+                  <Node name="Items" expanded="True" />
                   <Node name="Puzzles" expanded="True" />
                   <Node name="Traits" expanded="True">
                     <Node name="MenuRenderable" expanded="True" />
@@ -36,9 +36,7 @@
                   <Node name="pbc_Puzzles" expanded="True">
                     <Node name="Actions" expanded="True" />
                     <Node name="Reactions" expanded="True">
-                      <Node name="AddTraitsReactions" expanded="True">
-                        <Node name="ReactionAddTalkableTrait.cs" selected="True" />
-                      </Node>
+                      <Node name="AddTraitsReactions" expanded="True" />
                       <Node name="CommandsReactions" expanded="True">
                         <Node name="PlayerCommandsReactions" expanded="True" />
                       </Node>
@@ -59,8 +57,9 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/UIScripts/Inventory/InventoryPanel/InventoryPanelHandler.cs" relfile="Assets/Scripts/Internal/UIScripts/Inventory/InventoryPanel/InventoryPanelHandler.cs" line="106" column="1" />
-      <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/Commands/CommandFactory.cs" relfile="Assets/Scripts/Internal/Commands/CommandFactory.cs" line="98" column="1" />
-      <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Public/pbc_Traits/Talkable.cs" relfile="Assets/Scripts/Public/pbc_Traits/Talkable.cs" line="101" column="1" />
+      <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/Commands/CommandFactory.cs" relfile="Assets/Scripts/Internal/Commands/CommandFactory.cs" line="105" column="1" />
+      <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Public/pbc_Traits/Tappable.cs" relfile="Assets/Scripts/Public/pbc_Traits/Tappable.cs" line="43" column="1" />
+      <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Public/pbc_Traits/Tappable.cs" relfile="Assets/Scripts/Public/pbc_Traits/Tappable.cs" line="40" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

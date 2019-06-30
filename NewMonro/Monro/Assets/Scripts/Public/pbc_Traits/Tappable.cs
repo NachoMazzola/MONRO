@@ -16,10 +16,7 @@ public class Tappable : Trait {
 
     private float doubleClickTimeLimit = 0.25f;
 
-    [HideInInspector]
-    public bool allowInteraction = true;
-
-
+    
     public override void OnAwake () {
 		base.OnAwake();
 
@@ -40,10 +37,10 @@ public class Tappable : Trait {
     // Update is called once per frame
     private IEnumerator InputListener()
     {
-        while (enabled && allowInteraction)
+        while (enabled)
         { //Run as long as this is activ
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && WorldInteractionController.getComponent().enableInteractions)
                 yield return ClickEvent();
 
             yield return null;

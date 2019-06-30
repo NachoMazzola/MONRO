@@ -6,6 +6,6 @@ public class ReactionExecutePlayerMoveAndPickUpCommand : ExecuteCommandReaction 
 	public GameObject ItemDroppable;
 
 	void Awake() {
-		this.theCommand = CommandFactory.CreateCommand(CommandType.PlayerMoveAndPickUpCommandType, this.ItemDroppable, false, null);
+        this.theCommand = new PlayerMoveAndPickUpCommand(this.ItemDroppable);
 	}
 }

@@ -7,6 +7,6 @@ public class ReactionExecuteChangeSpriteCommand : ExecuteCommandReaction {
 	public ChangeSpriteCommandParamters parameters;
 
 	void Awake() {
-		this.theCommand = CommandFactory.CreateCommand(CommandType.ChangeSpriteCommandType, null, false, this.parameters);
+        this.theCommand = new ChangeSpriteCommand(this.parameters);
 	}
 }

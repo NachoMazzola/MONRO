@@ -26,6 +26,22 @@ public static class WorldObjectsHelper {
 		return GameObject.Find("Dialogue");
 	}
 
+    public static List<GameObject> GetTalkables()
+    {
+        
+        GameObject[] all = (GameObject[])GameObject.FindObjectsOfType(typeof(GameObject));
+        List<GameObject> allTalkables = new List<GameObject>();
+        foreach (GameObject go in all) {
+            if (go.GetComponent<Talkable>() != null)
+            {
+                allTalkables.Add(go);
+            }
+        }
+
+        return allTalkables;
+    }
+
+
 	public static GameObject getUIGO() {
 		return GameObject.Find("UI");
 	}

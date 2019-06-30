@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/***
+ *
+ *  DEPRECATED!!!!
+ * 
+ */
+
+
 /**
  * This class focuses on building commands exclusively applied to the PJ
  * when player interacts with a UI (like verbs panel or radial menu)
