@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{1BE28F57-BF0E-E7DF-C219-F9C97E5D5732}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Internal/Dialogue/DialogueUI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Public/pbc_Traits/Tappable.cs">
     <Files>
       <File FileName="Assets/Scripts/Internal/Commands/CommandManager.cs" Line="10" Column="1" />
-      <File FileName="Assets/Scripts/Internal/Helpers/WorldObjectsHelper.cs" Line="29" Column="49" />
+      <File FileName="Assets/Scripts/Internal/Helpers/WorldObjectsHelper.cs" Line="51" Column="39" />
       <File FileName="Assets/Scripts/Public/pbc_Traits/Talkable.cs" Line="8" Column="27" />
-      <File FileName="Assets/Scripts/Public/pbc_Puzzles/Reactions/AddTraitsReactions/ReactionAddTalkableTrait.cs" Line="31" Column="1" />
-      <File FileName="Assets/Scripts/Public/pbc_Traits/Tappable.cs" Line="40" Column="87" />
-      <File FileName="Assets/Scripts/Internal/Dialogue/DialogueUI.cs" Line="166" Column="1" />
+      <File FileName="Assets/Scripts/Public/pbc_Puzzles/Reactions/AddTraitsReactions/ReactionAddTalkableTrait.cs" Line="33" Column="48" />
+      <File FileName="Assets/Scripts/Public/pbc_Traits/Tappable.cs" Line="17" Column="48" />
+      <File FileName="Assets/Scripts/Internal/Dialogue/DialogueUI.cs" Line="76" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,9 +21,7 @@
                       <Node name="PlayerCommands" expanded="True" />
                     </Node>
                   </Node>
-                  <Node name="Dialogue" expanded="True">
-                    <Node name="DialogueUI.cs" selected="True" />
-                  </Node>
+                  <Node name="Dialogue" expanded="True" />
                   <Node name="Helpers" expanded="True" />
                   <Node name="Items" expanded="True" />
                   <Node name="Puzzles" expanded="True" />
@@ -42,7 +40,9 @@
                       </Node>
                     </Node>
                   </Node>
-                  <Node name="pbc_Traits" expanded="True" />
+                  <Node name="pbc_Traits" expanded="True">
+                    <Node name="Tappable.cs" selected="True" />
+                  </Node>
                 </Node>
               </Node>
             </Node>
@@ -58,8 +58,6 @@
     <BreakpointStore>
       <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/UIScripts/Inventory/InventoryPanel/InventoryPanelHandler.cs" relfile="Assets/Scripts/Internal/UIScripts/Inventory/InventoryPanel/InventoryPanelHandler.cs" line="106" column="1" />
       <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/Commands/CommandFactory.cs" relfile="Assets/Scripts/Internal/Commands/CommandFactory.cs" line="105" column="1" />
-      <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Public/pbc_Traits/Tappable.cs" relfile="Assets/Scripts/Public/pbc_Traits/Tappable.cs" line="43" column="1" />
-      <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Public/pbc_Traits/Tappable.cs" relfile="Assets/Scripts/Public/pbc_Traits/Tappable.cs" line="40" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
