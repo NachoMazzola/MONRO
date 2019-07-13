@@ -36,6 +36,7 @@ public class DestroyGameObjectCommand : ICommand {
 
 	public override void WillStart() {
         this.isRunning = true;
+        this.ExecuteOnce();
 	}
 
 

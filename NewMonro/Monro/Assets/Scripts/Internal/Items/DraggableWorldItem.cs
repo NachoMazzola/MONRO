@@ -57,10 +57,6 @@ public class DraggableWorldItem : MonoBehaviour {
 		gameobjectItmeIsOver = other;
 
 		Debug.Log("ITEM IS OVER: " + other);
-
-//
-//		HighlightableObject highlight = this.GetComponent<HighlightableObject>();
-//		highlight.HighlightObject();
 	}
 
 	public virtual void ItemIsNotOverObjectAnyMore(Transform other) {
@@ -69,10 +65,6 @@ public class DraggableWorldItem : MonoBehaviour {
 		}
 
 		Debug.Log("ITEM IS NO LONGER OVER: " + other);
-
-//		HighlightableObject highlight = this.GetComponent<HighlightableObject>();
-//		highlight.RemoveHighlight();
-
 	}
 
 	private void HandleDrop() {

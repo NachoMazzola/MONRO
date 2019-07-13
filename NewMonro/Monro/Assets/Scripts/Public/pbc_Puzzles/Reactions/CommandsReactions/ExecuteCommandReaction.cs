@@ -7,7 +7,8 @@ public class ExecuteCommandReaction : IPReaction {
 	public ICommand theCommand;
 
 	override public bool Execute (Transform actionReceiver, Puzzle puzzle, PAction theAction) {
-		CommandManager.getComponent().QueueCommand(theCommand, false);
+        theCommand.Prepare();
+        theCommand.WillStart();
 		return true;
 	}
 }

@@ -1,12 +1,11 @@
 ﻿<Properties StartupConfiguration="{1BE28F57-BF0E-E7DF-C219-F9C97E5D5732}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Public/pbc_Traits/Tappable.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Internal/Items/ItemInventoryCaptionTrigger.cs">
     <Files>
-      <File FileName="Assets/Scripts/Internal/Commands/CommandManager.cs" Line="10" Column="1" />
-      <File FileName="Assets/Scripts/Internal/Helpers/WorldObjectsHelper.cs" Line="51" Column="39" />
-      <File FileName="Assets/Scripts/Public/pbc_Traits/Talkable.cs" Line="8" Column="27" />
-      <File FileName="Assets/Scripts/Public/pbc_Puzzles/Reactions/AddTraitsReactions/ReactionAddTalkableTrait.cs" Line="33" Column="48" />
-      <File FileName="Assets/Scripts/Public/pbc_Traits/Tappable.cs" Line="17" Column="48" />
-      <File FileName="Assets/Scripts/Internal/Dialogue/DialogueUI.cs" Line="76" Column="1" />
+      <File FileName="Assets/Scripts/Public/pbc_Puzzles/Reactions/CommandsReactions/ExecuteCommandReaction.cs" Line="10" Column="30" />
+      <File FileName="Assets/Scripts/Internal/Commands/Commands/DestroyGameObjectCommand.cs" Line="39" Column="28" />
+      <File FileName="Assets/Scripts/Internal/Commands/Commands/PlayerCommands/PlayerMoveAndPickUpCommand.cs" Line="81" Column="47" />
+      <File FileName="Assets/Scripts/Internal/Commands/Commands/PutItemInInventoryCommand.cs" Line="54" Column="28" />
+      <File FileName="Assets/Scripts/Internal/Items/ItemInventoryCaptionTrigger.cs" Line="39" Column="24" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,10 +22,17 @@
                   </Node>
                   <Node name="Dialogue" expanded="True" />
                   <Node name="Helpers" expanded="True" />
-                  <Node name="Items" expanded="True" />
+                  <Node name="Items" expanded="True">
+                    <Node name="ItemInventoryCaptionTrigger.cs" selected="True" />
+                  </Node>
                   <Node name="Puzzles" expanded="True" />
                   <Node name="Traits" expanded="True">
                     <Node name="MenuRenderable" expanded="True" />
+                  </Node>
+                  <Node name="UIScripts" expanded="True">
+                    <Node name="Inventory" expanded="True">
+                      <Node name="InventoryPanel" expanded="True" />
+                    </Node>
                   </Node>
                   <Node name="WorldInteraction" expanded="True" />
                 </Node>
@@ -40,9 +46,7 @@
                       </Node>
                     </Node>
                   </Node>
-                  <Node name="pbc_Traits" expanded="True">
-                    <Node name="Tappable.cs" selected="True" />
-                  </Node>
+                  <Node name="pbc_Traits" expanded="True" />
                 </Node>
               </Node>
             </Node>
@@ -53,10 +57,9 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="7a05c655-c4c9-4a02-9894-9ea79561d086" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="dc5f56c7-d843-45b1-9c40-e5e25b25b9aa" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/UIScripts/Inventory/InventoryPanel/InventoryPanelHandler.cs" relfile="Assets/Scripts/Internal/UIScripts/Inventory/InventoryPanel/InventoryPanelHandler.cs" line="106" column="1" />
       <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/Commands/CommandFactory.cs" relfile="Assets/Scripts/Internal/Commands/CommandFactory.cs" line="105" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
