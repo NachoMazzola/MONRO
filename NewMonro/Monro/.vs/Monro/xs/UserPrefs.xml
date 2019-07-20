@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{1BE28F57-BF0E-E7DF-C219-F9C97E5D5732}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Internal/Items/ItemInventoryCaptionTrigger.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Public/pbc_Puzzles/Actions/ActionDropItemOverInteractiveObject.cs">
     <Files>
       <File FileName="Assets/Scripts/Public/pbc_Puzzles/Reactions/CommandsReactions/ExecuteCommandReaction.cs" Line="10" Column="30" />
-      <File FileName="Assets/Scripts/Internal/Commands/Commands/DestroyGameObjectCommand.cs" Line="39" Column="28" />
-      <File FileName="Assets/Scripts/Internal/Commands/Commands/PlayerCommands/PlayerMoveAndPickUpCommand.cs" Line="81" Column="47" />
-      <File FileName="Assets/Scripts/Internal/Commands/Commands/PutItemInInventoryCommand.cs" Line="54" Column="28" />
+      <File FileName="Assets/Scripts/Internal/Commands/Commands/DestroyGameObjectCommand.cs" />
       <File FileName="Assets/Scripts/Internal/Items/ItemInventoryCaptionTrigger.cs" Line="39" Column="24" />
+      <File FileName="Assets/Scripts/Public/pbc_Puzzles/Actions/ActionDropItemOverInteractiveObject.cs" Line="14" Column="63" />
+      <File FileName="Assets/Scripts/Internal/Items/DraggableWorldItem.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,9 +22,7 @@
                   </Node>
                   <Node name="Dialogue" expanded="True" />
                   <Node name="Helpers" expanded="True" />
-                  <Node name="Items" expanded="True">
-                    <Node name="ItemInventoryCaptionTrigger.cs" selected="True" />
-                  </Node>
+                  <Node name="Items" expanded="True" />
                   <Node name="Puzzles" expanded="True" />
                   <Node name="Traits" expanded="True">
                     <Node name="MenuRenderable" expanded="True" />
@@ -38,7 +36,9 @@
                 </Node>
                 <Node name="Public" expanded="True">
                   <Node name="pbc_Puzzles" expanded="True">
-                    <Node name="Actions" expanded="True" />
+                    <Node name="Actions" expanded="True">
+                      <Node name="ActionDropItemOverInteractiveObject.cs" selected="True" />
+                    </Node>
                     <Node name="Reactions" expanded="True">
                       <Node name="AddTraitsReactions" expanded="True" />
                       <Node name="CommandsReactions" expanded="True">
@@ -57,10 +57,11 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="dc5f56c7-d843-45b1-9c40-e5e25b25b9aa" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c32a713b-2ed6-45d0-bb3f-9dd547648934" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/Commands/CommandFactory.cs" relfile="Assets/Scripts/Internal/Commands/CommandFactory.cs" line="105" column="1" />
+      <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Public/pbc_Puzzles/Actions/ActionDropItemOverInteractiveObject.cs" relfile="Assets/Scripts/Public/pbc_Puzzles/Actions/ActionDropItemOverInteractiveObject.cs" line="15" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
