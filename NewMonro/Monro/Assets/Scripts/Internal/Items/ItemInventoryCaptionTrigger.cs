@@ -17,31 +17,27 @@ public class ItemInventoryCaptionTrigger : MonoBehaviour, IPointerDownHandler, I
 	}
 
 	public void OnPointerDown (PointerEventData eventData) {
-		
-	}
+        itemTransform = (RectTransform)this.gameObject.transform.GetChild(0);
+        string itemId = itemTransform.GetComponent<DBItemLoader>().itemId;
+
+        DBItem instanciatedItemModel = DBAccess.getComponent().itemsDataBase.GetItemById(itemId);
+        caption = instanciatedItemModel.Description;
+
+        InstantiateDraggableWorldItem instDraggable = itemTransform.GetComponent<InstantiateDraggableWorldItem>();
+        if (instDraggable)
+        {
+            isHoldingDown = instDraggable.holdDown;
+        }
+    }
 
 	public void OnPointerClick(PointerEventData eventData) {
 		if (this.gameObject.transform.childCount == 0) {
 			return;
 		}
 
-		itemTransform = (RectTransform)this.gameObject.transform.GetChild (0);
-		string itemId = itemTransform.GetComponent<DBItemLoader> ().itemId;
-
-		DBItem instanciatedItemModel = DBAccess.getComponent ().itemsDataBase.GetItemById (itemId);
-		caption = instanciatedItemModel.Description;
-
-		InstantiateDraggableWorldItem instDraggable = itemTransform.GetComponent<InstantiateDraggableWorldItem>();
-		if (instDraggable) {
-			isHoldingDown = instDraggable.holdDown;
-		}
-
-		if (!isHoldingDown) {
-
-            captionCommand = new LookAtCommand(this.itemTransform.gameObject, WorldObjectsHelper.getPlayerGO());
-            captionCommand.Prepare();
-            captionCommand.WillStart();
-		}
+        captionCommand = new LookAtCommand(this.itemTransform.gameObject, WorldObjectsHelper.getPlayerGO());
+        captionCommand.Prepare();
+        captionCommand.WillStart();
 	}
 
     void Update()
