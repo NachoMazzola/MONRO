@@ -122,13 +122,8 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 			yield return null;
 		}
 
-		// Hide all the buttons
-		foreach (var button in optionButtons) {
-			button.gameObject.SetActive (false);
-		}
-
-		this.dialoguePanel.ResetDialogueOptionsButtons();
-		yield break;
+        this.dialoguePanel.DeactivateAllDialogueOptionButtons();
+        yield break;
 	}
 
 	// Called by buttons to make a selection.

@@ -8,12 +8,16 @@ public class DialogueOptionsScrollView : MonoBehaviour {
     private List<GameObject> buttons;
     private List<int> deactivatedButtons;
 
-    private void Start() {
+    private void Awake() {
         this.buttons = new List<GameObject>();
         this.deactivatedButtons = new List<int>();
     }
 
     public void AddDialogueOptionButton(int optionIdx, string option) {
+        if (this.deactivatedButtons.Contains(optionIdx)) {
+            return;
+        }
+
         GameObject go = Instantiate(ButtonTemplate) as GameObject;
         go.SetActive(true);
 
@@ -31,5 +35,22 @@ public class DialogueOptionsScrollView : MonoBehaviour {
         goB.SetActive(false);
 
         this.deactivatedButtons.Add(index);
+    }
+
+    public void DeactivateAllButtons(bool deactivate) {
+        if (deactivate) {
+            foreach (GameObject go in this.buttons) {
+                go.SetActive(false);
+            }
+        }
+        else {
+            for (int i = 0; i > this.buttons.Count; i++) {
+                if (this.deactivatedButtons.Contains(i)) {
+                    continue;
+                }
+                GameObject go = this.buttons[i];
+                go.SetActive(true);
+            }
+        }
     }
 }
