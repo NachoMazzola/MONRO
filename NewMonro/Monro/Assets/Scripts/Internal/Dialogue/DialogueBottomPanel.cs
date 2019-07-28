@@ -127,6 +127,25 @@ public class DialogueBottomPanel : MonoBehaviour
         }
     }
 
+    public void DeactivateAllDialogueOptionButtons() {
+        if (WorldObjectsHelper.GetDialogueOptionsScrollView() == null) {
+            return;
+        }
+
+        DialogueOptionsScrollView sc = WorldObjectsHelper.GetDialogueOptionsScrollView().GetComponent<DialogueOptionsScrollView>();
+        sc.DeactivateAllButtons(true);
+    }
+
+    public void DeactivateSelectedOption(int optionIndex) {
+        if (WorldObjectsHelper.GetDialogueOptionsScrollView() == null) {
+            return;
+        }
+
+        DialogueOptionsScrollView sc = WorldObjectsHelper.GetDialogueOptionsScrollView().GetComponent<DialogueOptionsScrollView>();
+        sc.MarkOptionButtonAsSelected(optionIndex);
+
+    }
+
     public void ResetDialogueOptionsButtons()
     {
         //this.buttonsPositionHandler.SetOriginPositions();
