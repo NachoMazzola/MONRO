@@ -8,106 +8,127 @@ using Yarn.Unity;
 
 public class DialogueBottomPanel : MonoBehaviour
 {
-	public float TextSpeed = 0.0001f;
+    public float TextSpeed = 0.0001f;
 
-	[HideInInspector]
-	public bool hasFinishedCaptionDisplay;
+    [HideInInspector]
+    public bool hasFinishedCaptionDisplay;
 
-	private Text displayedText;
+    private Text displayedText;
 
-	private DialogueOptionsDisplayer buttonsPositionHandler;
-	private List<Button> optionButtons;
+    private DialogueOptionsDisplayer buttonsPositionHandler;
+    private List<Button> optionButtons;
 
-	private Image talkingImage;
-	private Talkable whoIsTalking;
-	private Transform conversationOptionsPanel;
+    private Image talkingImage;
+    private Talkable whoIsTalking;
+    private Transform conversationOptionsPanel;
 
 
 
-	// Use this for initialization
-	void Start () {
-		this.displayedText = this.transform.GetComponentInChildren<Text> ();
-		this.talkingImage = this.transform.Find("TalkablePortrait").GetComponent<Image>();
-		this.conversationOptionsPanel = this.transform.Find("ConversationOptionsPanel");
-		this.MustShowDialogueOptions(false);
-	}
+    // Use this for initialization
+    void Start()
+    {
+        this.displayedText = this.transform.GetComponentInChildren<Text>();
+        this.talkingImage = this.transform.Find("TalkablePortrait").GetComponent<Image>();
+        this.conversationOptionsPanel = this.transform.Find("ConversationOptionsPanel");
+        this.MustShowDialogueOptions(false);
+    }
 
-	public IEnumerator AddActionOnFinishAfterCoroutine (IEnumerator coroutineToWait)
-	{
-		yield return StartCoroutine (coroutineToWait);
-		this.hasFinishedCaptionDisplay = true;
-	}
+    public IEnumerator AddActionOnFinishAfterCoroutine(IEnumerator coroutineToWait)
+    {
+        yield return StartCoroutine(coroutineToWait);
+        this.hasFinishedCaptionDisplay = true;
+    }
 
-	public IEnumerator ShowText (string caption, Talkable whoIsTalking)
-	{
-		this.whoIsTalking = whoIsTalking;
-		this.talkingImage.sprite = this.whoIsTalking.talkableImage;
+    public IEnumerator ShowText(string caption, Talkable whoIsTalking)
+    {
+        this.whoIsTalking = whoIsTalking;
+        this.talkingImage.sprite = this.whoIsTalking.talkableImage;
 
-		this.displayedText.font = this.whoIsTalking.textFont;
-		this.displayedText.color = this.whoIsTalking.TextColor;
-		this.displayedText.fontSize = this.whoIsTalking.TextSize;
+        this.displayedText.font = this.whoIsTalking.textFont;
+        this.displayedText.color = this.whoIsTalking.TextColor;
+        this.displayedText.fontSize = this.whoIsTalking.TextSize;
 
-		if (TextSpeed > 0.0f) {
-			// Display the line one character at a time
-			var stringBuilder = new StringBuilder ();
+        if (TextSpeed > 0.0f)
+        {
+            // Display the line one character at a time
+            var stringBuilder = new StringBuilder();
 
-			foreach (char c in caption) {
-				stringBuilder.Append (c);
-				this.displayedText.text = stringBuilder.ToString ();
-				yield return new WaitForSeconds (TextSpeed);
-			}
-		} else {
-			// Display the line immediately if textSpeed == 0
-			this.displayedText.text = caption;
-		}
-			
-		// Wait for any user input
-		while (Input.anyKeyDown == false) {
-			yield return null;
-		}
-	}
+            foreach (char c in caption)
+            {
+                stringBuilder.Append(c);
+                this.displayedText.text = stringBuilder.ToString();
+                yield return new WaitForSeconds(TextSpeed);
+            }
+        }
+        else
+        {
+            // Display the line immediately if textSpeed == 0
+            this.displayedText.text = caption;
+        }
 
-	public IEnumerator RemoveCaptionAfterSeconds (float secondsToWait)
-	{
-		yield return new WaitForSeconds (secondsToWait);
+        // Wait for any user input
+        while (Input.anyKeyDown == false)
+        {
+            yield return null;
+        }
+    }
 
-		StopAllCoroutines ();
-	}
-		
-	public void startLine ()
-	{
-		whoIsTalking.PlayAnimation ();
-	}
+    public IEnumerator RemoveCaptionAfterSeconds(float secondsToWait)
+    {
+        yield return new WaitForSeconds(secondsToWait);
 
-	public void finishedLine ()
-	{
-		whoIsTalking.StopAnimation ();
-	}
+        StopAllCoroutines();
+    }
 
-	public void MustShowDialogueOptions(bool show) {
-		this.displayedText.gameObject.SetActive(!show);
-		this.conversationOptionsPanel.gameObject.SetActive (show);
-	}
+    public void startLine()
+    {
+        whoIsTalking.PlayAnimation();
+    }
 
-	public void SetupOptionButtons(List<Button> optionButtons) {
-		this.optionButtons = optionButtons;
+    public void finishedLine()
+    {
+        whoIsTalking.StopAnimation();
+    }
 
-		foreach (Button optionButton in this.optionButtons) {
-			optionButton.gameObject.SetActive (false);
-		}
+    public void MustShowDialogueOptions(bool show)
+    {
+        this.displayedText.gameObject.SetActive(!show);
+        this.conversationOptionsPanel.gameObject.SetActive(show);
+    }
 
-		this.buttonsPositionHandler = new DialogueOptionsDisplayer (this.optionButtons);
-		this.buttonsPositionHandler.SetOriginPositions();
-	}
+    public void SetupOptionButtons(List<Button> optionButtons)
+    {
+        this.optionButtons = optionButtons;
 
-	public void CreateButtonForOptions(Yarn.Options optionsCollection) {
-		this.displayedText.text = "";
+        foreach (Button optionButton in this.optionButtons)
+        {
+            optionButton.gameObject.SetActive(false);
+        }
 
-		this.conversationOptionsPanel.gameObject.SetActive (true);
-		this.buttonsPositionHandler.PositionateButtons (optionsCollection);
-	}
+        this.buttonsPositionHandler = new DialogueOptionsDisplayer(this.optionButtons);
+        this.buttonsPositionHandler.SetOriginPositions();
+    }
 
-	public void ResetDialogueOptionsButtons () {
-		this.buttonsPositionHandler.SetOriginPositions();
-	}
+    public void CreateButtonForOptions(Yarn.Options optionsCollection)
+    {
+        if (WorldObjectsHelper.GetDialogueOptionsScrollView() == null) {
+            return;
+        }
+
+        DialogueOptionsScrollView sc = WorldObjectsHelper.GetDialogueOptionsScrollView().GetComponent<DialogueOptionsScrollView>();
+
+        this.displayedText.text = "";
+        this.conversationOptionsPanel.gameObject.SetActive(true);
+
+        for (int i = 0; i < optionsCollection.options.Count; i++)
+        {
+            string str = optionsCollection.options[i];
+            sc.AddDialogueOptionButton(i, str);
+        }
+    }
+
+    public void ResetDialogueOptionsButtons()
+    {
+        //this.buttonsPositionHandler.SetOriginPositions();
+    }
 }

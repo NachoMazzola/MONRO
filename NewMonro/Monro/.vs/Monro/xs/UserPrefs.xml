@@ -1,12 +1,11 @@
 ﻿<Properties StartupConfiguration="{1BE28F57-BF0E-E7DF-C219-F9C97E5D5732}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Internal/Items/InstantiateDraggableWorldItem.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Internal/UIScripts/ScrollView/DialogueOptionsScrollView.cs">
     <Files>
-      <File FileName="Assets/Scripts/Public/pbc_Puzzles/Reactions/CommandsReactions/ExecuteCommandReaction.cs" Line="10" Column="30" />
-      <File FileName="Assets/Scripts/Internal/Commands/Commands/DestroyGameObjectCommand.cs" />
-      <File FileName="Assets/Scripts/Internal/Items/ItemInventoryCaptionTrigger.cs" Line="34" Column="26" />
-      <File FileName="Assets/Scripts/Public/pbc_Puzzles/Actions/ActionDropItemOverInteractiveObject.cs" Line="17" Column="29" />
-      <File FileName="Assets/Scripts/Internal/Items/DraggableWorldItem.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Internal/Items/InstantiateDraggableWorldItem.cs" Line="75" Column="3" />
+      <File FileName="Assets/Scripts/Internal/Dialogue/DialogueBottomPanel.cs" Line="106" Column="30" />
+      <File FileName="Assets/Scripts/Internal/Dialogue/DialogueUI.cs" />
+      <File FileName="Assets/Scripts/Internal/UIScripts/ScrollView/DialogueOptionButton.cs" />
+      <File FileName="Assets/Scripts/Internal/Helpers/WorldObjectsHelper.cs" />
+      <File FileName="Assets/Scripts/Internal/UIScripts/ScrollView/DialogueOptionsScrollView.cs" Line="19" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,9 +22,7 @@
                   </Node>
                   <Node name="Dialogue" expanded="True" />
                   <Node name="Helpers" expanded="True" />
-                  <Node name="Items" expanded="True">
-                    <Node name="InstantiateDraggableWorldItem.cs" selected="True" />
-                  </Node>
+                  <Node name="Items" expanded="True" />
                   <Node name="Puzzles" expanded="True" />
                   <Node name="Traits" expanded="True">
                     <Node name="MenuRenderable" expanded="True" />
@@ -33,6 +30,9 @@
                   <Node name="UIScripts" expanded="True">
                     <Node name="Inventory" expanded="True">
                       <Node name="InventoryPanel" expanded="True" />
+                    </Node>
+                    <Node name="ScrollView" expanded="True">
+                      <Node name="DialogueOptionsScrollView.cs" selected="True" />
                     </Node>
                   </Node>
                   <Node name="WorldInteraction" expanded="True" />
@@ -58,7 +58,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c32a713b-2ed6-45d0-bb3f-9dd547648934" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c796d7ab-a844-4a99-a5c4-a6d104fe112b" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/Commands/CommandFactory.cs" relfile="Assets/Scripts/Internal/Commands/CommandFactory.cs" line="105" column="1" />

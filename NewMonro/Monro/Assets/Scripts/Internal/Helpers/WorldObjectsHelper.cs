@@ -107,4 +107,8 @@ public static class WorldObjectsHelper {
 		GameObject bottomPanel = WorldObjectsHelper.getUIGO();
 		return bottomPanel.transform.Find("DialoguePanel").gameObject;
 	}
+
+    public static GameObject GetDialogueOptionsScrollView() {
+        return GetDialoguePannel().transform.Find("ConversationOptionsPanel").transform.Find("ScrollView").gameObject;
+    }
 }

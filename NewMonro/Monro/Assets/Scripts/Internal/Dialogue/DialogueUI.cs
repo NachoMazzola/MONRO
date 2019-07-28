@@ -31,10 +31,8 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 
 	void Awake ()
 	{
-		this.dialoguePanel = WorldObjectsHelper.GetDialoguePannel().GetComponent<DialogueBottomPanel>();
-		this.dialoguePanel.SetupOptionButtons(this.optionButtons);
-		dialogRunner = FindObjectOfType<DialogueRunner> ();
-
+        this.dialoguePanel = WorldObjectsHelper.GetDialoguePannel().GetComponent<DialogueBottomPanel>();
+        this.dialogRunner = FindObjectOfType<DialogueRunner> ();
 	}
 
 	void Start ()
@@ -114,7 +112,7 @@ public class DialogueUI : Yarn.Unity.DialogueUIBehaviour
 			"buttons to present them in. This will cause problems.");
 		}
 
-		this.dialoguePanel.CreateButtonForOptions(optionsCollection);
+        this.dialoguePanel.CreateButtonForOptions(optionsCollection);
 
 		// Record that we're using it
 		SetSelectedOption = optionChooser;
