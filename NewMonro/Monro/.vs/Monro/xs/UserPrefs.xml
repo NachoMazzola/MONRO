@@ -1,12 +1,11 @@
 ﻿<Properties StartupConfiguration="{1BE28F57-BF0E-E7DF-C219-F9C97E5D5732}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Assets/Conversation/MimirPuzzles.json">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Internal/UIScripts/ScrollView/DialogueOptionButton.cs">
     <Files>
-      <File FileName="Assets/Scripts/Internal/UIScripts/ScrollView/DialogueOptionsScrollView.cs" Line="14" Column="6" />
-      <File FileName="Assets/Scripts/Internal/Dialogue/DialogueBottomPanel.cs" Line="139" Column="41" />
-      <File FileName="Assets/Scripts/Internal/Dialogue/DialogueUI.cs" Line="123" Column="4" />
+      <File FileName="Assets/Scripts/Internal/UIScripts/ScrollView/DialogueOptionsScrollView.cs" Line="19" Column="10" />
+      <File FileName="Assets/Scripts/Internal/Dialogue/DialogueBottomPanel.cs" />
+      <File FileName="Assets/Scripts/Internal/Dialogue/DialogueUI.cs" />
       <File FileName="Assets/Scripts/Internal/UIScripts/ScrollView/DialogueOptionButton.cs" Line="19" Column="44" />
       <File FileName="Assets/Scripts/Internal/Helpers/WorldObjectsHelper.cs" />
-      <File FileName="Assets/Assets/Conversation/MimirPuzzles.json" Line="65" Column="1402" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -33,7 +32,7 @@
                       <Node name="InventoryPanel" expanded="True" />
                     </Node>
                     <Node name="ScrollView" expanded="True">
-                      <Node name="DialogueOptionsScrollView.cs" selected="True" />
+                      <Node name="DialogueOptionButton.cs" selected="True" />
                     </Node>
                   </Node>
                   <Node name="WorldInteraction" expanded="True" />
@@ -59,13 +58,11 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="546809a8-12c7-4231-b40f-b7a20337f0aa" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="da1e52a3-b559-4947-a864-61f66e40189e" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/Commands/CommandFactory.cs" relfile="Assets/Scripts/Internal/Commands/CommandFactory.cs" line="105" column="1" />
       <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/Dialogue/DialogueUI.cs" relfile="Assets/Scripts/Internal/Dialogue/DialogueUI.cs" line="125" column="1" />
-      <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/UIScripts/ScrollView/DialogueOptionsScrollView.cs" relfile="Assets/Scripts/Internal/UIScripts/ScrollView/DialogueOptionsScrollView.cs" line="17" column="1" />
-      <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/UIScripts/ScrollView/DialogueOptionsScrollView.cs" relfile="Assets/Scripts/Internal/UIScripts/ScrollView/DialogueOptionsScrollView.cs" line="13" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
