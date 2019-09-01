@@ -58,7 +58,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="da1e52a3-b559-4947-a864-61f66e40189e" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="e2fe13d0-64b5-435f-8e27-1e8f041f58d8" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/HardDrive 2/MONRO/NewMonro/Monro/Assets/Scripts/Internal/Commands/CommandFactory.cs" relfile="Assets/Scripts/Internal/Commands/CommandFactory.cs" line="105" column="1" />
