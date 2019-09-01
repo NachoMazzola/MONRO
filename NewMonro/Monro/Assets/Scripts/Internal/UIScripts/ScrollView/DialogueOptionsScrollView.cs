@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueOptionsScrollView : MonoBehaviour {
     public GameObject ButtonTemplate;
+    public GameObject moreOptionsIndicator;
 
     private List<GameObject> buttons;
     private List<int> deactivatedButtons;
@@ -27,7 +29,18 @@ public class DialogueOptionsScrollView : MonoBehaviour {
         
         go.transform.localScale = new Vector3(1, 1, 1);
 
+        RectTransform scrollViewRect = (RectTransform)this.transform;
+        float standardButtonHeight = ((RectTransform)go.transform).rect.height;
+        this.moreOptionsIndicator.SetActive(buttons.Count * standardButtonHeight > scrollViewRect.rect.height);
+        
         buttons.Add(go);
+    }
+
+    public void CleanButtonList() {
+        foreach (GameObject g in this.buttons) {
+            Destroy(g);
+        }
+        this.buttons.RemoveRange(0, this.buttons.Count);
     }
 
     public void MarkOptionButtonAsSelected(int index) {

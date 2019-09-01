@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DialogueOptionButton : MonoBehaviour
 {
-    private int optionIdx;
+    public int optionIdx;
 
     public void SetDialogueOption(string option, int optionIdx)
     {

@@ -120,6 +120,7 @@ public class DialogueBottomPanel : MonoBehaviour
         this.displayedText.text = "";
         this.conversationOptionsPanel.gameObject.SetActive(true);
 
+        sc.CleanButtonList();
         for (int i = 0; i < optionsCollection.options.Count; i++)
         {
             string str = optionsCollection.options[i];
